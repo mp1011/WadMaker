@@ -1,0 +1,12 @@
+[x] create a single room with player at the center
+[x] create two, unconnected rooms
+[x] create a hallway connecting the rooms *
+[ ] create hallways for top, bottom, left, and right sides
+[ ] create rooms of different shapes
+[ ] add decorations to room
+
+
+7/6/2025
+not creating lines correctly, they seem not to associate with the right sectors
+add comment to items to identify and then watch as they resolve
+

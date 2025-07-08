@@ -1,0 +1,194 @@
+namespace = "ZDoom";
+//0
+vertex
+{
+    x = 0;
+    y = 0;
+}
+//1
+vertex
+{
+    x = 128;
+    y = 0;
+}
+//2
+vertex
+{
+    x = 128;
+    y = -256;
+}
+//3
+vertex
+{
+    x = 0;
+    y = -256;
+}
+//4
+vertex
+{
+    x = 256;
+    y = 0;
+}
+//5
+vertex
+{
+    x = 356;
+    y = 0;
+}
+//6
+vertex
+{
+    x = 356;
+    y = -256;
+}
+//7
+vertex
+{
+    x = 256;
+    y = -256;
+}
+//0
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_3";
+    heightfloor = 0;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//1
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_3";
+    heightfloor = 0;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//0
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//1
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//2
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//3
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//4
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//5
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//6
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//7
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//0
+linedef
+{
+    v1 = 0;
+    v2 = 1;
+    sidefront = 0;
+    blocking = true;
+}
+//1
+linedef
+{
+    v1 = 1;
+    v2 = 2;
+    sidefront = 1;
+    blocking = true;
+}
+//2
+linedef
+{
+    v1 = 2;
+    v2 = 3;
+    sidefront = 2;
+    blocking = true;
+}
+//3
+linedef
+{
+    v1 = 3;
+    v2 = 0;
+    sidefront = 3;
+    blocking = true;
+}
+//4
+linedef
+{
+    v1 = 4;
+    v2 = 5;
+    sidefront = 4;
+    blocking = true;
+}
+//5
+linedef
+{
+    v1 = 5;
+    v2 = 6;
+    sidefront = 5;
+    blocking = true;
+}
+//6
+linedef
+{
+    v1 = 6;
+    v2 = 7;
+    sidefront = 6;
+    blocking = true;
+}
+//7
+linedef
+{
+    v1 = 7;
+    v2 = 4;
+    sidefront = 7;
+    blocking = true;
+}
+thing
+{
+    x = 64;
+    y = -128;
+    angle = 0;
+    type = 1;
+    skill1 = true;
+    skill2 = true;
+    skill3 = true;
+    skill4 = true;
+    skill5 = true;
+    single = true;
+    dm = false;
+    coop = false;
+}
