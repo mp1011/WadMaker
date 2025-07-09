@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Extensions;
+﻿using WadMaker.Models.Geometry;
+
+namespace WadMaker.Extensions;
 
 public static class GeometryExtensions
 {
@@ -20,5 +22,90 @@ public static class GeometryExtensions
         double dx = v.x - other.x;
         double dy = v.y - other.y;
         return dx * dx + dy * dy;
+    }
+
+    public static double SquaredDistanceTo(this Point v, Point other)
+    {
+        double dx = v.X - other.X;
+        double dy = v.Y - other.Y;
+        return dx * dx + dy * dy;
+    }
+
+    public static double DistanceTo(this Point p, Point other) =>
+        Math.Sqrt(p.SquaredDistanceTo(other));
+
+    public static DRectangle ExtendOnSide(this DRectangle rectangle, Side side, int distance)
+    {
+        return side switch
+        {
+            Side.Left => new DRectangle(rectangle.X - distance, rectangle.Y, rectangle.Width + distance, rectangle.Height),
+            Side.Right => new DRectangle(rectangle.X, rectangle.Y, rectangle.Width + distance, rectangle.Height),
+            Side.Top => new DRectangle(rectangle.X, rectangle.Y + distance, rectangle.Width, rectangle.Height + distance),
+            Side.Bottom => new DRectangle(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height + distance),
+            _ => throw new ArgumentOutOfRangeException(nameof(side), side, null)
+        };
+    }
+
+    public static IEnumerable<Point> SidePoints(this DRectangle rectangle, Side side)
+    {
+        return side switch
+        {
+            Side.Left   => new[] { new Point(rectangle.X, rectangle.Y), new Point(rectangle.X, rectangle.Bottom) },
+            Side.Right  => new[] { new Point(rectangle.Right, rectangle.Y), new Point(rectangle.Right, rectangle.Bottom) },
+            Side.Top    => new[] { new Point(rectangle.X, rectangle.Y), new Point(rectangle.Right, rectangle.Y) },
+            Side.Bottom => new[] { new Point(rectangle.X, rectangle.Bottom), new Point(rectangle.Right, rectangle.Bottom) },
+            _ => throw new ArgumentOutOfRangeException(nameof(side), side, null)
+        };
+    }
+
+    public static Side Opposite(this Side side)
+    {
+        return side switch
+        {
+            Side.Left => Side.Right,
+            Side.Right => Side.Left,
+            Side.Top => Side.Bottom,
+            Side.Bottom => Side.Top,
+            _ => throw new ArgumentOutOfRangeException(nameof(side), side, null)
+        };
+    }
+
+    private static Point CentralPoint(this IEnumerable<Point> points)
+    {
+        if (!points.Any())
+            return Point.Empty;
+        int sumX = points.Sum(p => p.X);
+        int sumY = points.Sum(p => p.Y);
+        int count = points.Count();
+        return new Point(sumX / count, sumY / count);
+    }
+
+    /// <summary>
+    /// Moves each point toward their common center until their distance apart is the specified value
+    /// </summary>
+    /// <param name="points"></param>
+    /// <param name="distance"></param>
+    /// <returns></returns>
+    public static IEnumerable<Point> MoveToDistance(this IEnumerable<Point> points, int distance = 32)
+    {
+        var center = points.CentralPoint();
+
+        // assuming two points, not sure if I'll need to handle more
+        var currentDistance = points.First().DistanceTo(points.Last());
+
+        var delta = (currentDistance - distance) / 2;
+
+        return points.Select(p => p.MoveToward(center, delta));
+    }
+
+    private static Point MoveToward(this Point point, Point target, double delta)
+    {
+        if (point == target || delta <= 0)
+            return point;
+        double angle = Math.Atan2(target.Y - point.Y, target.X - point.X);
+        return new Point(
+            (int)(point.X + delta * Math.Cos(angle)),
+            (int)(point.Y + delta * Math.Sin(angle))
+        );
     }
 }

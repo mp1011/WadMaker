@@ -10,3 +10,7 @@
 not creating lines correctly, they seem not to associate with the right sectors
 add comment to items to identify and then watch as they resolve
 
+
+7/8/2025
+doom Y coordinates are different from standard
+output map doesn't display right in Doom but its not clear what's wrong. Doom Builder is able to correct it, but not clear what it's doing.
