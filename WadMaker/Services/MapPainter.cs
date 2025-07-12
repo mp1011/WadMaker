@@ -5,11 +5,13 @@ public class MapPainter
 {
     private readonly RoomBuilder _roomBuilder;
     private readonly OverlappingLinedefResolver _overlappingLinedefResolver;
+    private readonly IAnnotator _annotator;
 
-    public MapPainter(RoomBuilder roomPainter, OverlappingLinedefResolver overlappingLinedefResolver  )
+    public MapPainter(RoomBuilder roomPainter, OverlappingLinedefResolver overlappingLinedefResolver, IAnnotator annotator)
     {
         _roomBuilder = roomPainter;
         _overlappingLinedefResolver = overlappingLinedefResolver;
+        _annotator = annotator;
     }
 
     public string Paint(Map map)
@@ -38,7 +40,7 @@ public class MapPainter
         mapElements.Vertices.Paint(sb);
         mapElements.Sectors.ToDataArray().Paint(sb);
         mapElements.SideDefs.ToDataArray().Paint(sb);
-        mapElements.LineDefs.ToDataArray().Paint(sb);
+        mapElements.LineDefs.ToDataArray().AnnotateAll(_annotator).Paint(sb);
 
         var thing = new thing(
            x: map.Rooms.First().Center.X,

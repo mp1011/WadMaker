@@ -1,7 +1,8 @@
 [x] create a single room with player at the center
 [x] create two, unconnected rooms
 [x] create a hallway connecting the rooms *
-[ ] create hallways for top, bottom, left, and right sides
+[x] create hallways for top, bottom, left, and right sides
+[?] generated halls render correctly in Doom
 [ ] create rooms of different shapes
 [ ] add decorations to room
 
@@ -14,3 +15,7 @@ add comment to items to identify and then watch as they resolve
 7/8/2025
 doom Y coordinates are different from standard
 output map doesn't display right in Doom but its not clear what's wrong. Doom Builder is able to correct it, but not clear what it's doing.
+Add an "Annotator" service to write comments to lines to get a better idea what's going wrong
+
+7/9/2025
+map is mysteriously "ok" now even without changes. might have involved changing namespace, but even going back to original, still displays.

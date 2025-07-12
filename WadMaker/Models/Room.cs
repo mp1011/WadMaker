@@ -1,7 +1,11 @@
-﻿namespace WadMaker.Models;
+﻿using WadMaker.Services.ShapeModifiers;
+
+namespace WadMaker.Models;
 
 public class Room
 {
+    public List<IShapeModifier> ShapeModifiers { get; } = new List<IShapeModifier>();
+
     public Point UpperLeft { get; set; } = Point.Empty;
     public Point BottomRight { get; set; } = Point.Empty;
 

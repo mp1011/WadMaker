@@ -17,7 +17,7 @@ internal class MapPainterTests
             BottomRight = new Point(128, -256)
         });
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver());
+        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
         var udmf = mapPainter.Paint(map);
 
         var expected = File.ReadAllText("Fixtures//basicmap.udmf");
@@ -50,7 +50,7 @@ internal class MapPainterTests
             BottomRight = new Point(356, -256)
         });
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver());
+        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
         var udmf = mapPainter.Paint(map);
 
         var expected = File.ReadAllText("Fixtures//two_unconnected_rooms.udmf");
@@ -89,7 +89,7 @@ internal class MapPainterTests
 
         map.Rooms.Add(new HallGenerator().GenerateHall(hall));
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver());
+        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
         var udmf = mapPainter.Paint(map);
 
         var expected = File.ReadAllText("Fixtures//two_rooms_with_hall.udmf");

@@ -13,15 +13,33 @@ public class HallGenerator
         var room2Anchors = hall.Room2.Bounds.SidePoints(side.Opposite())
                                             .MoveToDistance()
                                             .ToArray();
+        return CreateHallRoom(hall, room1Anchors.Union(room2Anchors).ToArray());
+    }
 
-        return new Room(room1Anchors.Union(room2Anchors))
+    private Room CreateHallRoom(Hall hall, Point[] vertices)
+    {
+        if(hall.HallTemplate != null)
         {
-            Height = hall.Room1.Height,
-            Floor = hall.Room1.Floor,
-            FloorTexture = hall.Room1.FloorTexture,
-            CeilingTexture = hall.Room1.CeilingTexture,
-            WallTexture = hall.Room1.WallTexture
-        };
+            return new Room(vertices)
+            {
+                Height = hall.HallTemplate.Height,
+                Floor = hall.HallTemplate.Floor,
+                FloorTexture = hall.HallTemplate.FloorTexture,
+                CeilingTexture = hall.HallTemplate.CeilingTexture,
+                WallTexture = hall.HallTemplate.WallTexture
+            };
+        }
+        else
+        {
+            return new Room(vertices)
+            {
+                Height = hall.Room1.Height,
+                Floor = hall.Room1.Floor,
+                FloorTexture = hall.Room1.FloorTexture,
+                CeilingTexture = hall.Room1.CeilingTexture,
+                WallTexture = hall.Room1.WallTexture
+            };
+        }
     }
     
     /// <summary>

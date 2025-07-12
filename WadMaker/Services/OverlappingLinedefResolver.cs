@@ -2,6 +2,13 @@
 
 public class OverlappingLinedefResolver
 {
+    private IAnnotator _annotator;
+
+    public OverlappingLinedefResolver(IAnnotator annotator)
+    {
+        _annotator = annotator;
+    }
+
     public IEnumerable<LineDef> Execute(MapElements mapElements)
     {
         List<LineDef> modified = new List<LineDef>();
@@ -93,7 +100,7 @@ public class OverlappingLinedefResolver
                         texturetop: previousLine.Front.Data.texturemiddle,
                         texturebottom: previousLine.Front.Data.texturemiddle)),
 
-                    new linedef(blocking:false, twoSided:true, comment: "double sided line"));               
+                    new linedef(blocking:false, twoSided:true).AddComment(null, _annotator));               
             }
 
             previous = vertex;

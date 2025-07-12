@@ -70,7 +70,7 @@ public static class GeometryExtensions
         };
     }
 
-    private static Point CentralPoint(this IEnumerable<Point> points)
+    public static Point CentralPoint(this IEnumerable<Point> points)
     {
         if (!points.Any())
             return Point.Empty;
@@ -98,7 +98,7 @@ public static class GeometryExtensions
         return points.Select(p => p.MoveToward(center, delta));
     }
 
-    private static Point MoveToward(this Point point, Point target, double delta)
+    public static Point MoveToward(this Point point, Point target, double delta)
     {
         if (point == target || delta <= 0)
             return point;

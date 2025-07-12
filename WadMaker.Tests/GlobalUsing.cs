@@ -2,4 +2,6 @@
 global using System.Drawing;
 global using WadMaker.Models;
 global using WadMaker.Services;
+global using WadMaker.Services.ShapeModifiers;
 global using WadMaker.Extensions;
+global using WadMaker.Tests.TestHelpers;
