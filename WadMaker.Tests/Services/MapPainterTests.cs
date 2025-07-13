@@ -95,5 +95,34 @@ internal class MapPainterTests
         var expected = File.ReadAllText("Fixtures//two_rooms_with_hall.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
+
+    [Test]
+    public void CanCreateRoomWithPillar()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            Floor = 0,
+            Height = 256,
+            WallTexture = Texture.STONE,
+            FloorTexture = Flat.FLOOR0_1,
+            CeilingTexture = Flat.FLOOR0_3,
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(256, -256)
+        });
+
+        map.Rooms[0].Pillars.Add(new Cutout{
+            UpperLeft = new Point(148,-128),
+            BottomRight = new Point(148+64, -128-64),
+            WallTexture = Texture.STONE2});
+
+        map.Rooms[0].Pillars[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
+
+        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
+        var udmf = mapPainter.Paint(map);
+        var expected = File.ReadAllText("Fixtures//room_with_pillar.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
+
+    }
 }
 

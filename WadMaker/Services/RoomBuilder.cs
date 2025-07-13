@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Services;
+﻿using WadMaker.Models;
+
+namespace WadMaker.Services;
 public class RoomBuilder
 {
     private readonly IDProvider _idProvider;
@@ -21,7 +23,23 @@ public class RoomBuilder
         var sidedefs = SideDefs(room, vertices, sector).ToArray();
         elements.SideDefs.AddRange(sidedefs);
 
-        elements.LineDefs.AddRange(LineDefs(room, vertices, sidedefs));
+        elements.LineDefs.AddRange(LineDefs(vertices, sidedefs));
+
+        return elements;
+    }
+
+    public MapElements BuildPillar(Room room, MapElements roomElements, Cutout pillar)
+    {
+        pillar = pillar.RelativeTo(room);
+        var elements = new MapElements();
+        var roomSector = roomElements.Sectors.First();
+        var vertices = Vertices(pillar).ToArray();
+        elements.Vertices.AddRange(vertices);
+
+        var sidedefs = SideDefs(pillar, vertices, roomSector).ToArray();
+        elements.SideDefs.AddRange(sidedefs);
+
+        elements.LineDefs.AddRange(LineDefsOutward(vertices, sidedefs));
 
         return elements;
     }
@@ -33,7 +51,7 @@ public class RoomBuilder
         heightceiling: room.Floor + room.Height,
         lightlevel: 127));
 
-    private IEnumerable<vertex> Vertices(Room room)
+    private IEnumerable<vertex> Vertices(IShape room)
     {
         var initialPoints = new[]
         {
@@ -54,9 +72,20 @@ public class RoomBuilder
         return vertices.Select(v => new SideDef(Sector: sector, Data: new sidedef(sector: -1, texturemiddle: room.WallTexture.ToString())));
     }
 
-    public IEnumerable<LineDef> LineDefs(Room room, vertex[] vertices, SideDef[] sidedefs)
+    public IEnumerable<SideDef> SideDefs(Cutout cutout, vertex[] vertices, Sector sector)
+    {
+        return vertices.Select(v => new SideDef(Sector: sector, Data: new sidedef(sector: -1, texturemiddle: cutout.WallTexture.ToString())));
+    }
+
+    public IEnumerable<LineDef> LineDefs(vertex[] vertices, SideDef[] sidedefs)
     {
         return vertices.WithNeighbors().Select((v,index) =>
+            new LineDef(V1: v.Item2, V2: v.Item3, Front: sidedefs[index], Back: null, Data: new linedef(blocking: true)));
+    }
+
+    public IEnumerable<LineDef> LineDefsOutward(vertex[] vertices, SideDef[] sidedefs)
+    {
+        return vertices.Reverse().ToArray().WithNeighbors().Select((v, index) =>
             new LineDef(V1: v.Item2, V2: v.Item3, Front: sidedefs[index], Back: null, Data: new linedef(blocking: true)));
     }
 }

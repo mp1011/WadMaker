@@ -3,7 +3,8 @@
 [x] create a hallway connecting the rooms *
 [x] create hallways for top, bottom, left, and right sides
 [?] generated halls render correctly in Doom
-[ ] create rooms of different shapes
+[x] create rooms of different shapes
+[ ] add pillars to room
 [ ] add decorations to room
 
 

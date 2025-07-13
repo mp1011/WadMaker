@@ -1,0 +1,345 @@
+namespace = "ZDoom";
+//0
+vertex
+{
+    x = 0;
+    y = 0;
+}
+//1
+vertex
+{
+    x = 256;
+    y = 0;
+}
+//2
+vertex
+{
+    x = 256;
+    y = -256;
+}
+//3
+vertex
+{
+    x = 0;
+    y = -256;
+}
+//4
+vertex
+{
+    x = 148;
+    y = -136;
+}
+//5
+vertex
+{
+    x = 156;
+    y = -136;
+}
+//6
+vertex
+{
+    x = 156;
+    y = -128;
+}
+//7
+vertex
+{
+    x = 204;
+    y = -128;
+}
+//8
+vertex
+{
+    x = 204;
+    y = -136;
+}
+//9
+vertex
+{
+    x = 212;
+    y = -136;
+}
+//10
+vertex
+{
+    x = 212;
+    y = -184;
+}
+//11
+vertex
+{
+    x = 204;
+    y = -184;
+}
+//12
+vertex
+{
+    x = 204;
+    y = -192;
+}
+//13
+vertex
+{
+    x = 156;
+    y = -192;
+}
+//14
+vertex
+{
+    x = 156;
+    y = -184;
+}
+//15
+vertex
+{
+    x = 148;
+    y = -184;
+}
+//0
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_3";
+    heightfloor = 0;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//0
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//1
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//2
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//3
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//4
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//5
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//6
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//7
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//8
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//9
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//10
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//11
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//12
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//13
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//14
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//15
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE2";
+}
+//0
+linedef
+{
+    v1 = 0;
+    v2 = 1;
+    sidefront = 0;
+    blocking = true;
+}
+//1
+linedef
+{
+    v1 = 1;
+    v2 = 2;
+    sidefront = 1;
+    blocking = true;
+}
+//2
+linedef
+{
+    v1 = 2;
+    v2 = 3;
+    sidefront = 2;
+    blocking = true;
+}
+//3
+linedef
+{
+    v1 = 3;
+    v2 = 0;
+    sidefront = 3;
+    blocking = true;
+}
+//4
+linedef
+{
+    v1 = 15;
+    v2 = 14;
+    sidefront = 4;
+    blocking = true;
+}
+//5
+linedef
+{
+    v1 = 14;
+    v2 = 13;
+    sidefront = 5;
+    blocking = true;
+}
+//6
+linedef
+{
+    v1 = 13;
+    v2 = 12;
+    sidefront = 6;
+    blocking = true;
+}
+//7
+linedef
+{
+    v1 = 12;
+    v2 = 11;
+    sidefront = 7;
+    blocking = true;
+}
+//8
+linedef
+{
+    v1 = 11;
+    v2 = 10;
+    sidefront = 8;
+    blocking = true;
+}
+//9
+linedef
+{
+    v1 = 10;
+    v2 = 9;
+    sidefront = 9;
+    blocking = true;
+}
+//10
+linedef
+{
+    v1 = 9;
+    v2 = 8;
+    sidefront = 10;
+    blocking = true;
+}
+//11
+linedef
+{
+    v1 = 8;
+    v2 = 7;
+    sidefront = 11;
+    blocking = true;
+}
+//12
+linedef
+{
+    v1 = 7;
+    v2 = 6;
+    sidefront = 12;
+    blocking = true;
+}
+//13
+linedef
+{
+    v1 = 6;
+    v2 = 5;
+    sidefront = 13;
+    blocking = true;
+}
+//14
+linedef
+{
+    v1 = 5;
+    v2 = 4;
+    sidefront = 14;
+    blocking = true;
+}
+//15
+linedef
+{
+    v1 = 4;
+    v2 = 15;
+    sidefront = 15;
+    blocking = true;
+}
+thing
+{
+    x = 128;
+    y = -128;
+    angle = 0;
+    type = 1;
+    skill1 = true;
+    skill2 = true;
+    skill3 = true;
+    skill4 = true;
+    skill5 = true;
+    single = true;
+    dm = false;
+    coop = false;
+}

@@ -9,7 +9,7 @@ public class InvertCorners : IShapeModifier
 {
     public int Width { get; set; } = 16;
 
-    public Point[] AlterPoints(Point[] points, Room room)
+    public Point[] AlterPoints(Point[] points, IShape room)
     {
         var center = points.CentralPoint();
         List<Point> newPoints = new List<Point>();

@@ -2,7 +2,7 @@
 
 namespace WadMaker.Models;
 
-public class Room
+public class Room : IShape
 {
     public List<IShapeModifier> ShapeModifiers { get; } = new List<IShapeModifier>();
 
@@ -23,7 +23,8 @@ public class Room
     public Flat CeilingTexture { get; set; } = Flat.Default;
     public Texture WallTexture { get; set; } = Texture.Default;
 
-    public List<Hall> Halls { get; set; } = new List<Hall>();
+    public List<Hall> Halls { get; } = new List<Hall>();
+    public List<Cutout> Pillars { get; } = new List<Cutout>();
 
     public Room() { }
 

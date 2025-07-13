@@ -22,7 +22,13 @@ public class MapPainter
         var mapElements = new MapElements();
         foreach (var room in map.Rooms)
         {
-            mapElements.Merge(_roomBuilder.Build(room));    
+            var roomElements = _roomBuilder.Build(room);
+            mapElements.Merge(roomElements);
+            
+            foreach(var pillar in room.Pillars)
+            {
+                mapElements.Merge(_roomBuilder.BuildPillar(room, roomElements, pillar));
+            }
         }
 
         _overlappingLinedefResolver.Execute(mapElements);

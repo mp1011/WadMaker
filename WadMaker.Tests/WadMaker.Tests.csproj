@@ -32,6 +32,9 @@
     <None Update="Fixtures\two_rooms_with_hall.udmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Fixtures\room_with_pillar.udmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Fixtures\two_unconnected_rooms.udmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -2,5 +2,5 @@
 
 public interface IShapeModifier
 {
-    Point[] AlterPoints(Point[] points, Room room);
+    Point[] AlterPoints(Point[] points, IShape room);
 }
