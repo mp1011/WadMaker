@@ -5,6 +5,11 @@ public interface IElementWrapper<T> where T:IMapElement
     T Data { get; }
 }
 
+public class Thing(thing Data) : IElementWrapper<thing>
+{
+    public thing Data { get; private set; } = Data;
+}
+
 public class Sector(sector Data) : IElementWrapper<sector>
 {
     public sector Data { get; private set; } = Data;
@@ -82,6 +87,7 @@ public class MapElements
     public List<Sector> Sectors { get; set; } = new List<Sector>();
     public List<SideDef> SideDefs { get; set; } = new List<SideDef>();
     public List<LineDef> LineDefs { get; set; } = new List<LineDef>();
+    public List<Thing> Things { get; set; } = new List<Thing>();
 
     public MapElements Merge(MapElements other)
     {

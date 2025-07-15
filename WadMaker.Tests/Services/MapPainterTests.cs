@@ -1,6 +1,6 @@
 ﻿namespace WadMaker.Tests.Services;
 
-internal class MapPainterTests
+internal class MapPainterTests : StandardTest
 {
     [Test]
     public void MapPainterCanCreateBasicRoom()
@@ -17,9 +17,7 @@ internal class MapPainterTests
             BottomRight = new Point(128, -256)
         });
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
-        var udmf = mapPainter.Paint(map);
-
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//basicmap.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
@@ -50,9 +48,7 @@ internal class MapPainterTests
             BottomRight = new Point(356, -256)
         });
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
-        var udmf = mapPainter.Paint(map);
-
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//two_unconnected_rooms.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
@@ -89,9 +85,7 @@ internal class MapPainterTests
 
         map.Rooms.Add(new HallGenerator().GenerateHall(hall));
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
-        var udmf = mapPainter.Paint(map);
-
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//two_rooms_with_hall.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
@@ -118,8 +112,7 @@ internal class MapPainterTests
 
         map.Rooms[0].Pillars[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
-        var udmf = mapPainter.Paint(map);
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_pillar.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
 
@@ -151,8 +144,7 @@ internal class MapPainterTests
 
         map.Rooms[0].InnerStructures[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
 
-        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
-        var udmf = mapPainter.Paint(map);
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_inner_structure.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
 

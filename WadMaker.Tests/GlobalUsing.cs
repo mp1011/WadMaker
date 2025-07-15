@@ -1,4 +1,5 @@
-﻿global using System.Text;
+﻿global using Microsoft.Extensions.DependencyInjection;
+global using System.Text;
 global using System.Drawing;
 global using WadMaker.Models;
 global using WadMaker.Services;

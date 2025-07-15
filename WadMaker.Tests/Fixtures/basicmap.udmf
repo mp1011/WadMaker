@@ -88,6 +88,7 @@ linedef
     sidefront = 3;
     blocking = true;
 }
+//0
 thing
 {
     x = 64;

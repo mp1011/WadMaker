@@ -469,6 +469,7 @@ linedef
     blocking = false;
     comment = "double sided line";
 }
+//0
 thing
 {
     x = 128;

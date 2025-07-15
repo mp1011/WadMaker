@@ -37,10 +37,12 @@ var hall = new Hall(
 map.Rooms[0].Halls.Add(hall);
 map.Rooms[1].Halls.Add(hall);
 map.Rooms[0].ShapeModifiers.Add(new InvertCorners { Width = 64 });
-
 map.Rooms.Add(new HallGenerator().GenerateHall(hall));
 
-var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new EmpyAnnotator()), new VerboseAnnotator());
-var udmf = mapPainter.Paint(map);
+var serviceContainer = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
+
+var mapPainter = serviceContainer.GetService<MapPainter>()!;
+var mapBuilder = serviceContainer.GetService<MapBuilder>()!;
+var udmf = mapPainter.Paint(mapBuilder.Build(map));
 
 Console.WriteLine("Done");
