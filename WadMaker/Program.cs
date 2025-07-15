@@ -2,7 +2,7 @@
 map.Rooms.Add(new Room
 {
     Floor = 0,
-    Height = 256,
+    Ceiling = 256,
     WallTexture = Texture.STONE2,
     FloorTexture = Flat.FLOOR0_1,
     CeilingTexture = Flat.FLOOR0_3,
@@ -13,7 +13,7 @@ map.Rooms.Add(new Room
 map.Rooms.Add(new Room
 {
     Floor = 0,
-    Height = 256,
+    Ceiling = 256,
     WallTexture = Texture.STONE,
     FloorTexture = Flat.FLOOR0_1,
     CeilingTexture = Flat.FLOOR0_3,
@@ -28,7 +28,7 @@ var hall = new Hall(
     HallTemplate: new Room
     {
         Floor = 16,
-        Height = 128,
+        Ceiling = 128 - 16,
         FloorTexture = Flat.FLOOR0_3,
         WallTexture = Texture.STONE2
     });

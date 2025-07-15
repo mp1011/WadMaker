@@ -29,6 +29,11 @@ public class MapPainter
             {
                 mapElements.Merge(_roomBuilder.BuildPillar(room, roomElements, pillar));
             }
+
+            foreach (var innerElement in room.InnerStructures)
+            {
+                mapElements.Merge(_roomBuilder.BuildInternalElement(room, roomElements, innerElement));
+            }
         }
 
         _overlappingLinedefResolver.Execute(mapElements);

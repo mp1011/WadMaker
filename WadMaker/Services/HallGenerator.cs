@@ -22,7 +22,7 @@ public class HallGenerator
         {
             return new Room(vertices)
             {
-                Height = hall.HallTemplate.Height,
+                Ceiling = hall.HallTemplate.Ceiling,
                 Floor = hall.HallTemplate.Floor,
                 FloorTexture = hall.HallTemplate.FloorTexture,
                 CeilingTexture = hall.HallTemplate.CeilingTexture,
@@ -33,7 +33,7 @@ public class HallGenerator
         {
             return new Room(vertices)
             {
-                Height = hall.Room1.Height,
+                Ceiling = hall.Room1.Ceiling,
                 Floor = hall.Room1.Floor,
                 FloorTexture = hall.Room1.FloorTexture,
                 CeilingTexture = hall.Room1.CeilingTexture,

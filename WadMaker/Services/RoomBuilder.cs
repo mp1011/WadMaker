@@ -1,4 +1,5 @@
-﻿using WadMaker.Models;
+﻿using System.Numerics;
+using WadMaker.Models;
 
 namespace WadMaker.Services;
 public class RoomBuilder
@@ -43,6 +44,40 @@ public class RoomBuilder
 
         return elements;
     }
+
+    public MapElements BuildInternalElement(Room room, MapElements roomElements, Room innerElement)
+    {
+        innerElement = innerElement.RelativeTo(room);
+        var roomSector = roomElements.Sectors.First();
+
+        var innerElements = Build(innerElement);
+        
+        var lines = innerElements.LineDefs.ToArray();
+        innerElements.LineDefs.Clear();
+        innerElements.SideDefs.Clear();
+        foreach (var line in lines)
+        {
+            var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null, 
+                texturetop: room.WallTexture.ToString(),
+                texturebottom: room.WallTexture.ToString()));
+
+            var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, texturemiddle: null,
+                texturetop: innerElement.WallTexture.ToString(),
+                texturebottom: innerElement.WallTexture.ToString()));
+
+            innerElements.LineDefs.Add(
+                new LineDef(line.V1, line.V2,
+                    frontSide,
+                    backSide,
+                    line.Data with { twoSided = true, blocking = false }));
+
+            innerElements.SideDefs.Add(frontSide);
+            innerElements.SideDefs.Add(backSide);
+        }
+
+        return innerElements;
+    }
+
 
     private Sector Sector(Room room) => new Sector(new sector(
         texturefloor: room.FloorTexture.ToString(),

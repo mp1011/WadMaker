@@ -2,10 +2,17 @@
 [x] create two, unconnected rooms
 [x] create a hallway connecting the rooms *
 [x] create hallways for top, bottom, left, and right sides
-[?] generated halls render correctly in Doom
+[x] generated halls render correctly in Doom
 [x] create rooms of different shapes
-[ ] add pillars to room
-[ ] add decorations to room
+[x] add pillars to room
+[x] add decorations to room
+------------ 7/14/2025
+[ ] separate map element resolution out of MapPainter
+[ ] pillar where side overlaps main sector side[]
+[ ] pillar which only partially overlaps main sector
+[ ] nested inner structures
+[ ] doors
+
 
 
 7/6/2025

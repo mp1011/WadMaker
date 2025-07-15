@@ -9,7 +9,7 @@ internal class MapPainterTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
@@ -31,7 +31,7 @@ internal class MapPainterTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
@@ -42,7 +42,7 @@ internal class MapPainterTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
@@ -64,7 +64,7 @@ internal class MapPainterTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
@@ -75,7 +75,7 @@ internal class MapPainterTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
@@ -103,7 +103,7 @@ internal class MapPainterTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
@@ -121,6 +121,39 @@ internal class MapPainterTests
         var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
         var udmf = mapPainter.Paint(map);
         var expected = File.ReadAllText("Fixtures//room_with_pillar.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
+
+    }
+
+    [Test]
+    public void CanCreateRoomWithInnerStructure()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            Floor = 0,
+            Ceiling = 256,
+            WallTexture = Texture.STONE,
+            FloorTexture = Flat.FLOOR0_1,
+            CeilingTexture = Flat.FLOOR0_3,
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(256, -256)
+        });
+
+        map.Rooms[0].InnerStructures.Add(new Room
+        {
+            UpperLeft = new Point(148, -128),
+            BottomRight = new Point(148 + 64, -128 - 64),
+            WallTexture = Texture.STONE2,
+            Floor = -16, 
+            Ceiling = 32,
+        });
+
+        map.Rooms[0].InnerStructures[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
+
+        var mapPainter = new MapPainter(new RoomBuilder(new IDProvider()), new OverlappingLinedefResolver(new TestAnnotator()), new TestAnnotator());
+        var udmf = mapPainter.Paint(map);
+        var expected = File.ReadAllText("Fixtures//room_with_inner_structure.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
 
     }

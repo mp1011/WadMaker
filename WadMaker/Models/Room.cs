@@ -17,7 +17,9 @@ public class Room : IShape
         size: new Size(BottomRight.X - UpperLeft.X,
             Math.Abs(BottomRight.Y - UpperLeft.Y)));
             
-    public int Height { get; set; } = 128;
+    public int Height => Ceiling - Floor;
+
+    public int Ceiling { get; set; } = 128;
     public int Floor { get; set; } = 0;
     public Flat FloorTexture { get; set; } = Flat.Default;
     public Flat CeilingTexture { get; set; } = Flat.Default;
@@ -26,11 +28,31 @@ public class Room : IShape
     public List<Hall> Halls { get; } = new List<Hall>();
     public List<Cutout> Pillars { get; } = new List<Cutout>();
 
+    public List<Room> InnerStructures { get; } = new List<Room>();
+
     public Room() { }
 
     public Room(IEnumerable<Point> points)
     {        
         UpperLeft = new Point(points.Min(p => p.X), points.Max(p => p.Y));
         BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
+    }
+
+    public Room RelativeTo(Room parent)
+    {
+        var copy = new Room
+        {
+            UpperLeft = parent.UpperLeft.Add(UpperLeft),
+            BottomRight = parent.UpperLeft.Add(BottomRight),
+            Floor = parent.Floor + Floor,
+            Ceiling = parent.Ceiling + Ceiling,
+            CeilingTexture = CeilingTexture,
+            FloorTexture = FloorTexture,
+            WallTexture = WallTexture
+        };
+        copy.ShapeModifiers.AddRange(ShapeModifiers);
+        copy.InnerStructures.AddRange(InnerStructures);
+        copy.Pillars.AddRange(Pillars);
+        return copy;
     }
 }

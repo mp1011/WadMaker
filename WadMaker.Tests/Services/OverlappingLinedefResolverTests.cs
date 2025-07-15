@@ -10,7 +10,7 @@ class OverlappingLinedefResolverTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
@@ -21,7 +21,7 @@ class OverlappingLinedefResolverTests
         map.Rooms.Add(new Room
         {
             Floor = 0,
-            Height = 256,
+            Ceiling = 256,
             WallTexture = Texture.STONE,
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
