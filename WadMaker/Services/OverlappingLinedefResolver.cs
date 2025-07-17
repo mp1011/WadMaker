@@ -79,16 +79,16 @@ public class OverlappingLinedefResolver
 
             if (index == 1) // first segment
             {
-                // todo, deal with vertex indices?
                 yield return new LineDef(previous, vertex, previousLine.Front.Copy(), null, previousLine.Data);
             }
             else if (index == allVertices.Length - 1) // last segment
             {
                 yield return new LineDef(previous, vertex, thisLine.Front.Copy(), null, thisLine.Data);
             }
-            else // overlapping middle segments 
+            else if(initialVertexSector != otherSector)
             {
-                yield return new LineDef(previous, vertex, 
+                // overlapping middle segments             
+                yield return new LineDef(previous, vertex,
                     new SideDef(initialVertexSector, new sidedef(
                         sector: -1,
                         texturemiddle: null,
@@ -100,7 +100,7 @@ public class OverlappingLinedefResolver
                         texturetop: previousLine.Front.Data.texturemiddle,
                         texturebottom: previousLine.Front.Data.texturemiddle)),
 
-                    new linedef(blocking:false, twoSided:true).AddComment(null, _annotator));               
+                    new linedef(blocking: false, twoSided: true).AddComment(null, _annotator));
             }
 
             previous = vertex;

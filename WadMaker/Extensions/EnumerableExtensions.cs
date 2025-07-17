@@ -16,4 +16,12 @@ public static class EnumerableExtensions
             yield return new(list[(i-1).NMod(list.Length)], list[i], list[(i+1) % list.Length]);
         }
     }
+
+    public static void RemoveMany<T>(this ICollection<T> collection, IEnumerable<T> items)
+    {
+        foreach (var item in items)
+        {
+            collection.Remove(item);
+        }
+    }
 }

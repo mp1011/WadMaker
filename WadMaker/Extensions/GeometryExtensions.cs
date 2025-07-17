@@ -113,4 +113,28 @@ public static class GeometryExtensions
             (int)(point.Y + delta * Math.Sin(angle))
         );
     }
+
+    public static double AsAngle(this double angle) => angle.NMod(360.0);
+
+    public static double AngleTo(this vertex v1, vertex v2)
+    {
+        double deltaY = v2.y - v1.y;
+        double deltaX = v2.x - v1.x;
+        double radians = Math.Atan2(deltaY, deltaX);
+        double degrees = radians * (180.0 / Math.PI);
+
+        return degrees.AsAngle();
+    }
+
+
+    /// <summary>
+    /// Gets the angle of front sidedef
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <param name="p2"></param>
+    /// <returns></returns>
+    public static double FrontSidedefAngle(this vertex v1, vertex v2)
+    {
+        return (v1.AngleTo(v2) - 90.0).AsAngle();
+    }
 }

@@ -20,16 +20,6 @@ public class MapBuilder
         {
             var roomElements = _roomBuilder.Build(room);
             mapElements.Merge(roomElements);
-
-            foreach (var pillar in room.Pillars)
-            {
-                mapElements.Merge(_roomBuilder.BuildPillar(room, roomElements, pillar));
-            }
-
-            foreach (var innerElement in room.InnerStructures)
-            {
-                mapElements.Merge(_roomBuilder.BuildInternalElement(room, roomElements, innerElement));
-            }
         }
 
         _overlappingLinedefResolver.Execute(mapElements);

@@ -4,9 +4,23 @@ public static class NumberExtensions
 {
     public static int NMod(this int value, int modulus)
     {
-        if (value < 0)
-            return (value % modulus) + modulus;
-        else
-            return value % modulus;
-    }   
+        if(modulus <= 0)
+            throw new ArgumentOutOfRangeException(nameof(modulus), "Modulus must be greater than zero.");
+
+        while (value < 0)
+            value += modulus;
+        
+        return value % modulus;
+    }
+
+    public static double NMod(this double value, double modulus)
+    {
+        if (modulus <= 0)
+            throw new ArgumentOutOfRangeException(nameof(modulus), "Modulus must be greater than zero.");
+
+        while (value < 0)
+            value += modulus;
+
+        return value % modulus;
+    }
 }

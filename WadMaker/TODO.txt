@@ -7,9 +7,8 @@
 [x] add pillars to room
 [x] add decorations to room
 ------------ 7/14/2025
-[ ] separate map element resolution out of MapPainter
-[ ] pillar where side overlaps main sector side[]
-[ ] pillar which only partially overlaps main sector
+[x] separate map element resolution out of MapPainter
+[x] pillar where side overlaps main sector side
 [ ] nested inner structures
 [ ] doors
 

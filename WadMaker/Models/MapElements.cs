@@ -41,6 +41,10 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
 
+    public double FrontAngle => V1.FrontSidedefAngle(V2);
+    
+    public double Angle => V1.AngleTo(V2);
+
     public IEnumerable<SideDef> SideDefs     {
         get
         {

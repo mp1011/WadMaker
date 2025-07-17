@@ -13,6 +13,24 @@ public class RoomBuilder
 
     public MapElements Build(Room room)
     {
+        var roomElements = BuildRoomSector(room);
+        var roomSector = roomElements.Sectors[0];
+
+        foreach (var pillar in room.Pillars)
+        {
+            roomElements.Merge(BuildPillar(room, roomSector, pillar));
+        }
+
+        foreach (var innerElement in room.InnerStructures)
+        {
+            roomElements.Merge(BuildInternalElement(room, roomSector, innerElement));
+        }
+
+        return roomElements;
+    }
+
+    private MapElements BuildRoomSector(Room room)
+    {
         var elements = new MapElements();  
      
         var sector = Sector(room);
@@ -29,11 +47,10 @@ public class RoomBuilder
         return elements;
     }
 
-    public MapElements BuildPillar(Room room, MapElements roomElements, Cutout pillar)
+    public MapElements BuildPillar(Room room, Sector roomSector, Cutout pillar)
     {
         pillar = pillar.RelativeTo(room);
         var elements = new MapElements();
-        var roomSector = roomElements.Sectors.First();
         var vertices = Vertices(pillar).ToArray();
         elements.Vertices.AddRange(vertices);
 
@@ -45,16 +62,15 @@ public class RoomBuilder
         return elements;
     }
 
-    public MapElements BuildInternalElement(Room room, MapElements roomElements, Room innerElement)
+    public MapElements BuildInternalElement(Room room, Sector roomSector, Room innerElement)
     {
         innerElement = innerElement.RelativeTo(room);
-        var roomSector = roomElements.Sectors.First();
-
         var innerElements = Build(innerElement);
         
-        var lines = innerElements.LineDefs.ToArray();
-        innerElements.LineDefs.Clear();
-        innerElements.SideDefs.Clear();
+        var lines = innerElements.LineDefs.Where(p => p.Front.Sector == innerElements.Sectors[0] && p.Back == null).ToArray();
+        innerElements.LineDefs.RemoveMany(lines);
+        innerElements.SideDefs.RemoveMany(lines.SelectMany(p => p.SideDefs));
+
         foreach (var line in lines)
         {
             var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null, 

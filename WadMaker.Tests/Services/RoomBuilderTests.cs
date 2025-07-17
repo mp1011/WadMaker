@@ -39,10 +39,10 @@ internal class RoomBuilderTests
 
         var roomBuilder = new RoomBuilder(new IDProvider());
         var roomElements = roomBuilder.Build(room);
-        var innerElements = roomBuilder.BuildInternalElement(room, roomElements, room.InnerStructures.First());
+        var innerLines = roomElements.LineDefs.Skip(4).ToArray();
 
-        Assert.That(innerElements.LineDefs, Has.Count.EqualTo(4));
-        foreach (var line in innerElements.LineDefs)
+        Assert.That(innerLines, Has.Length.EqualTo(4));
+        foreach (var line in innerLines)
         {
             Assert.That(line.Data.twoSided, Is.True);
             Assert.That(line.Back, Is.Not.Null);
