@@ -13,7 +13,30 @@ public class HallGenerator
         var room2Anchors = hall.Room2.Bounds.SidePoints(side.Opposite())
                                             .MoveToDistance()
                                             .ToArray();
-        return CreateHallRoom(hall, room1Anchors.Union(room2Anchors).ToArray());
+        var hallRoom = CreateHallRoom(hall, room1Anchors.Union(room2Anchors).ToArray());
+        if(hall.Door != null)
+        {
+            hallRoom.InnerStructures.Add(GenerateDoor(hall.Door, hallRoom, side));
+        }
+
+        return hallRoom;
+    }
+
+    private Room GenerateDoor(Door door, Room hallRoom, Side hallSide)
+    {
+        var doorRoom = new Room
+        {
+            Ceiling = -hallRoom.Height,
+            Floor = 0,
+            CeilingTexture = hallRoom.CeilingTexture,
+            FloorTexture = hallRoom.FloorTexture,
+            WallTexture = door.Texture
+        };
+
+        doorRoom.UpperLeft = hallSide.ToPoint(door.PositionInHall);
+        doorRoom.BottomRight = doorRoom.UpperLeft.Add(new Point(door.Thickness, -hallRoom.Bounds.Height));
+
+        return doorRoom;
     }
 
     private Room CreateHallRoom(Hall hall, Point[] vertices)

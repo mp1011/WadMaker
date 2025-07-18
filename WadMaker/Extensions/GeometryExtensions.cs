@@ -137,4 +137,14 @@ public static class GeometryExtensions
     {
         return (v1.AngleTo(v2) - 90.0).AsAngle();
     }
+
+    public static Point ToPoint(this Side s, int length) =>
+        s switch
+        {
+            Side.Left => new Point(-length, 0),
+            Side.Right => new Point(length, 0),
+            Side.Top => new Point(0, length),
+            Side.Bottom => new Point(0, -length),
+            _ => throw new ArgumentOutOfRangeException(nameof(s), s, null)
+        };
 }

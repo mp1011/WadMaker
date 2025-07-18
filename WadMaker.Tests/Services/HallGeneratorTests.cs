@@ -72,4 +72,33 @@ public class HallGeneratorTests
         return map.Rooms.ToArray();
     }
 
+    [Test]
+    public void CanGenerateHallWithDoor()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(256, -256)
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(512, 0),
+            BottomRight = new Point(768, -256)
+        });
+        var hallGenerator = new HallGenerator();
+        var hall = hallGenerator.GenerateHall(
+            new Hall(HallWidth,
+            map.Rooms[0], 
+            map.Rooms[1],
+            Door: new Door(16, Texture.BIGDOOR2, 64)));
+
+        var door = hall.InnerStructures.First();
+
+        Assert.That(door.Ceiling, Is.EqualTo(-128));
+        Assert.That(door.Floor, Is.EqualTo(0));
+        Assert.That(door.Bounds.Width, Is.EqualTo(16));
+        // still todo, doors in other directions, door open action
+    }
+
 }

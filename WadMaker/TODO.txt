@@ -9,7 +9,7 @@
 ------------ 7/14/2025
 [x] separate map element resolution out of MapPainter
 [x] pillar where side overlaps main sector side
-[ ] nested inner structures
+[x] nested inner structures
 [ ] doors
 
 
@@ -26,3 +26,9 @@ Add an "Annotator" service to write comments to lines to get a better idea what'
 
 7/9/2025
 map is mysteriously "ok" now even without changes. might have involved changing namespace, but even going back to original, still displays.
+
+7/17/2025
+* doortrak linedefs need to be single sided
+* door face linedefs should face outward
+* door face linedefs need door action
+* door generation must be tested from each direction

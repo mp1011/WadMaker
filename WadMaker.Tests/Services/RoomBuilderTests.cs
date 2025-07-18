@@ -49,4 +49,10 @@ internal class RoomBuilderTests
             Assert.That(line.Back.Sector, Is.EqualTo(roomElements.Sectors[0]));
         }
     }
+
+    [Test]
+    public void CanCreateHallWithDoor()
+    {
+
+    }
 }

@@ -2,26 +2,19 @@
 map.Rooms.Add(new Room
 {
     UpperLeft = new Point(0, 0),
-    BottomRight = new Point(400, -400)
+    BottomRight = new Point(256, -256)
 });
-
-map.Rooms[0].InnerStructures.Add(new Room
+map.Rooms.Add(new Room
 {
-    UpperLeft = new Point(100, -100),
-    BottomRight = new Point(300, -300),
-    Floor = 16,
-    Ceiling = 0,
+    UpperLeft = new Point(512, 0),
+    BottomRight = new Point(768, -256)
 });
-
-map.Rooms[0].InnerStructures[0].InnerStructures.Add(new Room
-{
-    UpperLeft = new Point(50, -50),
-    BottomRight = new Point(100, -100),
-    Floor = 16,
-    Ceiling = 0,
-});
-
-
+var hallGenerator = new HallGenerator();
+map.Rooms.Add(hallGenerator.GenerateHall(
+    new Hall(128,
+    map.Rooms[0],
+    map.Rooms[1],
+    Door: new Door(16, Texture.BIGDOOR2, 64))));
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);
