@@ -1,7 +1,7 @@
 ﻿namespace WadMaker.Tests.Services;
 
 
-class OverlappingLinedefResolverTests
+class OverlappingLinedefResolverTests : StandardTest
 {
     [Test]
     public void CanResolveOverlappingLinedefs()
@@ -50,5 +50,37 @@ class OverlappingLinedefResolverTests
         Assert.That(results[1].Back!.Data.texturetop, Is.Not.Empty);
 
         Assert.That(results[2].Front.Sector, Is.EqualTo(mapElements.Sectors[0]));
+    }
+
+    [Test]
+    public void SingleSideMerge()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            Floor = 0,
+            Ceiling = 256,
+            WallTexture = Texture.STONE,
+            FloorTexture = Flat.FLOOR0_1,
+            CeilingTexture = Flat.FLOOR0_3,
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(128, -128)
+        });
+
+        map.Rooms[0].InnerStructures.Add(
+            new Room
+            {
+                Floor = 0,
+                Ceiling = 256,
+                WallTexture = Texture.STONE,
+                FloorTexture = Flat.FLOOR0_1,
+                CeilingTexture = Flat.FLOOR0_3,
+                UpperLeft = new Point(80, 0),
+                BottomRight = new Point(100, -32)
+            });
+
+        var mapElements = MapBuilder.Build(map);
+
+        Assert.That(mapElements.LineDefs.Count(p=>p.Back == null), Is.EqualTo(6));
     }
 }

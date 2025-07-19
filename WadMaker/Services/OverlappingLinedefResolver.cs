@@ -85,22 +85,37 @@ public class OverlappingLinedefResolver
             {
                 yield return new LineDef(previous, vertex, thisLine.Front.Copy(), null, thisLine.Data);
             }
-            else if(initialVertexSector != otherSector)
+            else if (initialVertexSector != otherSector)
             {
                 // overlapping middle segments             
-                yield return new LineDef(previous, vertex,
-                    new SideDef(initialVertexSector, new sidedef(
-                        sector: -1,
-                        texturemiddle: null,
-                        texturetop: previousLine.Front.Data.texturemiddle,
-                        texturebottom: previousLine.Front.Data.texturemiddle)),
-                    new SideDef(otherSector, new sidedef(
-                        sector: -1,
-                        texturemiddle: null,
-                        texturetop: previousLine.Front.Data.texturemiddle,
-                        texturebottom: previousLine.Front.Data.texturemiddle)),
+                if (line1.FrontAngle == line2.FrontAngle)
+                {
+                    //combine into one single sided line
+                    var targetSector = new[] { line1, line2 }.OrderBy(p=>p.Length).First().Front.Sector;
 
-                    new linedef(blocking: false, twoSided: true).AddComment(null, _annotator));
+                    yield return new LineDef(previous, vertex,
+                        new SideDef(targetSector, new sidedef(
+                            sector: -1,
+                            texturemiddle: previousLine.Front.Data.texturemiddle)),
+                            null,
+                            new linedef(blocking: false, twoSided: true).AddComment(null, _annotator));
+                }
+                else
+                { 
+                    yield return new LineDef(previous, vertex,
+                        new SideDef(initialVertexSector, new sidedef(
+                            sector: -1,
+                            texturemiddle: null,
+                            texturetop: previousLine.Front.Data.texturemiddle,
+                            texturebottom: previousLine.Front.Data.texturemiddle)),
+                        new SideDef(otherSector, new sidedef(
+                            sector: -1,
+                            texturemiddle: null,
+                            texturetop: previousLine.Front.Data.texturemiddle,
+                            texturebottom: previousLine.Front.Data.texturemiddle)),
+
+                        new linedef(blocking: false, twoSided: true).AddComment(null, _annotator));
+                }
             }
 
             previous = vertex;

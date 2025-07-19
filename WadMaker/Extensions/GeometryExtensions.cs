@@ -24,6 +24,8 @@ public static class GeometryExtensions
         return dx * dx + dy * dy;
     }
 
+    public static double DistanceTo(this vertex v, vertex other) => Math.Sqrt(v.SquaredDistanceTo(other));
+
     public static double SquaredDistanceTo(this Point v, Point other)
     {
         double dx = v.X - other.X;
