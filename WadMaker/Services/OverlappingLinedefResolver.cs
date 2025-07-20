@@ -26,6 +26,12 @@ public class OverlappingLinedefResolver
                 mapElements.SideDefs.Remove(nextOverlap.Value.Item1.Front);
                 mapElements.SideDefs.Remove(nextOverlap.Value.Item2.Front);
 
+                if(nextOverlap.Value.Item1.Back != null)
+                    mapElements.SideDefs.Remove(nextOverlap.Value.Item1.Back);
+
+                if(nextOverlap.Value.Item2.Back != null)
+                    mapElements.SideDefs.Remove(nextOverlap.Value.Item2.Back);
+
                 var modifiedLines = ResolveOverlappingPair(nextOverlap.Value.Item1, nextOverlap.Value.Item2).ToArray();
                 mapElements.LineDefs.AddRange(modifiedLines);
 
@@ -95,10 +101,10 @@ public class OverlappingLinedefResolver
 
                     yield return new LineDef(previous, vertex,
                         new SideDef(targetSector, new sidedef(
-                            sector: -1,
-                            texturemiddle: previousLine.Front.Data.texturemiddle)),
+                            sector: -1,                            
+                            texturemiddle: previousLine.Front.Data.texturetop)),
                             null,
-                            new linedef(blocking: false, twoSided: true).AddComment(null, _annotator));
+                            new linedef(blocking: true, twoSided: false).AddComment(null, _annotator));
                 }
                 else
                 { 

@@ -148,8 +148,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //6
 sidedef
@@ -162,8 +162,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //8
 sidedef
@@ -176,8 +176,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //10
 sidedef
@@ -190,8 +190,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //12
 sidedef
@@ -204,8 +204,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //14
 sidedef
@@ -218,8 +218,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //16
 sidedef
@@ -232,8 +232,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //18
 sidedef
@@ -246,8 +246,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //20
 sidedef
@@ -260,8 +260,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //22
 sidedef
@@ -274,8 +274,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //24
 sidedef
@@ -288,8 +288,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //26
 sidedef
@@ -302,8 +302,8 @@ sidedef
 sidedef
 {
     sector = 0;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    texturetop = "STONE2";
+    texturebottom = "STONE2";
 }
 //0
 linedef

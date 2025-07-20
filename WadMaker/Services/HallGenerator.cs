@@ -30,11 +30,17 @@ public class HallGenerator
             Floor = 0,
             CeilingTexture = hallRoom.CeilingTexture,
             FloorTexture = hallRoom.FloorTexture,
-            WallTexture = door.Texture
+            WallTexture = door.TrackTexture,
         };
 
         doorRoom.UpperLeft = hallSide.ToPoint(door.PositionInHall);
         doorRoom.BottomRight = doorRoom.UpperLeft.Add(new Point(door.Thickness, -hallRoom.Bounds.Height));
+
+        doorRoom.LineSpecials[hallSide] = new DoorRaise(0, Speed.StandardDoor);
+        doorRoom.LineSpecials[hallSide.Opposite()] = new DoorRaise(0, Speed.StandardDoor);
+
+        doorRoom.SideTextures[hallSide] = door.Texture;
+        doorRoom.SideTextures[hallSide.Opposite()] = door.Texture;
 
         return doorRoom;
     }

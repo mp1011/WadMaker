@@ -19,14 +19,23 @@ public record linedef(
     int? sideback = null,
     bool? twoSided = null,
     bool blocking = true,
-    string? comment = null
+    string? comment = null,
+    int? special = null,
+    int? arg0 = null,
+    int? arg1 = null,
+    int? arg2 = null,
+    int? arg3 = null,
+    int? arg4 = null,
+    bool? playeruse = null,
+    bool? repeatspecial = null
 ) : IMapElement;
 
 public record sidedef(
     int sector,
     string? texturemiddle,
     string? texturetop=null,
-    string? texturebottom=null
+    string? texturebottom=null,
+    string? comment=null
 ) : IMapElement;
 
 public record thing(

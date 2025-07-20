@@ -91,7 +91,7 @@ public class HallGeneratorTests
             new Hall(HallWidth,
             map.Rooms[0], 
             map.Rooms[1],
-            Door: new Door(16, Texture.BIGDOOR2, 64)));
+            Door: new Door(16, Texture.BIGDOOR2, Texture.DOORTRAK, 64)));
 
         var door = hall.InnerStructures.First();
 

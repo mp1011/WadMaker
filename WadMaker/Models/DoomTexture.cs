@@ -7,8 +7,10 @@ public enum Flat
 }
 public enum Texture
 {
+    MISSING,
     STONE,
     STONE2,
     BIGDOOR2,
+    DOORTRAK,
     Default = STONE
 }

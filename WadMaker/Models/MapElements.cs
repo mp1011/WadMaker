@@ -17,9 +17,9 @@ public class Sector(sector Data) : IElementWrapper<sector>
 
 public class SideDef(Sector Sector, sidedef Data) : IElementWrapper<sidedef>
 {
-    public sidedef Data { get; private set; } = Data;
+    public sidedef Data { get; set; } = Data;
 
-    public Sector Sector { get; private set; } = Sector;
+    public Sector Sector { get; set; } = Sector;
 
     public SideDef Copy()
     {
@@ -34,12 +34,35 @@ public class SideDef(Sector Sector, sidedef Data) : IElementWrapper<sidedef>
 
 public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef Data) : IElementWrapper<linedef>
 {
-    public linedef Data { get; private set; } = Data;
+    public linedef Data { get; set; } = Data;
     public SideDef Front { get; private set; } = Front;
     public SideDef? Back { get; private set; } = Back;
     public vertex[] Vertices => new[] { V1, V2 };
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
+
+    private LineSpecial? _lineSpecial;  
+    public LineSpecial?  LineSpecial
+    {
+        get => _lineSpecial; 
+        set
+        {
+            _lineSpecial = value;
+            if (_lineSpecial != null)
+                Data = _lineSpecial.ApplyTo(Data);
+        }
+    }
+
+    public void FlipSides()
+    {
+        var v1 = V1;
+        V1 = V2;
+        V2 = v1;
+
+        var backSector = Back!.Sector;
+        Back.Sector = Front.Sector;
+        Front.Sector = backSector;
+    }
 
     public double Length => V1.DistanceTo(V2);
 
@@ -51,8 +74,30 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     {
         return Front.Sector == sector || (Back != null && Back.Sector == sector);
     }
+    
+    /// <summary>
+    /// Determines which side this line represents for this room
+    /// </summary>
+    /// <param name="room"></param>
+    /// <returns></returns>
+    public Side? SideOfRoom(Room room)
+    {
+        var center = room.Center;
 
-    public IEnumerable<SideDef> SideDefs     {
+        if(Vertices.All(v=> v.x < center.X))
+            return Side.Left;
+        if (Vertices.All(v => v.x > center.X))
+            return Side.Right;
+        if (Vertices.All(v => v.y < center.Y))
+            return Side.Bottom;
+        if (Vertices.All(v => v.y > center.Y))
+            return Side.Top;
+
+        return null;
+    }
+
+    public IEnumerable<SideDef> SideDefs     
+    {
         get
         {
             yield return Front;

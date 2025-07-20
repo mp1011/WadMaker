@@ -10,4 +10,6 @@ class TestAnnotator : IAnnotator
         else
             return null;
     }
+
+    public string? GetComment(sidedef linedef, int? index = null) => null;
 }

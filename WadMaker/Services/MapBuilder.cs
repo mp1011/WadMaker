@@ -23,6 +23,7 @@ public class MapBuilder
         }
 
         _overlappingLinedefResolver.Execute(mapElements);
+        EnsureActionLinedefsFacingCorrectDirection(mapElements);
 
         foreach (var sideDef in mapElements.SideDefs)
         {
@@ -51,5 +52,14 @@ public class MapBuilder
        )));
 
         return mapElements;
+    }
+
+    private void EnsureActionLinedefsFacingCorrectDirection(MapElements mapElements)
+    {
+        foreach(var specialLine in mapElements.LineDefs.Where(p=>p.LineSpecial != null))
+        {
+            // need logic for this
+            specialLine.FlipSides();
+        }
     }
 }

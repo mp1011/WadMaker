@@ -1,9 +1,7 @@
-﻿using WadMaker.Services.ShapeModifiers;
-
-namespace WadMaker.Models;
+﻿namespace WadMaker.Models;
 
 public class Room : IShape
-{
+{    
     public List<IShapeModifier> ShapeModifiers { get; } = new List<IShapeModifier>();
 
     public Point UpperLeft { get; set; } = Point.Empty;
@@ -25,6 +23,12 @@ public class Room : IShape
     public Flat CeilingTexture { get; set; } = Flat.Default;
     public Texture WallTexture { get; set; } = Texture.Default;
 
+    public Dictionary<Side, Texture> SideTextures { get; private set; } = new Dictionary<Side, Texture>();
+
+    public int? Tag { get; set; } = null;
+
+    public Dictionary<Side, LineSpecial> LineSpecials { get; private set; } = new Dictionary<Side, LineSpecial>();
+
     public List<Hall> Halls { get; } = new List<Hall>();
     public List<Cutout> Pillars { get; } = new List<Cutout>();
 
@@ -38,6 +42,18 @@ public class Room : IShape
         BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
     }
 
+    public Texture TextureForSide(Side? side)
+    {
+        if (side == null)
+            return WallTexture;
+
+        var sideTexture = SideTextures.Try(side.Value);
+        if (sideTexture == Texture.MISSING)
+            return WallTexture;
+        else
+            return sideTexture;
+    }
+
     public Room RelativeTo(Room parent)
     {
         var copy = new Room
@@ -48,7 +64,9 @@ public class Room : IShape
             Ceiling = parent.Ceiling + Ceiling,
             CeilingTexture = CeilingTexture,
             FloorTexture = FloorTexture,
-            WallTexture = WallTexture
+            WallTexture = WallTexture,
+            LineSpecials = LineSpecials,
+            SideTextures = SideTextures,
         };
         copy.ShapeModifiers.AddRange(ShapeModifiers);
         copy.InnerStructures.AddRange(InnerStructures);

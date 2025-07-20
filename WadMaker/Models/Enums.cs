@@ -8,3 +8,9 @@ public enum Side
     Top,
     Bottom
 }
+
+public enum Speed
+{
+    StandardDoor = 16,
+    BlazingDoor = 64,
+}

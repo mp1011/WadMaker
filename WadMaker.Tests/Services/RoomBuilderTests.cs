@@ -1,6 +1,4 @@
-﻿using NuGet.Frameworks;
-
-namespace WadMaker.Tests.Services;
+﻿namespace WadMaker.Tests.Services;
 
 internal class RoomBuilderTests
 {
@@ -48,11 +46,5 @@ internal class RoomBuilderTests
             Assert.That(line.Back, Is.Not.Null);
             Assert.That(line.Back.Sector, Is.EqualTo(roomElements.Sectors[0]));
         }
-    }
-
-    [Test]
-    public void CanCreateHallWithDoor()
-    {
-
     }
 }

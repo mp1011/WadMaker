@@ -1,4 +1,5 @@
 ﻿using WadMaker.Models;
+using WadMaker.Models.LineSpecials;
 
 namespace WadMaker.Tests.Services;
 
@@ -89,9 +90,11 @@ internal class MapBuilderTests : StandardTest
             new Hall(128,
             map.Rooms[0],
             map.Rooms[1],
-            Door: new Door(16, Texture.BIGDOOR2, 64))));
+            Door: new Door(16, Texture.BIGDOOR2, Texture.DOORTRAK, 64))));
 
         var mapElements = MapBuilder.Build(map);
+
+        Assert.That(mapElements.SideDefs.Count, Is.EqualTo(24));
         
         var doorSector = mapElements.Sectors.Last();
 
@@ -104,5 +107,8 @@ internal class MapBuilderTests : StandardTest
 
         Assert.That(doorFaces[0].Back!.Sector, Is.EqualTo(doorSector));
         Assert.That(doorFaces[1].Back!.Sector, Is.EqualTo(doorSector));
+
+        Assert.That(doorFaces[0].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
+        Assert.That(doorFaces[1].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
     }
 }

@@ -15,7 +15,7 @@ public class MapPainter
        
         mapElements.Vertices.Paint(sb);
         mapElements.Sectors.ToDataArray().Paint(sb);
-        mapElements.SideDefs.ToDataArray().Paint(sb);
+        mapElements.SideDefs.ToDataArray().AnnotateAll(_annotator).Paint(sb);
         mapElements.LineDefs.ToDataArray().AnnotateAll(_annotator).Paint(sb);
         mapElements.Things.ToDataArray().Paint(sb);
        

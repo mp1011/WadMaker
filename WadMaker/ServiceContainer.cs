@@ -13,6 +13,17 @@ public static class ServiceContainer
         services.AddSingleton<MapPainter>();
     }
 
+    public static void DiagnosticDependencies(IServiceCollection services)
+    {
+        services.AddSingleton<IDProvider>();
+        services.AddSingleton<IAnnotator, VerboseAnnotator>();
+        services.AddSingleton<RoomBuilder>();
+        services.AddSingleton<MapBuilder>();
+        services.AddSingleton<HallGenerator>();
+        services.AddSingleton<OverlappingLinedefResolver>();
+        services.AddSingleton<MapPainter>();
+    }
+
     public static ServiceProvider CreateServiceProvider(Action<IServiceCollection> configure)
     {
         var services = new ServiceCollection();

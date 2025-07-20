@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.ComponentModel;
+using System.Numerics;
 using WadMaker.Models;
 
 namespace WadMaker.Services;
@@ -26,6 +27,7 @@ public class RoomBuilder
             roomElements.Merge(BuildInternalElement(room, roomSector, innerElement));
         }
 
+        AddLineSpecials(room, roomElements);
         return roomElements;
     }
 
@@ -73,19 +75,22 @@ public class RoomBuilder
 
         foreach (var line in lines)
         {
+            var lineSide = line.SideOfRoom(innerElement);
             var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null, 
-                texturetop: room.WallTexture.ToString(),
-                texturebottom: room.WallTexture.ToString()));
+                texturetop: innerElement.TextureForSide(lineSide).ToString(),
+                texturebottom: innerElement.TextureForSide(lineSide).ToString()));
 
             var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, texturemiddle: null,
-                texturetop: innerElement.WallTexture.ToString(),
-                texturebottom: innerElement.WallTexture.ToString()));
+                texturetop: innerElement.TextureForSide(lineSide).ToString(),
+                texturebottom: innerElement.TextureForSide(lineSide).ToString()));
 
-            innerElements.LineDefs.Add(
-                new LineDef(line.V1, line.V2,
+            var newLine = new LineDef(line.V1, line.V2,
                     frontSide,
                     backSide,
-                    line.Data with { twoSided = true, blocking = false }));
+                    line.Data with { twoSided = true, blocking = false });
+            newLine.LineSpecial = line.LineSpecial;
+
+            innerElements.LineDefs.Add(newLine);
 
             innerElements.SideDefs.Add(frontSide);
             innerElements.SideDefs.Add(backSide);
@@ -94,6 +99,24 @@ public class RoomBuilder
         return innerElements;
     }
 
+    private void AddLineSpecials(Room room, MapElements elements)
+    {
+        foreach (var lineSpecial in room.LineSpecials)
+        {
+            AddLineSpecials(lineSpecial.Key, lineSpecial.Value, room, elements);
+        }           
+    }
+
+    private void AddLineSpecials(Side side, LineSpecial lineSpecial, Room room, MapElements elements)
+    {
+        var sectorLines = elements.LineDefs.Where(l => l.BelongsTo(elements.Sectors[0])).ToArray();
+
+        var sideLine = sectorLines.FirstOrDefault(l => l.SideOfRoom(room) == side);
+        if (sideLine == null)
+            return;
+
+        sideLine.LineSpecial = lineSpecial;
+    }
 
     private Sector Sector(Room room) => new Sector(new sector(
         texturefloor: room.FloorTexture.ToString(),
