@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.Services;
+﻿using System.Net;
+
+namespace WadMaker.Tests.Services;
 
 
 class OverlappingLinedefResolverTests : StandardTest
@@ -82,5 +84,34 @@ class OverlappingLinedefResolverTests : StandardTest
         var mapElements = MapBuilder.Build(map);
 
         Assert.That(mapElements.LineDefs.Count(p=>p.Back == null), Is.EqualTo(6));
+    }
+
+    [Test]
+    public void CanResolveAdjacentInnerSectors()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(128, -128)
+        });
+
+        map.Rooms[0].InnerStructures.Add(
+            new Room
+            {
+                UpperLeft = new Point(50, 0),
+                BottomRight = new Point(100, -128),
+            });
+
+        map.Rooms[0].InnerStructures.Add(
+           new Room
+           {
+               UpperLeft = new Point(100, 0),
+               BottomRight = new Point(150, -128),
+           });
+
+        var mapElements = MapBuilder.Build(map);
+
+        Assert.That(mapElements.LineDefs.Count(p => p.Back != null), Is.EqualTo(3));
     }
 }

@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Fixtures\hall_with_stairs.udmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Fixtures\basicmap.udmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -77,6 +77,11 @@ public static class GeometryExtensions
         return new Point(pt.X + other.X, pt.Y + other.Y);
     }
 
+    public static Point Add(this Point pt, int dx, int dy)
+    {
+        return new Point(pt.X + dx, pt.Y + dy);
+    }
+
     public static Point CentralPoint(this IEnumerable<Point> points)
     {
         if (!points.Any())

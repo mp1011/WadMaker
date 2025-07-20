@@ -12,5 +12,7 @@ public enum Texture
     STONE2,
     BIGDOOR2,
     DOORTRAK,
+    STEP1,
+    PLAT1,
     Default = STONE
 }

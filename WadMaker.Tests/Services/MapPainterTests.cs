@@ -147,7 +147,42 @@ internal class MapPainterTests : StandardTest
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_inner_structure.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
+    }
 
+    [Test]
+    public void CanCreateRoomsConnectedByStairs()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(100, -256)
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(500, 0),
+            BottomRight = new Point(600, -256),
+            Floor = 100,
+            Ceiling = 300
+        });
+
+        var hallGenerator = new HallGenerator();
+        var hall = hallGenerator.GenerateHall(
+            new Hall(64,
+            map.Rooms[0],
+            map.Rooms[1],
+            Stairs: new Stairs(
+                StepTexture: new TextureInfo(Main: Texture.STEP1),
+                50,
+                50,
+                StepWidth: 30,
+                new Room[] { map.Rooms[0], map.Rooms[1] })));
+
+        map.Rooms.Add(hall);
+
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var expected = File.ReadAllText("Fixtures//hall_with_stairs.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
     }
 }
 

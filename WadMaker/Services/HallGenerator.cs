@@ -19,6 +19,11 @@ public class HallGenerator
             hallRoom.InnerStructures.Add(GenerateDoor(hall.Door, hallRoom, side));
         }
 
+        if(hall.Stairs != null)
+        {
+            hallRoom.InnerStructures.AddRange(GenerateStairs(hall.Stairs, hallRoom, side));
+        }
+
         return hallRoom;
     }
 
@@ -61,6 +66,38 @@ public class HallGenerator
         doorRoom.SideTextures[hallSide.Opposite()] = door.Texture;
 
         return doorRoom;
+    }
+
+    private IEnumerable<Room> GenerateStairs(Stairs stairs, Room hallRoom, Side hallSide)
+    {
+        int lowerFloor = stairs.Rooms.OrderBy(r => r.Floor).First().Floor;
+        int upperFloor = stairs.Rooms.OrderByDescending(r => r.Floor).First().Floor;
+
+        //todo, other directions
+        int totalWidth = hallRoom.Bounds.Width - stairs.StartPosition - stairs.EndPosition;
+        int numSteps = totalWidth / stairs.StepWidth;
+        int heightPerStep = (upperFloor - lowerFloor) / numSteps;
+
+        int currentHeight = lowerFloor;
+        Point nextStepPosition = hallSide.ToPoint(stairs.StartPosition);
+
+        while(currentHeight < upperFloor)
+        {
+            currentHeight += heightPerStep;
+            yield return CreateStep(stairs, hallRoom, nextStepPosition, currentHeight);            
+            nextStepPosition.X += stairs.StepWidth;
+        }
+    }
+
+    private Room CreateStep(Stairs stairs, Room hallRoom, Point position, int stepHeight)
+    {
+        return new Room
+        {
+            Floor = stepHeight,
+            UpperLeft = position,
+            BottomRight = position.Add(stairs.StepWidth, -hallRoom.Bounds.Height),
+            WallTexture = stairs.StepTexture
+        };
     }
 
     private Room CreateHallRoom(Hall hall, Point[] vertices)

@@ -100,4 +100,44 @@ public class HallGeneratorTests
         Assert.That(door.Bounds.Width, Is.EqualTo(16));
     }
 
+    [Test]
+    public void CanGenerateStairs()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(100, -256)
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(500, 0),
+            BottomRight = new Point(600, -256),
+            Floor = 100,
+            Ceiling = 300
+        });
+
+        var hallGenerator = new HallGenerator();
+        var hall = hallGenerator.GenerateHall(
+            new Hall(HallWidth,
+            map.Rooms[0],
+            map.Rooms[1],
+            Stairs: new Stairs(
+                StepTexture: new TextureInfo(Main: Texture.STEP1),
+                50,
+                50,
+                StepWidth: 30,
+                new Room[] { map.Rooms[0], map.Rooms[1] })));
+
+
+        Assert.That(hall.InnerStructures.Count, Is.EqualTo(10));
+
+        int lastHeight = map.Rooms[0].Floor;
+        foreach(var step in hall.InnerStructures)
+        {
+            Assert.That(step.Floor, Is.GreaterThan(lastHeight));
+            lastHeight = step.Floor;
+        }
+    }
+
 }

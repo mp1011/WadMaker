@@ -10,7 +10,10 @@
 [x] separate map element resolution out of MapPainter
 [x] pillar where side overlaps main sector side
 [x] nested inner structures
-[ ] doors
+[x] doors
+------------- 7/20/2025
+[ ] stairs
+[ ] lifts
 
 
 
