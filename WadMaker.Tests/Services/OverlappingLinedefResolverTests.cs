@@ -11,7 +11,7 @@ class OverlappingLinedefResolverTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(0, 0),
@@ -22,7 +22,7 @@ class OverlappingLinedefResolverTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(128, -32),
@@ -40,7 +40,7 @@ class OverlappingLinedefResolverTests : StandardTest
 
         Assert.That(results[1].Front.Sector, Is.EqualTo(mapElements.Sectors[0]));
         Assert.That(results[1].Back!.Sector, Is.EqualTo(mapElements.Sectors[1]));
-        Assert.That(results[1].Data.twoSided, Is.True);
+        Assert.That(results[1].Data.twosided, Is.True);
 
         Assert.That(results[1].Front.Data.texturemiddle, Is.Null);
         Assert.That(results[1].Back!.Data.texturemiddle, Is.Null);
@@ -60,7 +60,7 @@ class OverlappingLinedefResolverTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(0, 0),
@@ -72,7 +72,7 @@ class OverlappingLinedefResolverTests : StandardTest
             {
                 Floor = 0,
                 Ceiling = 256,
-                WallTexture = Texture.STONE,
+                WallTexture = new TextureInfo(Main: Texture.STONE),
                 FloorTexture = Flat.FLOOR0_1,
                 CeilingTexture = Flat.FLOOR0_3,
                 UpperLeft = new Point(80, 0),

@@ -42,7 +42,7 @@ internal class RoomBuilderTests
         Assert.That(innerLines, Has.Length.EqualTo(4));
         foreach (var line in innerLines)
         {
-            Assert.That(line.Data.twoSided, Is.True);
+            Assert.That(line.Data.twosided, Is.True);
             Assert.That(line.Back, Is.Not.Null);
             Assert.That(line.Back.Sector, Is.EqualTo(roomElements.Sectors[0]));
         }

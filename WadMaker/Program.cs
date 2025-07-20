@@ -16,7 +16,7 @@ map.Rooms.Add(hallGenerator.GenerateHall(
     map.Rooms[1],
     Door: new Door(16, Texture.BIGDOOR2, Texture.DOORTRAK, 64))));
 
-var services = ServiceContainer.CreateServiceProvider(ServiceContainer.DiagnosticDependencies);
+var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);
 var mapPainter = services.GetService<MapPainter>()!;
 var udmf = mapPainter.Paint(mapElements);

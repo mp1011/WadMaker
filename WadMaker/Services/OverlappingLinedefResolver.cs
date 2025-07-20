@@ -97,14 +97,16 @@ public class OverlappingLinedefResolver
                 if (line1.FrontAngle == line2.FrontAngle)
                 {
                     //combine into one single sided line
-                    var targetSector = new[] { line1, line2 }.OrderBy(p=>p.Length).First().Front.Sector;
+                    var copyFromLine = new[] { line1, line2 }.OrderBy(p => p.Length).First();
+                    var targetSector = copyFromLine.Front.Sector;
+                    var targetTexture = new TextureInfo(copyFromLine);
 
                     yield return new LineDef(previous, vertex,
                         new SideDef(targetSector, new sidedef(
                             sector: -1,                            
                             texturemiddle: previousLine.Front.Data.texturetop)),
                             null,
-                            new linedef(blocking: true, twoSided: false).AddComment(null, _annotator));
+                            new linedef(blocking: true).AddComment(null, _annotator)).ApplyTexture(targetTexture);
                 }
                 else
                 { 
@@ -120,7 +122,7 @@ public class OverlappingLinedefResolver
                             texturetop: previousLine.Front.Data.texturemiddle,
                             texturebottom: previousLine.Front.Data.texturemiddle)),
 
-                        new linedef(blocking: false, twoSided: true).AddComment(null, _annotator));
+                        new linedef(blocking: false, twosided: true).AddComment(null, _annotator));
                 }
             }
 

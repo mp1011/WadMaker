@@ -10,7 +10,7 @@ internal class MapPainterTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(0, 0),
@@ -30,7 +30,7 @@ internal class MapPainterTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(0, 0),
@@ -41,7 +41,7 @@ internal class MapPainterTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(256, 0),
@@ -61,7 +61,7 @@ internal class MapPainterTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(0, 0),
@@ -72,7 +72,7 @@ internal class MapPainterTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(256, 0),
@@ -98,7 +98,7 @@ internal class MapPainterTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(0, 0),
@@ -126,7 +126,7 @@ internal class MapPainterTests : StandardTest
         {
             Floor = 0,
             Ceiling = 256,
-            WallTexture = Texture.STONE,
+            WallTexture = new TextureInfo(Main: Texture.STONE),
             FloorTexture = Flat.FLOOR0_1,
             CeilingTexture = Flat.FLOOR0_3,
             UpperLeft = new Point(0, 0),
@@ -137,7 +137,7 @@ internal class MapPainterTests : StandardTest
         {
             UpperLeft = new Point(148, -128),
             BottomRight = new Point(148 + 64, -128 - 64),
-            WallTexture = Texture.STONE2,
+            WallTexture = new TextureInfo(Main: Texture.STONE2),
             Floor = -16, 
             Ceiling = 32,
         });

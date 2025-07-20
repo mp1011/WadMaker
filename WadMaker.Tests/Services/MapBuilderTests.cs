@@ -1,5 +1,6 @@
 ﻿using WadMaker.Models;
 using WadMaker.Models.LineSpecials;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WadMaker.Tests.Services;
 
@@ -105,10 +106,18 @@ internal class MapBuilderTests : StandardTest
         Assert.That(doorTracks[0].Back, Is.Null);
         Assert.That(doorTracks[1].Back, Is.Null);
 
+        Assert.That(doorTracks[0].Data.dontpegbottom, Is.True);
+        Assert.That(doorTracks[1].Data.dontpegbottom, Is.True);
+
+        Assert.That(doorTracks[0].Front.Data.texturemiddle, Is.EqualTo(Texture.DOORTRAK.ToString()));
+        Assert.That(doorTracks[1].Front.Data.texturemiddle, Is.EqualTo(Texture.DOORTRAK.ToString()));
+
         Assert.That(doorFaces[0].Back!.Sector, Is.EqualTo(doorSector));
         Assert.That(doorFaces[1].Back!.Sector, Is.EqualTo(doorSector));
 
         Assert.That(doorFaces[0].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
         Assert.That(doorFaces[1].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
+
+
     }
 }

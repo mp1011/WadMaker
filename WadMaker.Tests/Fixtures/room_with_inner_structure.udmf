@@ -344,7 +344,7 @@ linedef
     v2 = 5;
     sidefront = 4;
     sideback = 5;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -355,7 +355,7 @@ linedef
     v2 = 6;
     sidefront = 6;
     sideback = 7;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -366,7 +366,7 @@ linedef
     v2 = 7;
     sidefront = 8;
     sideback = 9;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -377,7 +377,7 @@ linedef
     v2 = 8;
     sidefront = 10;
     sideback = 11;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -388,7 +388,7 @@ linedef
     v2 = 9;
     sidefront = 12;
     sideback = 13;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -399,7 +399,7 @@ linedef
     v2 = 10;
     sidefront = 14;
     sideback = 15;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -410,7 +410,7 @@ linedef
     v2 = 11;
     sidefront = 16;
     sideback = 17;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -421,7 +421,7 @@ linedef
     v2 = 12;
     sidefront = 18;
     sideback = 19;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -432,7 +432,7 @@ linedef
     v2 = 13;
     sidefront = 20;
     sideback = 21;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -443,7 +443,7 @@ linedef
     v2 = 14;
     sidefront = 22;
     sideback = 23;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -454,7 +454,7 @@ linedef
     v2 = 15;
     sidefront = 24;
     sideback = 25;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -465,7 +465,7 @@ linedef
     v2 = 4;
     sidefront = 26;
     sideback = 27;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }

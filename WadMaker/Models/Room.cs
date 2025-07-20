@@ -21,9 +21,9 @@ public class Room : IShape
     public int Floor { get; set; } = 0;
     public Flat FloorTexture { get; set; } = Flat.Default;
     public Flat CeilingTexture { get; set; } = Flat.Default;
-    public Texture WallTexture { get; set; } = Texture.Default;
+    public TextureInfo WallTexture { get; set; } = new TextureInfo();
 
-    public Dictionary<Side, Texture> SideTextures { get; private set; } = new Dictionary<Side, Texture>();
+    public Dictionary<Side, TextureInfo> SideTextures { get; private set; } = new Dictionary<Side, TextureInfo>();
 
     public int? Tag { get; set; } = null;
 
@@ -42,13 +42,13 @@ public class Room : IShape
         BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
     }
 
-    public Texture TextureForSide(Side? side)
+    public TextureInfo TextureForSide(Side? side)
     {
         if (side == null)
             return WallTexture;
 
         var sideTexture = SideTextures.Try(side.Value);
-        if (sideTexture == Texture.MISSING)
+        if (sideTexture == null)
             return WallTexture;
         else
             return sideTexture;

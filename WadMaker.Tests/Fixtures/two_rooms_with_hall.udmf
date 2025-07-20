@@ -277,7 +277,7 @@ linedef
     v2 = 11;
     sidefront = 9;
     sideback = 10;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }
@@ -304,7 +304,7 @@ linedef
     v2 = 9;
     sidefront = 13;
     sideback = 14;
-    twoSided = true;
+    twosided = true;
     blocking = false;
     comment = "double sided line";
 }

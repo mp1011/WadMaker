@@ -44,7 +44,7 @@ public class RoomBuilder
         var sidedefs = SideDefs(room, vertices, sector).ToArray();
         elements.SideDefs.AddRange(sidedefs);
 
-        elements.LineDefs.AddRange(LineDefs(vertices, sidedefs));
+        elements.LineDefs.AddRange(LineDefs(room, vertices, sidedefs));
 
         return elements;
     }
@@ -87,7 +87,7 @@ public class RoomBuilder
             var newLine = new LineDef(line.V1, line.V2,
                     frontSide,
                     backSide,
-                    line.Data with { twoSided = true, blocking = false });
+                    line.Data with { twosided = true, blocking = false });
             newLine.LineSpecial = line.LineSpecial;
 
             innerElements.LineDefs.Add(newLine);
@@ -151,10 +151,15 @@ public class RoomBuilder
         return vertices.Select(v => new SideDef(Sector: sector, Data: new sidedef(sector: -1, texturemiddle: cutout.WallTexture.ToString())));
     }
 
-    public IEnumerable<LineDef> LineDefs(vertex[] vertices, SideDef[] sidedefs)
+    public IEnumerable<LineDef> LineDefs(Room room, vertex[] vertices, SideDef[] sidedefs)
     {
-        return vertices.WithNeighbors().Select((v,index) =>
-            new LineDef(V1: v.Item2, V2: v.Item3, Front: sidedefs[index], Back: null, Data: new linedef(blocking: true)));
+        return vertices.WithNeighbors().Select((v, index) =>
+        {
+            var line = new LineDef(V1: v.Item2, V2: v.Item3, Front: sidedefs[index], Back: null, Data: new linedef(blocking: true));
+            var lineTexture = room.TextureForSide(line.SideOfRoom(room));
+            lineTexture?.ApplyTo(line);
+            return line;
+        });        
     }
 
     public IEnumerable<LineDef> LineDefsOutward(vertex[] vertices, SideDef[] sidedefs)

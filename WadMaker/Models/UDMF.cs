@@ -17,7 +17,7 @@ public record linedef(
     int v2 = -1,
     int sidefront = -1,
     int? sideback = null,
-    bool? twoSided = null,
+    bool? twosided = null,
     bool blocking = true,
     string? comment = null,
     int? special = null,
@@ -27,7 +27,9 @@ public record linedef(
     int? arg3 = null,
     int? arg4 = null,
     bool? playeruse = null,
-    bool? repeatspecial = null
+    bool? repeatspecial = null,
+    bool? dontpegtop = null,
+    bool? dontpegbottom = null
 ) : IMapElement;
 
 public record sidedef(
@@ -35,6 +37,8 @@ public record sidedef(
     string? texturemiddle,
     string? texturetop=null,
     string? texturebottom=null,
+    int? offsetx=null,
+    int? offsety=null,
     string? comment=null
 ) : IMapElement;
 

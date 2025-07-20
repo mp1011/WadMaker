@@ -96,6 +96,20 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         return null;
     }
 
+    public LineDef ApplyTexture(Room room)
+    {
+        var side = SideOfRoom(room);
+        var texture = room.TextureForSide(side);
+        texture.ApplyTo(this);
+        return this;
+    }
+
+    public LineDef ApplyTexture(TextureInfo texture)
+    {
+        texture.ApplyTo(this);
+        return this;
+    }
+
     public IEnumerable<SideDef> SideDefs     
     {
         get

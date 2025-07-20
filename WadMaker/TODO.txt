@@ -32,3 +32,4 @@ map is mysteriously "ok" now even without changes. might have involved changing 
 
 7/19/2025
 * unpeg doortracks
+* texture handling object - including pegs, x/y offset
