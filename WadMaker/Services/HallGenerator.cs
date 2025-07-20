@@ -33,8 +33,26 @@ public class HallGenerator
             WallTexture = door.TrackTexture,
         };
 
-        doorRoom.UpperLeft = hallSide.ToPoint(door.PositionInHall);
-        doorRoom.BottomRight = doorRoom.UpperLeft.Add(new Point(door.Thickness, -hallRoom.Bounds.Height));
+        switch(hallSide)
+        {
+            case Side.Right:
+                doorRoom.UpperLeft = hallSide.ToPoint(door.PositionInHall);
+                doorRoom.BottomRight = doorRoom.UpperLeft.Add(new Point(door.Thickness, -hallRoom.Bounds.Height));
+                break;
+            case Side.Left:
+                doorRoom.UpperLeft = hallSide.ToPoint(door.PositionInHall).Add(new Point(hallRoom.Bounds.Width - door.Thickness, 0));
+                doorRoom.BottomRight = doorRoom.UpperLeft.Add(new Point(door.Thickness, -hallRoom.Bounds.Height));
+                break;
+            case Side.Bottom:
+                doorRoom.UpperLeft = hallSide.ToPoint(door.PositionInHall);
+                doorRoom.BottomRight = doorRoom.UpperLeft.Add(new Point(hallRoom.Bounds.Width, -door.Thickness));
+                break;
+            case Side.Top:
+                doorRoom.UpperLeft = hallSide.ToPoint(door.PositionInHall).Add(new Point(0, -(hallRoom.Bounds.Height - door.Thickness)));
+                doorRoom.BottomRight = doorRoom.UpperLeft.Add(new Point(hallRoom.Bounds.Width, -door.Thickness));
+                break;
+
+        }
 
         doorRoom.LineSpecials[hallSide] = new DoorRaise(0, Speed.StandardDoor);
         doorRoom.LineSpecials[hallSide.Opposite()] = new DoorRaise(0, Speed.StandardDoor);

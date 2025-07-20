@@ -72,8 +72,11 @@ internal class MapBuilderTests : StandardTest
         Assert.That(secondInnerLines.All(p => p.Back!.Sector.Data == mapElements.Sectors[0].Data));
     }
 
-    [Test]
-    public void CanCreateHallWithDoor()
+    [TestCase(512, 0, 768, -256)] // right
+    [TestCase(-512, 0, -312, -256)] // left
+    [TestCase(0, 500, 256, 300)] // top
+    [TestCase(0, -500, 256, -700)] // bottom
+    public void CanCreateHallWithDoor(int ulX, int ulY, int brX, int brY)
     {
         var map = new Map();
         map.Rooms.Add(new Room
@@ -83,8 +86,8 @@ internal class MapBuilderTests : StandardTest
         });
         map.Rooms.Add(new Room
         {
-            UpperLeft = new Point(512, 0),
-            BottomRight = new Point(768, -256)
+            UpperLeft = new Point(ulX, ulY),
+            BottomRight = new Point(brX, brY)
         });
         var hallGenerator = new HallGenerator();
         map.Rooms.Add(hallGenerator.GenerateHall(

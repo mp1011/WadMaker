@@ -29,7 +29,7 @@ public class HallGeneratorTests
     }
 
     [Test]
-    public void CanGeneratNorthHall()
+    public void CanGenerateNorthHall()
     {
         var roomsWithHall = GenerateRoomsWithHall(0, 500);
         var hall = roomsWithHall[2];
@@ -41,7 +41,7 @@ public class HallGeneratorTests
 
 
     [Test]
-    public void CanGeneratSouthHall()
+    public void CanGenerateSouthHall()
     {
         var roomsWithHall = GenerateRoomsWithHall(0, -1000);
         var hall = roomsWithHall[2];
@@ -98,7 +98,6 @@ public class HallGeneratorTests
         Assert.That(door.Ceiling, Is.EqualTo(-128));
         Assert.That(door.Floor, Is.EqualTo(0));
         Assert.That(door.Bounds.Width, Is.EqualTo(16));
-        // still todo, doors in other directions, door open action
     }
 
 }
