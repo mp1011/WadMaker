@@ -6,11 +6,13 @@ public class MapBuilder
 {
     private readonly RoomBuilder _roomBuilder;
     private readonly OverlappingLinedefResolver _overlappingLinedefResolver;
+    private readonly IsPointInSector _isPointInSector;
 
-    public MapBuilder(RoomBuilder roomBuilder, OverlappingLinedefResolver overlappingLinedefResolver)
+    public MapBuilder(RoomBuilder roomBuilder, OverlappingLinedefResolver overlappingLinedefResolver, IsPointInSector isPointInSector)
     {
         _roomBuilder = roomBuilder;
         _overlappingLinedefResolver = overlappingLinedefResolver;
+        _isPointInSector = isPointInSector;
     }
 
     public MapElements Build(Map map)
@@ -23,6 +25,7 @@ public class MapBuilder
         }
 
         _overlappingLinedefResolver.Execute(mapElements);
+        EnsureSingleSidedLinedefsAreFacingInward(mapElements);
         EnsureActionLinedefsFacingCorrectDirection(mapElements);
 
         foreach (var sideDef in mapElements.SideDefs)
@@ -60,6 +63,18 @@ public class MapBuilder
         {
             // need logic for this
             specialLine.FlipSides();
+        }
+    }
+
+    private void EnsureSingleSidedLinedefsAreFacingInward(MapElements mapElements)
+    {
+        foreach(var line in mapElements.LineDefs.Where(p=>p.Back == null))
+        {
+            var samplePoint = line.MidPoint.Add(line.FrontAngle.AngleToPoint(4.0));
+            if (!_isPointInSector.Execute(samplePoint, line.Front.Sector, mapElements))
+            {
+                line.FlipDirection();
+            }
         }
     }
 }

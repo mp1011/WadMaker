@@ -68,6 +68,18 @@ public class OverlappingLinedefResolver
 
         var allVertices = line1.Vertices.Union(line2.Vertices).ToArray();
 
+        if (allVertices.Length > overlappingVertices.Length)
+        {
+            return ResolvePartiallyOverlappingPair(line1, line2, allVertices, overlappingVertices);
+        }
+        else
+        {
+            return [ResolveFullyOverlappingPair(line1, line2, overlappingVertices)];
+        }
+    }
+
+    private IEnumerable<LineDef> ResolvePartiallyOverlappingPair(LineDef line1, LineDef line2, vertex[] allVertices, vertex[] overlappingVertices)
+    { 
         // pick one of the non-overlapping vertices to start
         var initialVertex = allVertices.Except(overlappingVertices).First();
 
@@ -129,5 +141,20 @@ public class OverlappingLinedefResolver
             previous = vertex;
             index++;
         }
+    }
+   
+    private LineDef ResolveFullyOverlappingPair(LineDef line1, LineDef line2, vertex[] overlappingVertices)
+    {
+        
+        Sector frontSector = line1.Front.Sector; // todo, calculate this
+        Sector backSector = line2.Front.Sector;
+        TextureInfo texture = new TextureInfo(line1);
+
+        var newLine = new LineDef(overlappingVertices[0], overlappingVertices[1],
+                        new SideDef(frontSector, new sidedef()),
+                        new SideDef(backSector, new sidedef()),
+                        new linedef(blocking: false, twosided: true));
+
+        return newLine.ApplyTexture(texture);
     }
 }

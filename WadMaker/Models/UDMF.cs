@@ -10,7 +10,10 @@ public record sector(
 public record vertex(
     double x,
     double y
-) : IMapElement;
+) : IMapElement
+{
+    public static implicit operator Point(vertex v) => new Point((int) v.x, (int) v.y);
+}
 
 public record linedef(
     int v1 = -1,
@@ -33,8 +36,8 @@ public record linedef(
 ) : IMapElement;
 
 public record sidedef(
-    int sector,
-    string? texturemiddle,
+    int sector=-1,
+    string? texturemiddle=null,
     string? texturetop=null,
     string? texturebottom=null,
     int? offsetx=null,

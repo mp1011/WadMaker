@@ -93,7 +93,7 @@ class OverlappingLinedefResolverTests : StandardTest
         map.Rooms.Add(new Room
         {
             UpperLeft = new Point(0, 0),
-            BottomRight = new Point(128, -128)
+            BottomRight = new Point(300, -128)
         });
 
         map.Rooms[0].InnerStructures.Add(
@@ -113,5 +113,7 @@ class OverlappingLinedefResolverTests : StandardTest
         var mapElements = MapBuilder.Build(map);
 
         Assert.That(mapElements.LineDefs.Count(p => p.Back != null), Is.EqualTo(3));
+        Assert.That(mapElements.LineDefs.Count(p => p.Back == null), Is.EqualTo(10));
+
     }
 }

@@ -92,6 +92,16 @@ public static class GeometryExtensions
         return new Point(sumX / count, sumY / count);
     }
 
+    public static Point CentralPoint(this IEnumerable<vertex> points)
+    {
+        if (!points.Any())
+            return Point.Empty;
+        int sumX = points.Sum(p => (int)p.x);
+        int sumY = points.Sum(p => (int)p.y);
+        int count = points.Count();
+        return new Point(sumX / count, sumY / count);
+    }
+
     /// <summary>
     /// Moves each point toward their common center until their distance apart is the specified value
     /// </summary>
@@ -132,7 +142,15 @@ public static class GeometryExtensions
 
         return degrees.AsAngle();
     }
+    public static double AngleTo(this Point p1, Point p2)
+    {
+        double deltaY = p2.Y - p1.Y;
+        double deltaX = p2.X - p1.X;
+        double radians = Math.Atan2(deltaY, deltaX);
+        double degrees = radians * (180.0 / Math.PI);
 
+        return degrees.AsAngle();
+    }
 
     /// <summary>
     /// Gets the angle of front sidedef
@@ -154,4 +172,21 @@ public static class GeometryExtensions
             Side.Bottom => new Point(0, -length),
             _ => throw new ArgumentOutOfRangeException(nameof(s), s, null)
         };
+
+    public static double AngleDifference(this double angle1, double angle2)
+    {
+        var d1 = (angle1 - angle2).NMod(360.0);
+        var d2 = (angle2 - angle1).NMod(360.0);
+        return Math.Min(d1, d2);
+    }
+
+    public static Point AngleToPoint(this double angle, double length)
+    {
+        double angleRadians = angle * Math.PI / 180.0;
+
+        var x = length * Math.Cos(angleRadians);
+        var y = length * Math.Sin(angleRadians);
+
+        return new Point((int)x, (int)y);
+    }
 }

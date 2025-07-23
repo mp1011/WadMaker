@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.Services;
+﻿using WadMaker.Queries;
+
+namespace WadMaker.Tests.Services;
 
 public static class TestServiceContainer
 {
@@ -13,6 +15,7 @@ public static class TestServiceContainer
             services.AddSingleton<HallGenerator>();
             services.AddSingleton<OverlappingLinedefResolver>();
             services.AddSingleton<MapPainter>();
+            services.AddSingleton<IsPointInSector>();
         });
     }
 

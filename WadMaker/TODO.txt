@@ -36,3 +36,20 @@ map is mysteriously "ok" now even without changes. might have involved changing 
 7/19/2025
 * unpeg doortracks
 * texture handling object - including pegs, x/y offset
+
+7/20/2025
+* find a way to tell if a line is facing the proper direction
+this will involve checking if a point is inside the sector
+to do this, we need to know which lines are the outside and which lines might be inner pillars
+group vertices into closed loops
+figure out if each group is a void or the sector
+look up "point in polygon" function to determine if point is in main sector and NOT in any voids
+
+7/21/2025
+checking if a polygon is a void or not doesn't seem to work
+need a different way. a void is always going to be inside the main sector. two voids will never overlap
+so if it overlaps another polygon, then  the smaller one must be a void
+
+7/22/2025
+point in sector and line flip is working
+stairs still needs work. walls missing front sidedef. Also need different, unique sector at end of stair or else ceiling height will be wrong.

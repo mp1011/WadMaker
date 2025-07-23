@@ -7,3 +7,4 @@ global using WadMaker.Models.LineSpecials;
 global using WadMaker.Services;
 global using WadMaker.Services.ShapeModifiers;
 global using WadMaker.Extensions;
+global using WadMaker.Queries;

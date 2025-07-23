@@ -11,6 +11,7 @@ public static class ServiceContainer
         services.AddSingleton<HallGenerator>();
         services.AddSingleton<OverlappingLinedefResolver>();
         services.AddSingleton<MapPainter>();
+        services.AddSingleton<IsPointInSector>();
     }
 
     public static void DiagnosticDependencies(IServiceCollection services)
@@ -22,6 +23,7 @@ public static class ServiceContainer
         services.AddSingleton<HallGenerator>();
         services.AddSingleton<OverlappingLinedefResolver>();
         services.AddSingleton<MapPainter>();
+        services.AddSingleton<IsPointInSector>();
     }
 
     public static ServiceProvider CreateServiceProvider(Action<IServiceCollection> configure)

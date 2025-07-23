@@ -41,6 +41,8 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
 
+    public Point MidPoint => new Point((int)(V1.x + (V2.x - V1.x) / 2), (int)(V1.y + (V2.y - V1.y) / 2));
+
     private LineSpecial? _lineSpecial;  
     public LineSpecial?  LineSpecial
     {
@@ -62,6 +64,13 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         var backSector = Back!.Sector;
         Back.Sector = Front.Sector;
         Front.Sector = backSector;
+    }
+
+    public void FlipDirection()
+    {
+        var v1 = V1;
+        V1 = V2;
+        V2 = v1;
     }
 
     public double Length => V1.DistanceTo(V2);
@@ -143,6 +152,12 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public bool Contains(vertex vertex)
     {
         return V1.Equals(vertex) || V2.Equals(vertex);
+    }
+
+    public bool Contains(Point point)
+    {
+        return ((int)V1.x == point.X && (int)V1.y == point.Y) 
+            || ((int)V2.x == point.X && (int)V2.y == point.Y);
     }
 
     public bool Overlaps(LineDef other)
