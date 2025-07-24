@@ -130,10 +130,10 @@ public class HallGeneratorTests
                 new Room[] { map.Rooms[0], map.Rooms[1] })));
 
 
-        Assert.That(hall.InnerStructures.Count, Is.EqualTo(10));
+        Assert.That(hall.InnerStructures.Count, Is.EqualTo(11));
 
         int lastHeight = map.Rooms[0].Floor;
-        foreach(var step in hall.InnerStructures)
+        foreach(var step in hall.InnerStructures.Take(10))
         {
             Assert.That(step.Floor, Is.GreaterThan(lastHeight));
             lastHeight = step.Floor;

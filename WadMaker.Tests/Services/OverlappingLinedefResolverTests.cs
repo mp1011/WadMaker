@@ -34,7 +34,7 @@ class OverlappingLinedefResolverTests : StandardTest
         var roomBuilder = new RoomBuilder(new IDProvider());
         var mapElements = roomBuilder.Build(map.Rooms[0]).Merge(roomBuilder.Build(map.Rooms[1]));
 
-        var overlappingLinedefResolver = new OverlappingLinedefResolver(new TestAnnotator());
+        var overlappingLinedefResolver = new OverlappingLinedefResolver(new TestAnnotator(), new IsPointInSector());
         var results = overlappingLinedefResolver.Execute(mapElements).ToArray();
 
         Assert.That(results.Count(), Is.EqualTo(3));
@@ -114,6 +114,30 @@ class OverlappingLinedefResolverTests : StandardTest
 
         Assert.That(mapElements.LineDefs.Count(p => p.Back != null), Is.EqualTo(3));
         Assert.That(mapElements.LineDefs.Count(p => p.Back == null), Is.EqualTo(10));
+
+    }
+
+    [Test]
+    public void RoomSplitInTwo()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(200, -128)
+        });
+
+        map.Rooms[0].InnerStructures.Add(
+            new Room
+            {
+                UpperLeft = new Point(100, 0),
+                BottomRight = new Point(200, -128),
+            });
+
+        var mapElements = MapBuilder.Build(map);
+
+        Assert.That(mapElements.LineDefs.Count(p => p.Back != null), Is.EqualTo(1));
+        Assert.That(mapElements.LineDefs.Count(p => p.Back == null), Is.EqualTo(6));
 
     }
 }

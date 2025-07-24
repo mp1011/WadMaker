@@ -46,10 +46,13 @@ public class IsPointInSector
         var lineList = lines.ToList();
 
         var safety = 0;
-        while (lineList.Any())
+        while (lineList.Count() >= 3)
         {
             var loop = LineLoop(lineList.First(), lineList);
             yield return loop.ToArray();
+
+            if (!loop.Any())
+                break;
 
             lineList.RemoveAll(p => loop.Any(q => p.Contains(q)));
 
@@ -77,7 +80,8 @@ public class IsPointInSector
 
             var next = (v1Match ?? v2Match);
             if (next == null)
-                throw new Exception("Unclosed sector loop found");
+                return Array.Empty<Point>();
+
             remainingLines.Remove(next);
 
             if (v1Match != null)

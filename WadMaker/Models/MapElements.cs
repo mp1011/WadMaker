@@ -41,7 +41,28 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
 
+    public IEnumerable<Sector> Sectors
+    {
+        get
+        {
+            yield return Front.Sector;
+            if(Back != null)
+                yield return Back.Sector;
+        }
+    }
+
     public Point MidPoint => new Point((int)(V1.x + (V2.x - V1.x) / 2), (int)(V1.y + (V2.y - V1.y) / 2));
+
+    /// <summary>
+    /// Point slight in front of the midpoint
+    /// </summary>
+    public Point FrontTestPoint => MidPoint.Add(FrontAngle.AngleToPoint(4.0));
+
+
+    /// <summary>
+    /// Point slightly behind the midpoint
+    /// </summary>
+    public Point BackTestPoint => MidPoint.Add(FrontAngle.AngleToPoint(-4.0));
 
     private LineSpecial? _lineSpecial;  
     public LineSpecial?  LineSpecial

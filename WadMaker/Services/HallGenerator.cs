@@ -87,6 +87,14 @@ public class HallGenerator
             yield return CreateStep(stairs, hallRoom, nextStepPosition, currentHeight);            
             nextStepPosition.X += stairs.StepWidth;
         }
+
+        yield return new Room
+        {
+            Floor = upperFloor,
+            UpperLeft = nextStepPosition,
+            BottomRight = nextStepPosition.Add(stairs.EndPosition, -hallRoom.Bounds.Height),
+            WallTexture = stairs.StepTexture
+        };
     }
 
     private Room CreateStep(Stairs stairs, Room hallRoom, Point position, int stepHeight)

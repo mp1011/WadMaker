@@ -69,9 +69,8 @@ public class MapBuilder
     private void EnsureSingleSidedLinedefsAreFacingInward(MapElements mapElements)
     {
         foreach(var line in mapElements.LineDefs.Where(p=>p.Back == null))
-        {
-            var samplePoint = line.MidPoint.Add(line.FrontAngle.AngleToPoint(4.0));
-            if (!_isPointInSector.Execute(samplePoint, line.Front.Sector, mapElements))
+        {            
+            if (!_isPointInSector.Execute(line.FrontTestPoint, line.Front.Sector, mapElements))
             {
                 line.FlipDirection();
             }

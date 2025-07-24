@@ -94,7 +94,27 @@ Map AdjacentOverlappingInner()
     return map;
 }
 
-var map = AdjacentOverlappingInner();
+Map RoomSplitInTwo()
+{
+    var map = new Map();
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(0, 0),
+        BottomRight = new Point(200, -128)
+    });
+
+    map.Rooms[0].InnerStructures.Add(
+        new Room
+        {
+            UpperLeft = new Point(100, 0),
+            BottomRight = new Point(200, -128),
+        });
+
+
+    return map;
+}
+
+var map = RoomSplitInTwo();
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);

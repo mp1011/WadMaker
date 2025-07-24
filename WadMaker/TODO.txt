@@ -15,12 +15,9 @@
 [ ] stairs
 [ ] lifts
 
-
-
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors
 add comment to items to identify and then watch as they resolve
-
 
 7/8/2025
 doom Y coordinates are different from standard
@@ -53,3 +50,6 @@ so if it overlaps another polygon, then  the smaller one must be a void
 7/22/2025
 point in sector and line flip is working
 stairs still needs work. walls missing front sidedef. Also need different, unique sector at end of stair or else ceiling height will be wrong.
+
+7/23/2025
+walls for stairs not merging properly. facing wrong direction and marked as two sided

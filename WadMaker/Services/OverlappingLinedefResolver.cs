@@ -3,10 +3,12 @@
 public class OverlappingLinedefResolver
 {
     private IAnnotator _annotator;
+    private IsPointInSector _isPointInSector;
 
-    public OverlappingLinedefResolver(IAnnotator annotator)
+    public OverlappingLinedefResolver(IAnnotator annotator, IsPointInSector isPointInSector)
     {
         _annotator = annotator;
+        _isPointInSector = isPointInSector;
     }
 
     public IEnumerable<LineDef> Execute(MapElements mapElements)
@@ -21,18 +23,9 @@ public class OverlappingLinedefResolver
                 break;
             else
             {
-                mapElements.LineDefs.Remove(nextOverlap.Value.Item1);
-                mapElements.LineDefs.Remove(nextOverlap.Value.Item2);
-                mapElements.SideDefs.Remove(nextOverlap.Value.Item1.Front);
-                mapElements.SideDefs.Remove(nextOverlap.Value.Item2.Front);
+                var modifiedLines = ResolveOverlappingPair(nextOverlap.Value.Item1, nextOverlap.Value.Item2, mapElements).ToArray();
+                RemoveOverlappingLines(nextOverlap.Value.Item1, nextOverlap.Value.Item2, mapElements);
 
-                if(nextOverlap.Value.Item1.Back != null)
-                    mapElements.SideDefs.Remove(nextOverlap.Value.Item1.Back);
-
-                if(nextOverlap.Value.Item2.Back != null)
-                    mapElements.SideDefs.Remove(nextOverlap.Value.Item2.Back);
-
-                var modifiedLines = ResolveOverlappingPair(nextOverlap.Value.Item1, nextOverlap.Value.Item2).ToArray();
                 mapElements.LineDefs.AddRange(modifiedLines);
 
                 var sideDefs = modifiedLines.SelectMany(l => l.SideDefs).ToArray();
@@ -43,6 +36,20 @@ public class OverlappingLinedefResolver
         }
 
         return modified;
+    }
+
+    private void RemoveOverlappingLines(LineDef line1, LineDef line2, MapElements mapElements)
+    {
+        mapElements.LineDefs.Remove(line1);
+        mapElements.LineDefs.Remove(line2);
+        mapElements.SideDefs.Remove(line1.Front);
+        mapElements.SideDefs.Remove(line2.Front);
+
+        if (line1.Back != null)
+            mapElements.SideDefs.Remove(line1.Back);
+
+        if (line2.Back != null)
+            mapElements.SideDefs.Remove(line2.Back);
     }
 
     private (LineDef, LineDef)? NextOverlappingPair(MapElements mapElements)
@@ -62,7 +69,7 @@ public class OverlappingLinedefResolver
         return null;
     }
 
-    private IEnumerable<LineDef> ResolveOverlappingPair(LineDef line1, LineDef line2)
+    private IEnumerable<LineDef> ResolveOverlappingPair(LineDef line1, LineDef line2, MapElements mapElements) 
     {
         var overlappingVertices = line1.OverlappingVertices(line2);
 
@@ -74,7 +81,7 @@ public class OverlappingLinedefResolver
         }
         else
         {
-            return [ResolveFullyOverlappingPair(line1, line2, overlappingVertices)];
+            return [ResolveFullyOverlappingPair(line1, line2, overlappingVertices, mapElements)];
         }
     }
 
@@ -99,7 +106,7 @@ public class OverlappingLinedefResolver
             {
                 yield return new LineDef(previous, vertex, previousLine.Front.Copy(), null, previousLine.Data);
             }
-            else if (index == allVertices.Length - 1) // last segment
+            else if (index == allVertices.Length - 1 && allVertices.Length != 3) // last segment. Need to handle this better.
             {
                 yield return new LineDef(previous, vertex, thisLine.Front.Copy(), null, thisLine.Data);
             }
@@ -143,17 +150,20 @@ public class OverlappingLinedefResolver
         }
     }
    
-    private LineDef ResolveFullyOverlappingPair(LineDef line1, LineDef line2, vertex[] overlappingVertices)
+    private LineDef ResolveFullyOverlappingPair(LineDef line1, LineDef line2, vertex[] overlappingVertices, MapElements mapElements)
     {
-        
-        Sector frontSector = line1.Front.Sector; // todo, calculate this
-        Sector backSector = line2.Front.Sector;
+        var possibleSectors = line1.Sectors.Union(line2.Sectors).Distinct().ToArray();
+
+        // TODO: what if front is not found?
+        Sector frontSector = possibleSectors.First(p => _isPointInSector.Execute(line1.FrontTestPoint, p, mapElements));
+        Sector? backSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line1.BackTestPoint, p, mapElements));
+
         TextureInfo texture = new TextureInfo(line1);
 
         var newLine = new LineDef(overlappingVertices[0], overlappingVertices[1],
                         new SideDef(frontSector, new sidedef()),
-                        new SideDef(backSector, new sidedef()),
-                        new linedef(blocking: false, twosided: true));
+                        backSector == null ? null : new SideDef(backSector, new sidedef()),
+                        new linedef(blocking: backSector == null, twosided: backSector != null));
 
         return newLine.ApplyTexture(texture);
     }
