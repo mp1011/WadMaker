@@ -114,7 +114,7 @@ Map RoomSplitInTwo()
     return map;
 }
 
-var map = RoomSplitInTwo();
+var map = FourRoom();
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);

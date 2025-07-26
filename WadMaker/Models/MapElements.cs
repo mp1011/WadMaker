@@ -94,6 +94,12 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         V2 = v1;
     }
 
+    public void RemoveBack()
+    {
+        Back = null;
+        Data = Data with { blocking = true, twosided = null };
+    }
+
     public double Length => V1.DistanceTo(V2);
 
     public double FrontAngle => V1.FrontSidedefAngle(V2);
@@ -162,7 +168,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         };
     }
 
-    public vertex[]  OverlappingVertices(LineDef other)
+    public vertex[] OverlappingVertices(LineDef other)
     {
         return Vertices.Where(v => v.Intersects(other))
                                        .Union(other.Vertices

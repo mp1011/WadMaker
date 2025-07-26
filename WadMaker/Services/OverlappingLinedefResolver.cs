@@ -69,102 +69,76 @@ public class OverlappingLinedefResolver
         return null;
     }
 
-    private IEnumerable<LineDef> ResolveOverlappingPair(LineDef line1, LineDef line2, MapElements mapElements) 
+    public static bool WtfMate(LineDef line)
     {
-        var overlappingVertices = line1.OverlappingVertices(line2);
-
-        var allVertices = line1.Vertices.Union(line2.Vertices).ToArray();
-
-        if (allVertices.Length > overlappingVertices.Length)
-        {
-            return ResolvePartiallyOverlappingPair(line1, line2, allVertices, overlappingVertices);
-        }
-        else
-        {
-            return [ResolveFullyOverlappingPair(line1, line2, overlappingVertices, mapElements)];
-        }
+        return line.Vertices.All(p => p.y == -96 && (p.x == 210 || p.x == 240));
     }
 
-    private IEnumerable<LineDef> ResolvePartiallyOverlappingPair(LineDef line1, LineDef line2, vertex[] allVertices, vertex[] overlappingVertices)
-    { 
-        // pick one of the non-overlapping vertices to start
-        var initialVertex = allVertices.Except(overlappingVertices).First();
-
-        allVertices = allVertices.OrderBy(v => v.SquaredDistanceTo(initialVertex)).ToArray();
-
-        int index = 1;
-        var previous = initialVertex;
-        var initialVertexSector = line1.Contains(initialVertex) ? line1.Front.Sector : line2.Front.Sector;
-        var otherSector = initialVertexSector == line1.Front.Sector ? line2.Front.Sector : line1.Front.Sector;
-
-        foreach (var vertex in allVertices.Skip(1))
-        {
-            var previousLine = line1.Contains(previous) ? line1 : line2;
-            var thisLine = line1.Contains(vertex) ? line1 : line2;
-
-            if (index == 1) // first segment
-            {
-                yield return new LineDef(previous, vertex, previousLine.Front.Copy(), null, previousLine.Data);
-            }
-            else if (index == allVertices.Length - 1 && allVertices.Length != 3) // last segment. Need to handle this better.
-            {
-                yield return new LineDef(previous, vertex, thisLine.Front.Copy(), null, thisLine.Data);
-            }
-            else if (initialVertexSector != otherSector)
-            {
-                // overlapping middle segments             
-                if (line1.FrontAngle == line2.FrontAngle)
-                {
-                    //combine into one single sided line
-                    var copyFromLine = new[] { line1, line2 }.OrderBy(p => p.Length).First();
-                    var targetSector = copyFromLine.Front.Sector;
-                    var targetTexture = new TextureInfo(copyFromLine);
-
-                    yield return new LineDef(previous, vertex,
-                        new SideDef(targetSector, new sidedef(
-                            sector: -1,                            
-                            texturemiddle: previousLine.Front.Data.texturetop)),
-                            null,
-                            new linedef(blocking: true).AddComment(null, _annotator)).ApplyTexture(targetTexture);
-                }
-                else
-                { 
-                    yield return new LineDef(previous, vertex,
-                        new SideDef(initialVertexSector, new sidedef(
-                            sector: -1,
-                            texturemiddle: null,
-                            texturetop: previousLine.Front.Data.texturemiddle,
-                            texturebottom: previousLine.Front.Data.texturemiddle)),
-                        new SideDef(otherSector, new sidedef(
-                            sector: -1,
-                            texturemiddle: null,
-                            texturetop: previousLine.Front.Data.texturemiddle,
-                            texturebottom: previousLine.Front.Data.texturemiddle)),
-
-                        new linedef(blocking: false, twosided: true).AddComment(null, _annotator));
-                }
-            }
-
-            previous = vertex;
-            index++;
-        }
-    }
-   
-    private LineDef ResolveFullyOverlappingPair(LineDef line1, LineDef line2, vertex[] overlappingVertices, MapElements mapElements)
+    private IEnumerable<LineDef> ResolveOverlappingPair(LineDef line1, LineDef line2, MapElements mapElements)
     {
         var possibleSectors = line1.Sectors.Union(line2.Sectors).Distinct().ToArray();
+        var sourceSidedefs = line1.SideDefs.Union(line2.SideDefs).ToArray();
+        var line1Texture = new TextureInfo(line1);
+        var line2Texture = new TextureInfo(line2);
 
-        // TODO: what if front is not found?
-        Sector frontSector = possibleSectors.First(p => _isPointInSector.Execute(line1.FrontTestPoint, p, mapElements));
-        Sector? backSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line1.BackTestPoint, p, mapElements));
+        var splitLines = SplitOverlappingLines_IgnoreSidedefs(line1, line2).ToArray();
+        foreach(var line in splitLines)
+        {
+            if (WtfMate(line))
+                Console.WriteLine("!");
 
-        TextureInfo texture = new TextureInfo(line1);
+            Sector? frontSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, mapElements));
+            Sector? backSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line.BackTestPoint, p, mapElements));
 
-        var newLine = new LineDef(overlappingVertices[0], overlappingVertices[1],
-                        new SideDef(frontSector, new sidedef()),
-                        backSector == null ? null : new SideDef(backSector, new sidedef()),
-                        new linedef(blocking: backSector == null, twosided: backSector != null));
+            var frontSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == frontSector)?.Copy();
+            var backSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == backSector)?.Copy();
 
-        return newLine.ApplyTexture(texture);
+            LineDef newLine;
+
+            // each side points to a different sector. This is a two sided line
+            if (frontSidedef != backSidedef && frontSidedef != null && backSidedef != null)
+            {
+                newLine = new LineDef(line.V1, line.V2, frontSidedef, backSidedef, line1.Data with { twosided = true, blocking = false });
+            }
+            else if (backSector == null && frontSector != null) // single sided linedef
+            {
+                newLine = new LineDef(line.V1, line.V2, frontSidedef!, null, line1.Data with { twosided = null, blocking = true });
+            }
+            else if(frontSector == null && backSector == null) // unable to detect sectors, do not include this line
+            {
+                continue;
+            }
+            else if(frontSector == null && backSector != null ) // single sided line facing the wrong direction
+            {
+                newLine = new LineDef(line.V2, line.V1, backSidedef!, null, line1.Data with { twosided = null, blocking = true });
+            }
+            else
+                throw new NotImplementedException("Unexpected overlapping linedef configuration");
+
+            if (line2.Front.Sector == frontSector)
+                line2Texture.ApplyTo(newLine);
+            else
+                line1Texture.ApplyTo(newLine);
+            yield return newLine;
+        }
+    }
+
+    private IEnumerable<LineDef> SplitOverlappingLines_IgnoreSidedefs(LineDef line1, LineDef line2)
+    {
+        var overlappingVertices = line1.OverlappingVertices(line2);
+        var allVertices = line1.Vertices.Union(line2.Vertices).ToArray();
+
+        // pick a vertex, not in the middle, to start
+        var initialVertex = allVertices.Except(overlappingVertices).FirstOrDefault() ?? allVertices.First();
+        var orderedVertices = allVertices.OrderBy(v => v.SquaredDistanceTo(initialVertex)).ToArray();
+
+        var previousVertex = initialVertex;
+        foreach (var vertex in orderedVertices.Skip(1))
+        {
+            // sidedef arbitrary chosen and will be replaced
+            yield return new LineDef(previousVertex, vertex, line1.Front, null, new linedef());
+            previousVertex = vertex;
+        }
+
     }
 }

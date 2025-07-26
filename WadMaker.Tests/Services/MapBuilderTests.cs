@@ -120,7 +120,5 @@ internal class MapBuilderTests : StandardTest
 
         Assert.That(doorFaces[0].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
         Assert.That(doorFaces[1].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
-
-
     }
 }

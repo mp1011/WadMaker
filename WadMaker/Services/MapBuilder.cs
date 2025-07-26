@@ -25,6 +25,7 @@ public class MapBuilder
         }
 
         _overlappingLinedefResolver.Execute(mapElements);
+        RemoveInvalidSidedefs(mapElements);
         EnsureSingleSidedLinedefsAreFacingInward(mapElements);
         EnsureActionLinedefsFacingCorrectDirection(mapElements);
 
@@ -73,6 +74,24 @@ public class MapBuilder
             if (!_isPointInSector.Execute(line.FrontTestPoint, line.Front.Sector, mapElements))
             {
                 line.FlipDirection();
+            }
+        }
+    }
+
+    private void RemoveInvalidSidedefs(MapElements mapElements)
+    {
+        foreach(var lineDef in mapElements.LineDefs.Where(p=>p.Back != null))
+        {
+            Sector? frontSector = mapElements.Sectors.FirstOrDefault(p => _isPointInSector.Execute(lineDef.FrontTestPoint, p, mapElements));
+            Sector? backSector = mapElements.Sectors.FirstOrDefault(p => _isPointInSector.Execute(lineDef.BackTestPoint, p, mapElements));
+
+            if (frontSector == null)
+                throw new NotImplementedException("Unable to handle invalid sidedef");
+            else if(backSector == null)
+            {
+                mapElements.SideDefs.Remove(lineDef.Back!);
+                lineDef.RemoveBack();
+                new TextureInfo(lineDef).ApplyTo(lineDef);
             }
         }
     }
