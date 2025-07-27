@@ -58,7 +58,7 @@ public class MapBuilder
 
     private void EnsureActionLinedefsFacingCorrectDirection(MapElements mapElements)
     {
-        foreach(var specialLine in mapElements.LineDefs.Where(p=>p.LineSpecial != null))
+        foreach(var specialLine in mapElements.LineDefs.Where(p=>p.LineSpecial != null && p.Back != null))
         {
             // need logic for this
             specialLine.FlipSides();

@@ -1,0 +1,366 @@
+namespace = "ZDoom";
+//0
+vertex
+{
+    x = 0;
+    y = 0;
+}
+//1
+vertex
+{
+    x = 400;
+    y = 0;
+}
+//2
+vertex
+{
+    x = 400;
+    y = -400;
+}
+//3
+vertex
+{
+    x = 0;
+    y = -400;
+}
+//4
+vertex
+{
+    x = 300;
+    y = -200;
+}
+//5
+vertex
+{
+    x = 364;
+    y = -200;
+}
+//6
+vertex
+{
+    x = 364;
+    y = -264;
+}
+//7
+vertex
+{
+    x = 300;
+    y = -264;
+}
+//8
+vertex
+{
+    x = -8;
+    y = -68;
+}
+//9
+vertex
+{
+    x = 0;
+    y = -68;
+}
+//10
+vertex
+{
+    x = 0;
+    y = -132;
+}
+//11
+vertex
+{
+    x = -8;
+    y = -132;
+}
+//0
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 0;
+    heightceiling = 128;
+    lightlevel = 127;
+}
+//1
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 128;
+    heightceiling = 128;
+    lightlevel = 127;
+    id = 1;
+}
+//2
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 16;
+    heightceiling = 112;
+    lightlevel = 127;
+}
+//0
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//1
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//2
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//3
+sidedef
+{
+    sector = 1;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//4
+sidedef
+{
+    sector = 0;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//5
+sidedef
+{
+    sector = 1;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//6
+sidedef
+{
+    sector = 0;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//7
+sidedef
+{
+    sector = 1;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//8
+sidedef
+{
+    sector = 0;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//9
+sidedef
+{
+    sector = 1;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//10
+sidedef
+{
+    sector = 0;
+    texturetop = "PLAT1";
+    texturebottom = "PLAT1";
+}
+//11
+sidedef
+{
+    sector = 2;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//12
+sidedef
+{
+    sector = 2;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//13
+sidedef
+{
+    sector = 2;
+    texturemiddle = "SW1GRAY";
+    texturetop = "SW1GRAY";
+    texturebottom = "SW1GRAY";
+}
+//14
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//15
+sidedef
+{
+    sector = 0;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//16
+sidedef
+{
+    sector = 2;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//17
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//0
+linedef
+{
+    v1 = 0;
+    v2 = 1;
+    sidefront = 0;
+    blocking = true;
+}
+//1
+linedef
+{
+    v1 = 1;
+    v2 = 2;
+    sidefront = 1;
+    blocking = true;
+}
+//2
+linedef
+{
+    v1 = 2;
+    v2 = 3;
+    sidefront = 2;
+    blocking = true;
+}
+//3
+linedef
+{
+    v1 = 4;
+    v2 = 5;
+    sidefront = 3;
+    sideback = 4;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//4
+linedef
+{
+    v1 = 5;
+    v2 = 6;
+    sidefront = 5;
+    sideback = 6;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//5
+linedef
+{
+    v1 = 6;
+    v2 = 7;
+    sidefront = 7;
+    sideback = 8;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//6
+linedef
+{
+    v1 = 7;
+    v2 = 4;
+    sidefront = 9;
+    sideback = 10;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//7
+linedef
+{
+    v1 = 8;
+    v2 = 9;
+    sidefront = 11;
+    blocking = true;
+}
+//8
+linedef
+{
+    v1 = 10;
+    v2 = 11;
+    sidefront = 12;
+    blocking = true;
+}
+//9
+linedef
+{
+    v1 = 11;
+    v2 = 8;
+    sidefront = 13;
+    blocking = true;
+    special = 62;
+    arg0 = 1;
+    arg1 = 32;
+    arg2 = 105;
+    playeruse = true;
+    repeatspecial = true;
+}
+//10
+linedef
+{
+    v1 = 3;
+    v2 = 10;
+    sidefront = 14;
+    blocking = true;
+}
+//11
+linedef
+{
+    v1 = 10;
+    v2 = 9;
+    sidefront = 15;
+    sideback = 16;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//12
+linedef
+{
+    v1 = 9;
+    v2 = 0;
+    sidefront = 17;
+    blocking = true;
+}
+//0
+thing
+{
+    x = 200;
+    y = -200;
+    angle = 0;
+    type = 1;
+    skill1 = true;
+    skill2 = true;
+    skill3 = true;
+    skill4 = true;
+    skill5 = true;
+    single = true;
+    dm = false;
+    coop = false;
+}

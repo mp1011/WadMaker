@@ -4,7 +4,8 @@ public record sector(
     string textureceiling,
     int heightfloor,
     int heightceiling,
-    int lightlevel
+    int lightlevel,
+    int? id = null
 ) : IMapElement;
 
 public record vertex(

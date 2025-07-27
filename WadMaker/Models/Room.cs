@@ -50,6 +50,7 @@ public class Room : IShape
             CeilingTexture = CeilingTexture,
             FloorTexture = FloorTexture,
             WallTexture = WallTexture,
+            Tag = Tag,
         };
         copy.ShapeModifiers.AddRange(ShapeModifiers);
         copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy()));

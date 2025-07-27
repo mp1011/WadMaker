@@ -14,5 +14,6 @@ public enum Texture
     DOORTRAK,
     STEP1,
     PLAT1,
+    SW1GRAY,
     Default = STONE
 }

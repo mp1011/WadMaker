@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.Services;
+﻿using WadMaker.Models.LineSpecials;
+
+namespace WadMaker.Tests.Services;
 
 internal class MapPainterTests : StandardTest
 {
@@ -217,6 +219,50 @@ internal class MapPainterTests : StandardTest
 
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//hall_with_lift.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
+    }
+
+
+    [Test]
+    public void CanCreateRoomWithButtonActivatedLift()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(400, -400),
+        });
+
+        //lift
+        var liftRoom = new Room
+        {
+            Floor = 128,
+            Ceiling = 0,
+            UpperLeft = new Point(300, -200),
+            BottomRight = new Point(364, -264),
+            WallTexture = new TextureInfo(Texture.PLAT1),
+            Tag = 1,
+        };
+        map.Rooms[0].InnerStructures.Add(liftRoom);
+
+        //switch
+        var switchRoom = new Room
+        {
+            Floor = 16,
+            Ceiling = -16,
+        };
+        switchRoom.SideTextures[Side.Left] = new TextureInfo(Texture.SW1GRAY);
+        switchRoom.LineSpecials[Side.Left] = new Plat_DownWaitUpStay(Tag: 1, Speed.StandardLift, Delay.StandardLift);
+
+        RoomGenerator.AddStructure(map.Rooms[0], new Alcove(
+            Template: switchRoom,
+            Side: Side.Left,
+            Width: 64,
+            Depth: 8,
+            CenterPercent: 0.25));
+
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var expected = File.ReadAllText("Fixtures//room_with_button_activated_lift.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 }

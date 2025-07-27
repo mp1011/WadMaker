@@ -122,6 +122,7 @@ public class RoomBuilder
         texturefloor: room.FloorTexture.ToString(),
         textureceiling: room.CeilingTexture.ToString(),
         heightfloor: room.Floor,
+        id: room.Tag,
         heightceiling: room.Floor + room.Height,
         lightlevel: 127));
 
