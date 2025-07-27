@@ -1,6 +1,4 @@
-﻿using WadMaker.Models;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 
 public class MapBuilder
 {

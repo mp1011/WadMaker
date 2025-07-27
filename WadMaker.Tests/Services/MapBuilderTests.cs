@@ -121,4 +121,30 @@ internal class MapBuilderTests : StandardTest
         Assert.That(doorFaces[0].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
         Assert.That(doorFaces[1].Data.special, Is.EqualTo((int)LineSpecialType.DoorRaise));
     }
+
+    [Test]
+    public void CanCreateRoomWithAlcove()
+    {
+        var room = new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(400, -400),
+        };
+
+        var alcove = RoomGenerator.AddStructure(room,
+            new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
+            Side: Side.Left,
+            Width: 100,
+            Depth: 32,
+            CenterPercent: 0.50));
+
+        var map = new Map();
+        map.Rooms.Add(room);
+
+        var mapElements = MapBuilder.Build(map);
+
+        var twoSidedLines = mapElements.LineDefs.Where(p => p.Back != null).ToArray();
+
+        Assert.That(twoSidedLines.Length, Is.EqualTo(1));
+    }
 }

@@ -201,4 +201,24 @@ public static class GeometryExtensions
 
         return new Point((int)x, (int)y);
     }
+
+    public static Side ClockwiseTurn(this Side s) =>
+        s switch
+        {
+            Side.Left => Side.Top,
+            Side.Top => Side.Right,
+            Side.Right => Side.Bottom,
+            Side.Bottom => Side.Left,
+            _ => Side.None
+        };
+
+    public static Side CounterClockwiseTurn(this Side s) =>
+        s switch
+        {
+            Side.Left => Side.Bottom,
+            Side.Top => Side.Left,
+            Side.Right => Side.Top,
+            Side.Bottom => Side.Right,
+            _ => Side.None
+        };
 }

@@ -80,9 +80,6 @@ internal class MapPainterTests : StandardTest
         });
 
         var hall = new Hall(Room1: map.Rooms[0], Room2: map.Rooms[1], Width: 192);
-        map.Rooms[0].Halls.Add(hall);
-        map.Rooms[1].Halls.Add(hall);
-
         map.Rooms.Add(new HallGenerator().GenerateHall(hall));
 
         var udmf = MapPainter.Paint(MapBuilder.Build(map));

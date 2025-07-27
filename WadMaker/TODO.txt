@@ -13,7 +13,10 @@
 [x] doors
 ------------- 7/20/2025
 [x] stairs
-[ ] lifts
+[x] lifts
+--------------7/26/2025
+
+
 
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors
@@ -55,4 +58,4 @@ stairs still needs work. walls missing front sidedef. Also need different, uniqu
 walls for stairs not merging properly. facing wrong direction and marked as two sided
 
 7/26/2025
-stairs works except for not picking the best texture
+stairs and lifts are working

@@ -31,8 +31,7 @@ class OverlappingLinedefResolverTests : StandardTest
             BottomRight = new Point(256, -200)
         });
 
-        var roomBuilder = new RoomBuilder(new IDProvider());
-        var mapElements = roomBuilder.Build(map.Rooms[0]).Merge(roomBuilder.Build(map.Rooms[1]));
+        var mapElements = RoomBuilder.Build(map.Rooms[0]).Merge(RoomBuilder.Build(map.Rooms[1]));
 
         var overlappingLinedefResolver = new OverlappingLinedefResolver(new TestAnnotator(), new IsPointInSector());
         var results = overlappingLinedefResolver.Execute(mapElements).ToArray();

@@ -1,6 +1,6 @@
 ﻿namespace WadMaker.Tests.Services;
 
-internal class RoomBuilderTests
+internal class RoomBuilderTests : StandardTest
 {
     [Test]
     public void CanBuildRoomWithInvertedCorners()
@@ -13,7 +13,7 @@ internal class RoomBuilderTests
 
         room.ShapeModifiers.Add(new InvertCorners { Width = 16 });
 
-        var elements = new RoomBuilder(new IDProvider()).Build(room);
+        var elements = RoomBuilder.Build(room);
         Assert.That(elements.Vertices, Has.Count.EqualTo(12));
         Assert.That(elements.LineDefs, Has.Count.EqualTo(12));
     }
@@ -35,8 +35,7 @@ internal class RoomBuilderTests
             Ceiling = 8,
         });
 
-        var roomBuilder = new RoomBuilder(new IDProvider());
-        var roomElements = roomBuilder.Build(room);
+        var roomElements = RoomBuilder.Build(room);
         var innerLines = roomElements.LineDefs.Skip(4).ToArray();
 
         Assert.That(innerLines, Has.Length.EqualTo(4));

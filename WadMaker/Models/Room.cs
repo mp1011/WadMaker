@@ -29,7 +29,6 @@ public class Room : IShape
 
     public Dictionary<Side, LineSpecial> LineSpecials { get; private set; } = new Dictionary<Side, LineSpecial>();
 
-    public List<Hall> Halls { get; } = new List<Hall>();
     public List<Cutout> Pillars { get; } = new List<Cutout>();
 
     public List<Room> InnerStructures { get; } = new List<Room>();
@@ -40,6 +39,24 @@ public class Room : IShape
     {        
         UpperLeft = new Point(points.Min(p => p.X), points.Max(p => p.Y));
         BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
+    }
+
+    public Room Copy()
+    {
+        var copy = new Room
+        {
+            Floor = Floor,
+            Ceiling = Ceiling,
+            CeilingTexture = CeilingTexture,
+            FloorTexture = FloorTexture,
+            WallTexture = WallTexture,
+        };
+        copy.ShapeModifiers.AddRange(ShapeModifiers);
+        copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy()));
+        copy.Pillars.AddRange(Pillars.Select(p => p.Copy()));
+        copy.LineSpecials = LineSpecials.ToDictionary(k => k.Key, v => v.Value);
+        copy.SideTextures = SideTextures.ToDictionary(k => k.Key, v => v.Value);
+        return copy;
     }
 
     public TextureInfo TextureForSide(Side? side)
@@ -56,21 +73,11 @@ public class Room : IShape
 
     public Room RelativeTo(Room parent)
     {
-        var copy = new Room
-        {
-            UpperLeft = parent.UpperLeft.Add(UpperLeft),
-            BottomRight = parent.UpperLeft.Add(BottomRight),
-            Floor = parent.Floor + Floor,
-            Ceiling = parent.Ceiling + Ceiling,
-            CeilingTexture = CeilingTexture,
-            FloorTexture = FloorTexture,
-            WallTexture = WallTexture,
-            LineSpecials = LineSpecials,
-            SideTextures = SideTextures,
-        };
-        copy.ShapeModifiers.AddRange(ShapeModifiers);
-        copy.InnerStructures.AddRange(InnerStructures);
-        copy.Pillars.AddRange(Pillars);
+        var copy = Copy();
+        copy.UpperLeft = parent.UpperLeft.Add(UpperLeft);
+        copy.BottomRight = parent.UpperLeft.Add(BottomRight);
+        copy.Floor = parent.Floor + Floor;
+        copy.Ceiling = parent.Ceiling + Ceiling;            
         return copy;
     }
 }

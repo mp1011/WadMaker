@@ -1,15 +1,13 @@
-﻿using System.ComponentModel;
-using System.Numerics;
-using WadMaker.Models;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 public class RoomBuilder
 {
     private readonly IDProvider _idProvider;
+    private readonly IsPointInSector _isPointInSector;
 
-    public RoomBuilder(IDProvider idProvider)
+    public RoomBuilder(IDProvider idProvider, IsPointInSector isPointInSector)
     {
         _idProvider = idProvider;
+        _isPointInSector = isPointInSector;
     }
 
     public MapElements Build(Room room)
@@ -72,6 +70,8 @@ public class RoomBuilder
         var lines = innerElements.LineDefs.Where(p => p.Front.Sector == innerElements.Sectors[0] && p.Back == null).ToArray();
         innerElements.LineDefs.RemoveMany(lines);
         innerElements.SideDefs.RemoveMany(lines.SelectMany(p => p.SideDefs));
+
+        var sectors = new[] { roomSector, innerElements.Sectors[0] };
 
         foreach (var line in lines)
         {

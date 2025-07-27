@@ -9,6 +9,10 @@ internal class StandardTest
     protected MapPainter MapPainter => ServiceProvider.GetRequiredService<MapPainter>();
 
     protected MapBuilder MapBuilder => ServiceProvider.GetRequiredService<MapBuilder>();
+    protected RoomBuilder RoomBuilder => ServiceProvider.GetRequiredService<RoomBuilder>();
+
+
+    protected RoomGenerator RoomGenerator => ServiceProvider.GetRequiredService<RoomGenerator>();
 
 
     public StandardTest()

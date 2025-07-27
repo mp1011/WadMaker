@@ -44,4 +44,16 @@ public struct DRectangle
                 return Height;
         }
     }
+
+    public int SideLength(Side side)
+    {
+        switch (side)
+        {
+            case Side.Left:
+            case Side.Right:
+                return Height;
+            default:
+                return Width;
+        }
+    }
 }

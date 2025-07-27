@@ -16,6 +16,7 @@ public static class TestServiceContainer
             services.AddSingleton<OverlappingLinedefResolver>();
             services.AddSingleton<MapPainter>();
             services.AddSingleton<IsPointInSector>();
+            services.AddSingleton<RoomGenerator>();
         });
     }
 

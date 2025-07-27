@@ -80,7 +80,7 @@ public class OverlappingLinedefResolver
         foreach(var line in splitLines)
         {
             Sector? frontSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, mapElements));
-            Sector? backSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line.BackTestPoint, p, mapElements));
+            Sector? backSector = possibleSectors.FirstOrDefault(p => p != frontSector && _isPointInSector.Execute(line.BackTestPoint, p, mapElements));
 
             var frontSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == frontSector)?.Copy();
             var backSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == backSector)?.Copy();

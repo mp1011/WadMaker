@@ -114,7 +114,6 @@ Map RoomSplitInTwo()
     return map;
 }
 
-
 Map FourStairs()
 {
     var map = new Map();
@@ -188,10 +187,30 @@ Map FourStairs()
     return map;
 }
 
+Map RoomWithAlcove(RoomGenerator roomGenerator)
+{
+    var room = new Room
+    {
+        UpperLeft = new Point(0, 0),
+        BottomRight = new Point(400, -400),
+    };
 
-var map = FourStairs();
+    var alcove = roomGenerator.AddStructure(room,
+        new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
+        Side: Side.Left,
+        Width: 100,
+        Depth: 32,
+        CenterPercent: 0.50));
+
+    var map = new Map();
+    map.Rooms.Add(room);
+    return map;
+}
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
+
+var map = AdjacentOverlappingInner();
+
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);
 var mapPainter = services.GetService<MapPainter>()!;
 var udmf = mapPainter.Paint(mapElements);
