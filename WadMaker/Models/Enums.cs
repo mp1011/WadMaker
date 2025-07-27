@@ -10,7 +10,14 @@ public enum Side
 }
 
 public enum Speed
-{
+{ 
     StandardDoor = 16,
+    StandardLift = 32, // not positive about this
     BlazingDoor = 64,
+}
+
+public enum Delay
+{
+    StandardLift = 105,
+    StandardDoor = 150,
 }

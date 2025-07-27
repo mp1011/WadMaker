@@ -1,1 +1,1324 @@
-TBD
+namespace = "ZDoom";
+//0
+vertex
+{
+    x = 0;
+    y = 0;
+}
+//1
+vertex
+{
+    x = 100;
+    y = 0;
+}
+//2
+vertex
+{
+    x = 100;
+    y = -256;
+}
+//3
+vertex
+{
+    x = 0;
+    y = -256;
+}
+//4
+vertex
+{
+    x = 500;
+    y = 0;
+}
+//5
+vertex
+{
+    x = 600;
+    y = 0;
+}
+//6
+vertex
+{
+    x = 600;
+    y = -256;
+}
+//7
+vertex
+{
+    x = 500;
+    y = -256;
+}
+//8
+vertex
+{
+    x = 100;
+    y = -96;
+}
+//9
+vertex
+{
+    x = 500;
+    y = -96;
+}
+//10
+vertex
+{
+    x = 500;
+    y = -160;
+}
+//11
+vertex
+{
+    x = 100;
+    y = -160;
+}
+//12
+vertex
+{
+    x = 150;
+    y = -96;
+}
+//13
+vertex
+{
+    x = 180;
+    y = -96;
+}
+//14
+vertex
+{
+    x = 180;
+    y = -160;
+}
+//15
+vertex
+{
+    x = 150;
+    y = -160;
+}
+//16
+vertex
+{
+    x = 180;
+    y = -96;
+}
+//17
+vertex
+{
+    x = 210;
+    y = -96;
+}
+//18
+vertex
+{
+    x = 210;
+    y = -160;
+}
+//19
+vertex
+{
+    x = 180;
+    y = -160;
+}
+//20
+vertex
+{
+    x = 210;
+    y = -96;
+}
+//21
+vertex
+{
+    x = 240;
+    y = -96;
+}
+//22
+vertex
+{
+    x = 240;
+    y = -160;
+}
+//23
+vertex
+{
+    x = 210;
+    y = -160;
+}
+//24
+vertex
+{
+    x = 240;
+    y = -96;
+}
+//25
+vertex
+{
+    x = 270;
+    y = -96;
+}
+//26
+vertex
+{
+    x = 270;
+    y = -160;
+}
+//27
+vertex
+{
+    x = 240;
+    y = -160;
+}
+//28
+vertex
+{
+    x = 270;
+    y = -96;
+}
+//29
+vertex
+{
+    x = 300;
+    y = -96;
+}
+//30
+vertex
+{
+    x = 300;
+    y = -160;
+}
+//31
+vertex
+{
+    x = 270;
+    y = -160;
+}
+//32
+vertex
+{
+    x = 300;
+    y = -96;
+}
+//33
+vertex
+{
+    x = 330;
+    y = -96;
+}
+//34
+vertex
+{
+    x = 330;
+    y = -160;
+}
+//35
+vertex
+{
+    x = 300;
+    y = -160;
+}
+//36
+vertex
+{
+    x = 330;
+    y = -96;
+}
+//37
+vertex
+{
+    x = 360;
+    y = -96;
+}
+//38
+vertex
+{
+    x = 360;
+    y = -160;
+}
+//39
+vertex
+{
+    x = 330;
+    y = -160;
+}
+//40
+vertex
+{
+    x = 360;
+    y = -96;
+}
+//41
+vertex
+{
+    x = 390;
+    y = -96;
+}
+//42
+vertex
+{
+    x = 390;
+    y = -160;
+}
+//43
+vertex
+{
+    x = 360;
+    y = -160;
+}
+//44
+vertex
+{
+    x = 390;
+    y = -96;
+}
+//45
+vertex
+{
+    x = 420;
+    y = -96;
+}
+//46
+vertex
+{
+    x = 420;
+    y = -160;
+}
+//47
+vertex
+{
+    x = 390;
+    y = -160;
+}
+//48
+vertex
+{
+    x = 420;
+    y = -96;
+}
+//49
+vertex
+{
+    x = 450;
+    y = -96;
+}
+//50
+vertex
+{
+    x = 450;
+    y = -160;
+}
+//51
+vertex
+{
+    x = 420;
+    y = -160;
+}
+//52
+vertex
+{
+    x = 450;
+    y = -96;
+}
+//53
+vertex
+{
+    x = 500;
+    y = -96;
+}
+//54
+vertex
+{
+    x = 500;
+    y = -160;
+}
+//55
+vertex
+{
+    x = 450;
+    y = -160;
+}
+//0
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 0;
+    heightceiling = 128;
+    lightlevel = 127;
+}
+//1
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 100;
+    heightceiling = 300;
+    lightlevel = 127;
+}
+//2
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 0;
+    heightceiling = 128;
+    lightlevel = 127;
+}
+//3
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 10;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//4
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 20;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//5
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 30;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//6
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 40;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//7
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 50;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//8
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 60;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//9
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 70;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//10
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 80;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//11
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 90;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//12
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 100;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//13
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 100;
+    heightceiling = 256;
+    lightlevel = 127;
+}
+//0
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//1
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//2
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//3
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//4
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//5
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//6
+sidedef
+{
+    sector = 3;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//7
+sidedef
+{
+    sector = 2;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//8
+sidedef
+{
+    sector = 4;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//9
+sidedef
+{
+    sector = 5;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//10
+sidedef
+{
+    sector = 5;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//11
+sidedef
+{
+    sector = 6;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//12
+sidedef
+{
+    sector = 6;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//13
+sidedef
+{
+    sector = 7;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//14
+sidedef
+{
+    sector = 7;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//15
+sidedef
+{
+    sector = 8;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//16
+sidedef
+{
+    sector = 8;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//17
+sidedef
+{
+    sector = 9;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//18
+sidedef
+{
+    sector = 9;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//19
+sidedef
+{
+    sector = 10;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//20
+sidedef
+{
+    sector = 10;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//21
+sidedef
+{
+    sector = 11;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//22
+sidedef
+{
+    sector = 11;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//23
+sidedef
+{
+    sector = 12;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//24
+sidedef
+{
+    sector = 12;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//25
+sidedef
+{
+    sector = 13;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//26
+sidedef
+{
+    sector = 13;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//27
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//28
+sidedef
+{
+    sector = 0;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//29
+sidedef
+{
+    sector = 2;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//30
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//31
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//32
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//33
+sidedef
+{
+    sector = 2;
+    texturemiddle = "STONE";
+}
+//34
+sidedef
+{
+    sector = 3;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//35
+sidedef
+{
+    sector = 3;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//36
+sidedef
+{
+    sector = 2;
+    texturemiddle = "STONE";
+}
+//37
+sidedef
+{
+    sector = 3;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//38
+sidedef
+{
+    sector = 4;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//39
+sidedef
+{
+    sector = 4;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//40
+sidedef
+{
+    sector = 4;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//41
+sidedef
+{
+    sector = 5;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//42
+sidedef
+{
+    sector = 5;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//43
+sidedef
+{
+    sector = 6;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//44
+sidedef
+{
+    sector = 6;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//45
+sidedef
+{
+    sector = 7;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//46
+sidedef
+{
+    sector = 7;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//47
+sidedef
+{
+    sector = 8;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//48
+sidedef
+{
+    sector = 8;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//49
+sidedef
+{
+    sector = 9;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//50
+sidedef
+{
+    sector = 9;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//51
+sidedef
+{
+    sector = 10;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//52
+sidedef
+{
+    sector = 10;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//53
+sidedef
+{
+    sector = 11;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//54
+sidedef
+{
+    sector = 11;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//55
+sidedef
+{
+    sector = 12;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//56
+sidedef
+{
+    sector = 12;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//57
+sidedef
+{
+    sector = 13;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//58
+sidedef
+{
+    sector = 13;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//59
+sidedef
+{
+    sector = 1;
+    texturetop = "STONE";
+    texturebottom = "STEP1";
+}
+//0
+linedef
+{
+    v1 = 0;
+    v2 = 1;
+    sidefront = 0;
+    blocking = true;
+}
+//1
+linedef
+{
+    v1 = 2;
+    v2 = 3;
+    sidefront = 1;
+    blocking = true;
+}
+//2
+linedef
+{
+    v1 = 3;
+    v2 = 0;
+    sidefront = 2;
+    blocking = true;
+}
+//3
+linedef
+{
+    v1 = 4;
+    v2 = 5;
+    sidefront = 3;
+    blocking = true;
+}
+//4
+linedef
+{
+    v1 = 5;
+    v2 = 6;
+    sidefront = 4;
+    blocking = true;
+}
+//5
+linedef
+{
+    v1 = 6;
+    v2 = 7;
+    sidefront = 5;
+    blocking = true;
+}
+//6
+linedef
+{
+    v1 = 15;
+    v2 = 12;
+    sidefront = 6;
+    sideback = 7;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//7
+linedef
+{
+    v1 = 18;
+    v2 = 14;
+    sidefront = 8;
+    blocking = true;
+}
+//8
+linedef
+{
+    v1 = 17;
+    v2 = 21;
+    sidefront = 9;
+    blocking = true;
+}
+//9
+linedef
+{
+    v1 = 22;
+    v2 = 18;
+    sidefront = 10;
+    blocking = true;
+}
+//10
+linedef
+{
+    v1 = 21;
+    v2 = 25;
+    sidefront = 11;
+    blocking = true;
+}
+//11
+linedef
+{
+    v1 = 26;
+    v2 = 22;
+    sidefront = 12;
+    blocking = true;
+}
+//12
+linedef
+{
+    v1 = 25;
+    v2 = 29;
+    sidefront = 13;
+    blocking = true;
+}
+//13
+linedef
+{
+    v1 = 30;
+    v2 = 26;
+    sidefront = 14;
+    blocking = true;
+}
+//14
+linedef
+{
+    v1 = 29;
+    v2 = 33;
+    sidefront = 15;
+    blocking = true;
+}
+//15
+linedef
+{
+    v1 = 34;
+    v2 = 30;
+    sidefront = 16;
+    blocking = true;
+}
+//16
+linedef
+{
+    v1 = 33;
+    v2 = 37;
+    sidefront = 17;
+    blocking = true;
+}
+//17
+linedef
+{
+    v1 = 38;
+    v2 = 34;
+    sidefront = 18;
+    blocking = true;
+}
+//18
+linedef
+{
+    v1 = 37;
+    v2 = 41;
+    sidefront = 19;
+    blocking = true;
+}
+//19
+linedef
+{
+    v1 = 42;
+    v2 = 38;
+    sidefront = 20;
+    blocking = true;
+}
+//20
+linedef
+{
+    v1 = 41;
+    v2 = 45;
+    sidefront = 21;
+    blocking = true;
+}
+//21
+linedef
+{
+    v1 = 46;
+    v2 = 42;
+    sidefront = 22;
+    blocking = true;
+}
+//22
+linedef
+{
+    v1 = 45;
+    v2 = 49;
+    sidefront = 23;
+    blocking = true;
+}
+//23
+linedef
+{
+    v1 = 50;
+    v2 = 46;
+    sidefront = 24;
+    blocking = true;
+}
+//24
+linedef
+{
+    v1 = 49;
+    v2 = 9;
+    sidefront = 25;
+    blocking = true;
+}
+//25
+linedef
+{
+    v1 = 10;
+    v2 = 50;
+    sidefront = 26;
+    blocking = true;
+}
+//26
+linedef
+{
+    v1 = 1;
+    v2 = 8;
+    sidefront = 27;
+    blocking = true;
+}
+//27
+linedef
+{
+    v1 = 8;
+    v2 = 11;
+    sidefront = 28;
+    sideback = 29;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//28
+linedef
+{
+    v1 = 11;
+    v2 = 2;
+    sidefront = 30;
+    blocking = true;
+}
+//29
+linedef
+{
+    v1 = 7;
+    v2 = 10;
+    sidefront = 31;
+    blocking = true;
+}
+//30
+linedef
+{
+    v1 = 9;
+    v2 = 4;
+    sidefront = 32;
+    blocking = true;
+}
+//31
+linedef
+{
+    v1 = 8;
+    v2 = 12;
+    sidefront = 33;
+    blocking = true;
+}
+//32
+linedef
+{
+    v1 = 12;
+    v2 = 13;
+    sidefront = 34;
+    blocking = true;
+}
+//33
+linedef
+{
+    v1 = 14;
+    v2 = 15;
+    sidefront = 35;
+    blocking = true;
+}
+//34
+linedef
+{
+    v1 = 15;
+    v2 = 11;
+    sidefront = 36;
+    blocking = true;
+}
+//35
+linedef
+{
+    v1 = 13;
+    v2 = 14;
+    sidefront = 37;
+    sideback = 38;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//36
+linedef
+{
+    v1 = 13;
+    v2 = 17;
+    sidefront = 39;
+    blocking = true;
+}
+//37
+linedef
+{
+    v1 = 17;
+    v2 = 18;
+    sidefront = 40;
+    sideback = 41;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//38
+linedef
+{
+    v1 = 21;
+    v2 = 22;
+    sidefront = 42;
+    sideback = 43;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//39
+linedef
+{
+    v1 = 25;
+    v2 = 26;
+    sidefront = 44;
+    sideback = 45;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//40
+linedef
+{
+    v1 = 29;
+    v2 = 30;
+    sidefront = 46;
+    sideback = 47;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//41
+linedef
+{
+    v1 = 33;
+    v2 = 34;
+    sidefront = 48;
+    sideback = 49;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//42
+linedef
+{
+    v1 = 37;
+    v2 = 38;
+    sidefront = 50;
+    sideback = 51;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//43
+linedef
+{
+    v1 = 41;
+    v2 = 42;
+    sidefront = 52;
+    sideback = 53;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//44
+linedef
+{
+    v1 = 45;
+    v2 = 46;
+    sidefront = 54;
+    sideback = 55;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//45
+linedef
+{
+    v1 = 49;
+    v2 = 50;
+    sidefront = 56;
+    sideback = 57;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//46
+linedef
+{
+    v1 = 9;
+    v2 = 10;
+    sidefront = 58;
+    sideback = 59;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//0
+thing
+{
+    x = 50;
+    y = -128;
+    angle = 0;
+    type = 1;
+    skill1 = true;
+    skill2 = true;
+    skill3 = true;
+    skill4 = true;
+    skill5 = true;
+    single = true;
+    dm = false;
+    coop = false;
+}

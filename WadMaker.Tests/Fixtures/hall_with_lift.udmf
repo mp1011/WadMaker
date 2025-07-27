@@ -1,0 +1,520 @@
+namespace = "ZDoom";
+//0
+vertex
+{
+    x = 0;
+    y = 0;
+}
+//1
+vertex
+{
+    x = 100;
+    y = 0;
+}
+//2
+vertex
+{
+    x = 100;
+    y = -256;
+}
+//3
+vertex
+{
+    x = 0;
+    y = -256;
+}
+//4
+vertex
+{
+    x = 500;
+    y = 0;
+}
+//5
+vertex
+{
+    x = 600;
+    y = 0;
+}
+//6
+vertex
+{
+    x = 600;
+    y = -256;
+}
+//7
+vertex
+{
+    x = 500;
+    y = -256;
+}
+//8
+vertex
+{
+    x = 100;
+    y = -96;
+}
+//9
+vertex
+{
+    x = 500;
+    y = -96;
+}
+//10
+vertex
+{
+    x = 500;
+    y = -160;
+}
+//11
+vertex
+{
+    x = 100;
+    y = -160;
+}
+//12
+vertex
+{
+    x = 132;
+    y = -96;
+}
+//13
+vertex
+{
+    x = 196;
+    y = -96;
+}
+//14
+vertex
+{
+    x = 196;
+    y = -160;
+}
+//15
+vertex
+{
+    x = 132;
+    y = -160;
+}
+//16
+vertex
+{
+    x = 196;
+    y = -96;
+}
+//17
+vertex
+{
+    x = 500;
+    y = -96;
+}
+//18
+vertex
+{
+    x = 500;
+    y = -160;
+}
+//19
+vertex
+{
+    x = 196;
+    y = -160;
+}
+//0
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 0;
+    heightceiling = 500;
+    lightlevel = 127;
+}
+//1
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 128;
+    heightceiling = 500;
+    lightlevel = 127;
+}
+//2
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 0;
+    heightceiling = 500;
+    lightlevel = 127;
+}
+//3
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 128;
+    heightceiling = 628;
+    lightlevel = 127;
+}
+//4
+sector
+{
+    texturefloor = "FLOOR0_1";
+    textureceiling = "FLOOR0_1";
+    heightfloor = 128;
+    heightceiling = 628;
+    lightlevel = 127;
+}
+//0
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//1
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//2
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//3
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//4
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//5
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//6
+sidedef
+{
+    sector = 2;
+    texturetop = "STONE";
+    texturebottom = "PLAT1";
+}
+//7
+sidedef
+{
+    sector = 3;
+    texturetop = "STONE";
+    texturebottom = "PLAT1";
+}
+//8
+sidedef
+{
+    sector = 4;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//9
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//10
+sidedef
+{
+    sector = 0;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//11
+sidedef
+{
+    sector = 2;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//12
+sidedef
+{
+    sector = 0;
+    texturemiddle = "STONE";
+}
+//13
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//14
+sidedef
+{
+    sector = 1;
+    texturemiddle = "STONE";
+}
+//15
+sidedef
+{
+    sector = 2;
+    texturemiddle = "STONE";
+}
+//16
+sidedef
+{
+    sector = 3;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "PLAT1";
+}
+//17
+sidedef
+{
+    sector = 3;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "PLAT1";
+}
+//18
+sidedef
+{
+    sector = 2;
+    texturemiddle = "STONE";
+}
+//19
+sidedef
+{
+    sector = 3;
+    texturetop = "STONE";
+    texturebottom = "PLAT1";
+}
+//20
+sidedef
+{
+    sector = 4;
+    texturetop = "STONE";
+    texturebottom = "PLAT1";
+}
+//21
+sidedef
+{
+    sector = 4;
+    texturemiddle = "STONE";
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//22
+sidedef
+{
+    sector = 4;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//23
+sidedef
+{
+    sector = 1;
+    texturetop = "STONE";
+    texturebottom = "STONE";
+}
+//0
+linedef
+{
+    v1 = 0;
+    v2 = 1;
+    sidefront = 0;
+    blocking = true;
+}
+//1
+linedef
+{
+    v1 = 2;
+    v2 = 3;
+    sidefront = 1;
+    blocking = true;
+}
+//2
+linedef
+{
+    v1 = 3;
+    v2 = 0;
+    sidefront = 2;
+    blocking = true;
+}
+//3
+linedef
+{
+    v1 = 4;
+    v2 = 5;
+    sidefront = 3;
+    blocking = true;
+}
+//4
+linedef
+{
+    v1 = 5;
+    v2 = 6;
+    sidefront = 4;
+    blocking = true;
+}
+//5
+linedef
+{
+    v1 = 6;
+    v2 = 7;
+    sidefront = 5;
+    blocking = true;
+}
+//6
+linedef
+{
+    v1 = 12;
+    v2 = 15;
+    sidefront = 6;
+    sideback = 7;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    special = 62;
+    arg0 = 0;
+    arg1 = 32;
+    arg2 = 105;
+    playeruse = true;
+    repeatspecial = true;
+}
+//7
+linedef
+{
+    v1 = 10;
+    v2 = 14;
+    sidefront = 8;
+    blocking = true;
+}
+//8
+linedef
+{
+    v1 = 1;
+    v2 = 8;
+    sidefront = 9;
+    blocking = true;
+}
+//9
+linedef
+{
+    v1 = 8;
+    v2 = 11;
+    sidefront = 10;
+    sideback = 11;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//10
+linedef
+{
+    v1 = 11;
+    v2 = 2;
+    sidefront = 12;
+    blocking = true;
+}
+//11
+linedef
+{
+    v1 = 7;
+    v2 = 10;
+    sidefront = 13;
+    blocking = true;
+}
+//12
+linedef
+{
+    v1 = 9;
+    v2 = 4;
+    sidefront = 14;
+    blocking = true;
+}
+//13
+linedef
+{
+    v1 = 8;
+    v2 = 12;
+    sidefront = 15;
+    blocking = true;
+}
+//14
+linedef
+{
+    v1 = 12;
+    v2 = 13;
+    sidefront = 16;
+    blocking = true;
+}
+//15
+linedef
+{
+    v1 = 14;
+    v2 = 15;
+    sidefront = 17;
+    blocking = true;
+}
+//16
+linedef
+{
+    v1 = 15;
+    v2 = 11;
+    sidefront = 18;
+    blocking = true;
+}
+//17
+linedef
+{
+    v1 = 13;
+    v2 = 14;
+    sidefront = 19;
+    sideback = 20;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//18
+linedef
+{
+    v1 = 13;
+    v2 = 9;
+    sidefront = 21;
+    blocking = true;
+}
+//19
+linedef
+{
+    v1 = 9;
+    v2 = 10;
+    sidefront = 22;
+    sideback = 23;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+}
+//0
+thing
+{
+    x = 50;
+    y = -128;
+    angle = 0;
+    type = 1;
+    skill1 = true;
+    skill2 = true;
+    skill3 = true;
+    skill4 = true;
+    skill5 = true;
+    single = true;
+    dm = false;
+    coop = false;
+}

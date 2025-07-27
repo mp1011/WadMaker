@@ -3,7 +3,8 @@
 public enum LineSpecialType
 {
     None=0,
-    DoorRaise=12
+    DoorRaise=12,
+    Plat_DownWaitUpStay=62
 }
 
 public record class LineSpecial(LineSpecialType type, int? arg0, int? arg1, int? arg2, int? arg3, int? arg4)

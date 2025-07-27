@@ -32,4 +32,16 @@ public struct DRectangle
         return X < other.Right && Right > other.X &&
                Y > other.Bottom && Bottom < other.Y;
     }
+
+    public int AxisLength(Side side)
+    {
+        switch (side)
+        {
+            case Side.Left:
+            case Side.Right:
+                return Width;
+            default:
+                return Height;
+        }
+    }
 }

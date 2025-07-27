@@ -127,7 +127,8 @@ public class HallGeneratorTests
                 50,
                 50,
                 StepWidth: 30,
-                new Room[] { map.Rooms[0], map.Rooms[1] })));
+                map.Rooms[0], 
+                map.Rooms[1])));
 
 
         Assert.That(hall.InnerStructures.Count, Is.EqualTo(11));

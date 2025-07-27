@@ -77,12 +77,12 @@ public class RoomBuilder
         {
             var lineSide = line.SideOfRoom(innerElement);
             var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null, 
-                texturetop: innerElement.TextureForSide(lineSide).ToString(),
-                texturebottom: innerElement.TextureForSide(lineSide).ToString()));
+                texturetop: innerElement.TextureForSide(lineSide).UpperString(),
+                texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
 
             var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, texturemiddle: null,
-                texturetop: innerElement.TextureForSide(lineSide).ToString(),
-                texturebottom: innerElement.TextureForSide(lineSide).ToString()));
+                texturetop: innerElement.TextureForSide(lineSide).UpperString(),
+                texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
 
             var newLine = new LineDef(line.V1, line.V2,
                     frontSide,

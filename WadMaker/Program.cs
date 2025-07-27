@@ -114,7 +114,82 @@ Map RoomSplitInTwo()
     return map;
 }
 
-var map = FourRoom();
+
+Map FourStairs()
+{
+    var map = new Map();
+
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(0, 0),
+        BottomRight = new Point(256, -256),
+        Ceiling = 300,
+        Floor = 100,
+    });
+
+    // right room 
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(512, 0),
+        BottomRight = new Point(768, -256),
+        Ceiling = 300,
+    });
+
+    // left room 
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(-512, 0),
+        BottomRight = new Point(-412, -256),
+        Ceiling = 300,
+    });
+
+    // up room 
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(0, 400),
+        BottomRight = new Point(256, 300),
+        Ceiling = 300,
+    });
+
+    // down room 
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(0, -500),
+        BottomRight = new Point(256, -700),
+        Ceiling = 300,
+    });
+
+
+    var hallGenerator = new HallGenerator();
+    map.Rooms.Add(hallGenerator.GenerateHall(
+        new Hall(128,
+        map.Rooms[0],
+        map.Rooms[1],
+        Stairs: new Stairs(StepTexture: new TextureInfo(Lower: Texture.STEP1), 16, 16, 32, map.Rooms[0], map.Rooms[1]))));
+
+    map.Rooms.Add(hallGenerator.GenerateHall(
+        new Hall(128,
+        map.Rooms[0],
+        map.Rooms[2],
+        Stairs: new Stairs(StepTexture: new TextureInfo(Lower: Texture.STEP1), 16, 16, 32, map.Rooms[0], map.Rooms[2]))));
+
+    map.Rooms.Add(hallGenerator.GenerateHall(
+        new Hall(128,
+        map.Rooms[0],
+        map.Rooms[3],
+        Stairs: new Stairs(StepTexture: new TextureInfo(Lower: Texture.STEP1), 16, 16, 32, map.Rooms[0], map.Rooms[3]))));
+
+    map.Rooms.Add(hallGenerator.GenerateHall(
+        new Hall(128,
+        map.Rooms[0],
+        map.Rooms[4],
+        Stairs: new Stairs(StepTexture: new TextureInfo(Lower: Texture.STEP1), 16, 16, 32, map.Rooms[0], map.Rooms[4]))));
+
+    return map;
+}
+
+
+var map = FourStairs();
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);

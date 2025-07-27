@@ -22,6 +22,10 @@ public record TextureInfo(
     {
     }
 
+    public string UpperString() => Upper?.ToString() ?? this.ToString();
+
+    public string LowerString() => Lower?.ToString() ?? this.ToString();    
+
     public override string ToString()
     {
         return (Main ?? Mid ?? Upper ?? Lower ?? Texture.MISSING).ToString();

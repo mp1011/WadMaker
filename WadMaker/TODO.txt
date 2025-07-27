@@ -12,7 +12,7 @@
 [x] nested inner structures
 [x] doors
 ------------- 7/20/2025
-[ ] stairs
+[x] stairs
 [ ] lifts
 
 7/6/2025
@@ -53,3 +53,6 @@ stairs still needs work. walls missing front sidedef. Also need different, uniqu
 
 7/23/2025
 walls for stairs not merging properly. facing wrong direction and marked as two sided
+
+7/26/2025
+stairs works except for not picking the best texture

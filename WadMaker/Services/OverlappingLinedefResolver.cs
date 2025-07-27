@@ -69,11 +69,6 @@ public class OverlappingLinedefResolver
         return null;
     }
 
-    public static bool WtfMate(LineDef line)
-    {
-        return line.Vertices.All(p => p.y == -96 && (p.x == 210 || p.x == 240));
-    }
-
     private IEnumerable<LineDef> ResolveOverlappingPair(LineDef line1, LineDef line2, MapElements mapElements)
     {
         var possibleSectors = line1.Sectors.Union(line2.Sectors).Distinct().ToArray();
@@ -84,9 +79,6 @@ public class OverlappingLinedefResolver
         var splitLines = SplitOverlappingLines_IgnoreSidedefs(line1, line2).ToArray();
         foreach(var line in splitLines)
         {
-            if (WtfMate(line))
-                Console.WriteLine("!");
-
             Sector? frontSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, mapElements));
             Sector? backSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line.BackTestPoint, p, mapElements));
 

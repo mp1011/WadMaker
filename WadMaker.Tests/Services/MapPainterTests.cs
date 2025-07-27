@@ -172,16 +172,54 @@ internal class MapPainterTests : StandardTest
             map.Rooms[0],
             map.Rooms[1],
             Stairs: new Stairs(
-                StepTexture: new TextureInfo(Main: Texture.STEP1),
+                StepTexture: new TextureInfo(Lower: Texture.STEP1),
                 50,
                 50,
                 StepWidth: 30,
-                new Room[] { map.Rooms[0], map.Rooms[1] })));
+                map.Rooms[0], 
+                map.Rooms[1])));
 
         map.Rooms.Add(hall);
 
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//hall_with_stairs.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void CanCreateRoomsConnectedByLift()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(100, -256),
+            Ceiling = 500
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(500, 0),
+            BottomRight = new Point(600, -256),
+            Floor = 128,
+            Ceiling = 500
+        });
+
+        var hallGenerator = new HallGenerator();
+        var hall = hallGenerator.GenerateHall(
+            new Hall(64,
+            map.Rooms[0],
+            map.Rooms[1],
+            Lift: new Lift(
+                SideTexture: new TextureInfo(Lower: Texture.PLAT1),
+                32,
+                64,
+                map.Rooms[0],
+                map.Rooms[1])));
+
+        map.Rooms.Add(hall);
+
+        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var expected = File.ReadAllText("Fixtures//hall_with_lift.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 }

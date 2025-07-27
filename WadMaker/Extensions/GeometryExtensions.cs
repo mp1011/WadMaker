@@ -131,6 +131,18 @@ public static class GeometryExtensions
         );
     }
 
+    public static Point Move(this Point point, Side side, int distance)
+    {
+        return side switch
+        {
+            Side.Right => new Point(point.X + distance, point.Y),
+            Side.Left => new Point(point.X - distance, point.Y),
+            Side.Top => new Point(point.X, point.Y + distance),
+            Side.Bottom => new Point(point.X, point.Y - distance),
+            _ => point
+        };
+    }
+
     public static double AsAngle(this double angle) => angle.NMod(360.0);
 
     public static double AngleTo(this vertex v1, vertex v2)

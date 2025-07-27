@@ -86,7 +86,9 @@ public class MapBuilder
             Sector? backSector = mapElements.Sectors.FirstOrDefault(p => _isPointInSector.Execute(lineDef.BackTestPoint, p, mapElements));
 
             if (frontSector == null)
-                throw new NotImplementedException("Unable to handle invalid sidedef");
+            {
+                // should do something, but don't know what
+            }
             else if(backSector == null)
             {
                 mapElements.SideDefs.Remove(lineDef.Back!);
