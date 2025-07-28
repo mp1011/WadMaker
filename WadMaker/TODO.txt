@@ -14,8 +14,10 @@
 ------------- 7/20/2025
 [x] stairs
 [x] lifts
---------------7/26/2025
-
+--------------7/27/2025
+[ ] add additional shape modifiers - n-gon, angled corners, carve sides
+[ ] ability to create halls when side is not aligned with bounding box
+[ ] intelligent sidedef pegs and translation
 
 
 7/6/2025

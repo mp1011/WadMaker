@@ -19,6 +19,38 @@ internal class RoomBuilderTests : StandardTest
     }
 
     [Test]
+    public void CanBuildRoomWithAngledCorners()
+    {
+        var room = new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(400, -400),
+        };
+
+        room.ShapeModifiers.Add(new AngledCorners { Width = 16 });
+
+        var elements = RoomBuilder.Build(room);
+        Assert.That(elements.Vertices, Has.Count.EqualTo(8));
+    }
+
+
+    [Test]
+    public void CanBuildRoundRoom()
+    {
+        var room = new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(400, -400),
+        };
+
+        room.ShapeModifiers.Add(new NGon { Sides = 32 });
+
+        var elements = RoomBuilder.Build(room);
+        Assert.That(elements.Vertices, Has.Count.EqualTo(32));
+    }
+
+
+    [Test]
     public void CanBuildRoomWithInnerStructure()
     {
         var room = new Room

@@ -209,7 +209,15 @@ Map RoomWithAlcove(RoomGenerator roomGenerator)
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 
-var map = AdjacentOverlappingInner();
+//var map = AdjacentOverlappingInner();
+var map = new Map();
+map.Rooms.Add(new Room { BottomRight = new Point(400, -400) });
+map.Rooms[0].ShapeModifiers.Add(new InvertCorners { Width = 64 });
+map.Rooms[0].ShapeModifiers.Add(new AngledCorners { Width = 8 });
+
+
+// map.Rooms[0].ShapeModifiers.Add(new NGon { Sides = 64 });
+
 
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);
 var mapPainter = services.GetService<MapPainter>()!;
