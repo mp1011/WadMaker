@@ -212,9 +212,7 @@ var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardD
 //var map = AdjacentOverlappingInner();
 var map = new Map();
 map.Rooms.Add(new Room { BottomRight = new Point(400, -400) });
-map.Rooms[0].ShapeModifiers.Add(new InvertCorners { Width = 64 });
-map.Rooms[0].ShapeModifiers.Add(new AngledCorners { Width = 8 });
-
+map.Rooms[0].ShapeModifiers.Add(new NotchedSides { Width = 128, Depth = 16 });
 
 // map.Rooms[0].ShapeModifiers.Add(new NGon { Sides = 64 });
 

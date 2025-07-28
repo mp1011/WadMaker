@@ -49,6 +49,24 @@ internal class RoomBuilderTests : StandardTest
         Assert.That(elements.Vertices, Has.Count.EqualTo(32));
     }
 
+    [Test]
+    public void CanBuildRoundWithNotchedSides()
+    {
+        var room = new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(400, -400),
+        };
+
+        room.ShapeModifiers.Add(new NotchedSides { Width = 128, Depth = 32 });
+
+        var elements = RoomBuilder.Build(room);
+        var linesByLength = elements.LineDefs.GroupBy(p => p.Length).ToDictionary(k=>k.Key, k => k.ToList());
+
+        Assert.That(linesByLength[32].Count, Is.EqualTo(8));
+        Assert.That(linesByLength[128].Count, Is.EqualTo(4));
+    }
+
 
     [Test]
     public void CanBuildRoomWithInnerStructure()
