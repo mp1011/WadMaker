@@ -141,4 +141,30 @@ public class HallGeneratorTests
         }
     }
 
+    [Test]
+    public void CanGenerateHallWhenRoomSidesNotOnBounds()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(200, -200)
+        });
+
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(1000, 0),
+            BottomRight = new Point(1200, -200)
+        });
+
+        map.Rooms[0].ShapeModifiers.Add(new NotchedSides { Width = 160, Depth = 20 });
+        map.Rooms[1].ShapeModifiers.Add(new NotchedSides { Width = 160, Depth = 20 });
+
+        var hall = new Hall(100, map.Rooms[0], map.Rooms[1]);
+
+        var generatedHall = new HallGenerator().GenerateHall(hall);
+
+        Assert.That(generatedHall.UpperLeft.X, Is.EqualTo(180));
+        Assert.That(generatedHall.BottomRight.X, Is.EqualTo(1020));
+    }
 }

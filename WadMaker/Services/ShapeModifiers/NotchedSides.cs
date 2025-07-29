@@ -22,7 +22,7 @@ public class NotchedSides : IShapeModifier
             if((angle % 90) != 0)            
                 continue;
             
-            var lineSide = SideOfSector(point.Item2, point.Item3, center);
+            var lineSide = center.LineSide(point.Item2, point.Item3);
             if(lineSide == Side.None)
                 continue;
 
@@ -42,21 +42,5 @@ public class NotchedSides : IShapeModifier
         }
 
         return newPoints.ToArray();
-    }
-
-    private Side SideOfSector(Point v1, Point v2, Point sectorCenter)
-    {
-        var points = new[] { v1, v2 };
-       
-        if (points.All(v => v.X < sectorCenter.X))
-            return Side.Left;
-        if (points.All(v => v.X > sectorCenter.X))
-            return Side.Right;
-        if (points.All(v => v.Y < sectorCenter.Y))
-            return Side.Bottom;
-        if (points.All(v => v.Y > sectorCenter.Y))
-            return Side.Top;
-        else
-            return Side.None;
     }
 }

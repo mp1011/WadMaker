@@ -128,18 +128,7 @@ public class RoomBuilder
 
     private IEnumerable<vertex> Vertices(IShape room)
     {
-        var initialPoints = new[]
-        {
-            new Point(room.UpperLeft.X, room.UpperLeft.Y),
-            new Point(room.BottomRight.X, room.UpperLeft.Y),
-            new Point(room.BottomRight.X, room.BottomRight.Y),
-            new Point(room.UpperLeft.X, room.BottomRight.Y),
-        };
-
-        var points = room.ShapeModifiers.Aggregate(initialPoints, 
-            (p, s) => s.AlterPoints(p, room));
-
-        return points.Select(p => new vertex(p.X, p.Y));
+        return room.GetPoints().Select(p => new vertex(p.X, p.Y));
     }
 
     public IEnumerable<SideDef> SideDefs(Room room, vertex[] vertices, Sector sector)

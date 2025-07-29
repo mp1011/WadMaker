@@ -207,15 +207,32 @@ Map RoomWithAlcove(RoomGenerator roomGenerator)
     return map;
 }
 
+Map NotchedRoomHall()
+{
+    var map = new Map();
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(0, 0),
+        BottomRight = new Point(200, -200)
+    });
+
+    map.Rooms.Add(new Room
+    {
+        UpperLeft = new Point(1000, 0),
+        BottomRight = new Point(1200, -200)
+    });
+
+    map.Rooms[0].ShapeModifiers.Add(new NotchedSides { Width = 140, Depth = 20 });
+    map.Rooms[1].ShapeModifiers.Add(new NotchedSides { Width = 140, Depth = 20 });
+
+    var hall = new Hall(100, map.Rooms[0], map.Rooms[1]);
+
+    map.Rooms.Add(new HallGenerator().GenerateHall(hall));
+    return map;
+}
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 
-//var map = AdjacentOverlappingInner();
-var map = new Map();
-map.Rooms.Add(new Room { BottomRight = new Point(400, -400) });
-map.Rooms[0].ShapeModifiers.Add(new NotchedSides { Width = 128, Depth = 16 });
-
-// map.Rooms[0].ShapeModifiers.Add(new NGon { Sides = 64 });
-
+var map = NotchedRoomHall();
 
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);
 var mapPainter = services.GetService<MapPainter>()!;

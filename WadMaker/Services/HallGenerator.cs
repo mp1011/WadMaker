@@ -1,4 +1,6 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using WadMaker.Models;
 
 namespace WadMaker.Services;
@@ -9,13 +11,9 @@ public class HallGenerator
     {
         var side = HallSide(hall);
 
-        var room1Anchors = hall.Room1.Bounds.SidePoints(side)
-                                            .MoveToDistance(hall.Width)
-                                            .ToArray();
+        var room1Anchors = GetHallAnchors(hall.Room1, side, hall.Width);
+        var room2Anchors = GetHallAnchors(hall.Room2, side.Opposite(), hall.Width);
 
-        var room2Anchors = hall.Room2.Bounds.SidePoints(side.Opposite())
-                                            .MoveToDistance()
-                                            .ToArray();
         var hallRoom = CreateHallRoom(hall, room1Anchors.Union(room2Anchors).ToArray());
         if(hall.Door != null)
         {
@@ -34,6 +32,33 @@ public class HallGenerator
 
 
         return hallRoom;
+    }
+
+    private Point[] GetHallAnchors(Room room, Side side, int hallWidth)
+    {
+        var anchors = room.Bounds.SidePoints(side)
+                                 .MoveToDistance(hallWidth)
+                                 .ToArray();
+
+        var roomLines = room.GetPoints().WithNeighbors().ToArray();
+        var intersectingLine = roomLines.FirstOrDefault(line => anchors.All(a => a.Intersects(line.Item2, line.Item3)));
+
+        // if anchors are on a wall, we don't need to do anything
+        if (intersectingLine != default)
+            return anchors;
+
+        int tries = 10000;
+        while(--tries > 0)
+        {
+            // probably is a more efficient way to do this...
+            anchors = anchors.Select(p => p.Move(side.Opposite(), 1)).ToArray();
+            intersectingLine = roomLines.FirstOrDefault(line => anchors.All(a => a.Intersects(line.Item2, line.Item3)));
+
+            if (intersectingLine != default)
+                return anchors;
+        }
+
+        throw new Exception("Unable to fit hall");
     }
 
     private (Point,Point) GetHallSegment(Side side, DRectangle hallBounds, int position, int width)

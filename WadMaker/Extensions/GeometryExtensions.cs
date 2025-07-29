@@ -1,6 +1,4 @@
-﻿using WadMaker.Models.Geometry;
-
-namespace WadMaker.Extensions;
+﻿namespace WadMaker.Extensions;
 
 public static class GeometryExtensions
 {
@@ -13,6 +11,19 @@ public static class GeometryExtensions
         // Bounds check
         bool withinX = v.x >= Math.Min(line.V1.x, line.V2.x) && v.x <= Math.Max(line.V1.x, line.V2.x);
         bool withinY = v.y >= Math.Min(line.V1.y, line.V2.y) && v.y <= Math.Max(line.V1.y, line.V2.y);
+
+        return withinX && withinY;
+    }
+
+    public static bool Intersects(this Point v, Point lineV1, Point lineV2)
+    {
+        var colinear = (lineV2.X - lineV1.X) * (v.Y - lineV1.Y) == (lineV2.Y - lineV1.Y) * (v.X - lineV1.X);
+        if (!colinear)
+            return false;
+
+        // Bounds check
+        bool withinX = v.X >= Math.Min(lineV1.X, lineV2.X) && v.X <= Math.Max(lineV1.X, lineV2.X);
+        bool withinY = v.Y >= Math.Min(lineV1.Y, lineV2.Y) && v.Y <= Math.Max(lineV1.Y, lineV2.Y);
 
         return withinX && withinY;
     }
@@ -31,6 +42,22 @@ public static class GeometryExtensions
         double dx = v.X - other.X;
         double dy = v.Y - other.Y;
         return dx * dx + dy * dy;
+    }
+
+    public static Side LineSide(this Point center, Point v1, Point v2)
+    {
+        var points = new[] { v1, v2 };
+
+        if (points.All(v => v.X < center.X))
+            return Side.Left;
+        if (points.All(v => v.X > center.X))
+            return Side.Right;
+        if (points.All(v => v.Y < center.Y))
+            return Side.Bottom;
+        if (points.All(v => v.Y > center.Y))
+            return Side.Top;
+        else
+            return Side.None;
     }
 
     public static double DistanceTo(this Point p, Point other) =>
