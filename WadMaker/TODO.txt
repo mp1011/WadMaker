@@ -15,8 +15,8 @@
 [x] stairs
 [x] lifts
 --------------7/27/2025
-[ ] add additional shape modifiers - n-gon, angled corners, carve sides
-[ ] ability to create halls when side is not aligned with bounding box
+[x] add additional shape modifiers - n-gon, angled corners, carve sides
+[x] ability to create halls when side is not aligned with bounding box
 [ ] intelligent sidedef pegs and translation
 
 
@@ -61,3 +61,8 @@ walls for stairs not merging properly. facing wrong direction and marked as two 
 
 7/26/2025
 stairs and lifts are working
+
+7/28/2025
+texture offset handling: test on room with walls not 128 units wide, assert lines given proper offset
+add part with upper and lower, ensure textures properly pegged
+lifts and doors should NOT be pegged+

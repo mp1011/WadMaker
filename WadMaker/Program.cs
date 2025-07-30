@@ -230,13 +230,24 @@ Map NotchedRoomHall()
     map.Rooms.Add(new HallGenerator().GenerateHall(hall));
     return map;
 }
+
+
+//TextureLumpExtractor.ExtractInfoFromTextureLump("TEXTURE1.lmp");
+
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);
 
-var map = NotchedRoomHall();
+var map = new Map();
+map.Rooms.Add(new Room
+{
+    UpperLeft = new Point(0, 0),
+    BottomRight = new Point(222, -222),
+    WallTexture = new TextureInfo(Texture.BRICK6),
+});
 
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);
 var mapPainter = services.GetService<MapPainter>()!;
 var udmf = mapPainter.Paint(mapElements);
 
 Console.WriteLine("Done");
+
 

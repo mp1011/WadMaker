@@ -10,7 +10,7 @@ internal class StandardTest
 
     protected MapBuilder MapBuilder => ServiceProvider.GetRequiredService<MapBuilder>();
     protected RoomBuilder RoomBuilder => ServiceProvider.GetRequiredService<RoomBuilder>();
-
+    protected TextureAdjuster TextureAdjuster => ServiceProvider.GetRequiredService<TextureAdjuster>();
 
     protected RoomGenerator RoomGenerator => ServiceProvider.GetRequiredService<RoomGenerator>();
 

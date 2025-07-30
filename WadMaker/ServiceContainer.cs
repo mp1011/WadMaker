@@ -13,6 +13,7 @@ public static class ServiceContainer
         services.AddSingleton<MapPainter>();
         services.AddSingleton<IsPointInSector>();
         services.AddSingleton<RoomGenerator>();
+        services.AddSingleton<TextureAdjuster>();
     }
 
     public static void DiagnosticDependencies(IServiceCollection services)
@@ -26,6 +27,7 @@ public static class ServiceContainer
         services.AddSingleton<MapPainter>();
         services.AddSingleton<IsPointInSector>();
         services.AddSingleton<RoomGenerator>();
+        services.AddSingleton<TextureAdjuster>();
     }
 
     public static ServiceProvider CreateServiceProvider(Action<IServiceCollection> configure)

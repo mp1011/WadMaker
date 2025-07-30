@@ -17,6 +17,7 @@ public static class TestServiceContainer
             services.AddSingleton<MapPainter>();
             services.AddSingleton<IsPointInSector>();
             services.AddSingleton<RoomGenerator>();
+            services.AddSingleton<TextureAdjuster>();
         });
     }
 

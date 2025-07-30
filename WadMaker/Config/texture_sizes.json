@@ -1,0 +1,2142 @@
+[
+  {
+    "Name": "AASHITTY",
+    "Width": 64,
+    "Height": 64
+  },
+  {
+    "Name": "ASHWALL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ASHWALL3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ASHWALL4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ASHWALL6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ASHWALL7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BFALL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BFALL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BFALL3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BFALL4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BIGBRIK1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BIGBRIK2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BIGBRIK3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BIGDOOR1",
+    "Width": 128,
+    "Height": 96
+  },
+  {
+    "Name": "BIGDOOR2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BIGDOOR3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BIGDOOR4",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BIGDOOR5",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BIGDOOR6",
+    "Width": 128,
+    "Height": 112
+  },
+  {
+    "Name": "BIGDOOR7",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BLAKWAL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BLAKWAL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BLODRIP1",
+    "Width": 32,
+    "Height": 128
+  },
+  {
+    "Name": "BLODRIP2",
+    "Width": 32,
+    "Height": 128
+  },
+  {
+    "Name": "BLODRIP3",
+    "Width": 32,
+    "Height": 128
+  },
+  {
+    "Name": "BLODRIP4",
+    "Width": 32,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK10",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK11",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK12",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK5",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK8",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICK9",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRICKLIT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRNPOIS",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BRNSMAL1",
+    "Width": 64,
+    "Height": 64
+  },
+  {
+    "Name": "BRNSMAL2",
+    "Width": 64,
+    "Height": 64
+  },
+  {
+    "Name": "BRNSMALC",
+    "Width": 64,
+    "Height": 64
+  },
+  {
+    "Name": "BRNSMALL",
+    "Width": 32,
+    "Height": 64
+  },
+  {
+    "Name": "BRNSMALR",
+    "Width": 32,
+    "Height": 64
+  },
+  {
+    "Name": "BRONZE1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRONZE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRONZE3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BRONZE4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BROVINE2",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "BROWN1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BROWN144",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BROWN96",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BROWNGRN",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BROWNHUG",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BROWNPIP",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "BRWINDOW",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BSTONE1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BSTONE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "BSTONE3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT4",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT5",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT6",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT8",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CEMENT9",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "COMPBLUE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "COMPSPAN",
+    "Width": 32,
+    "Height": 128
+  },
+  {
+    "Name": "COMPSTA1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "COMPSTA2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "COMPTALL",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "COMPWERD",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CRACKLE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CRACKLE4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CRATE1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CRATE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CRATE3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CRATELIT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "CRATINY",
+    "Width": 64,
+    "Height": 16
+  },
+  {
+    "Name": "CRATWIDE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "DBRAIN1",
+    "Width": 64,
+    "Height": 32
+  },
+  {
+    "Name": "DBRAIN2",
+    "Width": 64,
+    "Height": 32
+  },
+  {
+    "Name": "DBRAIN3",
+    "Width": 64,
+    "Height": 32
+  },
+  {
+    "Name": "DBRAIN4",
+    "Width": 64,
+    "Height": 32
+  },
+  {
+    "Name": "DOOR1",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "DOOR3",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "DOORBLU",
+    "Width": 8,
+    "Height": 128
+  },
+  {
+    "Name": "DOORBLU2",
+    "Width": 16,
+    "Height": 128
+  },
+  {
+    "Name": "DOORRED",
+    "Width": 8,
+    "Height": 128
+  },
+  {
+    "Name": "DOORRED2",
+    "Width": 16,
+    "Height": 128
+  },
+  {
+    "Name": "DOORSTOP",
+    "Width": 8,
+    "Height": 128
+  },
+  {
+    "Name": "DOORTRAK",
+    "Width": 8,
+    "Height": 128
+  },
+  {
+    "Name": "DOORYEL",
+    "Width": 8,
+    "Height": 128
+  },
+  {
+    "Name": "DOORYEL2",
+    "Width": 16,
+    "Height": 128
+  },
+  {
+    "Name": "EXITDOOR",
+    "Width": 128,
+    "Height": 72
+  },
+  {
+    "Name": "EXITSIGN",
+    "Width": 64,
+    "Height": 16
+  },
+  {
+    "Name": "EXITSTON",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "FIREBLU1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIREBLU2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIRELAV2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIRELAV3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIRELAVA",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIREMAG1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIREMAG2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIREMAG3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "FIREWALA",
+    "Width": 128,
+    "Height": 112
+  },
+  {
+    "Name": "FIREWALB",
+    "Width": 128,
+    "Height": 112
+  },
+  {
+    "Name": "FIREWALL",
+    "Width": 128,
+    "Height": 112
+  },
+  {
+    "Name": "GRAY1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GRAY2",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "GRAY4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GRAY5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GRAY7",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "GRAYBIG",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "GRAYPOIS",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "GRAYTALL",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "GRAYVINE",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "GSTFONT1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GSTFONT2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GSTFONT3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GSTGARG",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GSTLION",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GSTONE1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "GSTONE2",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "GSTSATYR",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "GSTVINE1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "GSTVINE2",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ICKWALL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ICKWALL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ICKWALL3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ICKWALL4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ICKWALL5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ICKWALL7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "LITE3",
+    "Width": 32,
+    "Height": 128
+  },
+  {
+    "Name": "LITE5",
+    "Width": 16,
+    "Height": 128
+  },
+  {
+    "Name": "LITEBLU1",
+    "Width": 8,
+    "Height": 128
+  },
+  {
+    "Name": "LITEBLU4",
+    "Width": 16,
+    "Height": 128
+  },
+  {
+    "Name": "MARBFAC2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "MARBFAC3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "MARBFAC4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MARBFACE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "MARBGRAY",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MARBLE1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "MARBLE2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "MARBLE3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "MARBLOD1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "METAL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "METAL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "METAL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "METAL3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "METAL4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "METAL5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "METAL6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "METAL7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MIDBARS1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MIDBARS3",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "MIDBRN1",
+    "Width": 64,
+    "Height": 112
+  },
+  {
+    "Name": "MIDBRONZ",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MIDGRATE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "MIDSPACE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MODWALL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MODWALL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MODWALL3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "MODWALL4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "NUKE24",
+    "Width": 64,
+    "Height": 24
+  },
+  {
+    "Name": "NUKEDGE1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "NUKEPOIS",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "PANBLACK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANBLUE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANBOOK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANBORD1",
+    "Width": 32,
+    "Height": 128
+  },
+  {
+    "Name": "PANBORD2",
+    "Width": 16,
+    "Height": 128
+  },
+  {
+    "Name": "PANCASE1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANCASE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL8",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANEL9",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PANRED",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PIPE1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "PIPE2",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "PIPE4",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "PIPE6",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "PIPES",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PIPEWAL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PIPEWAL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "PLAT1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "REDWALL",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ROCK1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ROCK2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ROCK3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ROCK4",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ROCK5",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ROCKRED1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ROCKRED2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ROCKRED3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SFALL1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SFALL2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SFALL3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SFALL4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SHAWN1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SHAWN2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SHAWN3",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "SILVER1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SILVER2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SILVER3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SK_LEFT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SK_RIGHT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SKIN2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SKINCUT",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKINEDGE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SKINFACE",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKINLOW",
+    "Width": 256,
+    "Height": 104
+  },
+  {
+    "Name": "SKINMET1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKINMET2",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKINSCAB",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKINSYMB",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKSNAKE1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SKSNAKE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SKSPINE1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SKSPINE2",
+    "Width": 256,
+    "Height": 96
+  },
+  {
+    "Name": "SKY1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKY2",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SKY3",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SLADPOIS",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SLADSKUL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SLADWALL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SLOPPY1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SLOPPY2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SP_DUDE1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SP_DUDE2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SP_DUDE4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SP_DUDE5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SP_DUDE7",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SP_DUDE8",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SP_FACE1",
+    "Width": 128,
+    "Height": 96
+  },
+  {
+    "Name": "SP_FACE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SP_HOT1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "SP_ROCK1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SPACEW2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SPACEW3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SPACEW4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SPCDOOR1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SPCDOOR2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SPCDOOR3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SPCDOOR4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STARBR2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STARG1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STARG2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STARG3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STARGR1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STARGR2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STARTAN2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STARTAN3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STEP1",
+    "Width": 32,
+    "Height": 16
+  },
+  {
+    "Name": "STEP2",
+    "Width": 32,
+    "Height": 16
+  },
+  {
+    "Name": "STEP3",
+    "Width": 32,
+    "Height": 16
+  },
+  {
+    "Name": "STEP4",
+    "Width": 32,
+    "Height": 16
+  },
+  {
+    "Name": "STEP5",
+    "Width": 32,
+    "Height": 16
+  },
+  {
+    "Name": "STEP6",
+    "Width": 32,
+    "Height": 16
+  },
+  {
+    "Name": "STEPLAD1",
+    "Width": 64,
+    "Height": 16
+  },
+  {
+    "Name": "STEPTOP",
+    "Width": 128,
+    "Height": 16
+  },
+  {
+    "Name": "STONE",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "STONE2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STONE3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "STONE4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STONE5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STONE6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STONE7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STUCCO",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STUCCO1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STUCCO2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "STUCCO3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SUPPORT2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SUPPORT3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1BLUE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1BRCOM",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW1BRIK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1BRN1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW1BRN2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1BRNGN",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1BROWN",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW1CMT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1COMM",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "SW1COMP",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1DIRT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1EXIT",
+    "Width": 32,
+    "Height": 72
+  },
+  {
+    "Name": "SW1GARG",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1GRAY",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1GRAY1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1GSTON",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1HOT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1LION",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1MARB",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1MET2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1METAL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1MOD1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1PANEL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1PIPE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW1ROCK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1SATYR",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1SKIN",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1SKULL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1SLAD",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1STARG",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW1STON1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1STON2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW1STON6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1STONE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW1STRTN",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1TEK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1VINE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1WDMET",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1WOOD",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW1ZIM",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2BLUE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2BRCOM",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW2BRIK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2BRN1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW2BRN2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2BRNGN",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2BROWN",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW2CMT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2COMM",
+    "Width": 64,
+    "Height": 72
+  },
+  {
+    "Name": "SW2COMP",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2DIRT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2EXIT",
+    "Width": 32,
+    "Height": 72
+  },
+  {
+    "Name": "SW2GARG",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2GRAY",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2GRAY1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2GSTON",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2HOT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2LION",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2MARB",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2MET2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2METAL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2MOD1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2PANEL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2PIPE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW2ROCK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2SATYR",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2SKIN",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2SKULL",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2SLAD",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2STARG",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW2STON1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2STON2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW2STON6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2STONE",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "SW2STRTN",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2TEK",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2VINE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2WDMET",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2WOOD",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "SW2ZIM",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TANROCK2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TANROCK3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TANROCK4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TANROCK5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TANROCK7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TANROCK8",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKBRON1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "TEKBRON2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKGREN1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKGREN2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKGREN3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKGREN4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKGREN5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKLITE",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKLITE2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "TEKWALL1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "TEKWALL4",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "TEKWALL6",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD10",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD12",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD3",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD5",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD6",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD8",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOOD9",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOODGARG",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOODMET1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOODMET2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOODMET3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOODMET4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "WOODVERT",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZDOORB1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZDOORF1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZELDOOR",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZIMMER1",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZIMMER2",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZIMMER3",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZIMMER4",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZIMMER5",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZIMMER7",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZIMMER8",
+    "Width": 64,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF1",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF10",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF11",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF12",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF13",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF2",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF3",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF4",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF5",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF6",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF7",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZWOLF9",
+    "Width": 128,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE1",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE2",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE3",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE4",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE5",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE6",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE7",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE8",
+    "Width": 256,
+    "Height": 128
+  },
+  {
+    "Name": "ZZZFACE9",
+    "Width": 256,
+    "Height": 128
+  }
+]

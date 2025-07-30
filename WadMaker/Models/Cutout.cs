@@ -6,7 +6,7 @@ public class Cutout : IShape
 
     public Point UpperLeft { get; set; } = Point.Empty;
     public Point BottomRight { get; set; } = Point.Empty;
-    public Texture WallTexture { get; set; } = Texture.Default;
+    public Texture WallTexture { get; set; } = Texture.STONE;
 
     public Cutout Copy()
     {

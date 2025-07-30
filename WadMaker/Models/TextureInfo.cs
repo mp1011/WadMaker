@@ -1,7 +1,7 @@
 ﻿namespace WadMaker.Models;
 
 public record TextureInfo(
-    Texture? Main = Texture.Default,
+    Texture? Main = Texture.STONE,
     Texture? Upper = null,
     Texture? Mid = null,
     Texture? Lower = null,

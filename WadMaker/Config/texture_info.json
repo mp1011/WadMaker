@@ -1,0 +1,1708 @@
+[
+  {
+    "Name": "ASHWALL2",
+    "Themes": [ "Rock", "Dirt" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "ASHWALL3",
+    "Themes": [ "Rock", "Dirt" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ASHWALL4",
+    "Themes": [ "Rock", "Dirt" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ASHWALL6",
+    "Themes": [ "Rock", "Dirt" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "ASHWALL7",
+    "Themes": [ "Rock", "Dirt" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BFALL1",
+    "Themes": [ "Liquid", "Animated", "Blood" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "BIGBRIK1",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BIGBRIK2",
+    "Themes": [ "Brick" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "BIGBRIK3",
+    "Themes": [ "Brick", "Lights", "BottomLights" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BIGDOOR1",
+    "Themes": [ "Door", "Tech" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "BIGDOOR2",
+    "Themes": [ "Door", "Tech" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "BIGDOOR3",
+    "Themes": [ "Door", "Tech" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "BIGDOOR4",
+    "Themes": [ "Door", "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BIGDOOR5",
+    "Themes": [ "Door", "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BIGDOOR6",
+    "Themes": [ "Door", "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BIGDOOR7",
+    "Themes": [ "Door", "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BLAKWAL1",
+    "Themes": [ "City" ],
+    "Color": "Black"
+  },
+  {
+    "Name": "BLAKWAL2",
+    "Themes": [ "City" ],
+    "Color": "Black"
+  },
+  {
+    "Name": "BLODRIP1",
+    "Themes": [ "Pipe", "Animated", "Blood", "BloodBottom" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK1",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK10",
+    "Themes": [ "Brick" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "BRICK11",
+    "Themes": [ "Brick" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "BRICK12",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK2",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK3",
+    "Themes": [ "Brick" ],
+    "Color": "Brown",
+    "Comment":  "has connections to other textures"
+  },
+  {
+    "Name": "BRICK4",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK5",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK6",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK7",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK8",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICK9",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRICKLIT",
+    "Themes": [ "Brick", "Light" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRNPOIS",
+    "Themes": [ "Base" ],
+    "Color": "Green",
+    "Comment": "poison sign, connections to other textures"
+
+  },
+  {
+    "Name": "BRNSMAL1",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRNSMAL2",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRNSMALC",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown",
+    "Comment":  "Midpiece of next two"
+  },
+  {
+    "Name": "BRNSMALL",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRNSMALR",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRONZE1",
+    "Themes": [ "Base" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRONZE2",
+    "Themes": [ "Base" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRONZE3",
+    "Themes": [ "Base" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRONZE4",
+    "Themes": [ "Base", "Lights", "BottomLights" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BROVINE2",
+    "Themes": [ "Base", "Vines" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "BROWN1",
+    "Themes": [ "Base"],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BROWN144",
+    "Themes": [ "Base" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BROWN96",
+    "Themes": [ "Base" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BROWNGRN",
+    "Themes": [ "Base" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "BROWNHUG",
+    "Themes": [ "Base", "Dirt" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BROWNPIP",
+    "Themes": [ "Base", "Pipes" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BRWINDOW",
+    "Themes": [ "Brick", "Window"],
+    "Color": "Brown",
+    "Comment":  "goes with one of the brick textures"
+  },
+  {
+    "Name": "BSTONE1",
+    "Themes": [ "Rock" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BSTONE2",
+    "Themes": [ "Rock" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "BSTONE3",
+    "Themes": [ "Rock", "Light" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "CEMENT1",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT2",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT3",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT4",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT5",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT6",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT7",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT8",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "CEMENT9",
+    "Themes": [ "Base" ],
+    "Color": "White"
+  },
+  {
+    "Name": "COMPBLUE",
+    "Themes": [ "Tech" ],
+    "Color": "Blue"
+  },
+  {
+    "Name": "COMPSPAN",
+    "Themes": [ "Tech" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "COMPSTA1",
+    "Themes": [ "Tech", "Computer" ],
+    "Color": "Gray",
+    "Comment":  "Has Monitors"
+  },
+  {
+    "Name": "COMPSTA2",
+    "Themes": [ "Tech", "Computer" ],
+    "Color": "Gray",
+    "Comment": "Has Monitors"
+  },
+  {
+    "Name": "COMPTALL",
+    "Themes": [ "Tech" ],
+    "Color": "Gray",
+  },
+  {
+    "Name": "COMPWERD",
+    "Themes": [ "Tech" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "CRACKLE2",
+    "Themes": [ "Rock" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "CRACKLE4",
+    "Themes": [ "Rock" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "CRATE1",
+    "Themes": [ "Crate" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "CRATE2",
+    "Themes": [ "Crate" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "CRATE3",
+    "Themes": [ "Crate" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "CRATELIT",
+    "Themes": [ "Crate" ],
+    "Color": "Brown",
+    "Comment":  "has smaller crates"
+  },
+  {
+    "Name": "CRATINY",
+    "Themes": [ "Crate" ],
+    "Color": "Gray",
+    "Comment": "very small crates"
+  },
+  {
+    "Name": "CRATWIDE",
+    "Themes": [ "Crate" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "DBRAIN1",
+    "Themes": [ "Animated"],
+    "Color": "Red"
+  },
+  {
+    "Name": "DOOR1",
+    "Themes": [ "Door" ],
+    "Color": "White"
+  },
+  {
+    "Name": "DOOR3",
+    "Themes": [ "Door" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "DOORBLU",
+    "Themes": [ "ColorStrip" ],
+    "Color": "Blue"
+  },
+  {
+    "Name": "DOORBLU2",
+    "Themes": [ "ColorStrip" ],
+    "Color": "Blue"
+  },
+  {
+    "Name": "DOORRED",
+    "Themes": [ "ColorStrip" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "DOORRED2",
+    "Themes": [ "ColorStrip" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "DOORSTOP",
+    "Themes": [ "DoorSide" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "DOORTRAK",
+    "Themes": [ "DoorSide" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "DOORYEL",
+    "Themes": [ "DoorSide" ],
+    "Color": "Yellow"
+  },
+  {
+    "Name": "DOORYEL2",
+    "Themes": [ "DoorSide" ],
+    "Color": "Yellow"
+  },
+  {
+    "Name": "EXITDOOR",
+    "Themes": [ "Door" ],
+    "Color": "Gray",
+    "Comment":  "extra stuff to the side"
+  },
+  {
+    "Name": "EXITSIGN",
+    "Themes": [ "Exit" ],
+    "Color": "Gray",
+    "Comment": "sign with sides"
+  },
+  {
+    "Name": "EXITSTON",
+    "Themes": [ "Exit", "Brick" ],
+    "Color": "Gray",
+    "Comment": "matches with one of the bricks"
+  },
+  {
+    "Name": "FIREBLU1",
+    "Themes": [ "Animated", "Fire"],
+    "Color": "Red"
+  },
+  {
+    "Name": "FIRELAVA",
+    "Themes": [ "Animated", "Fire" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "FIREMAG1",
+    "Themes": [ "Animated", "Fire" ],
+    "Color": "Red",
+    "Comment":  "goes with one of the brown wall textures"
+  },
+  {
+    "Name": "FIREWALL",
+    "Themes": [ "Animated", "Fire" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "GRAY1",
+    "Themes": [ "Base"],
+    "Color": "Gray"
+  },
+  {
+    "Name": "GRAY2",
+    "Themes": [ "Base" ],
+    "Color": "Gray",
+    "Comment":  "Has a Vent"
+  },
+  {
+    "Name": "GRAY4",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "GRAY5",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "GRAY7",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "GRAYBIG",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "GRAYPOIS",
+    "Themes": [ "Base" ],
+    "Color": "Gray",
+    "Comment":  "Poison Sign"
+  },
+  {
+    "Name": "GRAYTALL",
+    "Themes": [ "Base" ],
+    "Color": "Gray",
+    "Comment": "Red Strip"
+  },
+  {
+    "Name": "GRAYVINE",
+    "Themes": [ "Base", "Vine" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "GSTFONT1",
+    "Themes": [ "Animated", "Marble", "Blood", "BloodBottom" ],
+    "Color": "Green",
+  },
+  {
+    "Name": "GSTGARG",
+    "Themes": [ "Marble", "Face" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "GSTLION",
+    "Themes": [ "Marble", "Face" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "GSTONE1",
+    "Themes": [ "Marble" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "GSTONE2",
+    "Themes": [ "Marble", "Blood", "BloodBottom" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "GSTSATYR",
+    "Themes": [ "Marble", "Face" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "GSTVINE1",
+    "Themes": [ "Marble", "Vine" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "GSTVINE2",
+    "Themes": [ "Marble", "Vine" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "ICKWALL1",
+    "Themes": [ "Base", "Slime" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "ICKWALL2",
+    "Themes": [ "Base", "Slime" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "ICKWALL3",
+    "Themes": [ "Base", "Slime" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "ICKWALL4",
+    "Themes": [ "Base", "Slime" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "ICKWALL5",
+    "Themes": [ "Base", "Slime" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "ICKWALL7",
+    "Themes": [ "Base", "Slime" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "LITE3",
+    "Themes": [ "Light"],
+    "Color": "White"
+  },
+  {
+    "Name": "LITE5",
+    "Themes": [ "Light" ],
+    "Color": "White"
+  },
+  {
+    "Name": "LITEBLU1",
+    "Themes": [ "Light" ],
+    "Color": "Blue"
+  },
+  {
+    "Name": "LITEBLU4",
+    "Themes": [ "Light" ],
+    "Color": "Blue"
+  },
+  {
+    "Name": "MARBFAC2",
+    "Themes": [ "Marble", "Face" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "MARBFAC3",
+    "Themes": [ "Marble", "Face" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "MARBFAC4",
+    "Themes": [ "Marble", "Face" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "MARBFACE",
+    "Themes": [ "Marble", "Face" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "MARBGRAY",
+    "Themes": [ "Marble"],
+    "Color": "Gray"
+  },
+  {
+    "Name": "MARBLE1",
+    "Themes": [ "Marble" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "MARBLE2",
+    "Themes": [ "Marble" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "MARBLE3",
+    "Themes": [ "Marble" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "MARBLOD1",
+    "Themes": [ "Marble", "BloodBottom" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "METAL",
+    "Themes": [ "Metal" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "METAL1",
+    "Themes": [ "Metal" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "METAL2",
+    "Themes": [ "Metal" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "METAL3",
+    "Themes": [ "Metal" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "METAL4",
+    "Themes": [ "Metal" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "METAL5",
+    "Themes": [ "Metal" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "METAL6",
+    "Themes": [ "Metal", "TopLights" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "METAL7",
+    "Themes": [ "Metal", "BottomLights" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "MIDBARS1",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "MIDBARS3",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "MIDBRN1",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "MIDBRONZ",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "MIDGRATE",
+    "Themes": [ "Transparent" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "MIDSPACE",
+    "Themes": [ "Transparent" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "MODWALL1",
+    "Themes": [ "Building" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "MODWALL2",
+    "Themes": [ "Building" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "MODWALL3",
+    "Themes": [ "Building" ],
+    "Color": "Black"
+  },
+  {
+    "Name": "MODWALL4",
+    "Themes": [ "Building" ],
+    "Color": "Black"
+  },
+  {
+    "Name": "NUKE24",
+    "Themes": [ "Base", "SlimeBottom" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "NUKEDGE1",
+    "Themes": [ "Base", "SlimeBottom" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "NUKEPOIS",
+    "Themes": [ "Base", "SlimeBottom" ],
+    "Color": "Brown",
+    "Comment": "Poison Sign"
+  },
+  {
+    "Name": "PANBLACK",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANBLUE",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANBOOK",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANBORD1",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANBORD2",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANCASE1",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANCASE2",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL1",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL2",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL3",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL4",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL5",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL6",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL7",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL8",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANEL9",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PANRED",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PIPE1",
+    "Themes": [ "Pipes", "BloodBottom" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PIPE2",
+    "Themes": [ "Pipes" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PIPE4",
+    "Themes": [ "Pipes" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PIPE6",
+    "Themes": [ "Pipes", "SlimeBottom" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PIPES",
+    "Themes": [ "Pipes" ],
+    "Color": "White"
+  },
+  {
+    "Name": "PIPEWAL1",
+    "Themes": [ "Pipes" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PIPEWAL2",
+    "Themes": [ "Pipes" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "PLAT1",
+    "Themes": [ "Platform" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "REDWALL",
+    "Themes": [ "Stone", "Flesh"],
+    "Color": "Red"
+  },
+  {
+    "Name": "ROCK1",
+    "Themes": [ "Rock" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "ROCK2",
+    "Themes": [ "Rock" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "ROCK3",
+    "Themes": [ "Rock" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "ROCK4",
+    "Themes": [ "Rock" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ROCK5",
+    "Themes": [ "Rock" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ROCKRED1",
+    "Themes": [ "Animated", "Rock" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SFALL1",
+    "Themes": [ "Animated", "Liquid" ,"Slime" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SHAWN1",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SHAWN2",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SHAWN3",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SILVER1",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SILVER2",
+    "Themes": [ "Base" ],
+    "Color": "Blue"
+  },
+  {
+    "Name": "SILVER3",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SK_LEFT",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SK_RIGHT",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SKIN2",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SKINCUT",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKINEDGE",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SKINFACE",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SKINLOW",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKINMET1",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKINMET2",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKINSCAB",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKINSYMB",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKSNAKE1",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKSNAKE2",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SKSPINE1",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SKSPINE2",
+    "Themes": [ "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SLADPOIS",
+    "Themes": [ "Base" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SLADSKUL",
+    "Themes": [ "Base" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SLADWALL",
+    "Themes": [ "Base" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SLOPPY1",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SLOPPY2",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SP_DUDE1",
+    "Themes": [ "Marble", "Corpse" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SP_DUDE2",
+    "Themes": [ "Marble", "Corpse" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SP_DUDE4",
+    "Themes": [ "Marble, " "Corpse", ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SP_DUDE5",
+    "Themes": [ "Marble", "Corpse" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SP_DUDE7",
+    "Themes": [ "Brick", "Corpse" ],
+    "Color": "Brown",
+    "Comment":  "Goes with one of the bricks"
+  },
+  {
+    "Name": "SP_DUDE8",
+    "Themes": [ "Brick", "Corpse" ],
+    "Color": "Brown",
+    "Comment": "Goes with one of the bricks"
+  },
+  {
+    "Name": "SP_FACE1",
+    "Themes": [ "Flesh"],
+    "Color": "White"
+  },
+  {
+    "Name": "SP_FACE2",
+    "Themes": [ "Flesh" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SP_HOT1",
+    "Themes": [ "Brick" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SP_ROCK1",
+    "Themes": [ "Rock" ],
+    "Color": "White"
+  },
+  {
+    "Name": "SPACEW2",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SPACEW3",
+    "Themes": [ "Tech" ],
+    "Color": "Gray",
+    "Comment":  "Monitors"
+  },
+  {
+    "Name": "SPACEW4",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SPCDOOR1",
+    "Themes": [ "Tech", "Door" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SPCDOOR2",
+    "Themes": [ "Tech", "Door" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SPCDOOR3",
+    "Themes": [ "Tech", "Door" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SPCDOOR4",
+    "Themes": [ "Tech", "Door" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STARBR2",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STARG1",
+    "Themes": [ "Tech" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "STARG2",
+    "Themes": [ "Tech" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "STARG3",
+    "Themes": [ "Tech" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "STARGR1",
+    "Themes": [ "Tech" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STARGR2",
+    "Themes": [ "Tech" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STARTAN2",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STARTAN3",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STEP1",
+    "Themes": [ "Step" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STEP2",
+    "Themes": [ "Step" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STEP3",
+    "Themes": [ "Step" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STEP4",
+    "Themes": [ "Step" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STEP5",
+    "Themes": [ "Step" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STEP6",
+    "Themes": [ "Step" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STEPLAD1",
+    "Themes": [ "Step" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STEPTOP",
+    "Themes": [ "Step" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STONE",
+    "Themes": [ "Base" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STONE2",
+    "Themes": [ "Brick" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STONE3",
+    "Themes": [ "Brick" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STONE4",
+    "Themes": [ "Stone" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STONE5",
+    "Themes": [ "Brick" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "STONE6",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STONE7",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STUCCO",
+    "Themes": [ "Building" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STUCCO1",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STUCCO2",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "STUCCO3",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SUPPORT2",
+    "Themes": [ "Lift" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SUPPORT3",
+    "Themes": [ "Lift" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1BLUE",
+    "Themes": [ "Switch", "Skull" ],
+    "Color": "Blue"
+  },
+  {
+    "Name": "SW1BRCOM",
+    "Themes": [ "Switch"],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1BRIK",
+    "Themes": [ "Switch" ],
+    "Color": "Gray",
+    "Comment":  "Most switches go with some texture"
+  },
+  {
+    "Name": "SW1BRN1",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1BRN2",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1BRNGN",
+    "Themes": [ "Switch" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SW1BROWN",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1CMT",
+    "Themes": [ "Switch" ],
+    "Color": "White"
+  },
+  {
+    "Name": "SW1COMM",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1COMP",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1DIRT",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1EXIT",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1GARG",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1GRAY",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1GRAY1",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1GSTON",
+    "Themes": [ "Switch" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SW1HOT",
+    "Themes": [ "Switch", "Skull" ],
+    "Color": "Red"
+  },
+  {
+    "Name": "SW1LION",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1MARB",
+    "Themes": [ "Switch" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SW1MET2",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1METAL",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1MOD1",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1PANEL",
+    "Themes": [ "Switch", "Skull" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1PIPE",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1ROCK",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1SATYR",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1SKIN",
+    "Themes": [ "Switch", "Flesh" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1SKULL",
+    "Themes": [ "Switch", "Flesh" ],
+    "Color": "White"
+  },
+  {
+    "Name": "SW1SLAD",
+    "Themes": [ "Switch" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SW1STARG",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1STON1",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1STON2",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1STON6",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1STONE",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1STRTN",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1TEK",
+    "Themes": [ "Switch" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "SW1VINE",
+    "Themes": [ "Switch" ],
+    "Color": "Gray"
+  },
+  {
+    "Name": "SW1WDMET",
+    "Themes": [ "Switch" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1WOOD",
+    "Themes": [ "Switch", "Skull" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "SW1ZIM",
+    "Themes": [ "Switch" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "TANROCK2",
+    "Themes": [ "Building" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TANROCK3",
+    "Themes": [ "Building" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TANROCK4",
+    "Themes": [ "Building", "Dirt" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TANROCK5",
+    "Themes": [ "Rock" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TANROCK7",
+    "Themes": [ "Brick" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TANROCK8",
+    "Themes": [ "Rock", "Dirt" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TEKBRON1",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TEKBRON2",
+    "Themes": [ "Tech", "LightTop" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TEKGREN1",
+    "Themes": [ "Tech"],
+    "Color": "Green"
+  },
+  {
+    "Name": "TEKGREN2",
+    "Themes": [ "Tech" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "TEKGREN3",
+    "Themes": [ "Tech" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "TEKGREN4",
+    "Themes": [ "Tech", "Pipes" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "TEKGREN5",
+    "Themes": [ "Tech", "LightTop" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "TEKLITE",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TEKLITE2",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TEKWALL1",
+    "Themes": [ "Tech" ],
+    "Color": "Black"
+  },
+  {
+    "Name": "TEKWALL4",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "TEKWALL6",
+    "Themes": [ "Tech" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD1",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD10",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD12",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD3",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD4",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD5",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD6",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD7",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD8",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOOD9",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOODGARG",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOODMET1",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOODMET2",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOODMET3",
+    "Themes": [ "Wood", "Blood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOODMET4",
+    "Themes": [ "Wood", "Blood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "WOODVERT",
+    "Themes": [ "Wood" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ZIMMER1",
+    "Themes": [ "Rock" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "ZIMMER2",
+    "Themes": [ "Rock" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "ZIMMER3",
+    "Themes": [ "Rock" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ZIMMER4",
+    "Themes": [ "Rock" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ZIMMER5",
+    "Themes": [ "Rock", "Vines", "Dirt" ],
+    "Color": "Brown"
+  },
+  {
+    "Name": "ZIMMER7",
+    "Themes": [ "Rock", "Vines", "Dirt" ],
+    "Color": "Green"
+  },
+  {
+    "Name": "ZIMMER8",
+    "Themes": [ "Rock"],
+    "Color": "Green"
+  }
+]
