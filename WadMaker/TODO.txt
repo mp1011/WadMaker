@@ -66,3 +66,6 @@ stairs and lifts are working
 texture offset handling: test on room with walls not 128 units wide, assert lines given proper offset
 add part with upper and lower, ensure textures properly pegged
 lifts and doors should NOT be pegged+
+
+7/31/2025
+add alcoves and ensure upper/lower textures aligned with main wall
