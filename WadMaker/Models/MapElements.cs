@@ -30,6 +30,8 @@ public class SideDef(Sector Sector, sidedef Data) : IElementWrapper<sidedef>
     {
         Data = Data with { sector = mapElements.Sectors.IndexOf(Sector) };
     }
+
+    public string Texture => Data.texturemiddle ?? Data.texturebottom ?? Data.texturetop ?? "";
 }
 
 public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef Data) : IElementWrapper<linedef>

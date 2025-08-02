@@ -239,12 +239,21 @@ var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardD
 var map = new Map();
 map.Rooms.Add(new Room
 {
-    UpperLeft = new Point(0, 0),
-    BottomRight = new Point(222, -222),
-    WallTexture = new TextureInfo(Texture.BRICK6),
+    UpperLeft = Point.Empty,
+    BottomRight = new Point(400, -300),
+    WallTexture = new TextureInfo(Texture.BRICK7),
 });
+ services.GetRequiredService<RoomGenerator>().AddStructure(map.Rooms[0],
+   new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
+   Side: Side.Top,
+   Width: 100,
+   Depth: 32,
+   CenterPercent: 0.50));
 
 var mapElements = services.GetRequiredService<MapBuilder>().Build(map);
+
+services.GetRequiredService<TextureAdjuster>().AdjustOffsetsAndPegs(mapElements);
+
 var mapPainter = services.GetService<MapPainter>()!;
 var udmf = mapPainter.Paint(mapElements);
 

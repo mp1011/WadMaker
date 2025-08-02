@@ -6,7 +6,7 @@ public class RoomGenerator
     {
         var alcoveRoom = alcove.Template.Copy();
 
-        var centerPoint = GetRelativeSidePoint(room.Bounds, alcove.Side, (int)(room.Bounds.AxisLength(alcove.Side) * alcove.CenterPercent));
+        var centerPoint = GetRelativeSidePoint(room.Bounds, alcove.Side, (int)(room.Bounds.SideLength(alcove.Side) * alcove.CenterPercent));
 
         var alcovePoints = GetAlcoveSegment(
             side: alcove.Side,

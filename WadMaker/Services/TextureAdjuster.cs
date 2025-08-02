@@ -14,13 +14,13 @@ public class TextureAdjuster
         }
     }
 
-    private void AlignTextures(LineDef[] lines)
+    private void AlignTextures(LineDefPath lines)
     {
         int totalWallWidth = 0;
 
         foreach (var line in lines)
         {
-            var textureSize = DoomTextureConfig.DoomTextureSizes[line.Front.Data.texturemiddle];
+            var textureSize = DoomTextureConfig.DoomTextureSizes[line.Front.Texture];
             line.Front.Data = line.Front.Data with { offsetx = totalWallWidth % textureSize.Width };
             totalWallWidth += (int)line.Length;
         }
@@ -31,58 +31,65 @@ public class TextureAdjuster
     /// </summary>
     /// <param name="mapElements"></param>
     /// <returns></returns>
-    private IEnumerable<LineDef[]> TextureRuns(MapElements mapElements)
+    private IEnumerable<LineDefPath> TextureRuns(MapElements mapElements)
     {
-        var linesWithNeighbors = mapElements.LineDefs
-            .Select(p => LineWithNeighbors(p, mapElements).ToArray())
-            .GroupBy(p => String.Join(",", p.Select(q => mapElements.LineDefs.IndexOf(q)).Order().ToArray()))
-            .Select(p => p.First())
-            .ToArray();
-
-        return linesWithNeighbors.SelectMany(p => TextureRuns(p));
+        var linePaths = GetLinePaths(mapElements).ToArray();
+        return linePaths.SelectMany(p => TextureRuns(p));
     }
 
-    private IEnumerable<LineDef[]> TextureRuns(LineDef[] run)
+    private IEnumerable<LineDefPath> GetLinePaths(MapElements mapElements)
     {
-        var lastTexture = run[0].Front.Data.texturemiddle;
-        List<LineDef[]> runs = new List<LineDef[]>();
-        List<LineDef> currentRun = new List<LineDef>();
+        var line = mapElements.LineDefs.First();
+        var path = new LineDefPath(mapElements, line);
 
-        foreach(var line in run)
+        var paths = path.Build().ToList();
+
+        int loopProtect = 1000000;
+        while(--loopProtect >= 0)
         {
-            if (line.Front.Data.texturemiddle != lastTexture)
+            if (loopProtect == 0)
+                throw new Exception("Unable to get line paths");
+
+            var usedLines = paths.SelectMany(p => p.ToArray()).ToArray();
+
+            var nextUnusedLine = mapElements.LineDefs.FirstOrDefault(p=> !usedLines.Contains(p));
+            if(nextUnusedLine != null)
             {
-                runs.Add(currentRun.ToArray());
-                currentRun.Clear();
-                lastTexture = line.Front.Data.texturemiddle;
+                var newPaths = new LineDefPath(mapElements, nextUnusedLine).Build().ToArray();
+                paths.AddRange(newPaths);
             }
-            
-            currentRun.Add(line);            
+            else
+            {
+                break;
+            }
         }
 
-        if (runs.Count() > 0 && lastTexture == run.First().Front.Data.texturemiddle)
-        {
-            currentRun.AddRange(runs.First());
-            runs[0] = currentRun.ToArray();
-        }
-        else
-        {
-
-            runs.Add(currentRun.ToArray());
-        }
-
-        return runs;
+        return paths;
     }
 
+    
 
-    private IEnumerable<LineDef> LineWithNeighbors(LineDef line, MapElements mapElements)
+    private IEnumerable<LineDefPath> TextureRuns(LineDefPath run)
     {
-        yield return line;
-        var next = mapElements.LineDefs.FirstOrDefault(p => p.V1 == line.V2);
-        while(next != null && next != line)
-        {
-            yield return next;
-            next = mapElements.LineDefs.FirstOrDefault(p => p.V1 == next.V2);            
-        }
+        return run.SplitBy(LinesShareTexture);
     }
+
+    private bool LinesShareTexture(LineDef line1, LineDef line2)
+    {
+        if (line1.Front.Texture == line2.Front.Texture)
+            return true;
+
+        if (line2.Back?.Texture != null && line1.Front.Texture == line2.Back.Texture)
+            return true;
+
+        if (line2.Back?.Texture != null && line1.Back?.Texture == line2.Back.Texture)
+            return true;
+
+        if (line1.Back?.Texture != null && line1.Back?.Texture == line2.Front.Texture)
+            return true;
+
+        return false;
+    }
+
+
 }

@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.Services;
+﻿using WadMaker.Models;
+
+namespace WadMaker.Tests.Services;
 
 internal class TextureAdjusterTests : StandardTest
 {
@@ -45,4 +47,35 @@ internal class TextureAdjusterTests : StandardTest
         Assert.That(elements.LineDefs[2].Front.Data.offsetx, Is.EqualTo(36)); // bottom
         Assert.That(elements.LineDefs[3].Front.Data.offsetx, Is.EqualTo(0)); // left
     }
+
+    [Test] 
+    public void CanAdjustUpperAndLowerTextures()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = Point.Empty,
+            BottomRight = new Point(300, -100),
+            WallTexture = new TextureInfo(Texture.BRICK7),
+        });
+
+        RoomGenerator.AddStructure(map.Rooms[0],
+           new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
+           Side: Side.Top,
+           Width: 100,
+           Depth: 32,
+           CenterPercent: 0.50));
+
+        var elements = MapBuilder.Build(map);
+        TextureAdjuster.AdjustOffsetsAndPegs(elements);
+
+        var topLines = elements.LineDefs.Where(p => p.V1.y == 0 && p.V2.y == 0).ToArray();
+
+        Assert.That(topLines[0].Front.Data.offsetx, Is.EqualTo(52)); // before alcove
+        Assert.That(topLines[1].Front.Data.offsetx, Is.EqualTo(24)); // alcove
+        Assert.That(topLines[2].Front.Data.offsetx, Is.EqualTo(60)); // after alcove
+
+        throw new Exception("need to set unpegged");
+    }
 }
+
