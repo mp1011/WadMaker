@@ -6,11 +6,26 @@ public class TextureAdjuster
     /// Ensures textures are properly aligned
     /// </summary>
     /// <param name="mapElements"></param>
-    public void AdjustOffsetsAndPegs(MapElements mapElements)
+    public MapElements AdjustOffsetsAndPegs(MapElements mapElements)
     {
         foreach(var textureRun in TextureRuns(mapElements))
         {
             AlignTextures(textureRun);
+        }
+
+        SetLinePegs(mapElements);
+        return mapElements;
+    }
+
+    private void SetLinePegs(MapElements mapElements)
+    {
+        foreach (var twoSidedLine in mapElements.LineDefs.Where(p => p.Back != null))
+        {
+            if (twoSidedLine.LineSpecial != null)
+                continue;
+
+            // TODO - do we always want to do this?
+            twoSidedLine.Data = twoSidedLine.Data with {  dontpegbottom = true, dontpegtop = true };
         }
     }
 

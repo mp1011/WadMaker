@@ -10,8 +10,10 @@ public class Thing(thing Data) : IElementWrapper<thing>
     public thing Data { get; private set; } = Data;
 }
 
-public class Sector(sector Data) : IElementWrapper<sector>
+public class Sector(Room Room, sector Data) : IElementWrapper<sector>
 {
+    public Room Room { get; } = Room;
+
     public sector Data { get; private set; } = Data;
 }
 

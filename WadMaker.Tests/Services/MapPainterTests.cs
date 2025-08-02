@@ -265,5 +265,16 @@ internal class MapPainterTests : StandardTest
         var expected = File.ReadAllText("Fixtures//room_with_button_activated_lift.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
+
+
+    [Test]
+    public void CanGenerateTextureTestMap()
+    {
+        var map = new TestMaps().TextureTestMap();
+        var udmf = MapToUDMF(map);
+
+        var expected = File.ReadAllText("Fixtures//texture_test_map.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
+    }
 }
 

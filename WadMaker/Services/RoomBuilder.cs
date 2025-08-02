@@ -115,10 +115,10 @@ public class RoomBuilder
         if (sideLine == null)
             return;
 
-        sideLine.LineSpecial = lineSpecial;
+        sideLine.LineSpecial = lineSpecial;   
     }
 
-    private Sector Sector(Room room) => new Sector(new sector(
+    private Sector Sector(Room room) => new Sector(room, new sector(
         texturefloor: room.FloorTexture.ToString(),
         textureceiling: room.CeilingTexture.ToString(),
         heightfloor: room.Floor,

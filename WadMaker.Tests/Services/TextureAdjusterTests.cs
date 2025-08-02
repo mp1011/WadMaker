@@ -1,4 +1,5 @@
 ﻿using WadMaker.Models;
+using WadMaker.Tests.Fixtures;
 
 namespace WadMaker.Tests.Services;
 
@@ -75,7 +76,18 @@ internal class TextureAdjusterTests : StandardTest
         Assert.That(topLines[1].Front.Data.offsetx, Is.EqualTo(24)); // alcove
         Assert.That(topLines[2].Front.Data.offsetx, Is.EqualTo(60)); // after alcove
 
-        throw new Exception("need to set unpegged");
+        var twoSidedLine = elements.LineDefs.First(p => p.Back != null);
+        Assert.That(twoSidedLine.Data.dontpegtop, Is.True);
+        Assert.That(twoSidedLine.Data.dontpegbottom, Is.True);
+    }
+
+    [Test]
+    public void CanApplyTheme()
+    {
+        var testMap = new TestMaps().TextureTestMap();
+
+        var udmf = MapToUDMF(testMap);
+        throw new NotImplementedException();
     }
 }
 

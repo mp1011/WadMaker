@@ -17,7 +17,9 @@
 --------------7/27/2025
 [x] add additional shape modifiers - n-gon, angled corners, carve sides
 [x] ability to create halls when side is not aligned with bounding box
-[ ] intelligent sidedef pegs and translation
+[x] intelligent sidedef pegs and translation
+--------------8/2/2025
+[ ] themes
 
 
 7/6/2025
@@ -69,3 +71,8 @@ lifts and doors should NOT be pegged+
 
 7/31/2025
 add alcoves and ensure upper/lower textures aligned with main wall
+
+8/2/2025
+step should not be unpegged (how though?)
+need a better way to decide direction of action lines
+we need both linedef sides, which we dont have until the overlapping linedef resolver has run

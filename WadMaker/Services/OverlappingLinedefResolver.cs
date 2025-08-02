@@ -111,6 +111,8 @@ public class OverlappingLinedefResolver
                 line2Texture.ApplyTo(newLine);
             else
                 line1Texture.ApplyTo(newLine);
+
+            newLine.LineSpecial = line1.LineSpecial ?? line2.LineSpecial;
             yield return newLine;
         }
     }

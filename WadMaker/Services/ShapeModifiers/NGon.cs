@@ -52,6 +52,9 @@ public class NGon : IShapeModifier
             vertices.Add(new Point((int)x, (int)y));
         }
 
+        // algorithm puts vertices in the wrong order
+        vertices.Reverse();
+
         return vertices.ToArray();
     }
 }

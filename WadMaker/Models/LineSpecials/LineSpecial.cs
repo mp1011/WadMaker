@@ -20,4 +20,6 @@ public record class LineSpecial(LineSpecialType type, int? arg0, int? arg1, int?
         playeruse = true,
         repeatspecial = true,
     };
+
+    public virtual bool AppliesToBackSector => false;
 }

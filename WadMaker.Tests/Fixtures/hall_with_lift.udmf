@@ -291,14 +291,14 @@ sidedef
 //19
 sidedef
 {
-    sector = 3;
+    sector = 4;
     texturetop = "STONE";
     texturebottom = "PLAT1";
 }
 //20
 sidedef
 {
-    sector = 4;
+    sector = 3;
     texturetop = "STONE";
     texturebottom = "PLAT1";
 }
@@ -475,13 +475,19 @@ linedef
 //17
 linedef
 {
-    v1 = 13;
-    v2 = 14;
+    v1 = 14;
+    v2 = 13;
     sidefront = 19;
     sideback = 20;
     twosided = true;
     blocking = false;
     comment = "double sided line";
+    special = 62;
+    arg0 = 0;
+    arg1 = 32;
+    arg2 = 105;
+    playeruse = true;
+    repeatspecial = true;
 }
 //18
 linedef

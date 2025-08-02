@@ -159,6 +159,7 @@ public class HallGenerator
             Floor = upperFloor - hallRoom.Floor
         };
         liftRoom.LineSpecials[hallSide.Opposite()] = new Plat_DownWaitUpStay(0, Speed.StandardLift);
+        liftRoom.LineSpecials[hallSide] = new Plat_DownWaitUpStay(0, Speed.StandardLift);
 
         yield return liftRoom;
 

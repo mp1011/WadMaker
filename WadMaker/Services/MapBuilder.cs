@@ -1,4 +1,7 @@
-﻿namespace WadMaker.Services;
+﻿using System.Xml.Linq;
+using WadMaker.Models.LineSpecials;
+
+namespace WadMaker.Services;
 
 public class MapBuilder
 {
@@ -60,8 +63,9 @@ public class MapBuilder
     {
         foreach(var specialLine in mapElements.LineDefs.Where(p=>p.LineSpecial != null && p.Back != null))
         {
-            // need logic for this
-            specialLine.FlipSides();
+            // note, not able to handle when both sides have specials
+            if (specialLine.LineSpecial!.AppliesToBackSector && specialLine.Front.Sector.Room.LineSpecials.Any())
+                specialLine.FlipSides();
         }
     }
 

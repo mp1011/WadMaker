@@ -7,3 +7,4 @@ global using WadMaker.Services.ShapeModifiers;
 global using WadMaker.Extensions;
 global using WadMaker.Tests.TestHelpers;
 global using WadMaker.Queries;
+global using WadMaker.Tests.Fixtures;
