@@ -17,6 +17,31 @@ public class TextureAdjuster
         return mapElements;
     }
 
+    public MapElements ApplyThemes(MapElements mapElements)
+    {
+        foreach(var sector in mapElements.Sectors)
+        {
+            if (sector.Room.Theme == null)
+                continue;
+
+            foreach (var line in mapElements.LineDefs.Where(p=>p.BelongsTo(sector)))
+            {
+                ApplyTheme(sector.Room.Theme, sector, line);
+            }
+        }
+
+        return mapElements;
+    }
+
+    private void ApplyTheme(Theme theme, Sector sector, LineDef line)
+    {
+        var matchingRule = theme.Rules.FirstOrDefault(p => p.AppliesTo(line));
+        if (matchingRule == null)
+            return;
+
+        matchingRule.Texture.ApplyTo(line);
+    }
+
     private void SetLinePegs(MapElements mapElements)
     {
         foreach (var twoSidedLine in mapElements.LineDefs.Where(p => p.Back != null))

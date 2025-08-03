@@ -1078,7 +1078,7 @@
   },
   {
     "Name": "SP_DUDE4",
-    "Themes": [ "Marble, " "Corpse", ],
+    "Themes": [ "Marble", "Corpse" ],
     "Color": "Green"
   },
   {

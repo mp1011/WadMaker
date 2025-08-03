@@ -2,12 +2,11 @@
 global using System.Drawing;
 global using System.Text;
 global using System.Text.Json;
+global using WadMaker.Config;
+global using WadMaker.Extensions;
 global using WadMaker.Models;
 global using WadMaker.Models.Geometry;
 global using WadMaker.Models.LineSpecials;
+global using WadMaker.Queries;
 global using WadMaker.Services;
 global using WadMaker.Services.ShapeModifiers;
-global using WadMaker.Services.Extractors;
-global using WadMaker.Extensions;
-global using WadMaker.Queries;
-global using WadMaker.Config;

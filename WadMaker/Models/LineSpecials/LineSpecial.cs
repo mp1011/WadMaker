@@ -7,11 +7,11 @@ public enum LineSpecialType
     Plat_DownWaitUpStay=62
 }
 
-public record class LineSpecial(LineSpecialType type, int? arg0, int? arg1, int? arg2, int? arg3, int? arg4)
+public record class LineSpecial(LineSpecialType Type, int? arg0, int? arg1, int? arg2, int? arg3, int? arg4)
 {
     public linedef ApplyTo(linedef linedef) => linedef with
     {
-        special = (int)type,
+        special = (int)Type,
         arg0 = arg0,
         arg1 = arg1,
         arg2 = arg2,

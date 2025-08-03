@@ -15,6 +15,10 @@ public class Sector(Room Room, sector Data) : IElementWrapper<sector>
     public Room Room { get; } = Room;
 
     public sector Data { get; private set; } = Data;
+
+    public int Height => Data.heightceiling - Data.heightfloor;
+
+    public LineDef[] Lines { get; set; } = Array.Empty<LineDef>();
 }
 
 public class SideDef(Sector Sector, sidedef Data) : IElementWrapper<sidedef>

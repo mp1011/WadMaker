@@ -1,7 +1,9 @@
 ﻿namespace WadMaker.Models;
 
-public class Room : IShape
+public class Room : IShape, IThemed
 {    
+    public IThemed Parent { get; }
+
     public List<IShapeModifier> ShapeModifiers { get; } = new List<IShapeModifier>();
 
     public Point UpperLeft { get; set; } = Point.Empty;
@@ -21,6 +23,20 @@ public class Room : IShape
     public int Floor { get; set; } = 0;
     public Flat FloorTexture { get; set; } = Flat.Default;
     public Flat CeilingTexture { get; set; } = Flat.Default;
+
+    private Theme? _theme;
+    public Theme? Theme
+    {
+        get
+        {
+            return _theme ?? Parent.Theme;
+        }
+        set
+        {
+            _theme = value;
+        }
+    }
+
     public TextureInfo WallTexture { get; set; } = new TextureInfo();
 
     public Dictionary<Side, TextureInfo> SideTextures { get; private set; } = new Dictionary<Side, TextureInfo>();
@@ -33,17 +49,22 @@ public class Room : IShape
 
     public List<Room> InnerStructures { get; } = new List<Room>();
 
-    public Room() { }
+    public Room() : this(NoTheme.Instance) { }
+    public Room(IThemed parent) 
+    {
+        Parent = parent;
+    }
 
-    public Room(IEnumerable<Point> points)
-    {        
+    public Room(IThemed parent, IEnumerable<Point> points)
+    {
+        Parent = parent;
         UpperLeft = new Point(points.Min(p => p.X), points.Max(p => p.Y));
         BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
     }
 
-    public Room Copy()
+    public Room Copy(IThemed newParent)
     {
-        var copy = new Room
+        var copy = new Room(newParent)
         {
             Floor = Floor,
             Ceiling = Ceiling,
@@ -51,9 +72,10 @@ public class Room : IShape
             FloorTexture = FloorTexture,
             WallTexture = WallTexture,
             Tag = Tag,
+            Theme = Theme,
         };
         copy.ShapeModifiers.AddRange(ShapeModifiers);
-        copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy()));
+        copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy(copy)));
         copy.Pillars.AddRange(Pillars.Select(p => p.Copy()));
         copy.LineSpecials = LineSpecials.ToDictionary(k => k.Key, v => v.Value);
         copy.SideTextures = SideTextures.ToDictionary(k => k.Key, v => v.Value);
@@ -74,7 +96,7 @@ public class Room : IShape
 
     public Room RelativeTo(Room parent)
     {
-        var copy = Copy();
+        var copy = Copy(parent);
         copy.UpperLeft = parent.UpperLeft.Add(UpperLeft);
         copy.BottomRight = parent.UpperLeft.Add(BottomRight);
         copy.Floor = parent.Floor + Floor;

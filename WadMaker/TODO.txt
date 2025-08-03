@@ -74,5 +74,6 @@ add alcoves and ensure upper/lower textures aligned with main wall
 
 8/2/2025
 step should not be unpegged (how though?)
-need a better way to decide direction of action lines
-we need both linedef sides, which we dont have until the overlapping linedef resolver has run
+prevent theme from applying to doortrack
+	use a placeholder texture and only apply theme when texture is placeholder
+step texture must only apply to lower texture

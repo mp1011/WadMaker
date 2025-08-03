@@ -6,9 +6,9 @@ class TestMaps : StandardTest
     {
         var map = new Map();
 
-        var hallTemplates = new Room { Ceiling = 112 };
+        var hallTemplates = new Room(map) { Ceiling = 112 };
 
-        var centerRoom = new Room
+        var centerRoom = new Room(map)
         {
             UpperLeft = Point.Empty,
             BottomRight = new Point(200, -200)
@@ -16,7 +16,7 @@ class TestMaps : StandardTest
 
         centerRoom.ShapeModifiers.Add(new InvertCorners { Width = 16 });
         map.Rooms.Add(centerRoom);
-        centerRoom.InnerStructures.Add(new Room
+        centerRoom.InnerStructures.Add(new Room(centerRoom)
         {
             Floor = -16,
             Ceiling = 0,
@@ -25,14 +25,14 @@ class TestMaps : StandardTest
         });
         centerRoom.InnerStructures[0].ShapeModifiers.Add(new NGon { Sides = 16 });
 
-        var leftRoom = new Room
+        var leftRoom = new Room(map)
         {
             UpperLeft = new Point(-600, 0),
             BottomRight = new Point(-400, -200),
         };
         map.Rooms.Add(leftRoom);
         leftRoom.ShapeModifiers.Add(new AngledCorners { Width = 16 });
-        leftRoom.InnerStructures.Add(new Room
+        leftRoom.InnerStructures.Add(new Room(leftRoom)
         {
             UpperLeft = new Point(50, -50),
             BottomRight = new Point(50 + 64, -50 - 64),
@@ -40,8 +40,7 @@ class TestMaps : StandardTest
             Ceiling =0,
         });
 
-
-        var rightRoom = new Room
+        var rightRoom = new Room(map)
         {
             UpperLeft = new Point(600, 0),
             BottomRight = new Point(800, -200),
@@ -49,10 +48,9 @@ class TestMaps : StandardTest
             Floor = -128
         };
         map.Rooms.Add(rightRoom);
-        RoomGenerator.AddStructure(rightRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 128, 16, 0.5));
+        RoomGenerator.AddStructure(rightRoom, new Alcove(new Room(rightRoom) { Floor = 32, Ceiling = -32 }, Side.Right, 128, 16, 0.5));
 
-
-        var topRoom = new Room
+        var topRoom = new Room(map)
         {
             UpperLeft = new Point(-100, 600),
             BottomRight = new Point(300, 400),

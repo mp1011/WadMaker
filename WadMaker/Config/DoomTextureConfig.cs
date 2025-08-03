@@ -1,12 +1,25 @@
 ﻿namespace WadMaker.Config;
 
-static class DoomTextureConfig
+public static class DoomTextureConfig
 {    
     private static Dictionary<string, DoomTextureSize> _sizes;
     private static Dictionary<string, DoomTextureInfo> _infos;
 
     public static Dictionary<string, DoomTextureSize> DoomTextureSizes => _sizes ??= ParseDoomTextureSizes();
     public static Dictionary<string, DoomTextureInfo> DoomTextureInfo => _infos ??= ParseDoomTextureInfo();
+
+    public static string[] AllThemes() => DoomTextureInfo
+        .SelectMany(p => p.Value.Themes)
+        .Order()
+        .Distinct()
+        .ToArray();
+
+    public static string[] AllColors() => DoomTextureInfo
+       .Select(p => p.Value.Color)
+       .Where(p=> p != null)
+       .Order()
+       .Distinct()
+       .ToArray();
 
     private static string ReadFile(string name) => File.ReadAllText(name);
 

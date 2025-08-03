@@ -50,6 +50,9 @@
     <None Update="Fixtures\room_with_pillar.udmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Fixtures\texture_test_techbase.udmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Fixtures\two_unconnected_rooms.udmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

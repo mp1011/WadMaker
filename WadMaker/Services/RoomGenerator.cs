@@ -4,7 +4,7 @@ public class RoomGenerator
 {
     public Room AddStructure(Room room, Alcove alcove)
     {
-        var alcoveRoom = alcove.Template.Copy();
+        var alcoveRoom = alcove.Template.Copy(room);
 
         var centerPoint = GetRelativeSidePoint(room.Bounds, alcove.Side, (int)(room.Bounds.SideLength(alcove.Side) * alcove.CenterPercent));
 

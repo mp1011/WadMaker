@@ -1,7 +1,4 @@
-﻿using WadMaker.Models;
-using WadMaker.Tests.Fixtures;
-
-namespace WadMaker.Tests.Services;
+﻿namespace WadMaker.Tests.Services;
 
 internal class TextureAdjusterTests : StandardTest
 {
@@ -82,12 +79,70 @@ internal class TextureAdjusterTests : StandardTest
     }
 
     [Test]
-    public void CanApplyTheme()
+    public void CanApplyThemeToDoors()
     {
         var testMap = new TestMaps().TextureTestMap();
 
+        var theme = new Theme(new ThemeRule[]
+        {
+            new ThemeRule(new TextureInfo(Texture.BIGDOOR5), new IsDoor()),
+        });
+
+        foreach(var room in testMap.Rooms)
+        {
+            room.Theme = theme;
+        }
+
+        var mapElements = MapBuilder.Build(testMap);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+        TextureAdjuster.ApplyThemes(mapElements);
+
+        var doorLines = mapElements.LineDefs.Where(p => p.LineSpecial?.Type == Models.LineSpecials.LineSpecialType.DoorRaise).ToArray();
+        Assert.That(doorLines, Is.Not.Empty);
+        foreach(var doorLine in doorLines)
+        {
+            Assert.That(doorLine.Front.Data.texturetop, Is.EqualTo(Texture.BIGDOOR5.ToString()));
+        }
+    }
+
+    [TestCase("Tech", "Brown", Texture.BIGDOOR4)]
+    [TestCase("Tech", "Green", Texture.BIGDOOR3)]
+    [TestCase("Wood", "Brown", Texture.BIGDOOR5)]
+    public void CanApplyNamedThemeToDoors(string themeName, string color, Texture expectedDoor)
+    {
+        var testMap = new TestMaps().TextureTestMap();
+
+        var theme = new Theme(new ThemeRule[]
+        {
+            new ThemeRule(new [] { themeName, "Door" }, color, new IsDoor()),
+        });
+
+        foreach (var room in testMap.Rooms)
+        {
+            room.Theme = theme;
+        }
+
+        var mapElements = MapBuilder.Build(testMap);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+        TextureAdjuster.ApplyThemes(mapElements);
+
+        var doorLines = mapElements.LineDefs.Where(p => p.LineSpecial?.Type == Models.LineSpecials.LineSpecialType.DoorRaise).ToArray();
+        Assert.That(doorLines, Is.Not.Empty);
+        foreach (var doorLine in doorLines)
+        {
+            Assert.That(doorLine.Front.Data.texturetop, Is.EqualTo(expectedDoor.ToString()));
+        }
+    }
+
+    [Test]
+    public void CanApplyTechTheme()
+    {
+        var testMap = new TestMaps().TextureTestMap();
+        testMap.Theme = new TechbaseTheme();
+ 
         var udmf = MapToUDMF(testMap);
-        throw new NotImplementedException();
+        var expected = File.ReadAllText("Fixtures//texture_test_techbase.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
     }
 }
 

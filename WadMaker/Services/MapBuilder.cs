@@ -40,6 +40,11 @@ public class MapBuilder
             lineDef.Resolve(mapElements);
         }
 
+        foreach(var sector in mapElements.Sectors)
+        {
+            sector.Lines = [.. mapElements.LineDefs.Where(p => p.BelongsTo(sector))];
+        }
+
         // add player start (temporary)
         mapElements.Things.Add(new Thing(new thing(
            x: map.Rooms.First().Center.X,

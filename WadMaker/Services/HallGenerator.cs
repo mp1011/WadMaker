@@ -200,7 +200,7 @@ public class HallGenerator
     {
         if(hall.HallTemplate != null)
         {
-            return new Room(vertices)
+            return new Room(hall.Room1.Parent, vertices)
             {
                 Ceiling = hall.HallTemplate.Ceiling,
                 Floor = hall.HallTemplate.Floor,
@@ -211,7 +211,7 @@ public class HallGenerator
         }
         else
         {
-            return new Room(vertices)
+            return new Room(hall.Room1.Parent, vertices)
             {
                 Ceiling = hall.Room1.Ceiling,
                 Floor = hall.Room1.Floor,

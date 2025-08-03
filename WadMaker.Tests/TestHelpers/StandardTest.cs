@@ -22,6 +22,11 @@ internal class StandardTest
         ServiceProvider = TestServiceContainer.CreateWithTestAnnotator();
     }
 
-    public string MapToUDMF(Map map) =>
-        MapPainter.Paint(TextureAdjuster.AdjustOffsetsAndPegs(MapBuilder.Build(map)));
+    public string MapToUDMF(Map map)
+    {
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+        TextureAdjuster.ApplyThemes(mapElements);
+        return MapPainter.Paint(mapElements);
+    }
 }

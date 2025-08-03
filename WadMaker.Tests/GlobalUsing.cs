@@ -1,10 +1,11 @@
 ﻿global using Microsoft.Extensions.DependencyInjection;
-global using System.Text;
 global using System.Drawing;
+global using System.Text;
+global using WadMaker.Extensions;
 global using WadMaker.Models;
+global using WadMaker.Queries;
 global using WadMaker.Services;
 global using WadMaker.Services.ShapeModifiers;
-global using WadMaker.Extensions;
-global using WadMaker.Tests.TestHelpers;
-global using WadMaker.Queries;
 global using WadMaker.Tests.Fixtures;
+global using WadMaker.Tests.TestHelpers;
+global using WadMaker.Themes;

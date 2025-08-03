@@ -24,4 +24,14 @@ public static class EnumerableExtensions
             collection.Remove(item);
         }
     }
+
+    public static bool ContainsAll<T>(this IEnumerable<T> list, IEnumerable<T> search)
+    {
+        return search.All(s => list.Contains(s));
+    }
+
+    public static bool ContainsAny<T>(this IEnumerable<T> list, IEnumerable<T> search)
+    {
+        return search.Any(s => list.Contains(s));
+    }
 }
