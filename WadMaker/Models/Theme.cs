@@ -9,8 +9,8 @@ public record ThemeRule(TextureInfo Texture, params ThemeCondition[] conditions)
 {
     public bool AppliesTo(LineDef lineDef) => conditions.All(c => c.AppliesTo(lineDef));
 
-    public ThemeRule(string[] themeNames, string colorName, params ThemeCondition[] conditions)
-        : this(new TextureInfo(GetTexturesMatchingThemes.Execute(themeNames, colorName).First()), conditions)
+    public ThemeRule(TextureQuery query, params ThemeCondition[] conditions)
+        : this(new TextureInfo(query.Execute().First()), conditions)
     { }
 }
 
@@ -22,6 +22,16 @@ public abstract record ThemeCondition()
     {
         return new And(this, new Not(other));
     }
+
+    public ThemeCondition And(ThemeCondition other)
+    {
+        return new And(this, other);
+    }
+}
+
+public record LambdaThemeCondition(Func<LineDef, bool> Condition) : ThemeCondition
+{
+    public override bool AppliesTo(LineDef lineDef) => Condition(lineDef);
 }
 
 public record TrueCondition() : ThemeCondition
@@ -82,6 +92,9 @@ public record FloorDifferenceLessOrEqualTo(int Amount) : ThemeCondition
         int floorFront = lineDef.Front.Sector.Data.heightfloor;
         int floorBack = lineDef.Back.Sector.Data.heightfloor;
 
+        if (floorFront == floorBack)
+            return false;
+
         return Math.Abs(floorFront - floorBack) <= Amount;
     }
 }
@@ -99,3 +112,9 @@ public record SectorHeightGreaterOrEqualTo(int Amount) : ThemeCondition
         return false;
     }
 }
+
+public record LineLengthGreaterOrEqualTo(int Amount) : LambdaThemeCondition(x=> x.Length >= Amount)
+{}
+
+public record LineLengthIs(int Amount) : LambdaThemeCondition(x => x.Length == Amount)
+{}

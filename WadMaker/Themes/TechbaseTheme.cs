@@ -4,13 +4,16 @@ public record TechbaseTheme() : Theme(CreateRules())
 {
     public static IEnumerable<ThemeRule> CreateRules()
     {
-        yield return new ThemeRule(new[] { "Tech", "Door" }, "Brown", new IsDoor());
-        yield return new ThemeRule(new[] { "Step" }, "Gray", new FloorDifferenceLessOrEqualTo(16));
+        yield return new ThemeRule(new TextureQuery( new[] { "Tech", "Door" }, "Brown"), new IsDoor());
+        yield return new ThemeRule(new TextureQuery( new[] { "Step" }), new FloorDifferenceLessOrEqualTo(16));
 
-        // main wall
-        yield return new ThemeRule(new[] { "Tech", "-Door" }, "Brown", 
-            new SectorHeightGreaterOrEqualTo(112).AndNot(new HasLineSpecial()));
+        // short walls
+        yield return new ThemeRule(new TextureQuery(new[] { "Light" }, MaxWidth: 16, MinWidth:16),
+            new LineLengthIs(16).AndNot(new IsDoorSide()));
 
-        yield return new ThemeRule(new TextureInfo(Texture.TEKWALL1), new TrueCondition());
+        // main walls
+        yield return new ThemeRule(new TextureQuery(new[] { "Tech", "-Door" }, "Brown", MinWidth: 128), 
+            new SectorHeightGreaterOrEqualTo(112)
+            .AndNot(new HasLineSpecial()));
     }
 }

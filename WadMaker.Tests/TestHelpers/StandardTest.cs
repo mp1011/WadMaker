@@ -25,8 +25,8 @@ internal class StandardTest
     public string MapToUDMF(Map map)
     {
         var mapElements = MapBuilder.Build(map);
-        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
         TextureAdjuster.ApplyThemes(mapElements);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
         return MapPainter.Paint(mapElements);
     }
 }

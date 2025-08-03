@@ -1,7 +1,7 @@
 ﻿namespace WadMaker.Models;
 
 public record DoomTextureSize(string Name, int Width, int Height);
-public record DoomTextureInfo(string Name, string[] Themes, string Color, string Comment);
+public record DoomTextureInfo(string Name, string[] Themes, string Color, string Comment, DoomTextureSize? Size);
 
 public enum Flat
 {

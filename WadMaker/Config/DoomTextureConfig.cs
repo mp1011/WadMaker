@@ -44,6 +44,9 @@ public static class DoomTextureConfig
     private static Dictionary<string, DoomTextureInfo> ParseDoomTextureInfo()
     {
         var infos = JsonSerializer.Deserialize<DoomTextureInfo[]>(ReadFile("config\\texture_info.json"), JsonSerializerOptions);
+
+        infos = infos!.Select(i => i with { Size = DoomTextureSizes.GetValueOrDefault(i.Name) }).ToArray();
+
         return infos.ToDictionary(k => k.Name, v => v);
     }
 

@@ -114,7 +114,7 @@ internal class TextureAdjusterTests : StandardTest
 
         var theme = new Theme(new ThemeRule[]
         {
-            new ThemeRule(new [] { themeName, "Door" }, color, new IsDoor()),
+            new ThemeRule(new TextureQuery(new [] { themeName, "Door" }, color), new IsDoor()),
         });
 
         foreach (var room in testMap.Rooms)
@@ -134,6 +134,7 @@ internal class TextureAdjusterTests : StandardTest
         }
     }
 
+    // room for improvement but ok for now
     [Test]
     public void CanApplyTechTheme()
     {
