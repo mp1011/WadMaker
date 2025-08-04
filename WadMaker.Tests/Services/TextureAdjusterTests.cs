@@ -51,7 +51,7 @@ internal class TextureAdjusterTests : StandardTest
         foreach (var line in lowerRoomLines)
             Assert.That(line.Front.Data.offsety, Is.EqualTo(16));
 
-        foreach (var line in lowerRoomLines)
+        foreach (var line in upperRoomLines)
             Assert.That(line.Front.Data.offsety, Is.EqualTo(0));
     }
 
