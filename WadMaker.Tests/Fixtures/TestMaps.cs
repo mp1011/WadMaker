@@ -73,4 +73,24 @@ class TestMaps : StandardTest
 
         return map;
     }
+
+    public Map TwoConnectedRoomsWithDifferentCeilings()
+    {
+        var map = new Map();
+        var leftRoom = new Room
+        {
+            UpperLeft = Point.Empty,
+            BottomRight = new Point(256, -256),
+            Ceiling = 128
+        };
+        var rightRoom = new Room
+        {
+            UpperLeft = new Point(256, 0),
+            BottomRight = new Point(512, -256),
+            Ceiling = 112
+        };
+        map.Rooms.Add(leftRoom);
+        map.Rooms.Add(rightRoom);
+        return map;
+    }
 }

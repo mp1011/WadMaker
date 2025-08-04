@@ -61,9 +61,16 @@ public class TextureAdjuster
         foreach (var line in lines)
         {
             var textureSize = DoomTextureConfig.DoomTextureSizes[line.Front.Texture];
-            line.Front.Data = line.Front.Data with { offsetx = totalWallWidth % textureSize.Width };
+            line.Front.Data = line.Front.Data with { 
+                offsetx = totalWallWidth % textureSize.Width,
+                offsety = CalcYOffset(line)};
             totalWallWidth += (int)line.Length;
         }
+    }
+
+    private int CalcYOffset(LineDef line)
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>

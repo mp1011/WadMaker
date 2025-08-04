@@ -23,6 +23,39 @@ internal class TextureAdjusterTests : StandardTest
     }
 
     [Test]
+    public void CanAlignTexturesVertically()
+    {
+        var map = new TestMaps().TwoConnectedRoomsWithDifferentCeilings();
+
+        foreach (var room in map.Rooms)
+        {
+            room.WallTexture = new TextureInfo(Texture.STARTAN2);
+        }
+
+        var elements = MapBuilder.Build(map);
+        TextureAdjuster.AdjustOffsetsAndPegs(elements);
+
+        var lowerRoomLines = elements.Sectors.First(p => p.Data.heightceiling == 112)
+                                             .Lines
+                                             .Where(p => p.Back == null)
+                                             .ToArray();
+
+        var upperRoomLines = elements.Sectors.First(p => p.Data.heightceiling == 128)
+                                             .Lines
+                                             .Where(p => p.Back == null)
+                                             .ToArray();
+
+        Assert.That(lowerRoomLines, Is.Not.Empty);
+        Assert.That(upperRoomLines, Is.Not.Empty);
+
+        foreach (var line in lowerRoomLines)
+            Assert.That(line.Front.Data.offsety, Is.EqualTo(16));
+
+        foreach (var line in lowerRoomLines)
+            Assert.That(line.Front.Data.offsety, Is.EqualTo(0));
+    }
+
+    [Test]
     public void CanAlignMultipleTextures()
     {
         var map = new Map();
