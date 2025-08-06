@@ -26,6 +26,11 @@ public class RoomBuilder
         }
 
         AddLineSpecials(room, roomElements);
+
+        foreach (var thing in room.Things)
+        {
+          roomElements.Things.Add(thing);
+        } 
         return roomElements;
     }
 

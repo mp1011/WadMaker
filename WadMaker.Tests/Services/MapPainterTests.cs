@@ -18,6 +18,7 @@ internal class MapPainterTests : StandardTest
             UpperLeft = new Point(0, 0),
             BottomRight = new Point(128, -256)
         });
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
 
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//basicmap.udmf");
@@ -49,7 +50,7 @@ internal class MapPainterTests : StandardTest
             UpperLeft = new Point(256, 0),
             BottomRight = new Point(356, -256)
         });
-
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//two_unconnected_rooms.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
@@ -83,7 +84,7 @@ internal class MapPainterTests : StandardTest
 
         var hall = new Hall(Room1: map.Rooms[0], Room2: map.Rooms[1], Width: 192);
         map.Rooms.Add(new HallGenerator().GenerateHall(hall));
-
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//two_rooms_with_hall.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
@@ -110,7 +111,7 @@ internal class MapPainterTests : StandardTest
             WallTexture = Texture.STONE2});
 
         map.Rooms[0].Pillars[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
-
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_pillar.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
@@ -142,7 +143,7 @@ internal class MapPainterTests : StandardTest
         });
 
         map.Rooms[0].InnerStructures[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
-
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_inner_structure.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
@@ -179,7 +180,7 @@ internal class MapPainterTests : StandardTest
                 map.Rooms[1])));
 
         map.Rooms.Add(hall);
-
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//hall_with_stairs.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
@@ -216,7 +217,7 @@ internal class MapPainterTests : StandardTest
                 map.Rooms[1])));
 
         map.Rooms.Add(hall);
-
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//hall_with_lift.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
@@ -260,7 +261,7 @@ internal class MapPainterTests : StandardTest
             Width: 64,
             Depth: 8,
             CenterPercent: 0.25));
-
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_button_activated_lift.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
@@ -271,6 +272,7 @@ internal class MapPainterTests : StandardTest
     public void CanGenerateTextureTestMap()
     {
         var map = new TestMaps().TextureTestMap();
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapToUDMF(map);
 
         var expected = File.ReadAllText("Fixtures//texture_test_map.udmf");

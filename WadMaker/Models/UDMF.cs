@@ -56,6 +56,7 @@ public record thing(
     bool skill3,
     bool skill4,
     bool skill5,
+    bool? ambush,
     bool single,
     bool dm,
     bool coop

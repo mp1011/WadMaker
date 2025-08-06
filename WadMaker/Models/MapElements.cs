@@ -7,7 +7,15 @@ public interface IElementWrapper<T> where T:IMapElement
 
 public class Thing(thing Data) : IElementWrapper<thing>
 {
-    public thing Data { get; private set; } = Data;
+  public thing Data { get; private set; } = Data;
+
+  public Thing Copy(Room oldRoom, Room newRoom)
+  {
+    var relX = Data.x - oldRoom.UpperLeft.X;
+    var relY = Data.y - oldRoom.UpperLeft.Y;
+
+    return new Thing(Data with { x = newRoom.UpperLeft.X + relX, y = newRoom.UpperLeft.Y + relY });
+  }
 }
 
 public class Sector(Room Room, sector Data) : IElementWrapper<sector>
@@ -215,6 +223,7 @@ public class MapElements
         Sectors.AddRange(other.Sectors);
         SideDefs.AddRange(other.SideDefs);
         LineDefs.AddRange(other.LineDefs);
+        Things.AddRange(other.Things);
 
         return this;
     }

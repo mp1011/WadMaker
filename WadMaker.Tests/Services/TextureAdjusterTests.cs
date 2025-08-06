@@ -2,6 +2,8 @@
 
 internal class TextureAdjusterTests : StandardTest
 {
+    protected override int ConfigVersion { get; } = 1;
+    
     [Test]
     public void CanAlignTextures()
     {
@@ -52,7 +54,7 @@ internal class TextureAdjusterTests : StandardTest
             Assert.That(line.Front.Data.offsety, Is.EqualTo(16));
 
         foreach (var line in upperRoomLines)
-            Assert.That(line.Front.Data.offsety, Is.EqualTo(0));
+            Assert.That(line.Front.Data.offsety, Is.Null);
     }
 
     [Test]
@@ -173,7 +175,7 @@ internal class TextureAdjusterTests : StandardTest
     {
         var testMap = new TestMaps().TextureTestMap();
         testMap.Theme = new TechbaseTheme();
- 
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(testMap);
         var udmf = MapToUDMF(testMap);
         var expected = File.ReadAllText("Fixtures//texture_test_techbase.udmf");
         Assert.That(udmf, Is.EqualTo(expected));

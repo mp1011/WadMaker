@@ -7,7 +7,7 @@ public record TextureQuery(string[] ThemeNames, string? ColorName = null, int? M
         var positiveThemes = ThemeNames.Where(p => !p.StartsWith("-")).ToArray();
         var negativeThemes = ThemeNames.Where(p => p.StartsWith("-")).Select(p=> p.TrimStart('-')).ToArray();
 
-        var matches = DoomTextureConfig.DoomTextureInfo.Values
+        var matches = DoomConfig.DoomTextureInfo.Values
             .Where(p => p.Themes.ContainsAll(positiveThemes) && !p.Themes.ContainsAny(negativeThemes));
 
         if (ColorName != null)

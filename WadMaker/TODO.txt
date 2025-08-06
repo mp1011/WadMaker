@@ -19,7 +19,11 @@
 [x] ability to create halls when side is not aligned with bounding box
 [x] intelligent sidedef pegs and translation
 --------------8/2/2025
-[ ] themes
+[x] themes (first draft)
+[ ] item placement
+[ ] ammo type and amount tracking
+[ ] monster hp tracking
+[ ] player path aware
 
 
 7/6/2025

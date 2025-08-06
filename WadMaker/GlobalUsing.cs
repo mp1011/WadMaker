@@ -10,3 +10,5 @@ global using WadMaker.Models.LineSpecials;
 global using WadMaker.Queries;
 global using WadMaker.Services;
 global using WadMaker.Services.ShapeModifiers;
+global using System.Globalization;
+global using CsvHelper;

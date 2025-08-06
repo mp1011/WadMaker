@@ -2,20 +2,27 @@
 
 public class TextureAdjuster
 {
-    /// <summary>
-    /// Ensures textures are properly aligned
-    /// </summary>
-    /// <param name="mapElements"></param>
-    public MapElements AdjustOffsetsAndPegs(MapElements mapElements)
-    {
-        foreach(var textureRun in TextureRuns(mapElements))
-        {
-            AlignTextures(textureRun);
-        }
+  private readonly IConfig _config;
 
-        SetLinePegs(mapElements);
-        return mapElements;
+  public TextureAdjuster(IConfig config)
+  {
+    _config = config;
+  }
+  
+    /// <summary>
+  /// Ensures textures are properly aligned
+  /// </summary>
+  /// <param name="mapElements"></param>
+  public MapElements AdjustOffsetsAndPegs(MapElements mapElements)
+  {
+    foreach (var textureRun in TextureRuns(mapElements))
+    {
+      AlignTextures(textureRun);
     }
+
+    SetLinePegs(mapElements);
+    return mapElements;
+  }
 
     public MapElements ApplyThemes(MapElements mapElements)
     {
@@ -54,24 +61,42 @@ public class TextureAdjuster
         }
     }
 
-    private void AlignTextures(LineDefPath lines)
-    {
-        int totalWallWidth = 0;
+  private void AlignTextures(LineDefPath lines)
+  {
+    int totalWallWidth = 0;
+    LineDef? prev = null;
 
-        foreach (var line in lines)
-        {
-            var textureSize = DoomTextureConfig.DoomTextureSizes[line.Front.Texture];
-            line.Front.Data = line.Front.Data with { 
-                offsetx = totalWallWidth % textureSize.Width,
-                offsety = CalcYOffset(line)};
-            totalWallWidth += (int)line.Length;
-        }
-    }
-
-    private int CalcYOffset(LineDef line)
+    foreach (var line in lines)
     {
-        throw new NotImplementedException();
+      var textureSize = DoomConfig.DoomTextureSizes[line.Front.Texture];
+      line.Front.Data = line.Front.Data with
+      {
+        offsetx = totalWallWidth % textureSize.Width,
+        offsety = prev != null ? CalcYOffset(line, prev) : null
+      };
+      totalWallWidth += (int)line.Length;
+      prev = line;
     }
+  }
+  private int? CalcYOffset(LineDef line, LineDef previousLine)
+  {
+    if (!_config.HandleYOffet)
+      return null;
+      
+    var prevFloor = previousLine.Front.Sector.Data.heightfloor;
+    var thisFloor = line.Front.Sector.Data.heightfloor;
+    var prevCeiling = previousLine.Front.Sector.Data.heightceiling;
+    var thisCeiling = line.Front.Sector.Data.heightceiling;
+
+    var ceilingDiff = prevCeiling - thisCeiling;
+    var offsetY = previousLine.Front.Data.offsety.GetValueOrDefault() + ceilingDiff;
+    if (offsetY == 0)
+      return null;
+    else
+      return offsetY;
+    
+        // todo, how to handle floor?
+  }
 
     /// <summary>
     /// Gets all sequences of linedefs that share the same texture

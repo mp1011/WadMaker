@@ -4,6 +4,8 @@ public class Room : IShape, IThemed
 {    
     public IThemed Parent { get; }
 
+    public List<Thing> Things{ get; } = new List<Thing>();
+
     public List<IShapeModifier> ShapeModifiers { get; } = new List<IShapeModifier>();
 
     public Point UpperLeft { get; set; } = Point.Empty;
@@ -74,6 +76,7 @@ public class Room : IShape, IThemed
             Tag = Tag,
             Theme = Theme,
         };
+        copy.Things.AddRange(Things.Select(t => t.Copy(this, copy)));
         copy.ShapeModifiers.AddRange(ShapeModifiers);
         copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy(copy)));
         copy.Pillars.AddRange(Pillars.Select(p => p.Copy()));
@@ -97,8 +100,11 @@ public class Room : IShape, IThemed
     public Room RelativeTo(Room parent)
     {
         var copy = Copy(parent);
+        copy.Things.Clear();
+
         copy.UpperLeft = parent.UpperLeft.Add(UpperLeft);
         copy.BottomRight = parent.UpperLeft.Add(BottomRight);
+        copy.Things.AddRange(Things.Select(t => t.Copy(this, copy)));  
         copy.Floor = parent.Floor + Floor;
         copy.Ceiling = parent.Ceiling + Ceiling;            
         return copy;

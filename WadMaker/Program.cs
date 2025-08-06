@@ -231,7 +231,7 @@ Map NotchedRoomHall()
     return map;
 }
 
-
+var things = DoomConfig.DoomThingInfo;
 //TextureLumpExtractor.ExtractInfoFromTextureLump("TEXTURE1.lmp");
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);

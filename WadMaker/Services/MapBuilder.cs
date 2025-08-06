@@ -45,22 +45,6 @@ public class MapBuilder
             sector.Lines = [.. mapElements.LineDefs.Where(p => p.BelongsTo(sector))];
         }
 
-        // add player start (temporary)
-        mapElements.Things.Add(new Thing(new thing(
-           x: map.Rooms.First().Center.X,
-           y: map.Rooms.First().Center.Y,
-           angle: 0,
-           type: 1,
-           skill1: true,
-           skill2: true,
-           skill3: true,
-           skill4: true,
-           skill5: true,
-           single: true,
-           dm: false,
-           coop: false
-       )));
-
         return mapElements;
     }
 
