@@ -1,4 +1,6 @@
 ﻿
+using WadMaker.Services.Extractors;
+
 Map FourRoom()
 {
     var map = new Map();
@@ -232,6 +234,7 @@ Map NotchedRoomHall()
 }
 
 var things = DoomConfig.DoomThingInfo;
+var foo = TextureLumpExtractor.ThingEnumCode(things.Values);
 //TextureLumpExtractor.ExtractInfoFromTextureLump("TEXTURE1.lmp");
 
 var services = ServiceContainer.CreateServiceProvider(ServiceContainer.StandardDependencies);

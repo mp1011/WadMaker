@@ -12,3 +12,4 @@ global using WadMaker.Services;
 global using WadMaker.Services.ShapeModifiers;
 global using System.Globalization;
 global using CsvHelper;
+global using System.Text.RegularExpressions;

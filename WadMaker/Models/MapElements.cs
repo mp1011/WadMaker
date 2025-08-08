@@ -8,7 +8,7 @@ public interface IElementWrapper<T> where T:IMapElement
 public class Thing(thing Data) : IElementWrapper<thing>
 {
   public thing Data { get; private set; } = Data;
-
+  public ThingType ThingType => (ThingType)Data.type;
   public Thing Copy(Room oldRoom, Room newRoom)
   {
     var relX = Data.x - oldRoom.UpperLeft.X;
