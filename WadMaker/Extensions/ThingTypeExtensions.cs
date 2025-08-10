@@ -3,7 +3,7 @@ public static class ThingTypeExtensions
   public static (ThingType, int)[] AmmoWeaponAmounts(this ThingType type) =>
     type switch
     {
-      ThingType.shotgun_shells => [(ThingType.Shotgun, 4)],
+      ThingType.Four_shotgun_shells => [(ThingType.Shotgun, 4)],
       ThingType.Box_of_shotgun_shells => [(ThingType.Shotgun, 20)],
       ThingType.Shotgun => [(ThingType.Shotgun, 8)],
 

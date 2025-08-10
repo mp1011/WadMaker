@@ -3,6 +3,7 @@ global using System.Drawing;
 global using System.Text;
 global using WadMaker.Extensions;
 global using WadMaker.Models;
+global using WadMaker.Models.Geometry;
 global using WadMaker.Queries;
 global using WadMaker.Services;
 global using WadMaker.Services.ShapeModifiers;

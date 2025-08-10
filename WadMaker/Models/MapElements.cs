@@ -1,21 +1,23 @@
 ﻿namespace WadMaker.Models;
 
-public interface IElementWrapper<T> where T:IMapElement
+public interface IElementWrapper<T> where T : IMapElement
 {
     T Data { get; }
 }
 
 public class Thing(thing Data) : IElementWrapper<thing>
 {
-  public thing Data { get; private set; } = Data;
-  public ThingType ThingType => (ThingType)Data.type;
-  public Thing Copy(Room oldRoom, Room newRoom)
-  {
-    var relX = Data.x - oldRoom.UpperLeft.X;
-    var relY = Data.y - oldRoom.UpperLeft.Y;
+    public thing Data { get; private set; } = Data;
+    public ThingType ThingType => (ThingType)Data.type;
 
-    return new Thing(Data with { x = newRoom.UpperLeft.X + relX, y = newRoom.UpperLeft.Y + relY });
-  }
+    public Point Position => new Point((int)Data.x, (int)Data.y);
+    public Thing Copy(Room oldRoom, Room newRoom)
+    {
+        var relX = Data.x - oldRoom.UpperLeft.X;
+        var relY = Data.y - oldRoom.UpperLeft.Y;
+
+        return new Thing(Data with { x = newRoom.UpperLeft.X + relX, y = newRoom.UpperLeft.Y + relY });
+    }
 }
 
 public class Sector(Room Room, sector Data) : IElementWrapper<sector>
@@ -62,7 +64,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         get
         {
             yield return Front.Sector;
-            if(Back != null)
+            if (Back != null)
                 yield return Back.Sector;
         }
     }
@@ -80,10 +82,10 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     /// </summary>
     public Point BackTestPoint => MidPoint.Add(FrontAngle.AngleToPoint(-4.0));
 
-    private LineSpecial? _lineSpecial;  
-    public LineSpecial?  LineSpecial
+    private LineSpecial? _lineSpecial;
+    public LineSpecial? LineSpecial
     {
-        get => _lineSpecial; 
+        get => _lineSpecial;
         set
         {
             _lineSpecial = value;
@@ -119,14 +121,14 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public double Length => V1.DistanceTo(V2);
 
     public double FrontAngle => V1.FrontSidedefAngle(V2);
-    
+
     public double Angle => V1.AngleTo(V2);
 
     public bool BelongsTo(Sector sector)
     {
         return Front.Sector == sector || (Back != null && Back.Sector == sector);
     }
-    
+
     /// <summary>
     /// Determines which side this line represents for this room
     /// </summary>
@@ -136,7 +138,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     {
         var center = room.Center;
 
-        if(Vertices.All(v=> v.x < center.X))
+        if (Vertices.All(v => v.x < center.X))
             return Side.Left;
         if (Vertices.All(v => v.x > center.X))
             return Side.Right;
@@ -162,7 +164,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         return this;
     }
 
-    public IEnumerable<SideDef> SideDefs     
+    public IEnumerable<SideDef> SideDefs
     {
         get
         {
@@ -176,7 +178,8 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
 
     public void Resolve(MapElements mapElements)
     {
-        Data = Data with {
+        Data = Data with
+        {
             v1 = mapElements.Vertices.IndexOf(V1),
             v2 = mapElements.Vertices.IndexOf(V2),
             sidefront = mapElements.SideDefs.IndexOf(Front),
@@ -199,7 +202,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
 
     public bool Contains(Point point)
     {
-        return ((int)V1.x == point.X && (int)V1.y == point.Y) 
+        return ((int)V1.x == point.X && (int)V1.y == point.Y)
             || ((int)V2.x == point.X && (int)V2.y == point.Y);
     }
 

@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.Fixtures;
+﻿using WadMaker.Models;
+
+namespace WadMaker.Tests.Fixtures;
 
 class TestMaps : StandardTest
 {
@@ -91,6 +93,34 @@ class TestMaps : StandardTest
         };
         map.Rooms.Add(leftRoom);
         map.Rooms.Add(rightRoom);
+        return map;
+    }
+
+    public Map LinearMap()
+    {
+        var map = new Map();
+        Room? lastRoom = null;
+
+        for(int i = 0; i < 5; i++)
+        {
+            var room = new Room
+            {
+                UpperLeft = new Point(500*i, 0),
+                BottomRight = new Point((500*i)+256, -256),
+                Ceiling = 128
+            };
+            map.Rooms.Add(room);
+
+            if (lastRoom != null)
+            {
+                map.Rooms.Add(HallGenerator.GenerateHall(new Hall(128, lastRoom, room, 
+                    Door: new Door(16, Texture.BIGDOOR2, Texture.DOORTRAK, 32))));
+            }
+
+            lastRoom = room;
+        }
+              
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         return map;
     }
 }

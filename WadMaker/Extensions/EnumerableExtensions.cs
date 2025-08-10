@@ -34,4 +34,16 @@ public static class EnumerableExtensions
     {
         return search.Any(s => list.Contains(s));
     }
+
+    public static (T Item, int Index)[] WithIndex<T>(this IEnumerable<T> source)
+    {
+        if (source == null) throw new ArgumentNullException(nameof(source));
+        var result = new List<(T, int)>();
+        int idx = 0;
+        foreach (var item in source)
+        {
+            result.Add((item, idx++));
+        }
+        return result.ToArray();
+    }
 }

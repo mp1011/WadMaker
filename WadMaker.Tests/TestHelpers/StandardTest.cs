@@ -6,7 +6,7 @@ namespace WadMaker.Tests.TestHelpers;
 internal class StandardTest
 {
     protected virtual int ConfigVersion { get; } = 0;
-    
+
     protected ServiceProvider ServiceProvider { get; }
 
     protected MapPainter MapPainter => ServiceProvider.GetRequiredService<MapPainter>();
@@ -19,11 +19,24 @@ internal class StandardTest
     protected HallGenerator HallGenerator => ServiceProvider.GetRequiredService<HallGenerator>();
     protected ThingPlacer ThingPlacer => ServiceProvider.GetRequiredService<ThingPlacer>();
 
-  public StandardTest()
-  {
-    ServiceContainer.ConfigVersion = ConfigVersion;
-    ServiceProvider = TestServiceContainer.CreateWithTestAnnotator();
-  }
+    public StandardTest()
+    {
+        ServiceContainer.ConfigVersion = ConfigVersion;
+        ServiceProvider = TestServiceContainer.CreateWithTestAnnotator();
+    }
+
+    public Point[] IntArrayToPointList(int[] array)
+    {
+        if (array == null || array.Length % 2 != 0)
+            throw new ArgumentException("Array must contain an even number of elements.");
+
+        var points = new Point[array.Length / 2];
+        for (int i = 0; i < array.Length; i += 2)
+        {
+            points[i / 2] = new Point(array[i], array[i + 1]);
+        }
+        return points;
+    }
 
     public string MapToUDMF(Map map)
     {
