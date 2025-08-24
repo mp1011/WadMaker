@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Config\monster_hp.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Config\texture_info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -23,6 +26,9 @@
      <None Update="Config\thing_info.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+     <None Update="Config\weapon_damage.csv">
+       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+     </None>
   </ItemGroup>
 
 </Project>

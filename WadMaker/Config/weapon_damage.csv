@@ -1,0 +1,8 @@
+Weapon,MinDamage,MaxDamage,MeanDamage
+Shotgun,35,105,70
+Chaingun,5,15,10
+Chainsaw,2,20,11
+Super_shotgun,105,315,210
+Plasma_gun,5,40,22
+Rocket,148,288,218
+BFG9000,2060,4200,3130

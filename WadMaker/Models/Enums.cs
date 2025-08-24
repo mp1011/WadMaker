@@ -21,3 +21,13 @@ public enum Delay
     StandardLift = 105,
     StandardDoor = 150,
 }
+
+public enum AmmoBalance
+{
+    UnableToCalculate,
+    Insufficient,
+    BarelyEnough,
+    Adequate,
+    Comfortable,
+    Generous
+}

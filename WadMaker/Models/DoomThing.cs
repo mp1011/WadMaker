@@ -125,9 +125,8 @@ public enum ThingType
     Baron_of_Hell = 3003,
     Zombieman = 3004,
     Cacodemon = 3005,
-    Lost_soul = 3006
+    Lost_soul = 3006,
 }
-
 
 public enum ThingCategory
 {
@@ -157,3 +156,8 @@ public enum ThingFlags
 
 public record DoomThingInfo(int Decimal, string Hex, string Version, int Radius, int Height,
   string Sprite, string Sequence, string Class, string Description);
+
+public record MonsterHp(ThingType Monster, int Health);
+
+public record WeaponDamage(ThingType Weapon, int MinDamage, int MaxDamage, int MeanDamage);
+

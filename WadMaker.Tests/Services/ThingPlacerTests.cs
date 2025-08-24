@@ -25,19 +25,4 @@ internal class ThingPlacerTests : StandardTest
         }
     }
 
-    [Test]
-    public void CanDetermineAmmoToMonsterBalance()
-    {
-        var map = new TestMaps().LinearMap();
-
-        var mainRooms = map.Rooms
-            .Where(p => p.Bounds.Width == 256)
-            .OrderBy(p => p.UpperLeft.X)
-            .ToArray();
-
-        var path = new PlayerPath(mainRooms.Select(p=> new PlayerPathNode([p], Array.Empty<Room>())).ToArray());
-
-        var foo = MapToUDMF(map);
-        throw new NotImplementedException();
-    }
 }

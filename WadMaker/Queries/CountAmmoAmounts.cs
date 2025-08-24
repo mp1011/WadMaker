@@ -7,6 +7,7 @@ class CountAmmoAmounts
     Dictionary<ThingType, int> ammoAmounts = new();
     return rooms.SelectMany(r => r.Things)
       .SelectMany(r => r.ThingType.AmmoWeaponAmounts())
-      .ToDictionary(k => k.Item1, v => v.Item2); 
+      .GroupBy(k => k.Item1)
+      .ToDictionary(k => k.Key, v => v.Sum(x=>x.Item2)); 
   }
 }

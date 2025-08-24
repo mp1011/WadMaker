@@ -22,6 +22,7 @@
 [x] themes (first draft)
 [ ] item placement
 [ ] ammo type and amount tracking
+	[ ] ammo type tracking to be aware of whether player has that weapon or not
 [ ] monster hp tracking
 [ ] player path aware
 
@@ -81,3 +82,5 @@ step should not be unpegged (how though?)
 prevent theme from applying to doortrack
 	use a placeholder texture and only apply theme when texture is placeholder
 step texture must only apply to lower texture
+
+----BREAK 
