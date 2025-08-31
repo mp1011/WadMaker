@@ -16,6 +16,7 @@ public static class ServiceContainer
     services.AddSingleton<RoomGenerator>();
     services.AddSingleton<TextureAdjuster>();
     services.AddSingleton<ThingPlacer>();
+    services.AddSingleton<OverlappingThingResolver>();
 
     if (ConfigVersion == 0)
       services.AddSingleton<IConfig, ConfigV0>();

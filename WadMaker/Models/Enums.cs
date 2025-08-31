@@ -22,7 +22,17 @@ public enum Delay
     StandardDoor = 150,
 }
 
-public enum AmmoBalance
+public enum EnemyDensity
+{
+    None,
+    Single,
+    Rare,
+    Sparse,
+    Common,
+    Excessive
+}
+
+public enum ResourceBalance
 {
     UnableToCalculate,
     Insufficient,

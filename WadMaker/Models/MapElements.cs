@@ -10,7 +10,27 @@ public class Thing(thing Data) : IElementWrapper<thing>
     public thing Data { get; private set; } = Data;
     public ThingType ThingType => (ThingType)Data.type;
 
-    public Point Position => new Point((int)Data.x, (int)Data.y);
+    public Point Position
+    {
+        get => new Point((int)Data.x, (int)Data.y);
+        set
+        {
+            Data = Data with { x = value.X, y = value.Y };
+        }
+    }
+
+    public DoomThingInfo ThingInfo => DoomConfig.DoomThingInfo.Try(Data.type) ?? DoomThingInfo.None;
+
+    public int Radius => ThingInfo.Radius;
+
+    public bool Overlaps(Thing other)
+    {
+        var distance = Position.DistanceTo(other.Position);
+        return distance < Radius + other.Radius;
+    }
+
+    public override string ToString() => ThingInfo.Description;
+
     public Thing Copy(Room oldRoom, Room newRoom)
     {
         var relX = Data.x - oldRoom.UpperLeft.X;

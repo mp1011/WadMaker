@@ -170,6 +170,14 @@ public static class GeometryExtensions
         };
     }
 
+    public static Point Move(this Point point, double decimalAngle, int distance)
+    {
+        double angleRadians = decimalAngle * Math.PI / 180.0;
+        var x = point.X + (int)(distance * Math.Cos(angleRadians));
+        var y = point.Y + (int)(distance * Math.Sin(angleRadians));
+        return new Point((int)x, (int)y);
+    }
+
     public static double AsAngle(this double angle) => angle.NMod(360.0);
 
     public static double AngleTo(this vertex v1, vertex v2)

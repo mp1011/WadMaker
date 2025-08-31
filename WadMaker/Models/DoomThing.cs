@@ -155,7 +155,10 @@ public enum ThingFlags
 }
 
 public record DoomThingInfo(int Decimal, string Hex, string Version, int Radius, int Height,
-  string Sprite, string Sequence, string Class, string Description);
+  string Sprite, string Sequence, string Class, string Description)
+{
+    public static readonly DoomThingInfo None = new DoomThingInfo(0, "", "", 0, 0, "", "", "", "");
+}
 
 public record MonsterHp(ThingType Monster, int Health);
 

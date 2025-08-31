@@ -1,7 +1,7 @@
 namespace WadMaker.Models;
 
 /// <summary>
-/// Order of rooms the player is able to visit. The
+/// Order of rooms the player is able to visit.
 /// </summary>
 /// <param name="Nodes"></param>
 public record PlayerPath(PlayerPathNode[] Nodes);

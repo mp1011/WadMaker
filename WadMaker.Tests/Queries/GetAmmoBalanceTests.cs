@@ -2,11 +2,11 @@
 
 internal class GetAmmoBalanceTests : StandardTest
 {
-    [TestCase(ThingType.Imp, 1, ThingType.Four_shotgun_shells, 1, AmmoBalance.Generous)]
-    [TestCase(ThingType.Imp, 2, ThingType.Four_shotgun_shells, 1, AmmoBalance.Adequate)]
-    [TestCase(ThingType.Imp, 4, ThingType.Four_shotgun_shells, 1, AmmoBalance.BarelyEnough)]
-    [TestCase(ThingType.Imp, 6, ThingType.Four_shotgun_shells, 1, AmmoBalance.Insufficient)]
-    public void CanDetermineAmmoToMonsterBalance(ThingType monster, int monsterCount, ThingType ammo, int ammoAmount, AmmoBalance expectedBalance)
+    [TestCase(ThingType.Imp, 1, ThingType.Four_shotgun_shells, 1, ResourceBalance.Generous)]
+    [TestCase(ThingType.Imp, 2, ThingType.Four_shotgun_shells, 1, ResourceBalance.Adequate)]
+    [TestCase(ThingType.Imp, 4, ThingType.Four_shotgun_shells, 1, ResourceBalance.BarelyEnough)]
+    [TestCase(ThingType.Imp, 6, ThingType.Four_shotgun_shells, 1, ResourceBalance.Insufficient)]
+    public void CanDetermineAmmoToMonsterBalance(ThingType monster, int monsterCount, ThingType ammo, int ammoAmount, ResourceBalance expectedBalance)
     {
         var map = new TestMaps().LinearMap();
 

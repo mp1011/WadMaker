@@ -6,23 +6,23 @@
 /// </summary>
 public class GetAmmoBalance
 {
-    public AmmoBalance Execute(IEnumerable<Room> rooms)
+    public ResourceBalance Execute(IEnumerable<Room> rooms)
     {
         var monsterHp = new CountMonsterHp().Execute(rooms);
         var meanWeaponDamage = new CountMeanWeaponDamage().Execute(rooms);
 
         if (monsterHp == 0)
-            return AmmoBalance.UnableToCalculate;
+            return ResourceBalance.UnableToCalculate;
 
         var ratio = meanWeaponDamage / (double)monsterHp;
 
         if (ratio < 1)
-            return AmmoBalance.Insufficient;
+            return ResourceBalance.Insufficient;
         if (ratio < 2)
-            return AmmoBalance.BarelyEnough;
+            return ResourceBalance.BarelyEnough;
         if (ratio >= 4.0)
-            return AmmoBalance.Generous;
+            return ResourceBalance.Generous;
 
-        return AmmoBalance.Adequate;
+        return ResourceBalance.Adequate;
     }
 }

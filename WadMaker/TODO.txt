@@ -23,7 +23,7 @@
 [ ] item placement
 [ ] ammo type and amount tracking
 	[ ] ammo type tracking to be aware of whether player has that weapon or not
-[ ] monster hp tracking
+[x] monster hp tracking
 [ ] player path aware
 
 
@@ -84,3 +84,10 @@ prevent theme from applying to doortrack
 step texture must only apply to lower texture
 
 ----BREAK 
+
+monster placement goals
+1. single type of monster
+2. faces proper direction
+3. multiple types, without overlap
+4. better formation patterns
+5. random spread
