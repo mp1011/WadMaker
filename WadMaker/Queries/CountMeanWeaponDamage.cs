@@ -3,7 +3,7 @@
 /// <summary>
 /// Mean damage that the player can inflict with the ammo found in the provided rooms.
 /// </summary>
-class CountMeanWeaponDamage
+public class CountMeanWeaponDamage
 {
     public int Execute(IEnumerable<Room> rooms)
     {

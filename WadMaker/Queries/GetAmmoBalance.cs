@@ -20,9 +20,11 @@ public class GetAmmoBalance
             return ResourceBalance.Insufficient;
         if (ratio < 2)
             return ResourceBalance.BarelyEnough;
-        if (ratio >= 4.0)
+        if (ratio < 2.7)
+            return ResourceBalance.Adequate;
+        if (ratio < 3.5)
+            return ResourceBalance.Comfortable;
+        else
             return ResourceBalance.Generous;
-
-        return ResourceBalance.Adequate;
     }
 }

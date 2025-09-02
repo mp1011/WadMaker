@@ -9,6 +9,8 @@ internal class StandardTest
 
     protected ServiceProvider ServiceProvider { get; }
 
+    protected Query Query => ServiceProvider.GetRequiredService<Query>();
+
     protected MapPainter MapPainter => ServiceProvider.GetRequiredService<MapPainter>();
 
     protected MapBuilder MapBuilder => ServiceProvider.GetRequiredService<MapBuilder>();

@@ -17,6 +17,14 @@ public static class ServiceContainer
     services.AddSingleton<TextureAdjuster>();
     services.AddSingleton<ThingPlacer>();
     services.AddSingleton<OverlappingThingResolver>();
+    services.AddSingleton<Query>();
+
+    services.AddSingleton<CountAmmoAmounts>();
+    services.AddSingleton<CountMeanWeaponDamage>();
+    services.AddSingleton<CountMonsterHp>();
+    services.AddSingleton<GetAmmoBalance>();
+    services.AddSingleton<IsPointInSector>();
+    services.AddSingleton<TextureQuery>();
 
     if (ConfigVersion == 0)
       services.AddSingleton<IConfig, ConfigV0>();

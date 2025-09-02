@@ -44,6 +44,9 @@
     <None Update="Fixtures\texture_test_map.udmf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Fixtures\triangle_formation_test_map.udmf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Fixtures\two_rooms_with_hall.udmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

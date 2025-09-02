@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Drawing;
-using System.Linq;
-
-namespace WadMaker.Queries;
+﻿namespace WadMaker.Queries;
 
 public class IsPointInSector
 {

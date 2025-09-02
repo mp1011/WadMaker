@@ -18,13 +18,15 @@
 [x] add additional shape modifiers - n-gon, angled corners, carve sides
 [x] ability to create halls when side is not aligned with bounding box
 [x] intelligent sidedef pegs and translation
---------------8/2/2025
+-------------- 8/2/2025
 [x] themes (first draft)
-[ ] item placement
-[ ] ammo type and amount tracking
-	[ ] ammo type tracking to be aware of whether player has that weapon or not
+[x] item placement
+[x] ammo type and amount tracking
+	[x] ammo type tracking to be aware of whether player has that weapon or not
 [x] monster hp tracking
-[ ] player path aware
+[x] player path aware
+------------- 8/31/2025
+[ ] better ammo placement
 
 
 7/6/2025
@@ -85,9 +87,21 @@ step texture must only apply to lower texture
 
 ----BREAK 
 
-monster placement goals
-1. single type of monster
-2. faces proper direction
-3. multiple types, without overlap
-4. better formation patterns
-5. random spread
+8/31/2025
+
+test ammo not placed in void
+update formation to place in square groups
+
+create a map for ammo placement testing
+
+better looking ammo placement
+	create test map with alcoves, pillars, and side rooms
+		ensure ammo not placed into void
+		ensure ammo not placed on tall pillars
+	place ammo in groups
+	move ammo to proper positions
+
+	do we need to fully build the map to know where we can place things?
+		think we can do it by the room shape alone...
+
+	include larger ammo type

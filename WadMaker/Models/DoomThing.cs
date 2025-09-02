@@ -130,10 +130,11 @@ public enum ThingType
 
 public enum ThingCategory
 {
-  Other,
-  Weapon,
-  Ammo,
-  Monster
+    Other,
+    PlayerStart,
+    Weapon,
+    Ammo,
+    Monster
 }
 
 [Flags]
@@ -154,6 +155,14 @@ public enum ThingFlags
   AllSkillsAndModes = AllSkills + AllModes
 }
 
+public enum ThingPattern
+{
+    Row,
+    Square,
+    Triangle,
+    Circle
+}
+
 public record DoomThingInfo(int Decimal, string Hex, string Version, int Radius, int Height,
   string Sprite, string Sequence, string Class, string Description)
 {
@@ -164,3 +173,7 @@ public record MonsterHp(ThingType Monster, int Health);
 
 public record WeaponDamage(ThingType Weapon, int MinDamage, int MaxDamage, int MeanDamage);
 
+public record ThingPlacement(double XPercent, double YPercent)
+{
+    public static readonly ThingPlacement Center = new ThingPlacement(0.5, 0.5);
+}

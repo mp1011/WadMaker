@@ -15,9 +15,9 @@ internal class GetAmmoBalanceTests : StandardTest
             .OrderBy(p => p.UpperLeft.X)
             .ToArray();
 
-        ThingPlacer.AddFormation(ammo, mainRooms[1], ammoAmount, Angle.West, ThingFlags.AllSkillsAndModes, 0.5, 0.5, 32);
+        ThingPlacer.AddFormation(ammo, mainRooms[1], ammoAmount, Angle.West, ThingFlags.AllSkillsAndModes, ThingPlacement.Center, ThingPattern.Row, 32);
      
-        ThingPlacer.AddFormation(monster, mainRooms[3], monsterCount, Angle.West, ThingFlags.AllSkillsAndModes, 0.5, 0.5, 32);
+        ThingPlacer.AddFormation(monster, mainRooms[3], monsterCount, Angle.West, ThingFlags.AllSkillsAndModes, ThingPlacement.Center, ThingPattern.Row, 32);
 
         var result = new GetAmmoBalance().Execute(mainRooms);
         Assert.That(result, Is.EqualTo(expectedBalance));

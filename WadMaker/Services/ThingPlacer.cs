@@ -23,7 +23,7 @@ public class ThingPlacer
             angle);
     }
 
-    public void AddThing(ThingType thing, Room room,
+    public Thing AddThing(ThingType thing, Room room,
       int posX,
       int posY,
       ThingFlags flags = ThingFlags.AllSkills | ThingFlags.Single,
@@ -46,26 +46,56 @@ public class ThingPlacer
            ));
 
         // is it overkill to do this every time?
-        _overlappingThingResolver.Execute(newThing, room.Things);
+        _overlappingThingResolver.Execute(newThing, room.Things.Where(p=>p.ThingType.Category() == newThing.ThingType.Category()));
 
         room.Things.Add(newThing);
+        return newThing;
     }
 
-    public void AddFormation(ThingType type, Room room, int count, Angle angle, ThingFlags flags, double centerX, double centerY, int spacing)
+    public void AddFormation(ThingType type, Room room, int count, Angle angle, ThingFlags flags, ThingPlacement placement, ThingPattern pattern, int spacing)
     {
+        var centerX = placement.XPercent;
+        var centerY = placement.YPercent;
         if (count == 0)
             return;
-        if (count == 1)
+        else if (count == 1)
         {
             AddThing(type, room, centerX, centerY, flags, angle);
             return;
         }
+        else if (count == 2)
+            pattern = ThingPattern.Row; 
 
-        int halfLength = ((count - 1) * spacing) / 2;
+        switch(pattern)
+        {
+            case ThingPattern.Row:
+                AddFormationRow(type, room, count, angle, flags, placement, spacing);
+                break;
+            case ThingPattern.Square:
+                throw new NotImplementedException();
+            case ThingPattern.Triangle:
+                AddFormationTriangle(type, room, count, angle, flags, placement, spacing);
+                return;
+            case ThingPattern.Circle:
+                throw new NotImplementedException();
+            default:
+                throw new ArgumentOutOfRangeException(nameof(pattern), pattern, null);
+        }
+    }
 
+    private void AddFormationRow(ThingType type, Room room, int count, Angle angle, ThingFlags flags, ThingPlacement placement, int spacing)
+    {
+        var centerX = placement.XPercent;
+        var centerY = placement.YPercent;
         var center = new Point((int)(room.UpperLeft.X + room.Bounds.Width * centerX),
                                (int)(room.UpperLeft.Y - room.Bounds.Height * centerY));
 
+        AddFormationRow(type, room, count, angle, flags, center, spacing);
+    }
+
+    private void AddFormationRow(ThingType type, Room room, int count, Angle angle, ThingFlags flags, Point center, int spacing)
+    {
+        int halfLength = ((count - 1) * spacing) / 2;
         var start = angle.RotateClockwise(90).ToPoint(halfLength).Add(center);
         var end = angle.RotateCounterClockwise(90).ToPoint(halfLength).Add(center);
 
@@ -73,6 +103,37 @@ public class ThingPlacer
         {
             var position = start.MoveToward(end, spacing * i);
             AddThing(type, room, position.X, position.Y, flags, angle);
+        }
+    }
+
+    private void AddFormationTriangle(ThingType type, Room room, int count, Angle angle, ThingFlags flags, ThingPlacement placement, int spacing)
+    {
+        var centerX = placement.XPercent;
+        var centerY = placement.YPercent;
+        var center = new Point((int)(room.UpperLeft.X + room.Bounds.Width * centerX),
+                               (int)(room.UpperLeft.Y - room.Bounds.Height * centerY));
+
+        // find the smallest triangle number which can fit all the elements
+        int triangleNumber = 0;
+        int i = 0;
+        while(triangleNumber < count)
+        {
+            triangleNumber = i * (i + 1) / 2;
+            i++;
+        }
+
+        int triangleSection = 1;
+        int thingsAdded = 0;
+
+        while(thingsAdded < count)
+        {
+            int numToAdd = triangleSection;
+            if(thingsAdded + numToAdd > count)
+                numToAdd = count - thingsAdded;
+            AddFormationRow(type, room, numToAdd, angle, flags, center.Move(angle.Opposite, spacing * (triangleSection-1)), (spacing * triangleSection) / numToAdd );
+
+            thingsAdded += numToAdd;
+            triangleSection++;
         }
     }
 
@@ -92,20 +153,50 @@ public class ThingPlacer
         }
     }
 
+    public void AddAmmo(PlayerPath path, ResourceBalance balance)
+    {
+        foreach(var node in path.Nodes.WithIndex())
+        {
+            var subset = path.Nodes.Take(node.Index + 1).ToArray();
+
+            var playerWeapons = subset.SelectMany(p => p.RequiredRooms)
+                                  .SelectMany(p => p.Things)
+                                  .Where(p => p.Category == ThingCategory.Weapon)
+                                  .Select(p => p.ThingType)
+                                  .Distinct()
+                                  .ToArray();
+
+            AddAmmo(subset, playerWeapons, balance);
+        }
+    }
+    
+    private void AddAmmo(IEnumerable<PlayerPathNode> nodes, IEnumerable<ThingType> playerWeapons, ResourceBalance balance)
+    {
+        if (!playerWeapons.Any())
+            return;
+
+        var allRooms = nodes.SelectMany(p => p.RequiredRooms).ToArray();
+
+        if (new GetAmmoBalance().Execute(allRooms) == ResourceBalance.UnableToCalculate)
+            return;
+
+        int maxTries = 1000;
+        while(--maxTries > 0 && new GetAmmoBalance().Execute(allRooms) < balance)
+        {
+            var weapon = playerWeapons.PickRandom();
+            var ammo = weapon.SmallAmmoType();
+
+            var room = allRooms.PickRandom();
+            AddThing(ammo, room, 0.5, 0.5, ThingFlags.AllSkillsAndModes);
+        }
+    }
+
     private void AddMonsters(PlayerPathNode node, MonsterPlacement placement)
     {
         if(placement.Density == EnemyDensity.None)
             return;
 
-        ValueRange countPerRoom = placement.Density switch
-        {
-            EnemyDensity.Single => new ValueRange(1, 1),
-            EnemyDensity.Rare => new ValueRange(1, 2),
-            EnemyDensity.Sparse => new ValueRange(1, 3),
-            EnemyDensity.Common => new ValueRange(3, 5),
-            EnemyDensity.Excessive => new ValueRange(4, 8),
-            _ => throw new ArgumentOutOfRangeException()
-        };
+        ValueRange countPerRoom = placement.Density.MonsterCount();
 
         var chancePerRoom = placement.Density switch
         {
@@ -131,7 +222,7 @@ public class ThingPlacer
                 if (countForRoom == 0)
                     continue;
 
-                AddFormation(placement.Monster, room, countForRoom, Angle.East, ThingFlags.AllSkillsAndModes, 0.5, 0.5, 32);
+                AddFormation(placement.Monster, room, countForRoom, Angle.East, ThingFlags.AllSkillsAndModes, ThingPlacement.Center, ThingPattern.Row, 32);
                 monstersPlaced += countForRoom;
             }
         }

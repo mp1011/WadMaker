@@ -11,6 +11,8 @@ public struct Angle
         _degrees = degrees.NMod(360.0);
     }
 
+    public Angle Opposite => new Angle(_degrees + 180);
+
     public Point ToPoint(double length)
     {
         var x = length * Math.Cos(Radians);

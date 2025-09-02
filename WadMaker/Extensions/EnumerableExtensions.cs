@@ -46,4 +46,12 @@ public static class EnumerableExtensions
         }
         return result.ToArray();
     }
+
+    public static T PickRandom<T>(this IEnumerable<T> source)
+    {
+        if (source == null) throw new ArgumentNullException(nameof(source));
+
+        int index = Random.Shared.Next(source.Count());
+        return source.ElementAt(index);
+    }
 }

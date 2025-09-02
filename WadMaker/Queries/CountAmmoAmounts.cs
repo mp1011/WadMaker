@@ -1,6 +1,6 @@
 namespace WadMaker.Queries;
 
-class CountAmmoAmounts
+public class CountAmmoAmounts
 {
   public Dictionary<ThingType, int> Execute(IEnumerable<Room> rooms)
   {

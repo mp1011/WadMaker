@@ -6,6 +6,49 @@ public static class ThingTypeExtensions
         return maybeMonsterHp?.Health ?? 0;
     }
 
+    public static ThingCategory Category(this ThingType type) =>
+        type switch
+        {
+            ThingType.Arachnotron => ThingCategory.Monster,
+            ThingType.Baron_of_Hell => ThingCategory.Monster,
+            ThingType.Cacodemon => ThingCategory.Monster,
+            ThingType.Demon => ThingCategory.Monster,
+            ThingType.Imp => ThingCategory.Monster,
+            ThingType.Lost_soul => ThingCategory.Monster,
+            ThingType.Spectre => ThingCategory.Monster,
+            ThingType.Zombieman => ThingCategory.Monster,
+            ThingType.Hell_knight => ThingCategory.Monster,
+            ThingType.Mancubus => ThingCategory.Monster,
+            ThingType.Pain_elemental => ThingCategory.Monster,
+            ThingType.Commander_Keen => ThingCategory.Monster,
+            ThingType.Shotgun => ThingCategory.Weapon,
+            ThingType.Chaingun => ThingCategory.Weapon,
+            ThingType.Rocket_launcher => ThingCategory.Weapon,
+            ThingType.Plasma_gun => ThingCategory.Weapon,
+            ThingType.BFG9000 => ThingCategory.Weapon,
+            ThingType.Four_shotgun_shells => ThingCategory.Ammo,
+            ThingType.Box_of_shotgun_shells => ThingCategory.Ammo,
+            ThingType.Clip => ThingCategory.Ammo,
+            ThingType.Box_of_bullets => ThingCategory.Ammo,
+            ThingType.Rocket => ThingCategory.Ammo,
+            ThingType.Box_of_rockets => ThingCategory.Ammo,
+            ThingType.Energy_cell => ThingCategory.Ammo,
+            ThingType.Energy_cell_pack => ThingCategory.Ammo,
+            ThingType.Player1_start => ThingCategory.PlayerStart,
+            _ => throw new Exception($"Unknown thing category for {type}")  
+        };
+
+    public static ThingType SmallAmmoType(this ThingType type) =>
+        type switch
+        {
+            ThingType.Shotgun => ThingType.Four_shotgun_shells,
+            ThingType.Chaingun => ThingType.Clip,
+            ThingType.Rocket_launcher => ThingType.Rocket,
+            ThingType.Plasma_gun => ThingType.Energy_cell,
+            ThingType.BFG9000 => ThingType.Energy_cell,
+            _ => ThingType.Unknown
+        };
+
     public static int GetMeanWeaponDamage(this ThingType type)
     {
         var maybeWeaponDamage = DoomConfig.WeaponDamage.Try(type);

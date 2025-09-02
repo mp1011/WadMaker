@@ -1,9 +1,9 @@
-﻿public record MonsterPlacement(ThingType Monster, double BeginAt, double EndAt, EnemyDensity Density)
+﻿public record MonsterPlacement(ThingType Monster, double BeginAt, double EndAt, EnemyDensity Density, ThingPattern Pattern = ThingPattern.Row)
 {
     public IEnumerable<PlayerPathNode> NodeRange(PlayerPath path)
     {
-        return path.Nodes.SkipWhile((p, index) => index < (path.Nodes.Length - 1) * BeginAt)
-                         .TakeWhile((p, index) => index <= (path.Nodes.Length - 1) * EndAt);
+        return path.Nodes.Where((p, index) => index >= ((path.Nodes.Length - 1) * BeginAt) &&
+                                                  index <= (path.Nodes.Length - 1) * EndAt);
     }
 }
 

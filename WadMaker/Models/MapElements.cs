@@ -10,6 +10,8 @@ public class Thing(thing Data) : IElementWrapper<thing>
     public thing Data { get; private set; } = Data;
     public ThingType ThingType => (ThingType)Data.type;
 
+    public ThingCategory Category => ThingType.Category();
+
     public Point Position
     {
         get => new Point((int)Data.x, (int)Data.y);
@@ -26,7 +28,7 @@ public class Thing(thing Data) : IElementWrapper<thing>
     public bool Overlaps(Thing other)
     {
         var distance = Position.DistanceTo(other.Position);
-        return distance < Radius + other.Radius;
+        return distance < (Radius + other.Radius) - 4;
     }
 
     public override string ToString() => ThingInfo.Description;

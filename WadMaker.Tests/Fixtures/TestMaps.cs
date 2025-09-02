@@ -123,4 +123,24 @@ class TestMaps : StandardTest
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         return map;
     }
+
+
+    public Map RoomWithPillar()
+    {
+        var map = new Map();
+        var room = new Room()
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(400, -400)
+        };
+
+        room.Pillars.Add(new Cutout
+        {
+            UpperLeft = new Point(100, -100),
+            BottomRight = new Point(300, -300)
+        });
+
+        map.Rooms.Add(room);
+        return map;
+    }
 }
