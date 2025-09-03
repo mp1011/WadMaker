@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace WadMaker.Services;
 
 public class ThingPlacer
@@ -72,12 +74,14 @@ public class ThingPlacer
                 AddFormationRow(type, room, count, angle, flags, placement, spacing);
                 break;
             case ThingPattern.Square:
-                throw new NotImplementedException();
+                AddFormationSquare(type, room, count, angle, flags, placement, spacing);
+                return;
             case ThingPattern.Triangle:
                 AddFormationTriangle(type, room, count, angle, flags, placement, spacing);
                 return;
             case ThingPattern.Circle:
-                throw new NotImplementedException();
+                AddFormationCircle(type, room, count, angle, flags, placement, spacing);
+                return;
             default:
                 throw new ArgumentOutOfRangeException(nameof(pattern), pattern, null);
         }
@@ -134,6 +138,58 @@ public class ThingPlacer
 
             thingsAdded += numToAdd;
             triangleSection++;
+        }
+    }
+
+    private void AddFormationSquare(ThingType type, Room room, int count, Angle angle, ThingFlags flags, ThingPlacement placement, int spacing)
+    {
+        var centerX = placement.XPercent;
+        var centerY = placement.YPercent;
+        var center = new Point((int)(room.UpperLeft.X + room.Bounds.Width * centerX),
+                               (int)(room.UpperLeft.Y - room.Bounds.Height * centerY));
+
+        // find the smallest square number which can fit all the elements
+        int squareNumber = 0;
+        int i = 0;
+        while (squareNumber < count)
+        {
+            squareNumber = i * i;
+            i++;
+        }
+
+        int column = 0;
+        int thingsAdded = 0;
+        int itemsPerCol = (int)Math.Sqrt(squareNumber);
+
+        while (thingsAdded < count)
+        {
+            int numToAdd = itemsPerCol;
+            if (thingsAdded + numToAdd > count)
+                numToAdd = count - thingsAdded;
+            AddFormationRow(type, room, numToAdd, angle, flags, center.Move(angle.Opposite, spacing * column), spacing);
+
+            thingsAdded += numToAdd;
+            column++;
+        }
+    }
+
+    private void AddFormationCircle(ThingType type, Room room, int count, Angle angle, ThingFlags flags, ThingPlacement placement, int spacing)
+    {
+        var centerX = placement.XPercent;
+        var centerY = placement.YPercent;
+        var center = new Point((int)(room.UpperLeft.X + room.Bounds.Width * centerX),
+                               (int)(room.UpperLeft.Y - room.Bounds.Height * centerY));
+
+
+        int anglePerItem = 360 / count;
+        var radius = (spacing * count) / (2 * Math.PI); 
+
+        for(int i = 0; i < count; i++)
+        {
+            var placementAngle = new Angle(anglePerItem * i);
+
+            var position = center.Move(placementAngle.Degrees, (int)radius);
+            AddThing(type, room, position.X, position.Y, flags, angle);
         }
     }
 

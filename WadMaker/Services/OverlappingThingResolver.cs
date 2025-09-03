@@ -8,7 +8,7 @@ public class OverlappingThingResolver
     /// <param name="newThing">New Thing which might overlap another Thing</param>
     /// <param name="things">Existing Things, assumed to be already non-overlapping</param>
     public void Execute(Thing newThing, IEnumerable<Thing> things)
-    {       
+    {
         var thingList = things.ToList();
         int maxTries = 1000;
 

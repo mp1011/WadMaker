@@ -6,6 +6,8 @@ public struct Angle
 
     public double Radians => _degrees * Math.PI / 180.0;
 
+    public double Degrees => _degrees;
+
     public Angle(double degrees)
     {
         _degrees = degrees.NMod(360.0);

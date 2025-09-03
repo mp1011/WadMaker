@@ -30,7 +30,7 @@ internal class ThingPlacerTests : StandardTest
     }
 
     [TestCase(ThingPattern.Triangle)]
-    [TestCase(ThingPattern.Square)]
+    [TestCase(ThingPattern.Square)] // could be better, but fine for now
     [TestCase(ThingPattern.Circle)]
     public void CanAddMonsterFormation(ThingPattern pattern)
     {

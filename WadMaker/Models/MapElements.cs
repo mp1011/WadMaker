@@ -28,7 +28,7 @@ public class Thing(thing Data) : IElementWrapper<thing>
     public bool Overlaps(Thing other)
     {
         var distance = Position.DistanceTo(other.Position);
-        return distance < (Radius + other.Radius) - 4;
+        return distance < (Radius + other.Radius) * .75; // still not sure exactly how close is too close
     }
 
     public override string ToString() => ThingInfo.Description;
