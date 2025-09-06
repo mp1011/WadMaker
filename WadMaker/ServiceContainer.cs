@@ -17,6 +17,7 @@ public static class ServiceContainer
     services.AddSingleton<TextureAdjuster>();
     services.AddSingleton<ThingPlacer>();
     services.AddSingleton<OverlappingThingResolver>();
+    services.AddSingleton<OutOfBoundsThingResolver>();
     services.AddSingleton<Query>();
 
     services.AddSingleton<CountAmmoAmounts>();
@@ -24,6 +25,9 @@ public static class ServiceContainer
     services.AddSingleton<CountMonsterHp>();
     services.AddSingleton<GetAmmoBalance>();
     services.AddSingleton<IsPointInSector>();
+    services.AddSingleton<GetThingSector>();
+    services.AddSingleton<IsThingInBounds>();
+    services.AddSingleton<IsOverlappingAnotherThingOfSameCategory>();
     services.AddSingleton<TextureQuery>();
 
     if (ConfigVersion == 0)

@@ -29,6 +29,10 @@
 [ ] better ammo placement
 
 
+Later
+[ ] thing placement to also avoid placing items in sectors too small
+
+
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors
 add comment to items to identify and then watch as they resolve

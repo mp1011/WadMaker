@@ -1,7 +1,3 @@
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using WadMaker.Models;
-
 namespace WadMaker.Tests.Services;
 
 internal class ThingPlacerTests : StandardTest
@@ -63,7 +59,7 @@ internal class ThingPlacerTests : StandardTest
         var path = new PlayerPath(mainRooms.Select(p=> new PlayerPathNode(new Room[] { p }, Array.Empty<Room>())).ToArray());
 
         ThingPlacer.AddMonsters(path,
-            new MonsterPlacement(ThingType.Imp, 0.5, 1.0, EnemyDensity.Common, ThingPattern.Row));
+            new MonsterPlacement(ThingType.Imp, 0.5, 1.0, EnemyDensity.Common, Angle.East, ThingPattern.Row));
 
         Assert.That(mainRooms[0].Things.Count(p=>p.ThingType == ThingType.Imp), Is.EqualTo(0));
         Assert.That(mainRooms[1].Things.Count(p => p.ThingType == ThingType.Imp), Is.EqualTo(0));
@@ -139,8 +135,8 @@ internal class ThingPlacerTests : StandardTest
         var path = new PlayerPath(mainRooms.Select(p => new PlayerPathNode(new Room[] { p }, Array.Empty<Room>())).ToArray());
 
         ThingPlacer.AddMonsters(path,
-            new MonsterPlacement(ThingType.Imp, 0.5, 1.0, EnemyDensity.Common),
-            new MonsterPlacement(ThingType.Hell_knight, 1.0, 1.0, EnemyDensity.Single));
+            new MonsterPlacement(ThingType.Imp, 0.5, 1.0, EnemyDensity.Common, Angle.East),
+            new MonsterPlacement(ThingType.Hell_knight, 1.0, 1.0, EnemyDensity.Single, Angle.East));
 
         Assert.That(mainRooms[4].Things.Count(p => p.ThingType == ThingType.Imp), Is.InRange(3, 5));
         Assert.That(mainRooms[4].Things.Count(p => p.ThingType == ThingType.Hell_knight), Is.EqualTo(1));
@@ -160,9 +156,9 @@ internal class ThingPlacerTests : StandardTest
         var path = new PlayerPath(mainRooms.Select(p => new PlayerPathNode(new Room[] { p }, Array.Empty<Room>())).ToArray());
 
         ThingPlacer.AddMonsters(path,
-            new MonsterPlacement(ThingType.Imp, 0.25, 0.49, EnemyDensity.Rare),
-            new MonsterPlacement(ThingType.Imp, 0.5, 0.99, EnemyDensity.Common),
-            new MonsterPlacement(ThingType.Imp, 0.99, 1.0, EnemyDensity.Excessive));
+            new MonsterPlacement(ThingType.Imp, 0.25, 0.49, EnemyDensity.Rare, Angle.East),
+            new MonsterPlacement(ThingType.Imp, 0.5, 0.99, EnemyDensity.Common, Angle.East),
+            new MonsterPlacement(ThingType.Imp, 0.99, 1.0, EnemyDensity.Excessive, Angle.East));
 
 
         Assert.That(mainRooms[0].Things.Count(p => p.ThingType == ThingType.Imp), Is.EqualTo(0));
@@ -191,9 +187,9 @@ internal class ThingPlacerTests : StandardTest
         var path = new PlayerPath(mainRooms.Select(p => new PlayerPathNode(new Room[] { p }, Array.Empty<Room>())).ToArray());
 
         ThingPlacer.AddMonsters(path,
-            new MonsterPlacement(ThingType.Imp, 0.25, 0.49, EnemyDensity.Rare),
-            new MonsterPlacement(ThingType.Imp, 0.5, 0.99, EnemyDensity.Common),
-            new MonsterPlacement(ThingType.Imp, 0.99, 1.0, EnemyDensity.Excessive));
+            new MonsterPlacement(ThingType.Imp, 0.25, 0.49, EnemyDensity.Rare, Angle.East),
+            new MonsterPlacement(ThingType.Imp, 0.5, 0.99, EnemyDensity.Common, Angle.East),
+            new MonsterPlacement(ThingType.Imp, 0.99, 1.0, EnemyDensity.Excessive, Angle.East));
 
         ThingPlacer.AddThing(ThingType.Shotgun, mainRooms[0], 0.75, 0.5);
         ThingPlacer.AddAmmo(path, balance);
@@ -202,16 +198,19 @@ internal class ThingPlacerTests : StandardTest
         Assert.That(result, Is.EqualTo(balance));
     }
 
-    [TestCase]
-    public void ThingNotPlacedInVoid()
+    [TestCase(0.5,0.5, true)]
+    [TestCase(2.0, 0.5, true)]
+    [TestCase(0.1, 0.5, false)]
+    [TestCase(0.9, 0.9, false)]
+    public void CanIdentifyIfThingIsInVoid(double x, double y, bool inVoid)
     {
         var map = new TestMaps().RoomWithPillar();
         var mapElements = MapBuilder.Build(map);
 
-        ThingPlacer.AddThing(ThingType.Clip, map.Rooms[0], 0.5, 0.5);
+        ThingPlacer.AddThing(ThingType.Clip, map.Rooms[0], x, y);
 
         var placedThing = map.Rooms[0].Things.Single();
 
-        Assert.That(Query.IsPointInSector.Execute(placedThing.Position, mapElements.Sectors[0], mapElements), Is.True);
+        Assert.That(Query.IsPointInSector.Execute(placedThing.Position, mapElements.Sectors[0], mapElements), Is.EqualTo(!inVoid));
     }
 }

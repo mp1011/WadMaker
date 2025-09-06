@@ -7,15 +7,22 @@ public class Query
     public CountMonsterHp CountMonsterHp { get; }
     public GetAmmoBalance GetAmmoBalance { get; }
     public IsPointInSector IsPointInSector { get; }
-    public TextureQuery TextureQuery { get; }
+    public GetThingSector GetThingSector { get; }
+    public IsThingInBounds IsThingInBounds { get; }
 
-    public Query(CountAmmoAmounts countAmmoAmounts, CountMeanWeaponDamage countMeanWeaponDamage, CountMonsterHp countMonsterHp, GetAmmoBalance getAmmoBalance, IsPointInSector isPointInSector, TextureQuery textureQuery)
+    public IsOverlappingAnotherThingOfSameCategory IsOverlappingAnotherThingOfSameCategory { get; }
+
+    public Query(CountAmmoAmounts countAmmoAmounts, CountMeanWeaponDamage countMeanWeaponDamage, CountMonsterHp countMonsterHp, 
+        GetAmmoBalance getAmmoBalance, IsPointInSector isPointInSector, GetThingSector getThingSector, IsThingInBounds isThingInBounds,
+        IsOverlappingAnotherThingOfSameCategory isOverlappingAnotherThingOfSameCategory)
     {
         CountAmmoAmounts = countAmmoAmounts;
         CountMeanWeaponDamage = countMeanWeaponDamage;
         CountMonsterHp = countMonsterHp;
         GetAmmoBalance = getAmmoBalance;
         IsPointInSector = isPointInSector;
-        TextureQuery = textureQuery;
+        GetThingSector = getThingSector;    
+        IsThingInBounds = isThingInBounds;
+        IsOverlappingAnotherThingOfSameCategory = isOverlappingAnotherThingOfSameCategory;
     }
 }

@@ -20,6 +20,7 @@ internal class StandardTest
     protected RoomGenerator RoomGenerator => ServiceProvider.GetRequiredService<RoomGenerator>();
     protected HallGenerator HallGenerator => ServiceProvider.GetRequiredService<HallGenerator>();
     protected ThingPlacer ThingPlacer => ServiceProvider.GetRequiredService<ThingPlacer>();
+    protected OutOfBoundsThingResolver OutOfBoundsThingResolver => ServiceProvider.GetRequiredService<OutOfBoundsThingResolver>();
 
     public StandardTest()
     {

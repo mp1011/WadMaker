@@ -12,6 +12,12 @@ public class Thing(thing Data) : IElementWrapper<thing>
 
     public ThingCategory Category => ThingType.Category();
 
+    public Angle Angle
+    {
+        get => new Angle(Data.angle);
+        set => Data = Data with { angle = (int)value.Degrees };
+    }
+
     public Point Position
     {
         get => new Point((int)Data.x, (int)Data.y);
