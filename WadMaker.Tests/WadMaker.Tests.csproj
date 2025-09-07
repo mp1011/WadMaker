@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Fixtures\sep25fullmap.udmf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Fixtures\circle_formation_test_map.udmf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

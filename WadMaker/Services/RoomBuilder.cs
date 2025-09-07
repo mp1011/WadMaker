@@ -128,7 +128,7 @@ public class RoomBuilder
         textureceiling: room.CeilingTexture.ToString(),
         heightfloor: room.Floor,
         id: room.Tag,
-        heightceiling: room.Floor + room.Height,
+        heightceiling: room.Floor + room.VerticalHeight,
         lightlevel: 127));
 
     private IEnumerable<vertex> Vertices(IShape room)

@@ -16,4 +16,14 @@ public static class IShapeExtensions
             .Aggregate(initialPoints, (p, s) => s.AlterPoints(p, room))
             .ToArray();
     }
+
+    public static DRectangle Bounds(this IShape shape) => new DRectangle(
+         location: shape.UpperLeft,
+         size: new Size(shape.BottomRight.X - shape.UpperLeft.X,
+             Math.Abs(shape.BottomRight.Y - shape.UpperLeft.Y)));
+
+    public static ShapePlacer<T> Place<T>(this T shape) where T : IShape
+    {
+        return new ShapePlacer<T>(shape);
+    }
 }

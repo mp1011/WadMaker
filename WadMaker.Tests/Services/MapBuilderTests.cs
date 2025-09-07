@@ -147,4 +147,24 @@ internal class MapBuilderTests : StandardTest
 
         Assert.That(twoSidedLines.Length, Is.EqualTo(1));
     }
+
+    [Test]
+    public void CanCreateRoomWithCornerStructure()
+    {
+        var map = new Map();
+        var room = map.AddRoom(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(400, -400),
+        });
+        room.Tag = 1;
+
+        room.AddInnerStructure(new Room { UpperLeft = Point.Empty, BottomRight = new Point(64, -64) });
+        room.InnerStructures[0].Tag = 2;
+
+        var mapElements = MapBuilder.Build(map);
+        Assert.That(mapElements.Sectors[0].Lines.Count, Is.EqualTo(6));
+        Assert.That(mapElements.Sectors[1].Lines.Count, Is.EqualTo(4));
+
+    }
 }

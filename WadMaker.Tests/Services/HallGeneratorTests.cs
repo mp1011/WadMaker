@@ -1,7 +1,7 @@
 ﻿namespace WadMaker.Tests.Services;
 
 
-public class HallGeneratorTests
+class HallGeneratorTests : StandardTest
 {
     private const int HallWidth = 128;
 
@@ -166,5 +166,31 @@ public class HallGeneratorTests
 
         Assert.That(generatedHall.UpperLeft.X, Is.EqualTo(180));
         Assert.That(generatedHall.BottomRight.X, Is.EqualTo(1020));
+    }
+
+    [Test]
+    public void CanGenerateHallForDifferentSizedRooms()
+    {
+        var map = new Map();
+        var room1 = map.AddRoom(new Room(map)
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(128, -128)
+        });
+
+        var room2 = map.AddRoom(new Room(map) {  
+            UpperLeft = new Point(256, 0), 
+            BottomRight = new Point(512, -1028) });
+
+        room1.Floor = 128;
+        room1.Ceiling = 256;
+
+        room2.Floor = 0;
+        room2.Ceiling = 512;
+
+        var hall = map.AddRoom(HallGenerator.GenerateHall(new Hall(128, room1, room2)));
+
+        Assert.That(hall.Bounds.Height, Is.EqualTo(room1.Bounds.Height));
+        Assert.That(hall.UpperLeft.Y, Is.EqualTo(room1.UpperLeft.Y));
     }
 }

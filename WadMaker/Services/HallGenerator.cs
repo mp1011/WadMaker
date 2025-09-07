@@ -6,11 +6,39 @@ public class HallGenerator
     {
         var side = HallSide(hall);
 
-        var room1Anchors = GetHallAnchors(hall.Room1, side, hall.Width);
-        var room2Anchors = GetHallAnchors(hall.Room2, side.Opposite(), hall.Width);
+        var room1Anchors = GetHallAnchors(hall.Room1, side, hall.Width, hall.Room1.Bounds.SideCenter(side));
+        var room2Anchors = GetHallAnchors(hall.Room2, side.Opposite(), hall.Width, hall.Room2.Bounds.SideCenter(side.Opposite()));
 
+        if (!room1Anchors.Any() || !room2Anchors.Any())
+            throw new Exception("Unable to fit hall");
+
+        // first, try using anchors as-s
         var hallRoom = CreateHallRoom(hall, room1Anchors.Union(room2Anchors).ToArray());
-        if(hall.Door != null)
+
+        // if that didn't work, try getting room2 anchors aligned to room1's
+        if (hallRoom.Bounds.AxisLength(side.ClockwiseTurn()) != hall.Width)
+        {
+            var newRoom2Anchors = GetHallAnchors(hall.Room2, side.Opposite(), hall.Width,
+                hall.Room2.Bounds.SideCenter(side.Opposite()).AlignWith(hall.Room1.Bounds.SideCenter(side), side));
+
+            hallRoom.SetFromVertices(room1Anchors.Union(newRoom2Anchors));
+        }
+
+        // finally, try getting room1 anchors aligned to room 2's
+        if (hallRoom.Bounds.AxisLength(side.ClockwiseTurn()) != hall.Width)
+        {
+            var newRoom1Anchors = GetHallAnchors(hall.Room1, side, hall.Width,
+                hall.Room1.Bounds.SideCenter(side).AlignWith(hall.Room2.Bounds.SideCenter(side.Opposite()), side));
+
+            hallRoom.SetFromVertices(newRoom1Anchors.Union(room2Anchors));
+        }
+
+        if (hallRoom.Bounds.AxisLength(side.ClockwiseTurn()) != hall.Width)
+        {
+            throw new Exception("Unable to place hall");
+        }
+
+        if (hall.Door != null)
         {
             hallRoom.InnerStructures.Add(GenerateDoor(hall.Door, hallRoom, side));
         }
@@ -29,11 +57,13 @@ public class HallGenerator
         return hallRoom;
     }
 
-    private Point[] GetHallAnchors(Room room, Side side, int hallWidth)
+    private Point[] GetHallAnchors(Room room, Side side, int hallWidth, Point hallCenter)
     {
-        var anchors = room.Bounds.SidePoints(side)
-                                 .MoveToDistance(hallWidth)
-                                 .ToArray();
+        var anchors = new Point[]
+        {
+            hallCenter.Move(side.ClockwiseTurn(), hallWidth / 2),
+            hallCenter.Move(side.CounterClockwiseTurn(), hallWidth / 2)
+        };
 
         var roomLines = room.GetPoints().WithNeighbors().ToArray();
         var intersectingLine = roomLines.FirstOrDefault(line => anchors.All(a => a.Intersects(line.Item2, line.Item3)));
@@ -53,7 +83,7 @@ public class HallGenerator
                 return anchors;
         }
 
-        throw new Exception("Unable to fit hall");
+        return Array.Empty<Point>();
     }
 
     private (Point,Point) GetHallSegment(Side side, DRectangle hallBounds, int position, int width)
@@ -89,7 +119,7 @@ public class HallGenerator
     {
         var doorRoom = new Room
         {
-            Ceiling = -hallRoom.Height,
+            Ceiling = -hallRoom.VerticalHeight,
             Floor = 0,
             CeilingTexture = hallRoom.CeilingTexture,
             FloorTexture = hallRoom.FloorTexture,
@@ -113,6 +143,9 @@ public class HallGenerator
     {        
         int totalWidth = hallRoom.Bounds.AxisLength(hallSide) - stairs.StartPosition - stairs.EndPosition;
         int numSteps = totalWidth / stairs.StepWidth;
+        if (numSteps == 0)
+            yield break;
+
         int heightPerStep = (stairs.EndRoom.Floor - stairs.StartRoom.Floor) / numSteps;
         int currentHeight = stairs.StartRoom.Floor;
 

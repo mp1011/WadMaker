@@ -129,24 +129,6 @@ public static class GeometryExtensions
         return new Point(sumX / count, sumY / count);
     }
 
-    /// <summary>
-    /// Moves each point toward their common center until their distance apart is the specified value
-    /// </summary>
-    /// <param name="points"></param>
-    /// <param name="distance"></param>
-    /// <returns></returns>
-    public static IEnumerable<Point> MoveToDistance(this IEnumerable<Point> points, int distance = 32)
-    {
-        var center = points.CentralPoint();
-
-        // assuming two points, not sure if I'll need to handle more
-        var currentDistance = points.First().DistanceTo(points.Last());
-
-        var delta = (currentDistance - distance) / 2;
-
-        return points.Select(p => p.MoveToward(center, delta));
-    }
-
     public static Point MoveToward(this Point point, Point target, double delta)
     {
         if (point == target || delta <= 0)
@@ -176,6 +158,21 @@ public static class GeometryExtensions
         var x = point.X + (int)(distance * Math.Cos(angleRadians));
         var y = point.Y + (int)(distance * Math.Sin(angleRadians));
         return new Point((int)x, (int)y);
+    }
+
+    /// <summary>
+    /// Adjusts either the X or Y coordinates of this point to match the other.
+    /// </summary>
+    /// <param name="point"></param>
+    /// <param name="other"></param>
+    /// <param name="side"></param>
+    /// <returns></returns>
+    public static Point AlignWith(this Point point, Point other, Side fixedSide)
+    {
+        if(fixedSide == Side.Left || fixedSide == Side.Right)
+            return new Point(point.X, other.Y);
+        else
+            return new Point(other.X, point.Y);
     }
 
     public static double AsAngle(this double angle) => angle.NMod(360.0);

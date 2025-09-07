@@ -11,6 +11,9 @@ public struct DRectangle
     public int Bottom => Y - Height;
     public int Right => X + Width;
 
+    public Point Center => new Point(X + (Width/2),
+                                     Y - (Height/2));
+
     public DRectangle(int x, int y, int width, int height)
     {
         X = x;
@@ -44,6 +47,15 @@ public struct DRectangle
                 return Height;
         }
     }
+
+    public Point SideCenter(Side side) => side switch
+    {
+        Side.Left => new Point(X, Y - Height / 2),
+        Side.Right => new Point(Right, Y - Height / 2),
+        Side.Top => new Point(X + Width / 2, Y),
+        Side.Bottom => new Point(X + Width / 2, Bottom),
+        _ => throw new Exception("Invalid Side"),
+    };
 
     public int SideLength(Side side)
     {

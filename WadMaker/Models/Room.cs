@@ -11,15 +11,10 @@ public class Room : IShape, IThemed
     public Point UpperLeft { get; set; } = Point.Empty;
     public Point BottomRight { get; set; } = Point.Empty;
 
-    public Point Center => new Point(UpperLeft.X + (BottomRight.X - UpperLeft.X) / 2, 
-                                     UpperLeft.Y + (BottomRight.Y - UpperLeft.Y) / 2);
+    public Point Center => Bounds.Center;
 
-    public DRectangle Bounds => new DRectangle(
-        location: UpperLeft,
-        size: new Size(BottomRight.X - UpperLeft.X,
-            Math.Abs(BottomRight.Y - UpperLeft.Y)));
-            
-    public int Height => Ceiling - Floor;
+    public DRectangle Bounds => this.Bounds();
+    public int VerticalHeight => Ceiling - Floor;
 
     public int Ceiling { get; set; } = 128;
     public int Floor { get; set; } = 0;
@@ -57,11 +52,31 @@ public class Room : IShape, IThemed
         Parent = parent;
     }
 
+    public Room(IThemed parent, Point? center = null, Size? size = null) : this(parent)
+    {
+        center ??= Point.Empty;
+        size ??= new Size(128, 128);
+
+        UpperLeft = new Point(center.Value.X - size.Value.Width / 2, center.Value.Y + size.Value.Height / 2);
+        BottomRight = new Point(center.Value.X + size.Value.Width / 2, center.Value.Y - size.Value.Height / 2);
+    }
+
     public Room(IThemed parent, IEnumerable<Point> points)
     {
         Parent = parent;
+        SetFromVertices(points);
+    }
+
+    public void SetFromVertices(IEnumerable<Point> points)
+    {
         UpperLeft = new Point(points.Min(p => p.X), points.Max(p => p.Y));
         BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
+    }
+
+    public Room AddInnerStructure(Room room)
+    {
+        InnerStructures.Add(room);
+        return room;
     }
 
     public Room Copy(IThemed newParent)

@@ -24,14 +24,18 @@ public class OverlappingLinedefResolver
             else
             {
                 var modifiedLines = ResolveOverlappingPair(nextOverlap.Value.Item1, nextOverlap.Value.Item2, mapElements).ToArray();
+
+                if (!modifiedLines.Any())
+                    throw new Exception("Unable to resolve overlapping linedefs");
+
                 RemoveOverlappingLines(nextOverlap.Value.Item1, nextOverlap.Value.Item2, mapElements);
 
                 mapElements.LineDefs.AddRange(modifiedLines);
 
                 var sideDefs = modifiedLines.SelectMany(l => l.SideDefs).ToArray();
-                mapElements.SideDefs.AddRange(sideDefs.Where(s=> !mapElements.SideDefs.Contains(s)));   
+                mapElements.SideDefs.AddRange(sideDefs.Where(s => !mapElements.SideDefs.Contains(s)));
 
-                modified.AddRange(modifiedLines);
+                modified.AddRange(modifiedLines);                
             }
         }
 
@@ -79,8 +83,9 @@ public class OverlappingLinedefResolver
         var splitLines = SplitOverlappingLines_IgnoreSidedefs(line1, line2).ToArray();
         foreach(var line in splitLines)
         {
-            Sector? frontSector = possibleSectors.FirstOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, mapElements));
-            Sector? backSector = possibleSectors.FirstOrDefault(p => p != frontSector && _isPointInSector.Execute(line.BackTestPoint, p, mapElements));
+            // using "last" because we want the most recently added sector to take precence
+            Sector? frontSector = possibleSectors.LastOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, mapElements));
+            Sector? backSector = possibleSectors.LastOrDefault(p => p != frontSector && _isPointInSector.Execute(line.BackTestPoint, p, mapElements));
 
             var frontSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == frontSector)?.Copy();
             var backSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == backSector)?.Copy();
