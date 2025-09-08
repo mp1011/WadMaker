@@ -9,12 +9,26 @@ public class ShapePlacer<T> where T : IShape
         Shape = shape;
     }
 
-    public T LeftOf(IShape other, int gap = 0)
+    public T WestOf(IShape other, int gap = 0)
     {
         var x = other.UpperLeft.X - Shape.Bounds().Width - gap;
         int y = other.Bounds().Center.Y + Shape.Bounds().Height / 2;
 
         var upperLeft = new Point(x, y);    
+        var bottomRight = new Point(upperLeft.X + Shape.Bounds().Width,
+                                    upperLeft.Y - Shape.Bounds().Height);
+
+        Shape.UpperLeft = upperLeft;
+        Shape.BottomRight = bottomRight;
+        return Shape;
+    }
+
+    public T EastOf(IShape other, int gap = 0)
+    {
+        var x = other.BottomRight.X + Shape.Bounds().Width + gap;
+        int y = other.Bounds().Center.Y + Shape.Bounds().Height / 2;
+
+        var upperLeft = new Point(x, y);
         var bottomRight = new Point(upperLeft.X + Shape.Bounds().Width,
                                     upperLeft.Y - Shape.Bounds().Height);
 

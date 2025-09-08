@@ -17,7 +17,7 @@ public class IDProvider
         return ret;
     }
 
-    private int _nextSectorIndex = 0;
+    private int _nextSectorIndex = 1;
     public int NextSectorIndex()
     {
         var ret = _nextSectorIndex;

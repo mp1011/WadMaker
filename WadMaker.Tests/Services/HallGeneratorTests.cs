@@ -1,4 +1,7 @@
-﻿namespace WadMaker.Tests.Services;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using WadMaker.Models.LineSpecials;
+
+namespace WadMaker.Tests.Services;
 
 
 class HallGeneratorTests : StandardTest
@@ -192,5 +195,25 @@ class HallGeneratorTests : StandardTest
 
         Assert.That(hall.Bounds.Height, Is.EqualTo(room1.Bounds.Height));
         Assert.That(hall.UpperLeft.Y, Is.EqualTo(room1.UpperLeft.Y));
+    }
+
+    [Test]
+    public void WhenDoorIsActivatedBySwitchItDoesNotHaveItsOwnLineSpecials()
+    {
+        var map = new Map();
+        var room1 = map.AddRoom(new Room {  UpperLeft = Point.Empty, BottomRight = new Point(256,-256) });
+        var room2 = map.AddRoom(new Room(map, size: new Size(128, 128)).Place().EastOf(room1, 32));
+
+        var switchAlcove = RoomGenerator.AddStructure(room1, new Alcove(new Room { Floor = 16, Ceiling = -16 }, Side.Left, 64, 8, 0.5));
+        int doorTag = IDProvider.NextSectorIndex();
+        switchAlcove.LineSpecials[Side.Left] = new DoorOpen(doorTag, Speed.StandardDoor);
+
+        var hall = map.AddRoom(HallGenerator.GenerateHall(new Hall(128, room1, room2,
+            Door: new Door(8, Texture.BIGDOOR1, Texture.DOORTRAK, 16, Tag: doorTag))));
+
+        var door = hall.InnerStructures.First();
+
+        Assert.That(door.LineSpecials.Try(Side.Left), Is.Null);
+        Assert.That(door.LineSpecials.Try(Side.Right), Is.Null);
     }
 }

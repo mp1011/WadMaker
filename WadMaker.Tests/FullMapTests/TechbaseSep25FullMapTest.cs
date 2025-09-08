@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.FullMapTests;
+﻿using WadMaker.Models.LineSpecials;
+
+namespace WadMaker.Tests.FullMapTests;
 
 class TechbaseSep25FullMapTest : StandardTest
 {
@@ -29,13 +31,24 @@ class TechbaseSep25FullMapTest : StandardTest
             new Hall(128, entrance, longHall, Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORTRAK, PositionInHall: 16))));
 
         // west room
-        var westRoom = map.AddRoom(new Room(parent: map, size: new Size(512, 512)).Place().LeftOf(longHall, 32));
+        var westRoom = map.AddRoom(new Room(parent: map, size: new Size(512, 512)).Place().WestOf(longHall, 32));
         westRoom.ShapeModifiers.Add(new InvertCorners { Width = 128 });
         RoomGenerator.AddStructure(westRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Bottom, 128, 16, 0.5));
 
         // west room to long hall door
+        var doorTag = IDProvider.NextSectorIndex();
+        var westDoor = map.AddRoom(HallGenerator.GenerateHall(
+         new Hall(128, longHall, westRoom, Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORTRAK, PositionInHall: 8, Tag: doorTag))));
+        
+        // east room
+        var eastRoom = map.AddRoom(new Room(parent: map, size: new Size(128, 256)).Place().EastOf(longHall, 16));
+        var westDoorSwitch = RoomGenerator.AddStructure(eastRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
+        westDoorSwitch.LineSpecials[Side.Right] = new DoorOpen(doorTag, Speed.StandardDoor);
+        westDoor.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE);
+
+        // east room to long hall door
         map.AddRoom(HallGenerator.GenerateHall(
-         new Hall(128, longHall, westRoom, Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORTRAK, PositionInHall: 8))));
+         new Hall(128, longHall, eastRoom, Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORTRAK, PositionInHall: 8))));
 
         // stair corner
         var stairCorner = map.AddRoom(new Room(parent: map, size: new Size(128, 128)).Place().NorthOf(westRoom, 256));
@@ -68,6 +81,20 @@ class TechbaseSep25FullMapTest : StandardTest
                StepWidth: 16,
                StartRoom: stairCorner,
                EndRoom: block1))));
+
+
+        // exit room
+        var exitRoom = map.AddRoom(new Room(parent: map, size: new Size(256, 256)).Place().EastOf(outdoorArea, 64));
+
+        // exit door
+        var exitDoor = map.AddRoom(HallGenerator.GenerateHall(
+         new Hall(128, outdoorArea, exitRoom, 
+            HallTemplate: new Room { Floor = 0, Ceiling = 128 }, 
+            Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORTRAK, PositionInHall: 16))));
+
+        var exitDoorSwitch = RoomGenerator.AddStructure(exitRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
+        exitDoorSwitch.LineSpecials[Side.Right] = new ExitNormal();
+        exitDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE);
 
 
         var udmf = MapToUDMF(map);

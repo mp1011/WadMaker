@@ -130,8 +130,15 @@ public class HallGenerator
         doorRoom.UpperLeft = doorPoints.Item1;
         doorRoom.BottomRight = doorPoints.Item2;
 
-        doorRoom.LineSpecials[hallSide] = new DoorRaise(0, Speed.StandardDoor);
-        doorRoom.LineSpecials[hallSide.Opposite()] = new DoorRaise(0, Speed.StandardDoor);
+        if (door.Tag == null)
+        {
+            doorRoom.LineSpecials[hallSide] = new DoorRaise(0, Speed.StandardDoor);
+            doorRoom.LineSpecials[hallSide.Opposite()] = new DoorRaise(0, Speed.StandardDoor);
+        }
+        else
+        {
+            doorRoom.Tag = door.Tag;
+        }
 
         doorRoom.SideTextures[hallSide] = door.Texture;
         doorRoom.SideTextures[hallSide.Opposite()] = door.Texture;

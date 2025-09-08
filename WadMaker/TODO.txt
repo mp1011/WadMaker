@@ -111,4 +111,12 @@ better looking ammo placement
 
 9/7 full map test notes
 * issue creating stairs when start/end were 0
-* problem resolving overlapping lines, when it can't tell what sector a line belongs to
+
+CRITICAL:
+* no door texture on switch door (as well as incorrect pegging)
+* switch texture ignored
+* no switch sound
+
+NICE TO HAVE:
+* exit switch auto-align
+* better texture placement
