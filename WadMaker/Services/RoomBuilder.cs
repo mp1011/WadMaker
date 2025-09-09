@@ -79,7 +79,7 @@ public class RoomBuilder
         var sectors = new[] { roomSector, innerElements.Sectors[0] };
 
         foreach (var line in lines)
-        {
+        {            
             var lineSide = line.SideOfRoom(innerElement);
             var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null, 
                 texturetop: innerElement.TextureForSide(lineSide).UpperString(),

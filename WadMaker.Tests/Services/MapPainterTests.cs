@@ -4,6 +4,7 @@ namespace WadMaker.Tests.Services;
 
 internal class MapPainterTests : StandardTest
 {
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void MapPainterCanCreateBasicRoom()
     {
@@ -25,6 +26,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void MapPainterCanCreateTwoUnconnectedRooms()
     {
@@ -56,6 +58,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void MapPainterCanCreateTwoRoomsConnectedByHall()
     {
@@ -90,6 +93,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void CanCreateRoomWithPillar()
     {
@@ -118,6 +122,7 @@ internal class MapPainterTests : StandardTest
 
     }
 
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void CanCreateRoomWithInnerStructure()
     {
@@ -149,6 +154,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void CanCreateRoomsConnectedByStairs()
     {
@@ -186,6 +192,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void CanCreateRoomsConnectedByLift()
     {
@@ -223,7 +230,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void CanCreateRoomWithButtonActivatedLift()
     {
@@ -267,7 +274,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [Test]
     public void CanGenerateTextureTestMap()
     {

@@ -2,7 +2,7 @@ namespace WadMaker.Tests.Services;
 
 internal class ThingPlacerTests : StandardTest
 {
-
+   
     [TestCase(1, new int[] { 628, -128 })]
     [TestCase(2, new int[] { 628, -108, 628, -148 })]
     [TestCase(4, new int[] { 628, -68, 628, -108, 628, -148, 628, -188 })]
@@ -25,6 +25,7 @@ internal class ThingPlacerTests : StandardTest
         }
     }
 
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     [TestCase(ThingPattern.Triangle)]
     [TestCase(ThingPattern.Square)] // could be better, but fine for now
     [TestCase(ThingPattern.Circle)]

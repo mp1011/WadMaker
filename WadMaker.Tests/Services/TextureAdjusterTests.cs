@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.Services;
+﻿using WadMaker.Models.LineSpecials;
+
+namespace WadMaker.Tests.Services;
 
 internal class TextureAdjusterTests : StandardTest
 {
@@ -169,8 +171,46 @@ internal class TextureAdjusterTests : StandardTest
         }
     }
 
+    [TestCase("Tech", "Brown", Texture.BIGDOOR4)]
+    [TestCase("Tech", "Green", Texture.BIGDOOR3)]
+    [TestCase("Wood", "Brown", Texture.BIGDOOR5)]
+    public void CanApplyNamedThemeToSwitchControlledDoors(string themeName, string color, Texture expectedDoor)
+    {
+        var map = new Map();
+        var room1 = map.AddRoom(new Room { UpperLeft = Point.Empty, BottomRight = new Point(256, -256) });
+        var room2 = map.AddRoom(new Room(map, size: new Size(128, 128)).Place().EastOf(room1, 32));
+        var switchAlcove = RoomGenerator.AddStructure(room1, new Alcove(new Room { Floor = 16, Ceiling = -16 }, Side.Left, 64, 8, 0.5));
+        int doorTag = IDProvider.NextSectorIndex();
+        switchAlcove.LineSpecials[Side.Left] = new DoorOpen(doorTag, Speed.StandardDoor);
+        map.AddRoom(HallGenerator.GenerateHall(new Hall(128, room1, room2,
+            Door: new Door(8, Texture.BIGDOOR1, Texture.DOORTRAK, 16, Tag: doorTag))));
+
+        var theme = new Theme(new ThemeRule[]
+        {
+            new ThemeRule(new TextureQuery(new [] { themeName, "Door" }, color), new IsDoor()),
+        });
+
+        foreach (var room in map.Rooms)
+        {
+            room.Theme = theme;
+        }
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+        TextureAdjuster.ApplyThemes(mapElements);
+
+        var door = mapElements.Sectors.Single(p => p.Room.VerticalHeight == 0);
+        var doorLines = door.Lines.Where(p => p.Back != null).ToArray();
+        Assert.That(doorLines, Is.Not.Empty);
+        foreach (var doorLine in doorLines)
+        {
+            Assert.That(doorLine.Front.Data.texturetop, Is.EqualTo(expectedDoor.ToString()));
+        }
+    }
+
     // room for improvement but ok for now
     [Test]
+    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();

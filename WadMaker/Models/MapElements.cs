@@ -56,7 +56,11 @@ public class Sector(Room Room, sector Data) : IElementWrapper<sector>
 
     public int Height => Data.heightceiling - Data.heightfloor;
 
+    public int? Tag => Data.id;
+
     public LineDef[] Lines { get; set; } = Array.Empty<LineDef>();
+
+    public LineDef[] Activators { get; set; } = Array.Empty<LineDef>();
 
     public override string ToString()
     {

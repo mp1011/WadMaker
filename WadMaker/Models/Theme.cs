@@ -59,7 +59,14 @@ public record IsDoor() : ThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef)
     {
-        return lineDef.LineSpecial?.Type == LineSpecialType.DoorRaise;
+        if (lineDef.LineSpecial?.IsDoor == true && lineDef.LineSpecial?.AppliesToBackSector == true)
+            return true;
+
+        var activators = lineDef.Sectors.SelectMany(p => p.Activators)
+            .Where(p => p.LineSpecial?.IsDoor == true)
+            .ToArray();
+
+        return activators.Any();
     }
 }
 

@@ -113,9 +113,7 @@ better looking ammo placement
 * issue creating stairs when start/end were 0
 
 CRITICAL:
-* no door texture on switch door (as well as incorrect pegging)
-* switch texture ignored
-* no switch sound
+* no switch sound (caused by having an upper texture)
 
 NICE TO HAVE:
 * exit switch auto-align

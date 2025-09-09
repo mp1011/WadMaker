@@ -23,5 +23,7 @@ public record class LineSpecial(LineSpecialType Type, int? arg0, int? arg1, int?
         repeatspecial = true,
     };
 
+    public virtual int? SectorTag => null;
     public virtual bool AppliesToBackSector => false;
+    public virtual bool IsDoor => false;
 }

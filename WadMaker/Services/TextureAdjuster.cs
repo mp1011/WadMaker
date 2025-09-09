@@ -17,7 +17,7 @@ public class TextureAdjuster
   {
     foreach (var textureRun in TextureRuns(mapElements))
     {
-      AlignTextures(textureRun);
+        AlignTextures(textureRun);
     }
 
     SetLinePegs(mapElements);

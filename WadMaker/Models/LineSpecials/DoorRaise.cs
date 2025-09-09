@@ -4,4 +4,6 @@ public record DoorRaise(int Tag, Speed Speed, Delay Delay=Delay.StandardDoor, in
     : LineSpecial(LineSpecialType.DoorRaise, Tag, (int)Speed, (int)Delay, LightTag, null)
 {
     public override bool AppliesToBackSector => Tag == 0;
+    public override int? SectorTag => Tag;
+    public override bool IsDoor => true;
 }

@@ -44,7 +44,7 @@ class TechbaseSep25FullMapTest : StandardTest
         var eastRoom = map.AddRoom(new Room(parent: map, size: new Size(128, 256)).Place().EastOf(longHall, 16));
         var westDoorSwitch = RoomGenerator.AddStructure(eastRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
         westDoorSwitch.LineSpecials[Side.Right] = new DoorOpen(doorTag, Speed.StandardDoor);
-        westDoor.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE);
+        westDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE, LowerUnpegged: true);
 
         // east room to long hall door
         map.AddRoom(HallGenerator.GenerateHall(
@@ -94,7 +94,7 @@ class TechbaseSep25FullMapTest : StandardTest
 
         var exitDoorSwitch = RoomGenerator.AddStructure(exitRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
         exitDoorSwitch.LineSpecials[Side.Right] = new ExitNormal();
-        exitDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE);
+        exitDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE, LowerUnpegged: true);
 
 
         var udmf = MapToUDMF(map);

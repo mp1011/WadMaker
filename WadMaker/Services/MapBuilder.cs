@@ -43,6 +43,12 @@ public class MapBuilder
         foreach(var sector in mapElements.Sectors)
         {
             sector.Lines = [.. mapElements.LineDefs.Where(p => p.BelongsTo(sector))];
+
+            if (sector.Tag.HasValue)
+            {
+                sector.Activators = mapElements.LineDefs.Where(p => p.LineSpecial != null
+                    && p.LineSpecial.SectorTag == sector.Tag).ToArray();
+            }
         }
 
         return mapElements;

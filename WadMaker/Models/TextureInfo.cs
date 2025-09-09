@@ -54,6 +54,17 @@ public record TextureInfo(
                 offsety = OffsetY
             };
         }
+        else if(StaticFlags.ClearUpperAndLowerTexturesOnTwoSidedLines)
+        {
+            side.Data = side.Data with
+            {
+                texturemiddle = (Mid ?? Main ?? Texture.MISSING).ToString(),
+                texturebottom = null,
+                texturetop = null,
+                offsetx = OffsetX,
+                offsety = OffsetY
+            };
+        }
         else
         {
             side.Data = side.Data with
