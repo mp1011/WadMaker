@@ -22,6 +22,8 @@ internal class StandardTest
     protected ThingPlacer ThingPlacer => ServiceProvider.GetRequiredService<ThingPlacer>();
     protected IDProvider IDProvider => ServiceProvider.GetRequiredService<IDProvider>();
 
+    protected Random Random => ServiceProvider.GetRequiredService<Random>();
+
     protected OutOfBoundsThingResolver OutOfBoundsThingResolver => ServiceProvider.GetRequiredService<OutOfBoundsThingResolver>();
 
     public StandardTest()

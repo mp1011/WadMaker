@@ -1,6 +1,6 @@
 ﻿namespace WadMaker.Models;
 
-public record ValueRange(int Min, int Max)
+public record ValueRange(int Min, int Max, Random Randomizer)
 {
-    public int RandomValue() => Random.Shared.Next(Min, Max + 1);
+    public int RandomValue() => Randomizer.Next(Min, Max + 1);
 }

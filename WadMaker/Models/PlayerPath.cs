@@ -11,4 +11,5 @@ public record PlayerPath(PlayerPathNode[] Nodes);
 /// <param name="OptionalRooms"></param>
 public record PlayerPathNode(Room[] RequiredRooms, Room[] OptionalRooms)
 {
+    public PlayerPathNode(params Room[] RequiredRooms) : this(RequiredRooms, Array.Empty<Room>()) { }
 }

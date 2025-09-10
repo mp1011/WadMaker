@@ -17,6 +17,7 @@ public static class ThingTypeExtensions
             ThingType.Lost_soul => ThingCategory.Monster,
             ThingType.Spectre => ThingCategory.Monster,
             ThingType.Zombieman => ThingCategory.Monster,
+            ThingType.Shotgun_guy => ThingCategory.Monster,
             ThingType.Hell_knight => ThingCategory.Monster,
             ThingType.Mancubus => ThingCategory.Monster,
             ThingType.Pain_elemental => ThingCategory.Monster,

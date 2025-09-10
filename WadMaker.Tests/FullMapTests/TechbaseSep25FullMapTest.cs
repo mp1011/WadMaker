@@ -96,6 +96,25 @@ class TechbaseSep25FullMapTest : StandardTest
         exitDoorSwitch.LineSpecials[Side.Right] = new ExitNormal();
         exitDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE, LowerUnpegged: true);
 
+        var path = new PlayerPath(new PlayerPathNode[]
+        {
+            new PlayerPathNode(new Room[] { entrance }),
+            new PlayerPathNode(new Room[] { longHall, eastRoom }),
+            new PlayerPathNode(new Room[] { westRoom }),
+            new PlayerPathNode(new Room[] { outdoorArea }),
+            new PlayerPathNode(new Room[] { exitRoom }),
+        });
+
+        ThingPlacer.AddThing(ThingType.Shotgun, eastRoom, 0.5, 0.5, ThingFlags.AllSkillsAndModes);
+
+        ThingPlacer.AddMonsters(path,
+            new MonsterPlacement(ThingType.Zombieman, 0.2, 1.0, EnemyDensity.Common, Angle.South, ThingPattern.Triangle),
+            new MonsterPlacement(ThingType.Shotgun_guy, 0.3, 1.0, EnemyDensity.Sparse, Angle.South, ThingPattern.Triangle),
+            new MonsterPlacement(ThingType.Imp, 0.5, 1.0, EnemyDensity.Sparse, Angle.South, ThingPattern.Triangle),
+            new MonsterPlacement(ThingType.Hell_knight, 1.0, 1.0, EnemyDensity.Single, Angle.South, ThingPattern.Triangle)
+            );
+
+        ThingPlacer.AddAmmo(path, ResourceBalance.Adequate);
 
         var udmf = MapToUDMF(map);
         var expected = File.ReadAllText("Fixtures//sep25fullmap.udmf");

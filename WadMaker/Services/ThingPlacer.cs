@@ -5,10 +5,12 @@ namespace WadMaker.Services;
 public class ThingPlacer
 {
     private readonly OverlappingThingResolver _overlappingThingResolver;
+    private readonly Random _randomizer;
 
-    public ThingPlacer(OverlappingThingResolver overlappingThingResolver)
+    public ThingPlacer(OverlappingThingResolver overlappingThingResolver, Random randomizer)
     {
         _overlappingThingResolver = overlappingThingResolver;
+        _randomizer = randomizer;
     }
 
     public void AddThing(ThingType thing, Room room,
@@ -239,10 +241,10 @@ public class ThingPlacer
         int maxTries = 1000;
         while(--maxTries > 0 && new GetAmmoBalance().Execute(allRooms) < balance)
         {
-            var weapon = playerWeapons.PickRandom();
+            var weapon = playerWeapons.PickRandom(_randomizer);
             var ammo = weapon.SmallAmmoType();
 
-            var room = allRooms.PickRandom();
+            var room = allRooms.PickRandom(_randomizer);
             AddThing(ammo, room, 0.5, 0.5, ThingFlags.AllSkillsAndModes);
         }
     }
@@ -252,7 +254,7 @@ public class ThingPlacer
         if(placement.Density == EnemyDensity.None)
             return;
 
-        ValueRange countPerRoom = placement.Density.MonsterCount();
+        ValueRange countPerRoom = placement.Density.MonsterCount(_randomizer);
 
         var chancePerRoom = placement.Density switch
         {
@@ -270,7 +272,7 @@ public class ThingPlacer
         {
             foreach (var room in node.RequiredRooms)
             {
-                bool placeMonsters = Random.Shared.NextDouble() <= chancePerRoom;
+                bool placeMonsters = _randomizer.NextDouble() <= chancePerRoom;
                 if (!placeMonsters)
                     continue;
 

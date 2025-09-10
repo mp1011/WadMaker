@@ -164,13 +164,13 @@ internal class ThingPlacerTests : StandardTest
 
         Assert.That(mainRooms[0].Things.Count(p => p.ThingType == ThingType.Imp), Is.EqualTo(0));
         Assert.That(mainRooms[1].Things.Count(p => p.ThingType == ThingType.Imp), 
-            Is.InRange(EnemyDensity.Rare.MonsterCount().Min, EnemyDensity.Rare.MonsterCount().Max)); // 0.25
+            Is.InRange(EnemyDensity.Rare.MonsterCount(Random).Min, EnemyDensity.Rare.MonsterCount(Random).Max)); // 0.25
         Assert.That(mainRooms[2].Things.Count(p => p.ThingType == ThingType.Imp),
-            Is.InRange(EnemyDensity.Common.MonsterCount().Min, EnemyDensity.Common.MonsterCount().Max)); // 0.5
+            Is.InRange(EnemyDensity.Common.MonsterCount(Random).Min, EnemyDensity.Common.MonsterCount(Random).Max)); // 0.5
         Assert.That(mainRooms[3].Things.Count(p => p.ThingType == ThingType.Imp),
-            Is.InRange(EnemyDensity.Common.MonsterCount().Min, EnemyDensity.Common.MonsterCount().Max)); // 0.75
+            Is.InRange(EnemyDensity.Common.MonsterCount(Random).Min, EnemyDensity.Common.MonsterCount(Random).Max)); // 0.75
         Assert.That(mainRooms[4].Things.Count(p => p.ThingType == ThingType.Imp),
-            Is.InRange(EnemyDensity.Excessive.MonsterCount().Min, EnemyDensity.Excessive.MonsterCount().Max)); // 1.0
+            Is.InRange(EnemyDensity.Excessive.MonsterCount(Random).Min, EnemyDensity.Excessive.MonsterCount(Random).Max)); // 1.0
     }
 
     [TestCase(ResourceBalance.BarelyEnough)] // -3 imps
