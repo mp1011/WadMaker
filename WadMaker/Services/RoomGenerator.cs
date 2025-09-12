@@ -6,7 +6,7 @@ public class RoomGenerator
     {
         var alcoveRoom = alcove.Template.Copy(room);
 
-        var centerPoint = GetRelativeSidePoint(room.Bounds, alcove.Side, (int)(room.Bounds.SideLength(alcove.Side) * alcove.CenterPercent));
+        var centerPoint = room.Bounds.GetRelativeSidePoint(alcove.Side, (int)(room.Bounds.SideLength(alcove.Side) * alcove.CenterPercent));
 
         var alcovePoints = GetAlcoveSegment(
             side: alcove.Side,
@@ -20,18 +20,6 @@ public class RoomGenerator
 
         room.InnerStructures.Add(alcoveRoom);
         return alcoveRoom;
-    }
-
-    private Point GetRelativeSidePoint(DRectangle bounds, Side side, int position)
-    {
-        return side switch
-        {
-            Side.Left => new Point(0, -position),
-            Side.Right => new Point(bounds.Width, -position),
-            Side.Bottom => new Point(position, -bounds.Height),
-            Side.Top => new Point(position, 0),
-            _ => new Point(0, 0),
-        };        
     }
 
     private (Point, Point) GetAlcoveSegment(Side side, Room room, Point centerPoint, int width, int depth)

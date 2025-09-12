@@ -14,6 +14,8 @@ public struct DRectangle
     public Point Center => new Point(X + (Width/2),
                                      Y - (Height/2));
 
+    public Size Size => new Size(Width, Height);
+
     public DRectangle(int x, int y, int width, int height)
     {
         X = x;
@@ -46,6 +48,30 @@ public struct DRectangle
             default:
                 return Height;
         }
+    }
+
+    public Point AxisLength2(Side side)
+    {
+        switch (side)
+        {
+            case Side.Left:
+            case Side.Right:
+                return new Point(Width, 0);
+            default:
+                return new Point(0, Height);
+        }
+    }
+
+    public Point GetRelativeSidePoint(Side side, int position)
+    {
+        return side switch
+        {
+            Side.Left => new Point(0, -position),
+            Side.Right => new Point(Width, -position),
+            Side.Bottom => new Point(position, -Height),
+            Side.Top => new Point(position, 0),
+            _ => new Point(0, 0),
+        };
     }
 
     public Point SideCenter(Side side) => side switch

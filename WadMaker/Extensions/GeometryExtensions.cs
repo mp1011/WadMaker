@@ -253,4 +253,7 @@ public static class GeometryExtensions
             Side.Bottom => Side.Right,
             _ => Side.None
         };
+
+    public static Point Scale(this Point p, double scaleFactor) =>
+        new Point((int)(p.X * scaleFactor), (int)(p.Y * scaleFactor));  
 }

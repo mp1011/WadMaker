@@ -8,6 +8,14 @@ public class Cutout : IShape
     public Point BottomRight { get; set; } = Point.Empty;
     public Texture WallTexture { get; set; } = Texture.STONE;
 
+
+    public Cutout(Point? upperLeft = null, Size? size = null)
+    {
+        size ??= new Size(64, 64);
+        UpperLeft = upperLeft ?? Point.Empty;
+        BottomRight = new Point(UpperLeft.X + size.Value.Width, UpperLeft.Y - size.Value.Height);
+    }
+
     public Cutout Copy()
     {
         var copy = new Cutout
