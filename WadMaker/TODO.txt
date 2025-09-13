@@ -27,7 +27,7 @@
 [x] player path aware
 ------------- 8/31/2025
 --------------9/9/2025
-[ ] easier way to create symettry, such as having four pillars evenly spaced
+[x] easier way to create symettry, such as having four pillars evenly spaced
 [ ] function to add a "window" connecting two sectors
 [ ] floor and ceiling textures
 [ ] ambush flag for monsters
