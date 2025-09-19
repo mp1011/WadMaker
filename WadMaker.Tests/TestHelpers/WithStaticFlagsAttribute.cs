@@ -11,11 +11,14 @@ namespace WadMaker.Tests.TestHelpers;
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
 public class WithStaticFlagsAttribute : NUnitAttribute, IWrapSetUpTearDown
 {
-    public bool? ClearUpperAndLowerTexturesOnTwoSidedLines { get; }
+    public bool ClearUpperAndLowerTexturesOnOneSidedLines { get; }
+    public bool InnerSectorLinesAlwaysStartTwoSided { get; }
 
-    public WithStaticFlagsAttribute(bool clearUpperAndLowerTexturesOnTwoSidedLines)
+    public WithStaticFlagsAttribute(bool clearUpperAndLowerTexturesOnOneSidedLines=true, 
+        bool innerSectorLinesAlwaysStartTwoSided=false)
     {
-        ClearUpperAndLowerTexturesOnTwoSidedLines = clearUpperAndLowerTexturesOnTwoSidedLines;
+        ClearUpperAndLowerTexturesOnOneSidedLines = clearUpperAndLowerTexturesOnOneSidedLines;
+        InnerSectorLinesAlwaysStartTwoSided = innerSectorLinesAlwaysStartTwoSided;
     }
 
     public TestCommand Wrap(TestCommand command)
@@ -36,8 +39,8 @@ public class WithStaticFlagsAttribute : NUnitAttribute, IWrapSetUpTearDown
 
         public override TestResult Execute(TestExecutionContext context)
         {            
-            if (_attribute.ClearUpperAndLowerTexturesOnTwoSidedLines.HasValue)
-                StaticFlags.ClearUpperAndLowerTexturesOnTwoSidedLines = _attribute.ClearUpperAndLowerTexturesOnTwoSidedLines.Value;
+            StaticFlags.ClearUpperAndLowerTexturesOnOneSidedLines = _attribute.ClearUpperAndLowerTexturesOnOneSidedLines;
+            StaticFlags.InnerSectorLinesAlwaysStartTwoSided = _attribute.InnerSectorLinesAlwaysStartTwoSided;
 
             try
             {

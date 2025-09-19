@@ -217,35 +217,33 @@ sidedef
 //8
 sidedef
 {
-    sector = 4;
+    sector = 0;
     texturemiddle = "STONE";
-    texturetop = "STONE";
-    texturebottom = "STONE";
 }
 //9
 sidedef
 {
     sector = 0;
-    texturemiddle = "STONE";
-}
-//10
-sidedef
-{
-    sector = 0;
     texturetop = "STONE";
     texturebottom = "STONE";
 }
-//11
+//10
 sidedef
 {
     sector = 2;
     texturetop = "STONE";
     texturebottom = "STONE";
 }
-//12
+//11
 sidedef
 {
     sector = 0;
+    texturemiddle = "STONE";
+}
+//12
+sidedef
+{
+    sector = 1;
     texturemiddle = "STONE";
 }
 //13
@@ -257,13 +255,13 @@ sidedef
 //14
 sidedef
 {
-    sector = 1;
+    sector = 2;
     texturemiddle = "STONE";
 }
 //15
 sidedef
 {
-    sector = 2;
+    sector = 3;
     texturemiddle = "STONE";
 }
 //16
@@ -271,58 +269,52 @@ sidedef
 {
     sector = 3;
     texturemiddle = "STONE";
-    texturetop = "STONE";
-    texturebottom = "PLAT1";
 }
 //17
-sidedef
-{
-    sector = 3;
-    texturemiddle = "STONE";
-    texturetop = "STONE";
-    texturebottom = "PLAT1";
-}
-//18
 sidedef
 {
     sector = 2;
     texturemiddle = "STONE";
 }
-//19
+//18
 sidedef
 {
     sector = 4;
+    texturetop = "STONE";
+    texturebottom = "PLAT1";
+}
+//19
+sidedef
+{
+    sector = 3;
     texturetop = "STONE";
     texturebottom = "PLAT1";
 }
 //20
 sidedef
 {
-    sector = 3;
-    texturetop = "STONE";
-    texturebottom = "PLAT1";
+    sector = 4;
+    texturemiddle = "STONE";
 }
 //21
 sidedef
 {
     sector = 4;
-    texturemiddle = "STONE";
     texturetop = "STONE";
     texturebottom = "STONE";
 }
 //22
 sidedef
 {
-    sector = 4;
+    sector = 1;
     texturetop = "STONE";
     texturebottom = "STONE";
 }
 //23
 sidedef
 {
-    sector = 1;
-    texturetop = "STONE";
-    texturebottom = "STONE";
+    sector = 4;
+    texturemiddle = "STONE";
 }
 //0
 linedef
@@ -392,93 +384,85 @@ linedef
 //7
 linedef
 {
-    v1 = 10;
-    v2 = 14;
+    v1 = 1;
+    v2 = 8;
     sidefront = 8;
     blocking = true;
 }
 //8
 linedef
 {
-    v1 = 1;
-    v2 = 8;
-    sidefront = 9;
-    blocking = true;
-}
-//9
-linedef
-{
     v1 = 8;
     v2 = 11;
-    sidefront = 10;
-    sideback = 11;
+    sidefront = 9;
+    sideback = 10;
     twosided = true;
     blocking = false;
     comment = "double sided line";
 }
-//10
+//9
 linedef
 {
     v1 = 11;
     v2 = 2;
+    sidefront = 11;
+    blocking = true;
+}
+//10
+linedef
+{
+    v1 = 7;
+    v2 = 10;
     sidefront = 12;
     blocking = true;
 }
 //11
 linedef
 {
-    v1 = 7;
-    v2 = 10;
+    v1 = 9;
+    v2 = 4;
     sidefront = 13;
     blocking = true;
 }
 //12
 linedef
 {
-    v1 = 9;
-    v2 = 4;
+    v1 = 8;
+    v2 = 12;
     sidefront = 14;
     blocking = true;
 }
 //13
 linedef
 {
-    v1 = 8;
-    v2 = 12;
+    v1 = 12;
+    v2 = 13;
     sidefront = 15;
     blocking = true;
 }
 //14
 linedef
 {
-    v1 = 12;
-    v2 = 13;
+    v1 = 14;
+    v2 = 15;
     sidefront = 16;
     blocking = true;
 }
 //15
 linedef
 {
-    v1 = 14;
-    v2 = 15;
+    v1 = 15;
+    v2 = 11;
     sidefront = 17;
     blocking = true;
 }
 //16
 linedef
 {
-    v1 = 15;
-    v2 = 11;
-    sidefront = 18;
-    blocking = true;
-}
-//17
-linedef
-{
     v1 = 14;
     v2 = 13;
-    sidefront = 19;
-    sideback = 20;
+    sidefront = 18;
+    sideback = 19;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -489,24 +473,32 @@ linedef
     playeruse = true;
     repeatspecial = true;
 }
-//18
+//17
 linedef
 {
     v1 = 13;
     v2 = 9;
-    sidefront = 21;
+    sidefront = 20;
     blocking = true;
 }
-//19
+//18
 linedef
 {
     v1 = 9;
     v2 = 10;
-    sidefront = 22;
-    sideback = 23;
+    sidefront = 21;
+    sideback = 22;
     twosided = true;
     blocking = false;
     comment = "double sided line";
+}
+//19
+linedef
+{
+    v1 = 10;
+    v2 = 14;
+    sidefront = 23;
+    blocking = true;
 }
 //0
 thing

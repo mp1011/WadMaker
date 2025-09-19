@@ -54,7 +54,7 @@ public record TextureInfo(
                 offsety = OffsetY
             };
         }
-        else if(StaticFlags.ClearUpperAndLowerTexturesOnTwoSidedLines)
+        else if(StaticFlags.ClearUpperAndLowerTexturesOnOneSidedLines)
         {
             side.Data = side.Data with
             {

@@ -210,7 +210,7 @@ internal class TextureAdjusterTests : StandardTest
 
     // room for improvement but ok for now
     [Test]
-    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
+    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();

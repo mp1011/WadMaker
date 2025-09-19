@@ -179,14 +179,17 @@ internal class MapBuilderTests : StandardTest
         var room2 = map.AddRoom(new Room(parent: map, size: new Size(400, 400)))
                         .Place().EastOf(room1, 16);
 
+        room1.Tag = 1;
+        room2.Tag = 2;
+
         var window = RoomGenerator.AddStructure(room1, new Window(
-            Template: new Room { Floor = 32, Ceiling = -32 },
+            Template: new Room { Floor = 32, Ceiling = -32, Tag = 3 },
             Width: 128,
             AdjacentRoom: room2,
             CenterPercent: 0.50));
 
         var mapElements = MapBuilder.Build(map);
-        var windowSector = mapElements.Sectors.Single(p => p.Room == window);
+        var windowSector = mapElements.Sectors.Single(p => p.Tag == 3);
         var shortLines = windowSector.Lines.Where(p => p.Length == 16).ToArray();
         var longLines = windowSector.Lines.Where(p => p.Length == 128).ToArray();
 

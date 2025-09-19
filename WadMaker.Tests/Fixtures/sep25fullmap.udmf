@@ -2260,214 +2260,11 @@ sidedef
 //57
 sidedef
 {
-    sector = 15;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//58
-sidedef
-{
-    sector = 16;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//59
-sidedef
-{
-    sector = 16;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//60
-sidedef
-{
-    sector = 17;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//61
-sidedef
-{
-    sector = 17;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//62
-sidedef
-{
-    sector = 18;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//63
-sidedef
-{
-    sector = 18;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//64
-sidedef
-{
-    sector = 19;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//65
-sidedef
-{
-    sector = 19;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//66
-sidedef
-{
-    sector = 20;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//67
-sidedef
-{
-    sector = 20;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//68
-sidedef
-{
-    sector = 21;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//69
-sidedef
-{
-    sector = 21;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//70
-sidedef
-{
-    sector = 22;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//71
-sidedef
-{
-    sector = 22;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//72
-sidedef
-{
-    sector = 23;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//73
-sidedef
-{
-    sector = 23;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//74
-sidedef
-{
-    sector = 24;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//75
-sidedef
-{
-    sector = 24;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//76
-sidedef
-{
-    sector = 25;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//77
-sidedef
-{
-    sector = 25;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//78
-sidedef
-{
-    sector = 26;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//79
-sidedef
-{
-    sector = 26;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//80
-sidedef
-{
-    sector = 27;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//81
-sidedef
-{
-    sector = 27;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//82
-sidedef
-{
-    sector = 28;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//83
-sidedef
-{
-    sector = 28;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//84
-sidedef
-{
-    sector = 29;
-    texturemiddle = "STARBR2";
-    offsetx = 8;
-}
-//85
-sidedef
-{
-    sector = 29;
-    texturemiddle = "STARBR2";
-    offsetx = 0;
-}
-//86
-sidedef
-{
     sector = 30;
     texturemiddle = "STARBR2";
     offsetx = 3;
 }
-//87
+//58
 sidedef
 {
     sector = 31;
@@ -2475,14 +2272,14 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 62;
 }
-//88
+//59
 sidedef
 {
     sector = 30;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//89
+//60
 sidedef
 {
     sector = 31;
@@ -2490,14 +2287,14 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 62;
 }
-//90
+//61
 sidedef
 {
     sector = 30;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//91
+//62
 sidedef
 {
     sector = 33;
@@ -2505,224 +2302,49 @@ sidedef
     texturebottom = "STEP1";
     offsetx = 0;
 }
-//92
+//63
 sidedef
 {
     sector = 32;
     texturetop = "STEP1";
     texturebottom = "STEP1";
 }
-//93
-sidedef
-{
-    sector = 34;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//94
-sidedef
-{
-    sector = 35;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//95
-sidedef
-{
-    sector = 35;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//96
-sidedef
-{
-    sector = 36;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//97
-sidedef
-{
-    sector = 36;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//98
-sidedef
-{
-    sector = 37;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//99
-sidedef
-{
-    sector = 37;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//100
-sidedef
-{
-    sector = 38;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//101
-sidedef
-{
-    sector = 38;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//102
-sidedef
-{
-    sector = 39;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//103
-sidedef
-{
-    sector = 39;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//104
-sidedef
-{
-    sector = 40;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//105
-sidedef
-{
-    sector = 40;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//106
-sidedef
-{
-    sector = 41;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//107
-sidedef
-{
-    sector = 41;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//108
-sidedef
-{
-    sector = 42;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//109
-sidedef
-{
-    sector = 42;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//110
-sidedef
-{
-    sector = 43;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//111
-sidedef
-{
-    sector = 43;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//112
-sidedef
-{
-    sector = 44;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//113
-sidedef
-{
-    sector = 44;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//114
-sidedef
-{
-    sector = 45;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//115
-sidedef
-{
-    sector = 45;
-    texturemiddle = "LITE5";
-    offsetx = 0;
-}
-//116
-sidedef
-{
-    sector = 46;
-    texturemiddle = "STARBR2";
-    offsetx = 0;
-}
-//117
-sidedef
-{
-    sector = 46;
-    texturemiddle = "STARBR2";
-    offsetx = 51;
-}
-//118
+//64
 sidedef
 {
     sector = 47;
     texturemiddle = "STARBR2";
     offsetx = 96;
 }
-//119
+//65
 sidedef
 {
     sector = 47;
     texturemiddle = "STARBR2";
     offsetx = 96;
 }
-//120
+//66
 sidedef
 {
     sector = 48;
     texturemiddle = "STONE";
     offsetx = 0;
 }
-//121
+//67
 sidedef
 {
     sector = 48;
     texturemiddle = "SW1BLUE";
     offsetx = 0;
 }
-//122
+//68
 sidedef
 {
     sector = 48;
     texturemiddle = "STONE";
     offsetx = 0;
 }
-//123
+//69
 sidedef
 {
     sector = 49;
@@ -2730,14 +2352,14 @@ sidedef
     texturebottom = "BIGDOOR4";
     offsetx = 0;
 }
-//124
+//70
 sidedef
 {
     sector = 50;
     texturetop = "BIGDOOR4";
     texturebottom = "BIGDOOR4";
 }
-//125
+//71
 sidedef
 {
     sector = 49;
@@ -2745,21 +2367,21 @@ sidedef
     texturebottom = "BIGDOOR4";
     offsetx = 0;
 }
-//126
+//72
 sidedef
 {
     sector = 50;
     texturetop = "BIGDOOR4";
     texturebottom = "BIGDOOR4";
 }
-//127
+//73
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
     offsetx = 18;
 }
-//128
+//74
 sidedef
 {
     sector = 0;
@@ -2767,21 +2389,21 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 83;
 }
-//129
+//75
 sidedef
 {
     sector = 2;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//130
+//76
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
     offsetx = 16;
 }
-//131
+//77
 sidedef
 {
     sector = 1;
@@ -2789,21 +2411,21 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 8;
 }
-//132
+//78
 sidedef
 {
     sector = 10;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//133
+//79
 sidedef
 {
     sector = 1;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//134
+//80
 sidedef
 {
     sector = 1;
@@ -2811,21 +2433,21 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 72;
 }
-//135
+//81
 sidedef
 {
     sector = 2;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//136
+//82
 sidedef
 {
     sector = 1;
     texturemiddle = "STARBR2";
     offsetx = 96;
 }
-//137
+//83
 sidedef
 {
     sector = 1;
@@ -2833,63 +2455,63 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 32;
 }
-//138
+//84
 sidedef
 {
     sector = 6;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//139
+//85
 sidedef
 {
     sector = 2;
     texturemiddle = "STARBR2";
     offsetx = 72;
 }
-//140
+//86
 sidedef
 {
     sector = 3;
     texturemiddle = "DOORTRAK";
     offsetx = 0;
 }
-//141
+//87
 sidedef
 {
     sector = 2;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//142
+//88
 sidedef
 {
     sector = 2;
     texturemiddle = "STARBR2";
     offsetx = 36;
 }
-//143
+//89
 sidedef
 {
     sector = 3;
     texturemiddle = "DOORTRAK";
     offsetx = 0;
 }
-//144
+//90
 sidedef
 {
     sector = 2;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//145
+//91
 sidedef
 {
     sector = 4;
     texturemiddle = "STARBR2";
     offsetx = 72;
 }
-//146
+//92
 sidedef
 {
     sector = 4;
@@ -2897,28 +2519,28 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 8;
 }
-//147
+//93
 sidedef
 {
     sector = 13;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//148
+//94
 sidedef
 {
     sector = 4;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//149
+//95
 sidedef
 {
     sector = 4;
     texturemiddle = "STARBR2";
     offsetx = 72;
 }
-//150
+//96
 sidedef
 {
     sector = 4;
@@ -2926,28 +2548,28 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 8;
 }
-//151
+//97
 sidedef
 {
     sector = 6;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//152
+//98
 sidedef
 {
     sector = 4;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//153
+//99
 sidedef
 {
     sector = 4;
     texturemiddle = "STARBR2";
     offsetx = 72;
 }
-//154
+//100
 sidedef
 {
     sector = 4;
@@ -2955,70 +2577,70 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 8;
 }
-//155
+//101
 sidedef
 {
     sector = 5;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//156
+//102
 sidedef
 {
     sector = 4;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//157
+//103
 sidedef
 {
     sector = 6;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//158
+//104
 sidedef
 {
     sector = 7;
     texturemiddle = "BIGDOOR4";
     offsetx = 0;
 }
-//159
+//105
 sidedef
 {
     sector = 6;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//160
+//106
 sidedef
 {
     sector = 6;
     texturemiddle = "STARBR2";
     offsetx = 32;
 }
-//161
+//107
 sidedef
 {
     sector = 7;
     texturemiddle = "BIGDOOR4";
     offsetx = 0;
 }
-//162
+//108
 sidedef
 {
     sector = 6;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//163
+//109
 sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
     offsetx = 72;
 }
-//164
+//110
 sidedef
 {
     sector = 8;
@@ -3026,28 +2648,28 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 40;
 }
-//165
+//111
 sidedef
 {
     sector = 9;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//166
+//112
 sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
     offsetx = 104;
 }
-//167
+//113
 sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
     offsetx = 72;
 }
-//168
+//114
 sidedef
 {
     sector = 8;
@@ -3055,63 +2677,63 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 8;
 }
-//169
+//115
 sidedef
 {
     sector = 10;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//170
+//116
 sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//171
+//117
 sidedef
 {
     sector = 10;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//172
+//118
 sidedef
 {
     sector = 11;
     texturemiddle = "DOORTRAK";
     offsetx = 0;
 }
-//173
+//119
 sidedef
 {
     sector = 10;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//174
+//120
 sidedef
 {
     sector = 10;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//175
+//121
 sidedef
 {
     sector = 11;
     texturemiddle = "DOORTRAK";
     offsetx = 0;
 }
-//176
+//122
 sidedef
 {
     sector = 10;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//177
+//123
 sidedef
 {
     sector = 12;
@@ -3119,45 +2741,437 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 8;
 }
-//178
+//124
 sidedef
 {
     sector = 32;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//179
+//125
 sidedef
 {
     sector = 14;
     texturemiddle = "LITE5";
     offsetx = 0;
 }
-//180
+//126
 sidedef
 {
     sector = 13;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//181
+//127
 sidedef
 {
     sector = 13;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//182
+//128
 sidedef
 {
     sector = 14;
     texturemiddle = "LITE5";
     offsetx = 0;
 }
-//183
+//129
 sidedef
 {
     sector = 14;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//130
+sidedef
+{
+    sector = 15;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//131
+sidedef
+{
+    sector = 15;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//132
+sidedef
+{
+    sector = 16;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//133
+sidedef
+{
+    sector = 15;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//134
+sidedef
+{
+    sector = 15;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//135
+sidedef
+{
+    sector = 16;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//136
+sidedef
+{
+    sector = 17;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//137
+sidedef
+{
+    sector = 16;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//138
+sidedef
+{
+    sector = 16;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//139
+sidedef
+{
+    sector = 17;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//140
+sidedef
+{
+    sector = 18;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//141
+sidedef
+{
+    sector = 17;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//142
+sidedef
+{
+    sector = 17;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//143
+sidedef
+{
+    sector = 18;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//144
+sidedef
+{
+    sector = 19;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//145
+sidedef
+{
+    sector = 18;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//146
+sidedef
+{
+    sector = 18;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//147
+sidedef
+{
+    sector = 19;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//148
+sidedef
+{
+    sector = 20;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//149
+sidedef
+{
+    sector = 19;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//150
+sidedef
+{
+    sector = 19;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//151
+sidedef
+{
+    sector = 20;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//152
+sidedef
+{
+    sector = 21;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//153
+sidedef
+{
+    sector = 20;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//154
+sidedef
+{
+    sector = 20;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//155
+sidedef
+{
+    sector = 21;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//156
+sidedef
+{
+    sector = 22;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//157
+sidedef
+{
+    sector = 21;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//158
+sidedef
+{
+    sector = 21;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//159
+sidedef
+{
+    sector = 22;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//160
+sidedef
+{
+    sector = 23;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//161
+sidedef
+{
+    sector = 22;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//162
+sidedef
+{
+    sector = 22;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//163
+sidedef
+{
+    sector = 23;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//164
+sidedef
+{
+    sector = 24;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//165
+sidedef
+{
+    sector = 23;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//166
+sidedef
+{
+    sector = 23;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//167
+sidedef
+{
+    sector = 24;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//168
+sidedef
+{
+    sector = 25;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//169
+sidedef
+{
+    sector = 24;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//170
+sidedef
+{
+    sector = 24;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//171
+sidedef
+{
+    sector = 25;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//172
+sidedef
+{
+    sector = 26;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//173
+sidedef
+{
+    sector = 25;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//174
+sidedef
+{
+    sector = 25;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//175
+sidedef
+{
+    sector = 26;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//176
+sidedef
+{
+    sector = 27;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//177
+sidedef
+{
+    sector = 26;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//178
+sidedef
+{
+    sector = 26;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//179
+sidedef
+{
+    sector = 27;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//180
+sidedef
+{
+    sector = 28;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//181
+sidedef
+{
+    sector = 27;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//182
+sidedef
+{
+    sector = 27;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//183
+sidedef
+{
+    sector = 28;
     texturetop = "STEP1";
     texturebottom = "STEP1";
     offsetx = 0;
@@ -3165,228 +3179,25 @@ sidedef
 //184
 sidedef
 {
-    sector = 15;
+    sector = 29;
     texturetop = "STEP1";
     texturebottom = "STEP1";
 }
 //185
 sidedef
 {
-    sector = 15;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 28;
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //186
 sidedef
 {
-    sector = 16;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//187
-sidedef
-{
-    sector = 15;
+    sector = 28;
     texturemiddle = "LITE5";
     offsetx = 0;
 }
-//188
-sidedef
-{
-    sector = 16;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//189
-sidedef
-{
-    sector = 17;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//190
-sidedef
-{
-    sector = 17;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//191
-sidedef
-{
-    sector = 18;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//192
-sidedef
-{
-    sector = 18;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//193
-sidedef
-{
-    sector = 19;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//194
-sidedef
-{
-    sector = 19;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//195
-sidedef
-{
-    sector = 20;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//196
-sidedef
-{
-    sector = 20;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//197
-sidedef
-{
-    sector = 21;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//198
-sidedef
-{
-    sector = 21;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//199
-sidedef
-{
-    sector = 22;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//200
-sidedef
-{
-    sector = 22;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//201
-sidedef
-{
-    sector = 23;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//202
-sidedef
-{
-    sector = 23;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//203
-sidedef
-{
-    sector = 24;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//204
-sidedef
-{
-    sector = 24;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//205
-sidedef
-{
-    sector = 25;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//206
-sidedef
-{
-    sector = 25;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//207
-sidedef
-{
-    sector = 26;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//208
-sidedef
-{
-    sector = 26;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//209
-sidedef
-{
-    sector = 27;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//210
-sidedef
-{
-    sector = 27;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//211
-sidedef
-{
-    sector = 28;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//212
-sidedef
-{
-    sector = 28;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-    offsetx = 0;
-}
-//213
-sidedef
-{
-    sector = 29;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//214
+//187
 sidedef
 {
     sector = 29;
@@ -3394,35 +3205,49 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 8;
 }
-//215
+//188
 sidedef
 {
     sector = 12;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//216
+//189
+sidedef
+{
+    sector = 29;
+    texturemiddle = "STARBR2";
+    offsetx = 8;
+}
+//190
+sidedef
+{
+    sector = 29;
+    texturemiddle = "STARBR2";
+    offsetx = 0;
+}
+//191
 sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
     offsetx = 62;
 }
-//217
+//192
 sidedef
 {
     sector = 31;
     texturemiddle = "STARBR2";
     offsetx = 62;
 }
-//218
+//193
 sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
     offsetx = 62;
 }
-//219
+//194
 sidedef
 {
     sector = 30;
@@ -3430,56 +3255,56 @@ sidedef
     texturebottom = "STARBR2";
     offsetx = 49;
 }
-//220
+//195
 sidedef
 {
     sector = 49;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
 }
-//221
+//196
 sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
     offsetx = 16;
 }
-//222
+//197
 sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
     offsetx = 3;
 }
-//223
+//198
 sidedef
 {
     sector = 32;
     texturemiddle = "STARBR2";
     offsetx = 8;
 }
-//224
+//199
 sidedef
 {
     sector = 33;
     texturemiddle = "LITE5";
     offsetx = 0;
 }
-//225
+//200
 sidedef
 {
     sector = 33;
     texturemiddle = "LITE5";
     offsetx = 0;
 }
-//226
+//201
 sidedef
 {
     sector = 32;
     texturemiddle = "STARBR2";
     offsetx = 0;
 }
-//227
+//202
 sidedef
 {
     sector = 33;
@@ -3487,21 +3312,21 @@ sidedef
     texturebottom = "STEP1";
     offsetx = 0;
 }
-//228
+//203
 sidedef
 {
     sector = 34;
     texturetop = "STEP1";
     texturebottom = "STEP1";
 }
-//229
+//204
 sidedef
 {
     sector = 34;
     texturemiddle = "LITE5";
     offsetx = 0;
 }
-//230
+//205
 sidedef
 {
     sector = 34;
@@ -3509,177 +3334,352 @@ sidedef
     texturebottom = "STEP1";
     offsetx = 0;
 }
-//231
+//206
 sidedef
 {
     sector = 35;
     texturetop = "STEP1";
     texturebottom = "STEP1";
 }
-//232
+//207
+sidedef
+{
+    sector = 34;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//208
+sidedef
+{
+    sector = 35;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//209
 sidedef
 {
     sector = 35;
     texturetop = "STEP1";
     texturebottom = "STEP1";
+    offsetx = 0;
+}
+//210
+sidedef
+{
+    sector = 36;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//211
+sidedef
+{
+    sector = 35;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//212
+sidedef
+{
+    sector = 36;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//213
+sidedef
+{
+    sector = 36;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//214
+sidedef
+{
+    sector = 37;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//215
+sidedef
+{
+    sector = 36;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//216
+sidedef
+{
+    sector = 37;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//217
+sidedef
+{
+    sector = 37;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//218
+sidedef
+{
+    sector = 38;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//219
+sidedef
+{
+    sector = 37;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//220
+sidedef
+{
+    sector = 38;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//221
+sidedef
+{
+    sector = 38;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//222
+sidedef
+{
+    sector = 39;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//223
+sidedef
+{
+    sector = 38;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//224
+sidedef
+{
+    sector = 39;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//225
+sidedef
+{
+    sector = 39;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//226
+sidedef
+{
+    sector = 40;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//227
+sidedef
+{
+    sector = 39;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//228
+sidedef
+{
+    sector = 40;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//229
+sidedef
+{
+    sector = 40;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+    offsetx = 0;
+}
+//230
+sidedef
+{
+    sector = 41;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
+//231
+sidedef
+{
+    sector = 40;
+    texturemiddle = "LITE5";
+    offsetx = 0;
+}
+//232
+sidedef
+{
+    sector = 41;
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //233
 sidedef
 {
-    sector = 36;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//234
-sidedef
-{
-    sector = 36;
+    sector = 41;
     texturetop = "STEP1";
     texturebottom = "STEP1";
     offsetx = 0;
 }
+//234
+sidedef
+{
+    sector = 42;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
 //235
 sidedef
 {
-    sector = 37;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 41;
+    texturemiddle = "LITE5";
+    offsetx = 0;
 }
 //236
 sidedef
 {
-    sector = 37;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 42;
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //237
 sidedef
 {
-    sector = 38;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//238
-sidedef
-{
-    sector = 38;
+    sector = 42;
     texturetop = "STEP1";
     texturebottom = "STEP1";
     offsetx = 0;
 }
+//238
+sidedef
+{
+    sector = 43;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
 //239
 sidedef
 {
-    sector = 39;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 42;
+    texturemiddle = "LITE5";
+    offsetx = 0;
 }
 //240
 sidedef
 {
-    sector = 39;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 43;
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //241
 sidedef
 {
-    sector = 40;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//242
-sidedef
-{
-    sector = 40;
+    sector = 43;
     texturetop = "STEP1";
     texturebottom = "STEP1";
     offsetx = 0;
 }
+//242
+sidedef
+{
+    sector = 44;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
 //243
 sidedef
 {
-    sector = 41;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 43;
+    texturemiddle = "LITE5";
+    offsetx = 0;
 }
 //244
 sidedef
 {
-    sector = 41;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 44;
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //245
 sidedef
 {
-    sector = 42;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
-}
-//246
-sidedef
-{
-    sector = 42;
+    sector = 44;
     texturetop = "STEP1";
     texturebottom = "STEP1";
     offsetx = 0;
 }
+//246
+sidedef
+{
+    sector = 45;
+    texturetop = "STEP1";
+    texturebottom = "STEP1";
+}
 //247
 sidedef
 {
-    sector = 43;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 44;
+    texturemiddle = "LITE5";
+    offsetx = 0;
 }
 //248
 sidedef
 {
-    sector = 43;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 45;
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //249
 sidedef
 {
-    sector = 44;
+    sector = 45;
     texturetop = "STEP1";
     texturebottom = "STEP1";
+    offsetx = 0;
 }
 //250
 sidedef
 {
-    sector = 44;
+    sector = 46;
     texturetop = "STEP1";
     texturebottom = "STEP1";
-    offsetx = 0;
 }
 //251
 sidedef
 {
     sector = 45;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    texturemiddle = "LITE5";
+    offsetx = 0;
 }
 //252
 sidedef
 {
-    sector = 45;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    sector = 46;
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //253
 sidedef
 {
     sector = 46;
-    texturetop = "STEP1";
-    texturebottom = "STEP1";
+    texturemiddle = "STARBR2";
+    offsetx = 51;
 }
 //254
 sidedef
@@ -4116,7 +4116,9 @@ linedef
     v1 = 49;
     v2 = 50;
     sidefront = 37;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
 }
 //36
 linedef
@@ -4124,7 +4126,9 @@ linedef
     v1 = 50;
     v2 = 51;
     sidefront = 38;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
 }
 //37
 linedef
@@ -4132,7 +4136,9 @@ linedef
     v1 = 51;
     v2 = 48;
     sidefront = 39;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
 }
 //38
 linedef
@@ -4182,7 +4188,9 @@ linedef
     v1 = 64;
     v2 = 65;
     sidefront = 46;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
 }
 //43
 linedef
@@ -4190,7 +4198,9 @@ linedef
     v1 = 65;
     v2 = 66;
     sidefront = 47;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
     special = 11;
     arg0 = 1;
     arg1 = 16;
@@ -4205,7 +4215,9 @@ linedef
     v1 = 66;
     v2 = 67;
     sidefront = 48;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
 }
 //45
 linedef
@@ -4275,276 +4287,343 @@ linedef
 //50
 linedef
 {
-    v1 = 84;
-    v2 = 88;
+    v1 = 150;
+    v2 = 151;
     sidefront = 57;
     blocking = true;
 }
 //51
 linedef
 {
-    v1 = 93;
-    v2 = 89;
+    v1 = 153;
+    v2 = 154;
     sidefront = 58;
-    blocking = true;
+    sideback = 59;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //52
 linedef
 {
-    v1 = 88;
-    v2 = 92;
-    sidefront = 59;
-    blocking = true;
+    v1 = 154;
+    v2 = 155;
+    sidefront = 60;
+    sideback = 61;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //53
 linedef
 {
-    v1 = 97;
-    v2 = 93;
-    sidefront = 60;
-    blocking = true;
+    v1 = 163;
+    v2 = 160;
+    sidefront = 62;
+    sideback = 63;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //54
 linedef
 {
-    v1 = 92;
-    v2 = 96;
-    sidefront = 61;
+    v1 = 216;
+    v2 = 217;
+    sidefront = 64;
     blocking = true;
 }
 //55
 linedef
 {
-    v1 = 101;
-    v2 = 97;
-    sidefront = 62;
+    v1 = 218;
+    v2 = 219;
+    sidefront = 65;
     blocking = true;
 }
 //56
 linedef
 {
-    v1 = 96;
-    v2 = 100;
-    sidefront = 63;
+    v1 = 220;
+    v2 = 221;
+    sidefront = 66;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
 }
 //57
 linedef
 {
-    v1 = 105;
-    v2 = 101;
-    sidefront = 64;
+    v1 = 221;
+    v2 = 222;
+    sidefront = 67;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
+    special = 243;
+    playeruse = true;
+    repeatspecial = true;
+    dontpegbottom = true;
 }
 //58
 linedef
 {
-    v1 = 100;
-    v2 = 104;
-    sidefront = 65;
+    v1 = 222;
+    v2 = 223;
+    sidefront = 68;
+    twosided = false;
     blocking = true;
+    comment = "double sided line";
 }
 //59
 linedef
 {
-    v1 = 109;
-    v2 = 105;
-    sidefront = 66;
-    blocking = true;
+    v1 = 230;
+    v2 = 229;
+    sidefront = 69;
+    sideback = 70;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    special = 12;
+    arg0 = 0;
+    arg1 = 16;
+    arg2 = 150;
+    arg3 = 0;
+    playeruse = true;
+    repeatspecial = true;
 }
 //60
 linedef
 {
-    v1 = 104;
-    v2 = 108;
-    sidefront = 67;
-    blocking = true;
+    v1 = 228;
+    v2 = 231;
+    sidefront = 71;
+    sideback = 72;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    special = 12;
+    arg0 = 0;
+    arg1 = 16;
+    arg2 = 150;
+    arg3 = 0;
+    playeruse = true;
+    repeatspecial = true;
 }
 //61
 linedef
 {
-    v1 = 113;
-    v2 = 109;
-    sidefront = 68;
+    v1 = 1;
+    v2 = 31;
+    sidefront = 73;
     blocking = true;
 }
 //62
 linedef
 {
-    v1 = 108;
-    v2 = 112;
-    sidefront = 69;
-    blocking = true;
+    v1 = 31;
+    v2 = 30;
+    sidefront = 74;
+    sideback = 75;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //63
 linedef
 {
-    v1 = 117;
-    v2 = 113;
-    sidefront = 70;
+    v1 = 30;
+    v2 = 2;
+    sidefront = 76;
     blocking = true;
 }
 //64
 linedef
 {
-    v1 = 112;
-    v2 = 116;
-    sidefront = 71;
-    blocking = true;
+    v1 = 25;
+    v2 = 26;
+    sidefront = 77;
+    sideback = 78;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //65
 linedef
 {
-    v1 = 121;
-    v2 = 117;
-    sidefront = 72;
+    v1 = 26;
+    v2 = 29;
+    sidefront = 79;
     blocking = true;
 }
 //66
 linedef
 {
-    v1 = 116;
-    v2 = 120;
-    sidefront = 73;
-    blocking = true;
+    v1 = 29;
+    v2 = 28;
+    sidefront = 80;
+    sideback = 81;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //67
 linedef
 {
-    v1 = 125;
-    v2 = 121;
-    sidefront = 74;
+    v1 = 28;
+    v2 = 27;
+    sidefront = 82;
     blocking = true;
 }
 //68
 linedef
 {
-    v1 = 120;
-    v2 = 124;
-    sidefront = 75;
-    blocking = true;
+    v1 = 27;
+    v2 = 24;
+    sidefront = 83;
+    sideback = 84;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //69
 linedef
 {
-    v1 = 129;
-    v2 = 125;
-    sidefront = 76;
+    v1 = 29;
+    v2 = 33;
+    sidefront = 85;
     blocking = true;
 }
 //70
 linedef
 {
-    v1 = 124;
-    v2 = 128;
-    sidefront = 77;
+    v1 = 33;
+    v2 = 34;
+    sidefront = 86;
     blocking = true;
+    dontpegbottom = true;
 }
 //71
 linedef
 {
-    v1 = 133;
-    v2 = 129;
-    sidefront = 78;
+    v1 = 34;
+    v2 = 30;
+    sidefront = 87;
     blocking = true;
 }
 //72
 linedef
 {
-    v1 = 128;
-    v2 = 132;
-    sidefront = 79;
+    v1 = 31;
+    v2 = 35;
+    sidefront = 88;
     blocking = true;
 }
 //73
 linedef
 {
-    v1 = 137;
-    v2 = 133;
-    sidefront = 80;
+    v1 = 35;
+    v2 = 32;
+    sidefront = 89;
     blocking = true;
+    dontpegbottom = true;
 }
 //74
 linedef
 {
-    v1 = 132;
-    v2 = 136;
-    sidefront = 81;
+    v1 = 32;
+    v2 = 28;
+    sidefront = 90;
     blocking = true;
 }
 //75
 linedef
 {
-    v1 = 141;
-    v2 = 137;
-    sidefront = 82;
+    v1 = 38;
+    v2 = 83;
+    sidefront = 91;
     blocking = true;
 }
 //76
 linedef
 {
-    v1 = 136;
-    v2 = 140;
-    sidefront = 83;
-    blocking = true;
+    v1 = 83;
+    v2 = 82;
+    sidefront = 92;
+    sideback = 93;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //77
 linedef
 {
-    v1 = 78;
-    v2 = 141;
-    sidefront = 84;
+    v1 = 82;
+    v2 = 39;
+    sidefront = 94;
     blocking = true;
 }
 //78
 linedef
 {
-    v1 = 140;
-    v2 = 79;
-    sidefront = 85;
+    v1 = 41;
+    v2 = 52;
+    sidefront = 95;
     blocking = true;
 }
 //79
 linedef
 {
-    v1 = 150;
-    v2 = 151;
-    sidefront = 86;
-    blocking = true;
+    v1 = 52;
+    v2 = 55;
+    sidefront = 96;
+    sideback = 97;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //80
 linedef
 {
-    v1 = 153;
-    v2 = 154;
-    sidefront = 87;
-    sideback = 88;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 55;
+    v2 = 42;
+    sidefront = 98;
+    blocking = true;
 }
 //81
 linedef
 {
-    v1 = 154;
-    v2 = 155;
-    sidefront = 89;
-    sideback = 90;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 44;
+    v2 = 49;
+    sidefront = 99;
+    blocking = true;
 }
 //82
 linedef
 {
-    v1 = 163;
-    v2 = 160;
-    sidefront = 91;
-    sideback = 92;
+    v1 = 49;
+    v2 = 48;
+    sidefront = 100;
+    sideback = 101;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -4554,317 +4633,230 @@ linedef
 //83
 linedef
 {
-    v1 = 166;
-    v2 = 162;
-    sidefront = 93;
+    v1 = 48;
+    v2 = 45;
+    sidefront = 102;
     blocking = true;
 }
 //84
 linedef
 {
-    v1 = 165;
-    v2 = 169;
-    sidefront = 94;
+    v1 = 52;
+    v2 = 56;
+    sidefront = 103;
     blocking = true;
 }
 //85
 linedef
 {
-    v1 = 170;
-    v2 = 166;
-    sidefront = 95;
+    v1 = 56;
+    v2 = 57;
+    sidefront = 104;
     blocking = true;
 }
 //86
 linedef
 {
-    v1 = 169;
-    v2 = 173;
-    sidefront = 96;
+    v1 = 57;
+    v2 = 24;
+    sidefront = 105;
     blocking = true;
 }
 //87
 linedef
 {
-    v1 = 174;
-    v2 = 170;
-    sidefront = 97;
+    v1 = 27;
+    v2 = 58;
+    sidefront = 106;
     blocking = true;
 }
 //88
 linedef
 {
-    v1 = 173;
-    v2 = 177;
-    sidefront = 98;
+    v1 = 58;
+    v2 = 59;
+    sidefront = 107;
     blocking = true;
 }
 //89
 linedef
 {
-    v1 = 178;
-    v2 = 174;
-    sidefront = 99;
+    v1 = 59;
+    v2 = 55;
+    sidefront = 108;
     blocking = true;
 }
 //90
 linedef
 {
-    v1 = 177;
-    v2 = 181;
-    sidefront = 100;
+    v1 = 61;
+    v2 = 64;
+    sidefront = 109;
     blocking = true;
 }
 //91
 linedef
 {
-    v1 = 182;
-    v2 = 178;
-    sidefront = 101;
-    blocking = true;
-}
-//92
-linedef
-{
-    v1 = 181;
-    v2 = 185;
-    sidefront = 102;
-    blocking = true;
-}
-//93
-linedef
-{
-    v1 = 186;
-    v2 = 182;
-    sidefront = 103;
-    blocking = true;
-}
-//94
-linedef
-{
-    v1 = 185;
-    v2 = 189;
-    sidefront = 104;
-    blocking = true;
-}
-//95
-linedef
-{
-    v1 = 190;
-    v2 = 186;
-    sidefront = 105;
-    blocking = true;
-}
-//96
-linedef
-{
-    v1 = 189;
-    v2 = 193;
-    sidefront = 106;
-    blocking = true;
-}
-//97
-linedef
-{
-    v1 = 194;
-    v2 = 190;
-    sidefront = 107;
-    blocking = true;
-}
-//98
-linedef
-{
-    v1 = 193;
-    v2 = 197;
-    sidefront = 108;
-    blocking = true;
-}
-//99
-linedef
-{
-    v1 = 198;
-    v2 = 194;
-    sidefront = 109;
-    blocking = true;
-}
-//100
-linedef
-{
-    v1 = 197;
-    v2 = 201;
+    v1 = 64;
+    v2 = 67;
     sidefront = 110;
-    blocking = true;
-}
-//101
-linedef
-{
-    v1 = 202;
-    v2 = 198;
-    sidefront = 111;
-    blocking = true;
-}
-//102
-linedef
-{
-    v1 = 201;
-    v2 = 205;
-    sidefront = 112;
-    blocking = true;
-}
-//103
-linedef
-{
-    v1 = 206;
-    v2 = 202;
-    sidefront = 113;
-    blocking = true;
-}
-//104
-linedef
-{
-    v1 = 205;
-    v2 = 209;
-    sidefront = 114;
-    blocking = true;
-}
-//105
-linedef
-{
-    v1 = 210;
-    v2 = 206;
-    sidefront = 115;
-    blocking = true;
-}
-//106
-linedef
-{
-    v1 = 209;
-    v2 = 157;
-    sidefront = 116;
-    blocking = true;
-}
-//107
-linedef
-{
-    v1 = 158;
-    v2 = 210;
-    sidefront = 117;
-    blocking = true;
-}
-//108
-linedef
-{
-    v1 = 216;
-    v2 = 217;
-    sidefront = 118;
-    blocking = true;
-}
-//109
-linedef
-{
-    v1 = 218;
-    v2 = 219;
-    sidefront = 119;
-    blocking = true;
-}
-//110
-linedef
-{
-    v1 = 220;
-    v2 = 221;
-    sidefront = 120;
-    blocking = true;
-}
-//111
-linedef
-{
-    v1 = 221;
-    v2 = 222;
-    sidefront = 121;
-    blocking = true;
-    special = 243;
-    playeruse = true;
-    repeatspecial = true;
-    dontpegbottom = true;
-}
-//112
-linedef
-{
-    v1 = 222;
-    v2 = 223;
-    sidefront = 122;
-    blocking = true;
-}
-//113
-linedef
-{
-    v1 = 230;
-    v2 = 229;
-    sidefront = 123;
-    sideback = 124;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    special = 12;
-    arg0 = 0;
-    arg1 = 16;
-    arg2 = 150;
-    arg3 = 0;
-    playeruse = true;
-    repeatspecial = true;
-}
-//114
-linedef
-{
-    v1 = 228;
-    v2 = 231;
-    sidefront = 125;
-    sideback = 126;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    special = 12;
-    arg0 = 0;
-    arg1 = 16;
-    arg2 = 150;
-    arg3 = 0;
-    playeruse = true;
-    repeatspecial = true;
-}
-//115
-linedef
-{
-    v1 = 1;
-    v2 = 31;
-    sidefront = 127;
-    blocking = true;
-}
-//116
-linedef
-{
-    v1 = 31;
-    v2 = 30;
-    sidefront = 128;
-    sideback = 129;
+    sideback = 111;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
-//117
+//92
 linedef
 {
-    v1 = 30;
-    v2 = 2;
-    sidefront = 130;
+    v1 = 67;
+    v2 = 62;
+    sidefront = 112;
     blocking = true;
 }
-//118
+//93
+linedef
+{
+    v1 = 63;
+    v2 = 70;
+    sidefront = 113;
+    blocking = true;
+}
+//94
+linedef
+{
+    v1 = 70;
+    v2 = 69;
+    sidefront = 114;
+    sideback = 115;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
+}
+//95
+linedef
+{
+    v1 = 69;
+    v2 = 60;
+    sidefront = 116;
+    blocking = true;
+}
+//96
 linedef
 {
     v1 = 25;
+    v2 = 72;
+    sidefront = 117;
+    blocking = true;
+}
+//97
+linedef
+{
+    v1 = 72;
+    v2 = 73;
+    sidefront = 118;
+    blocking = true;
+    dontpegbottom = true;
+}
+//98
+linedef
+{
+    v1 = 73;
+    v2 = 69;
+    sidefront = 119;
+    blocking = true;
+}
+//99
+linedef
+{
+    v1 = 70;
+    v2 = 74;
+    sidefront = 120;
+    blocking = true;
+}
+//100
+linedef
+{
+    v1 = 74;
+    v2 = 75;
+    sidefront = 121;
+    blocking = true;
+    dontpegbottom = true;
+}
+//101
+linedef
+{
+    v1 = 75;
     v2 = 26;
+    sidefront = 122;
+    blocking = true;
+}
+//102
+linedef
+{
+    v1 = 77;
+    v2 = 78;
+    sidefront = 123;
+    sideback = 124;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
+}
+//103
+linedef
+{
+    v1 = 85;
+    v2 = 86;
+    sidefront = 125;
+    blocking = true;
+}
+//104
+linedef
+{
+    v1 = 86;
+    v2 = 82;
+    sidefront = 126;
+    blocking = true;
+}
+//105
+linedef
+{
+    v1 = 83;
+    v2 = 87;
+    sidefront = 127;
+    blocking = true;
+}
+//106
+linedef
+{
+    v1 = 87;
+    v2 = 84;
+    sidefront = 128;
+    blocking = true;
+}
+//107
+linedef
+{
+    v1 = 84;
+    v2 = 85;
+    sidefront = 129;
+    sideback = 130;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
+}
+//108
+linedef
+{
+    v1 = 88;
+    v2 = 89;
     sidefront = 131;
     sideback = 132;
     twosided = true;
@@ -4873,21 +4865,116 @@ linedef
     dontpegtop = true;
     dontpegbottom = true;
 }
+//109
+linedef
+{
+    v1 = 89;
+    v2 = 85;
+    sidefront = 133;
+    blocking = true;
+}
+//110
+linedef
+{
+    v1 = 84;
+    v2 = 88;
+    sidefront = 134;
+    blocking = true;
+}
+//111
+linedef
+{
+    v1 = 92;
+    v2 = 93;
+    sidefront = 135;
+    sideback = 136;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
+}
+//112
+linedef
+{
+    v1 = 93;
+    v2 = 89;
+    sidefront = 137;
+    blocking = true;
+}
+//113
+linedef
+{
+    v1 = 88;
+    v2 = 92;
+    sidefront = 138;
+    blocking = true;
+}
+//114
+linedef
+{
+    v1 = 96;
+    v2 = 97;
+    sidefront = 139;
+    sideback = 140;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
+}
+//115
+linedef
+{
+    v1 = 97;
+    v2 = 93;
+    sidefront = 141;
+    blocking = true;
+}
+//116
+linedef
+{
+    v1 = 92;
+    v2 = 96;
+    sidefront = 142;
+    blocking = true;
+}
+//117
+linedef
+{
+    v1 = 100;
+    v2 = 101;
+    sidefront = 143;
+    sideback = 144;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
+}
+//118
+linedef
+{
+    v1 = 101;
+    v2 = 97;
+    sidefront = 145;
+    blocking = true;
+}
 //119
 linedef
 {
-    v1 = 26;
-    v2 = 29;
-    sidefront = 133;
+    v1 = 96;
+    v2 = 100;
+    sidefront = 146;
     blocking = true;
 }
 //120
 linedef
 {
-    v1 = 29;
-    v2 = 28;
-    sidefront = 134;
-    sideback = 135;
+    v1 = 104;
+    v2 = 105;
+    sidefront = 147;
+    sideback = 148;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -4897,324 +4984,340 @@ linedef
 //121
 linedef
 {
-    v1 = 28;
-    v2 = 27;
-    sidefront = 136;
+    v1 = 105;
+    v2 = 101;
+    sidefront = 149;
     blocking = true;
 }
 //122
 linedef
 {
-    v1 = 27;
-    v2 = 24;
-    sidefront = 137;
-    sideback = 138;
+    v1 = 100;
+    v2 = 104;
+    sidefront = 150;
+    blocking = true;
+}
+//123
+linedef
+{
+    v1 = 108;
+    v2 = 109;
+    sidefront = 151;
+    sideback = 152;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
-//123
-linedef
-{
-    v1 = 29;
-    v2 = 33;
-    sidefront = 139;
-    blocking = true;
-}
 //124
 linedef
 {
-    v1 = 33;
-    v2 = 34;
-    sidefront = 140;
+    v1 = 109;
+    v2 = 105;
+    sidefront = 153;
     blocking = true;
-    dontpegbottom = true;
 }
 //125
 linedef
 {
-    v1 = 34;
-    v2 = 30;
-    sidefront = 141;
+    v1 = 104;
+    v2 = 108;
+    sidefront = 154;
     blocking = true;
 }
 //126
 linedef
 {
-    v1 = 31;
-    v2 = 35;
-    sidefront = 142;
-    blocking = true;
+    v1 = 112;
+    v2 = 113;
+    sidefront = 155;
+    sideback = 156;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //127
 linedef
 {
-    v1 = 35;
-    v2 = 32;
-    sidefront = 143;
+    v1 = 113;
+    v2 = 109;
+    sidefront = 157;
     blocking = true;
-    dontpegbottom = true;
 }
 //128
 linedef
 {
-    v1 = 32;
-    v2 = 28;
-    sidefront = 144;
+    v1 = 108;
+    v2 = 112;
+    sidefront = 158;
     blocking = true;
 }
 //129
 linedef
 {
-    v1 = 38;
-    v2 = 83;
-    sidefront = 145;
-    blocking = true;
-}
-//130
-linedef
-{
-    v1 = 83;
-    v2 = 82;
-    sidefront = 146;
-    sideback = 147;
+    v1 = 116;
+    v2 = 117;
+    sidefront = 159;
+    sideback = 160;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
+//130
+linedef
+{
+    v1 = 117;
+    v2 = 113;
+    sidefront = 161;
+    blocking = true;
+}
 //131
 linedef
 {
-    v1 = 82;
-    v2 = 39;
-    sidefront = 148;
+    v1 = 112;
+    v2 = 116;
+    sidefront = 162;
     blocking = true;
 }
 //132
 linedef
 {
-    v1 = 41;
-    v2 = 52;
-    sidefront = 149;
-    blocking = true;
-}
-//133
-linedef
-{
-    v1 = 52;
-    v2 = 55;
-    sidefront = 150;
-    sideback = 151;
+    v1 = 120;
+    v2 = 121;
+    sidefront = 163;
+    sideback = 164;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
+//133
+linedef
+{
+    v1 = 121;
+    v2 = 117;
+    sidefront = 165;
+    blocking = true;
+}
 //134
 linedef
 {
-    v1 = 55;
-    v2 = 42;
-    sidefront = 152;
+    v1 = 116;
+    v2 = 120;
+    sidefront = 166;
     blocking = true;
 }
 //135
 linedef
 {
-    v1 = 44;
-    v2 = 49;
-    sidefront = 153;
-    blocking = true;
-}
-//136
-linedef
-{
-    v1 = 49;
-    v2 = 48;
-    sidefront = 154;
-    sideback = 155;
+    v1 = 124;
+    v2 = 125;
+    sidefront = 167;
+    sideback = 168;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
+//136
+linedef
+{
+    v1 = 125;
+    v2 = 121;
+    sidefront = 169;
+    blocking = true;
+}
 //137
 linedef
 {
-    v1 = 48;
-    v2 = 45;
-    sidefront = 156;
+    v1 = 120;
+    v2 = 124;
+    sidefront = 170;
     blocking = true;
 }
 //138
 linedef
 {
-    v1 = 52;
-    v2 = 56;
-    sidefront = 157;
-    blocking = true;
+    v1 = 128;
+    v2 = 129;
+    sidefront = 171;
+    sideback = 172;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //139
 linedef
 {
-    v1 = 56;
-    v2 = 57;
-    sidefront = 158;
+    v1 = 129;
+    v2 = 125;
+    sidefront = 173;
     blocking = true;
 }
 //140
 linedef
 {
-    v1 = 57;
-    v2 = 24;
-    sidefront = 159;
+    v1 = 124;
+    v2 = 128;
+    sidefront = 174;
     blocking = true;
 }
 //141
 linedef
 {
-    v1 = 27;
-    v2 = 58;
-    sidefront = 160;
-    blocking = true;
+    v1 = 132;
+    v2 = 133;
+    sidefront = 175;
+    sideback = 176;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //142
 linedef
 {
-    v1 = 58;
-    v2 = 59;
-    sidefront = 161;
+    v1 = 133;
+    v2 = 129;
+    sidefront = 177;
     blocking = true;
 }
 //143
 linedef
 {
-    v1 = 59;
-    v2 = 55;
-    sidefront = 162;
+    v1 = 128;
+    v2 = 132;
+    sidefront = 178;
     blocking = true;
 }
 //144
 linedef
 {
-    v1 = 61;
-    v2 = 64;
-    sidefront = 163;
-    blocking = true;
-}
-//145
-linedef
-{
-    v1 = 64;
-    v2 = 67;
-    sidefront = 164;
-    sideback = 165;
+    v1 = 136;
+    v2 = 137;
+    sidefront = 179;
+    sideback = 180;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
+//145
+linedef
+{
+    v1 = 137;
+    v2 = 133;
+    sidefront = 181;
+    blocking = true;
+}
 //146
 linedef
 {
-    v1 = 67;
-    v2 = 62;
-    sidefront = 166;
+    v1 = 132;
+    v2 = 136;
+    sidefront = 182;
     blocking = true;
 }
 //147
 linedef
 {
-    v1 = 63;
-    v2 = 70;
-    sidefront = 167;
-    blocking = true;
-}
-//148
-linedef
-{
-    v1 = 70;
-    v2 = 69;
-    sidefront = 168;
-    sideback = 169;
+    v1 = 140;
+    v2 = 141;
+    sidefront = 183;
+    sideback = 184;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
+//148
+linedef
+{
+    v1 = 141;
+    v2 = 137;
+    sidefront = 185;
+    blocking = true;
+}
 //149
 linedef
 {
-    v1 = 69;
-    v2 = 60;
-    sidefront = 170;
+    v1 = 136;
+    v2 = 140;
+    sidefront = 186;
     blocking = true;
 }
 //150
 linedef
 {
-    v1 = 25;
-    v2 = 72;
-    sidefront = 171;
-    blocking = true;
+    v1 = 79;
+    v2 = 78;
+    sidefront = 187;
+    sideback = 188;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //151
 linedef
 {
-    v1 = 72;
-    v2 = 73;
-    sidefront = 172;
+    v1 = 78;
+    v2 = 141;
+    sidefront = 189;
     blocking = true;
-    dontpegbottom = true;
 }
 //152
 linedef
 {
-    v1 = 73;
-    v2 = 69;
-    sidefront = 173;
+    v1 = 140;
+    v2 = 79;
+    sidefront = 190;
     blocking = true;
 }
 //153
 linedef
 {
-    v1 = 70;
-    v2 = 74;
-    sidefront = 174;
+    v1 = 153;
+    v2 = 149;
+    sidefront = 191;
     blocking = true;
 }
 //154
 linedef
 {
-    v1 = 74;
-    v2 = 75;
-    sidefront = 175;
+    v1 = 148;
+    v2 = 153;
+    sidefront = 192;
     blocking = true;
-    dontpegbottom = true;
 }
 //155
 linedef
 {
-    v1 = 75;
-    v2 = 26;
-    sidefront = 176;
+    v1 = 149;
+    v2 = 224;
+    sidefront = 193;
     blocking = true;
 }
 //156
 linedef
 {
-    v1 = 77;
-    v2 = 78;
-    sidefront = 177;
-    sideback = 178;
+    v1 = 224;
+    v2 = 227;
+    sidefront = 194;
+    sideback = 195;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5224,89 +5327,79 @@ linedef
 //157
 linedef
 {
-    v1 = 85;
-    v2 = 86;
-    sidefront = 179;
+    v1 = 227;
+    v2 = 150;
+    sidefront = 196;
     blocking = true;
 }
 //158
 linedef
 {
-    v1 = 86;
-    v2 = 82;
-    sidefront = 180;
+    v1 = 151;
+    v2 = 155;
+    sidefront = 197;
     blocking = true;
 }
 //159
 linedef
 {
-    v1 = 83;
-    v2 = 87;
-    sidefront = 181;
+    v1 = 77;
+    v2 = 160;
+    sidefront = 198;
     blocking = true;
 }
 //160
 linedef
 {
-    v1 = 87;
-    v2 = 84;
-    sidefront = 182;
+    v1 = 160;
+    v2 = 161;
+    sidefront = 199;
     blocking = true;
 }
 //161
 linedef
 {
-    v1 = 84;
-    v2 = 85;
-    sidefront = 183;
-    sideback = 184;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 162;
+    v2 = 163;
+    sidefront = 200;
+    blocking = true;
 }
 //162
 linedef
 {
-    v1 = 88;
-    v2 = 89;
-    sidefront = 185;
-    sideback = 186;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 163;
+    v2 = 78;
+    sidefront = 201;
+    blocking = true;
 }
 //163
 linedef
 {
-    v1 = 89;
-    v2 = 85;
-    sidefront = 187;
-    blocking = true;
-}
-//164
-linedef
-{
-    v1 = 92;
-    v2 = 93;
-    sidefront = 188;
-    sideback = 189;
+    v1 = 161;
+    v2 = 162;
+    sidefront = 202;
+    sideback = 203;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
+//164
+linedef
+{
+    v1 = 161;
+    v2 = 165;
+    sidefront = 204;
+    blocking = true;
+}
 //165
 linedef
 {
-    v1 = 96;
-    v2 = 97;
-    sidefront = 190;
-    sideback = 191;
+    v1 = 165;
+    v2 = 166;
+    sidefront = 205;
+    sideback = 206;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5316,36 +5409,26 @@ linedef
 //166
 linedef
 {
-    v1 = 100;
-    v2 = 101;
-    sidefront = 192;
-    sideback = 193;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 166;
+    v2 = 162;
+    sidefront = 207;
+    blocking = true;
 }
 //167
 linedef
 {
-    v1 = 104;
-    v2 = 105;
-    sidefront = 194;
-    sideback = 195;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 165;
+    v2 = 169;
+    sidefront = 208;
+    blocking = true;
 }
 //168
 linedef
 {
-    v1 = 108;
-    v2 = 109;
-    sidefront = 196;
-    sideback = 197;
+    v1 = 169;
+    v2 = 170;
+    sidefront = 209;
+    sideback = 210;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5355,36 +5438,26 @@ linedef
 //169
 linedef
 {
-    v1 = 112;
-    v2 = 113;
-    sidefront = 198;
-    sideback = 199;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 170;
+    v2 = 166;
+    sidefront = 211;
+    blocking = true;
 }
 //170
 linedef
 {
-    v1 = 116;
-    v2 = 117;
-    sidefront = 200;
-    sideback = 201;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 169;
+    v2 = 173;
+    sidefront = 212;
+    blocking = true;
 }
 //171
 linedef
 {
-    v1 = 120;
-    v2 = 121;
-    sidefront = 202;
-    sideback = 203;
+    v1 = 173;
+    v2 = 174;
+    sidefront = 213;
+    sideback = 214;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5394,36 +5467,26 @@ linedef
 //172
 linedef
 {
-    v1 = 124;
-    v2 = 125;
-    sidefront = 204;
-    sideback = 205;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 174;
+    v2 = 170;
+    sidefront = 215;
+    blocking = true;
 }
 //173
 linedef
 {
-    v1 = 128;
-    v2 = 129;
-    sidefront = 206;
-    sideback = 207;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 173;
+    v2 = 177;
+    sidefront = 216;
+    blocking = true;
 }
 //174
 linedef
 {
-    v1 = 132;
-    v2 = 133;
-    sidefront = 208;
-    sideback = 209;
+    v1 = 177;
+    v2 = 178;
+    sidefront = 217;
+    sideback = 218;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5433,36 +5496,26 @@ linedef
 //175
 linedef
 {
-    v1 = 136;
-    v2 = 137;
-    sidefront = 210;
-    sideback = 211;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 178;
+    v2 = 174;
+    sidefront = 219;
+    blocking = true;
 }
 //176
 linedef
 {
-    v1 = 140;
-    v2 = 141;
-    sidefront = 212;
-    sideback = 213;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 177;
+    v2 = 181;
+    sidefront = 220;
+    blocking = true;
 }
 //177
 linedef
 {
-    v1 = 79;
-    v2 = 78;
-    sidefront = 214;
-    sideback = 215;
+    v1 = 181;
+    v2 = 182;
+    sidefront = 221;
+    sideback = 222;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5472,142 +5525,142 @@ linedef
 //178
 linedef
 {
-    v1 = 153;
-    v2 = 149;
-    sidefront = 216;
+    v1 = 182;
+    v2 = 178;
+    sidefront = 223;
     blocking = true;
 }
 //179
 linedef
 {
-    v1 = 148;
-    v2 = 153;
-    sidefront = 217;
+    v1 = 181;
+    v2 = 185;
+    sidefront = 224;
     blocking = true;
 }
 //180
 linedef
 {
-    v1 = 149;
-    v2 = 224;
-    sidefront = 218;
-    blocking = true;
-}
-//181
-linedef
-{
-    v1 = 224;
-    v2 = 227;
-    sidefront = 219;
-    sideback = 220;
+    v1 = 185;
+    v2 = 186;
+    sidefront = 225;
+    sideback = 226;
     twosided = true;
     blocking = false;
     comment = "double sided line";
     dontpegtop = true;
     dontpegbottom = true;
 }
+//181
+linedef
+{
+    v1 = 186;
+    v2 = 182;
+    sidefront = 227;
+    blocking = true;
+}
 //182
 linedef
 {
-    v1 = 227;
-    v2 = 150;
-    sidefront = 221;
+    v1 = 185;
+    v2 = 189;
+    sidefront = 228;
     blocking = true;
 }
 //183
 linedef
 {
-    v1 = 151;
-    v2 = 155;
-    sidefront = 222;
-    blocking = true;
+    v1 = 189;
+    v2 = 190;
+    sidefront = 229;
+    sideback = 230;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //184
 linedef
 {
-    v1 = 77;
-    v2 = 160;
-    sidefront = 223;
+    v1 = 190;
+    v2 = 186;
+    sidefront = 231;
     blocking = true;
 }
 //185
 linedef
 {
-    v1 = 160;
-    v2 = 161;
-    sidefront = 224;
+    v1 = 189;
+    v2 = 193;
+    sidefront = 232;
     blocking = true;
 }
 //186
 linedef
 {
-    v1 = 162;
-    v2 = 163;
-    sidefront = 225;
-    blocking = true;
+    v1 = 193;
+    v2 = 194;
+    sidefront = 233;
+    sideback = 234;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //187
 linedef
 {
-    v1 = 163;
-    v2 = 78;
-    sidefront = 226;
+    v1 = 194;
+    v2 = 190;
+    sidefront = 235;
     blocking = true;
 }
 //188
 linedef
 {
-    v1 = 161;
-    v2 = 162;
-    sidefront = 227;
-    sideback = 228;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 193;
+    v2 = 197;
+    sidefront = 236;
+    blocking = true;
 }
 //189
 linedef
 {
-    v1 = 161;
-    v2 = 165;
-    sidefront = 229;
-    blocking = true;
+    v1 = 197;
+    v2 = 198;
+    sidefront = 237;
+    sideback = 238;
+    twosided = true;
+    blocking = false;
+    comment = "double sided line";
+    dontpegtop = true;
+    dontpegbottom = true;
 }
 //190
 linedef
 {
-    v1 = 165;
-    v2 = 166;
-    sidefront = 230;
-    sideback = 231;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 198;
+    v2 = 194;
+    sidefront = 239;
+    blocking = true;
 }
 //191
 linedef
 {
-    v1 = 169;
-    v2 = 170;
-    sidefront = 232;
-    sideback = 233;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 197;
+    v2 = 201;
+    sidefront = 240;
+    blocking = true;
 }
 //192
 linedef
 {
-    v1 = 173;
-    v2 = 174;
-    sidefront = 234;
-    sideback = 235;
+    v1 = 201;
+    v2 = 202;
+    sidefront = 241;
+    sideback = 242;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5617,36 +5670,26 @@ linedef
 //193
 linedef
 {
-    v1 = 177;
-    v2 = 178;
-    sidefront = 236;
-    sideback = 237;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 202;
+    v2 = 198;
+    sidefront = 243;
+    blocking = true;
 }
 //194
 linedef
 {
-    v1 = 181;
-    v2 = 182;
-    sidefront = 238;
-    sideback = 239;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 201;
+    v2 = 205;
+    sidefront = 244;
+    blocking = true;
 }
 //195
 linedef
 {
-    v1 = 185;
-    v2 = 186;
-    sidefront = 240;
-    sideback = 241;
+    v1 = 205;
+    v2 = 206;
+    sidefront = 245;
+    sideback = 246;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5656,36 +5699,26 @@ linedef
 //196
 linedef
 {
-    v1 = 189;
-    v2 = 190;
-    sidefront = 242;
-    sideback = 243;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 206;
+    v2 = 202;
+    sidefront = 247;
+    blocking = true;
 }
 //197
 linedef
 {
-    v1 = 193;
-    v2 = 194;
-    sidefront = 244;
-    sideback = 245;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 205;
+    v2 = 209;
+    sidefront = 248;
+    blocking = true;
 }
 //198
 linedef
 {
-    v1 = 197;
-    v2 = 198;
-    sidefront = 246;
-    sideback = 247;
+    v1 = 209;
+    v2 = 210;
+    sidefront = 249;
+    sideback = 250;
     twosided = true;
     blocking = false;
     comment = "double sided line";
@@ -5695,41 +5728,26 @@ linedef
 //199
 linedef
 {
-    v1 = 201;
-    v2 = 202;
-    sidefront = 248;
-    sideback = 249;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 210;
+    v2 = 206;
+    sidefront = 251;
+    blocking = true;
 }
 //200
 linedef
 {
-    v1 = 205;
-    v2 = 206;
-    sidefront = 250;
-    sideback = 251;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    v1 = 209;
+    v2 = 157;
+    sidefront = 252;
+    blocking = true;
 }
 //201
 linedef
 {
-    v1 = 209;
+    v1 = 158;
     v2 = 210;
-    sidefront = 252;
-    sideback = 253;
-    twosided = true;
-    blocking = false;
-    comment = "double sided line";
-    dontpegtop = true;
-    dontpegbottom = true;
+    sidefront = 253;
+    blocking = true;
 }
 //202
 linedef

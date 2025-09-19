@@ -25,7 +25,7 @@ internal class ThingPlacerTests : StandardTest
         }
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnTwoSidedLines: false)]
+    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false, innerSectorLinesAlwaysStartTwoSided: true)]
     [TestCase(ThingPattern.Triangle)]
     [TestCase(ThingPattern.Square)] // could be better, but fine for now
     [TestCase(ThingPattern.Circle)]

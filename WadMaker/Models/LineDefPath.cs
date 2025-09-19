@@ -31,7 +31,7 @@ public class LineDefPath : IEnumerable<LineDef>
     public IEnumerable<LineDefPath> Build()
     {
         // TODO - what were we trying to do here?
-        while (_lines.Count < 16)
+        while (true)
         {
             var nextLines = _mapElements.LineDefs.Where(p => p.V1 == Head.V2
                                                         && !_lines.Contains(p))

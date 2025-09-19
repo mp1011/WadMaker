@@ -2,7 +2,8 @@
 
 public static class StaticFlags
 {
-    public static bool ClearUpperAndLowerTexturesOnTwoSidedLines;
+    public static bool ClearUpperAndLowerTexturesOnOneSidedLines;
+    public static bool InnerSectorLinesAlwaysStartTwoSided;
 
     static StaticFlags()
     {
@@ -11,6 +12,7 @@ public static class StaticFlags
 
     public static void Reset()
     {
-        ClearUpperAndLowerTexturesOnTwoSidedLines = true;
+        ClearUpperAndLowerTexturesOnOneSidedLines = true;
+        InnerSectorLinesAlwaysStartTwoSided = false;
     }
 }
