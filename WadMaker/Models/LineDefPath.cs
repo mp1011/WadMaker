@@ -30,7 +30,8 @@ public class LineDefPath : IEnumerable<LineDef>
 
     public IEnumerable<LineDefPath> Build()
     {
-        while (true)
+        // TODO - what were we trying to do here?
+        while (_lines.Count < 16)
         {
             var nextLines = _mapElements.LineDefs.Where(p => p.V1 == Head.V2
                                                         && !_lines.Contains(p))
@@ -50,6 +51,8 @@ public class LineDefPath : IEnumerable<LineDef>
                 });
             }            
         }
+
+        return new[] { this };
     }
 
     public IEnumerable<LineDefPath> SplitBy(Func<LineDef,LineDef,bool> condition)

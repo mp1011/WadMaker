@@ -35,7 +35,7 @@
 
 Later
 [ ] thing placement to also avoid placing items in sectors too small
-
+[ ] hall placement when sidse are not on the bounding box
 
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors
@@ -123,3 +123,15 @@ CRITICAL:
 NICE TO HAVE:
 * exit switch auto-align
 * better texture placement
+
+
+--- 9/13
+current issue is because we assume the back side of an inner sector belongs to the parent
+
+while we are repairing overlapping linedefs, some sectors might become incomplete while we are still processing.
+instead of replacing lines as we go, we need to create a map of lines that need replacing with the lines that will
+replace them, and process them all at once.
+
+---- 9/17
+"replace all at once" doesn't work because there are often multiple overlaps at once
+we still want to do it one at a time, but we have to keep the original lines and sectors around for bounds checking

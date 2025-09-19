@@ -25,7 +25,7 @@ public class ShapePlacer<T> where T : IShape
 
     public T EastOf(IShape other, int gap = 0)
     {
-        var x = other.BottomRight.X + Shape.Bounds().Width + gap;
+        var x = other.BottomRight.X + gap;
         int y = other.Bounds().Center.Y + Shape.Bounds().Height / 2;
 
         var upperLeft = new Point(x, y);

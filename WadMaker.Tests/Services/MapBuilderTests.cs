@@ -35,7 +35,8 @@ internal class MapBuilderTests : StandardTest
         map.Rooms.Add(new Room
         {
             UpperLeft = new Point(0, 0),
-            BottomRight = new Point(400, -400)
+            BottomRight = new Point(400, -400),
+            Tag = 1,
         });
 
         map.Rooms[0].InnerStructures.Add(new Room
@@ -44,6 +45,7 @@ internal class MapBuilderTests : StandardTest
             BottomRight = new Point(300, -300),
             Floor = 16,
             Ceiling = 0,
+            Tag = 2,
         });
 
         map.Rooms[0].InnerStructures[0].InnerStructures.Add(new Room
@@ -52,6 +54,7 @@ internal class MapBuilderTests : StandardTest
             BottomRight = new Point(100, -100),
             Floor = 16,
             Ceiling = 0,
+            Tag = 3,
         });
 
         var mapElements = MapBuilder.Build(map);
@@ -166,5 +169,38 @@ internal class MapBuilderTests : StandardTest
         Assert.That(mapElements.Sectors[0].Lines.Count, Is.EqualTo(6));
         Assert.That(mapElements.Sectors[1].Lines.Count, Is.EqualTo(4));
 
+    }
+
+    [Test]
+    public void WindowLinesAreProperlyResolved()
+    {
+        var map = new Map();
+        var room1 = map.AddRoom(new Room(parent: map, size: new Size(400, 400)));
+        var room2 = map.AddRoom(new Room(parent: map, size: new Size(400, 400)))
+                        .Place().EastOf(room1, 16);
+
+        var window = RoomGenerator.AddStructure(room1, new Window(
+            Template: new Room { Floor = 32, Ceiling = -32 },
+            Width: 128,
+            AdjacentRoom: room2,
+            CenterPercent: 0.50));
+
+        var mapElements = MapBuilder.Build(map);
+        var windowSector = mapElements.Sectors.Single(p => p.Room == window);
+        var shortLines = windowSector.Lines.Where(p => p.Length == 16).ToArray();
+        var longLines = windowSector.Lines.Where(p => p.Length == 128).ToArray();
+
+        Assert.That(shortLines.Length, Is.EqualTo(2));
+        Assert.That(longLines.Length, Is.EqualTo(2));
+
+        foreach(var line in shortLines)
+        {
+            Assert.That(line.Back, Is.Null);
+        }
+
+        foreach (var line in longLines)
+        {
+            Assert.That(line.Back, Is.Not.Null);
+        }
     }
 }

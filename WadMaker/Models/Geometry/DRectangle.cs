@@ -1,4 +1,7 @@
-﻿namespace WadMaker.Models.Geometry;
+﻿using System;
+using System.Drawing;
+
+namespace WadMaker.Models.Geometry;
 
 /// Rectangle in Doom coordinates where decreasing Y means going down
 public struct DRectangle
@@ -83,6 +86,15 @@ public struct DRectangle
         _ => throw new Exception("Invalid Side"),
     };
 
+    public int SidePosition(Side side) => side switch
+    {
+        Side.Left => X,
+        Side.Right => Right,
+        Side.Top => Y,
+        Side.Bottom => Bottom,
+        _ => throw new Exception("Invalid Side")
+    };
+
     public int SideLength(Side side)
     {
         switch (side)
@@ -93,5 +105,15 @@ public struct DRectangle
             default:
                 return Width;
         }
+    }
+
+    public Side SideRelativeTo(DRectangle other)
+    {
+        DRectangle dis = this;
+        return Enum.GetValues<Side>().Where(s => s != Side.None).FirstOrDefault(side =>
+        {
+            var extendedBounds = other.ExtendOnSide(side, 5000);
+            return dis.IntersectsWith(extendedBounds);
+        });        
     }
 }

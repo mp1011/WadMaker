@@ -41,7 +41,7 @@ class TechbaseSep25FullMapTest : StandardTest
          new Hall(128, longHall, westRoom, Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORTRAK, PositionInHall: 8, Tag: doorTag))));
         
         // east room
-        var eastRoom = map.AddRoom(new Room(parent: map, size: new Size(128, 256)).Place().EastOf(longHall, 16));
+        var eastRoom = map.AddRoom(new Room(parent: map, size: new Size(128, 256)).Place().EastOf(longHall, 32));
         var westDoorSwitch = RoomGenerator.AddStructure(eastRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
         westDoorSwitch.LineSpecials[Side.Right] = new DoorOpen(doorTag, Speed.StandardDoor);
         westDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE, LowerUnpegged: true);

@@ -256,21 +256,14 @@ public class HallGenerator
             };
         }
     }
-    
+
     /// <summary>
     /// Determine which side of Room1 to build the hall
     /// </summary>
     /// <param name="hall"></param>
     /// <returns></returns>
-    private Side HallSide(Hall hall) =>
-        Enum.GetValues<Side>().FirstOrDefault(s=> CanMakeHallOnSide(hall, s));
-
-    private static bool CanMakeHallOnSide(Hall hall, Side side)
+    private Side HallSide(Hall hall)
     {
-        if (side == Side.None)
-            return false;
-
-        var bounds = hall.Room1.Bounds.ExtendOnSide(side, 5000);
-        return bounds.IntersectsWith(hall.Room2.Bounds);
+        return hall.Room2.Bounds().SideRelativeTo(hall.Room1.Bounds());
     }
 }

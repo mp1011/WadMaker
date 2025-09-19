@@ -362,49 +362,49 @@ vertex
 //60
 vertex
 {
-    x = 656;
+    x = 544;
     y = 448;
 }
 //61
 vertex
 {
-    x = 784;
+    x = 672;
     y = 448;
 }
 //62
 vertex
 {
-    x = 784;
+    x = 672;
     y = 192;
 }
 //63
 vertex
 {
-    x = 656;
+    x = 544;
     y = 192;
 }
 //64
 vertex
 {
-    x = 784;
+    x = 672;
     y = 352;
 }
 //65
 vertex
 {
-    x = 792;
+    x = 680;
     y = 352;
 }
 //66
 vertex
 {
-    x = 792;
+    x = 680;
     y = 288;
 }
 //67
 vertex
 {
-    x = 784;
+    x = 672;
     y = 288;
 }
 //68
@@ -416,13 +416,13 @@ vertex
 //69
 vertex
 {
-    x = 656;
+    x = 544;
     y = 384;
 }
 //70
 vertex
 {
-    x = 656;
+    x = 544;
     y = 256;
 }
 //71
@@ -1298,49 +1298,49 @@ vertex
 //216
 vertex
 {
-    x = 832;
+    x = 576;
     y = 835;
 }
 //217
 vertex
 {
-    x = 1088;
+    x = 832;
     y = 835;
 }
 //218
 vertex
 {
-    x = 1088;
+    x = 832;
     y = 579;
 }
 //219
 vertex
 {
-    x = 832;
+    x = 576;
     y = 579;
 }
 //220
 vertex
 {
-    x = 1088;
+    x = 832;
     y = 739;
 }
 //221
 vertex
 {
-    x = 1096;
+    x = 840;
     y = 739;
 }
 //222
 vertex
 {
-    x = 1096;
+    x = 840;
     y = 675;
 }
 //223
 vertex
 {
-    x = 1088;
+    x = 832;
     y = 675;
 }
 //224
@@ -1352,13 +1352,13 @@ vertex
 //225
 vertex
 {
-    x = 832;
+    x = 576;
     y = 771;
 }
 //226
 vertex
 {
-    x = 832;
+    x = 576;
     y = 643;
 }
 //227
@@ -2168,14 +2168,14 @@ sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
-    offsetx = 56;
+    offsetx = 72;
 }
 //45
 sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
-    offsetx = 56;
+    offsetx = 72;
 }
 //46
 sidedef
@@ -3016,7 +3016,7 @@ sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
-    offsetx = 56;
+    offsetx = 72;
 }
 //164
 sidedef
@@ -3024,7 +3024,7 @@ sidedef
     sector = 8;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 24;
+    offsetx = 40;
 }
 //165
 sidedef
@@ -3038,14 +3038,14 @@ sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
-    offsetx = 88;
+    offsetx = 104;
 }
 //167
 sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
-    offsetx = 56;
+    offsetx = 72;
 }
 //168
 sidedef
@@ -3053,7 +3053,7 @@ sidedef
     sector = 8;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 120;
+    offsetx = 8;
 }
 //169
 sidedef
@@ -3067,7 +3067,7 @@ sidedef
 {
     sector = 8;
     texturemiddle = "STARBR2";
-    offsetx = 120;
+    offsetx = 8;
 }
 //171
 sidedef
@@ -3095,7 +3095,7 @@ sidedef
 {
     sector = 10;
     texturemiddle = "STARBR2";
-    offsetx = 120;
+    offsetx = 8;
 }
 //175
 sidedef
@@ -6159,7 +6159,7 @@ thing
 //18
 thing
 {
-    x = 720;
+    x = 608;
     y = 320;
     angle = 0;
     type = 2001;
@@ -6175,7 +6175,7 @@ thing
 //19
 thing
 {
-    x = 720;
+    x = 608;
     y = 320;
     angle = 270;
     type = 3004;
@@ -6191,7 +6191,7 @@ thing
 //20
 thing
 {
-    x = 704;
+    x = 592;
     y = 352;
     angle = 270;
     type = 3004;
@@ -6207,7 +6207,7 @@ thing
 //21
 thing
 {
-    x = 736;
+    x = 624;
     y = 352;
     angle = 270;
     type = 3004;
@@ -6223,7 +6223,7 @@ thing
 //22
 thing
 {
-    x = 720;
+    x = 608;
     y = 320;
     angle = 0;
     type = 2008;
@@ -6383,7 +6383,7 @@ thing
 //32
 thing
 {
-    x = 960;
+    x = 704;
     y = 619;
     angle = 270;
     type = 3004;
@@ -6399,7 +6399,7 @@ thing
 //33
 thing
 {
-    x = 944;
+    x = 688;
     y = 739;
     angle = 270;
     type = 3004;
@@ -6415,7 +6415,7 @@ thing
 //34
 thing
 {
-    x = 976;
+    x = 720;
     y = 739;
     angle = 270;
     type = 3004;
@@ -6431,7 +6431,7 @@ thing
 //35
 thing
 {
-    x = 960;
+    x = 704;
     y = 587;
     angle = 270;
     type = 9;
@@ -6447,7 +6447,7 @@ thing
 //36
 thing
 {
-    x = 944;
+    x = 688;
     y = 647;
     angle = 270;
     type = 3001;
@@ -6463,7 +6463,7 @@ thing
 //37
 thing
 {
-    x = 976;
+    x = 720;
     y = 647;
     angle = 270;
     type = 3001;
@@ -6479,7 +6479,7 @@ thing
 //38
 thing
 {
-    x = 960;
+    x = 704;
     y = 707;
     angle = 270;
     type = 69;

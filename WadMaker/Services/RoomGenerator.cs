@@ -22,6 +22,20 @@ public class RoomGenerator
         return alcoveRoom;
     }
 
+    public Room AddStructure(Room room, Window window)
+    {
+        var side = window.AdjacentRoom.Bounds.SideRelativeTo(room.Bounds);
+
+        int spaceBetween = Math.Abs(room.Bounds.SidePosition(side) - window.AdjacentRoom.Bounds.SidePosition(side.Opposite()));
+
+        return AddStructure(room, new Alcove(
+            window.Template,
+            Side: side,
+            Width: window.Width,
+            Depth: spaceBetween,
+            CenterPercent: window.CenterPercent));
+    }
+
     private (Point, Point) GetAlcoveSegment(Side side, Room room, Point centerPoint, int width, int depth)
     {
         var pt1 = centerPoint.Move(side.ClockwiseTurn(), width / 2);

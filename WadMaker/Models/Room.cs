@@ -83,6 +83,8 @@ public class Room : IShape, IThemed
     {
         var copy = new Room(newParent)
         {
+            UpperLeft = UpperLeft,
+            BottomRight = BottomRight,
             Floor = Floor,
             Ceiling = Ceiling,
             CeilingTexture = CeilingTexture,

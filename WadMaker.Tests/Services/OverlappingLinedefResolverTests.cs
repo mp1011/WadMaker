@@ -92,7 +92,8 @@ class OverlappingLinedefResolverTests : StandardTest
         map.Rooms.Add(new Room
         {
             UpperLeft = new Point(0, 0),
-            BottomRight = new Point(300, -128)
+            BottomRight = new Point(300, -128),
+            Tag = 1,
         });
 
         map.Rooms[0].InnerStructures.Add(
@@ -100,6 +101,7 @@ class OverlappingLinedefResolverTests : StandardTest
             {
                 UpperLeft = new Point(50, 0),
                 BottomRight = new Point(100, -128),
+                Tag = 2
             });
 
         map.Rooms[0].InnerStructures.Add(
@@ -107,12 +109,18 @@ class OverlappingLinedefResolverTests : StandardTest
            {
                UpperLeft = new Point(100, 0),
                BottomRight = new Point(150, -128),
+               Tag = 3
            });
 
         var mapElements = MapBuilder.Build(map);
 
         Assert.That(mapElements.LineDefs.Count(p => p.Back != null), Is.EqualTo(3));
         Assert.That(mapElements.LineDefs.Count(p => p.Back == null), Is.EqualTo(10));
+
+        Assert.That(mapElements.Sectors[0].Lines.Length, Is.EqualTo(8));
+        Assert.That(mapElements.Sectors[1].Lines.Length, Is.EqualTo(4));
+        Assert.That(mapElements.Sectors[2].Lines.Length, Is.EqualTo(4));
+
 
     }
 
@@ -123,7 +131,8 @@ class OverlappingLinedefResolverTests : StandardTest
         map.Rooms.Add(new Room
         {
             UpperLeft = new Point(0, 0),
-            BottomRight = new Point(200, -128)
+            BottomRight = new Point(200, -128),
+            Tag = 1
         });
 
         map.Rooms[0].InnerStructures.Add(
@@ -131,6 +140,7 @@ class OverlappingLinedefResolverTests : StandardTest
             {
                 UpperLeft = new Point(100, 0),
                 BottomRight = new Point(200, -128),
+                Tag = 2
             });
 
         var mapElements = MapBuilder.Build(map);

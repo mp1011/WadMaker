@@ -109,6 +109,18 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         }
     }
 
+    public vertex OtherVertex(Point p) => OtherVertex(new vertex(p.X, p.Y));
+
+    public vertex OtherVertex(vertex v)
+    {
+        if (v == V1)
+            return V2;
+        else if (v == V2)
+            return V1;
+        else
+            throw new Exception($"Line does not contain vertex {v}");
+    }
+
     public Point MidPoint => new Point((int)(V1.x + (V2.x - V1.x) / 2), (int)(V1.y + (V2.y - V1.y) / 2));
 
     /// <summary>

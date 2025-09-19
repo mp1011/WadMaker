@@ -2,36 +2,36 @@
 
 public class TextureAdjuster
 {
-  private readonly IConfig _config;
+    private readonly IConfig _config;
 
-  public TextureAdjuster(IConfig config)
-  {
-    _config = config;
-  }
-  
-    /// <summary>
-  /// Ensures textures are properly aligned
-  /// </summary>
-  /// <param name="mapElements"></param>
-  public MapElements AdjustOffsetsAndPegs(MapElements mapElements)
-  {
-    foreach (var textureRun in TextureRuns(mapElements))
+    public TextureAdjuster(IConfig config)
     {
-        AlignTextures(textureRun);
+        _config = config;
     }
 
-    SetLinePegs(mapElements);
-    return mapElements;
-  }
+    /// <summary>
+    /// Ensures textures are properly aligned
+    /// </summary>
+    /// <param name="mapElements"></param>
+    public MapElements AdjustOffsetsAndPegs(MapElements mapElements)
+    {
+        foreach (var textureRun in TextureRuns(mapElements))
+        {
+            AlignTextures(textureRun);
+        }
+
+        SetLinePegs(mapElements);
+        return mapElements;
+    }
 
     public MapElements ApplyThemes(MapElements mapElements)
     {
-        foreach(var sector in mapElements.Sectors)
+        foreach (var sector in mapElements.Sectors)
         {
             if (sector.Room.Theme == null)
                 continue;
 
-            foreach (var line in mapElements.LineDefs.Where(p=>p.BelongsTo(sector)))
+            foreach (var line in mapElements.LineDefs.Where(p => p.BelongsTo(sector)))
             {
                 ApplyTheme(sector.Room.Theme, sector, line);
             }
@@ -57,46 +57,46 @@ public class TextureAdjuster
                 continue;
 
             // TODO - do we always want to do this?
-            twoSidedLine.Data = twoSidedLine.Data with {  dontpegbottom = true, dontpegtop = true };
+            twoSidedLine.Data = twoSidedLine.Data with { dontpegbottom = true, dontpegtop = true };
         }
     }
 
-  private void AlignTextures(LineDefPath lines)
-  {
-    int totalWallWidth = 0;
-    LineDef? prev = null;
-
-    foreach (var line in lines)
+    private void AlignTextures(LineDefPath lines)
     {
-      var textureSize = DoomConfig.DoomTextureSizes[line.Front.Texture];
-      line.Front.Data = line.Front.Data with
-      {
-        offsetx = totalWallWidth % textureSize.Width,
-        offsety = prev != null ? CalcYOffset(line, prev) : null
-      };
-      totalWallWidth += (int)line.Length;
-      prev = line;
-    }
-  }
-  private int? CalcYOffset(LineDef line, LineDef previousLine)
-  {
-    if (!_config.HandleYOffet)
-      return null;
-      
-    var prevFloor = previousLine.Front.Sector.Data.heightfloor;
-    var thisFloor = line.Front.Sector.Data.heightfloor;
-    var prevCeiling = previousLine.Front.Sector.Data.heightceiling;
-    var thisCeiling = line.Front.Sector.Data.heightceiling;
+        int totalWallWidth = 0;
+        LineDef? prev = null;
 
-    var ceilingDiff = prevCeiling - thisCeiling;
-    var offsetY = previousLine.Front.Data.offsety.GetValueOrDefault() + ceilingDiff;
-    if (offsetY == 0)
-      return null;
-    else
-      return offsetY;
-    
+        foreach (var line in lines)
+        {
+            var textureSize = DoomConfig.DoomTextureSizes[line.Front.Texture];
+            line.Front.Data = line.Front.Data with
+            {
+                offsetx = totalWallWidth % textureSize.Width,
+                offsety = prev != null ? CalcYOffset(line, prev) : null
+            };
+            totalWallWidth += (int)line.Length;
+            prev = line;
+        }
+    }
+    private int? CalcYOffset(LineDef line, LineDef previousLine)
+    {
+        if (!_config.HandleYOffet)
+            return null;
+
+        var prevFloor = previousLine.Front.Sector.Data.heightfloor;
+        var thisFloor = line.Front.Sector.Data.heightfloor;
+        var prevCeiling = previousLine.Front.Sector.Data.heightceiling;
+        var thisCeiling = line.Front.Sector.Data.heightceiling;
+
+        var ceilingDiff = prevCeiling - thisCeiling;
+        var offsetY = previousLine.Front.Data.offsety.GetValueOrDefault() + ceilingDiff;
+        if (offsetY == 0)
+            return null;
+        else
+            return offsetY;
+
         // todo, how to handle floor?
-  }
+    }
 
     /// <summary>
     /// Gets all sequences of linedefs that share the same texture
@@ -117,15 +117,15 @@ public class TextureAdjuster
         var paths = path.Build().ToList();
 
         int loopProtect = 1000000;
-        while(--loopProtect >= 0)
+        while (--loopProtect >= 0)
         {
             if (loopProtect == 0)
                 throw new Exception("Unable to get line paths");
 
             var usedLines = paths.SelectMany(p => p.ToArray()).ToArray();
 
-            var nextUnusedLine = mapElements.LineDefs.FirstOrDefault(p=> !usedLines.Contains(p));
-            if(nextUnusedLine != null)
+            var nextUnusedLine = mapElements.LineDefs.FirstOrDefault(p => !usedLines.Contains(p));
+            if (nextUnusedLine != null)
             {
                 var newPaths = new LineDefPath(mapElements, nextUnusedLine).Build().ToArray();
                 paths.AddRange(newPaths);
@@ -139,7 +139,7 @@ public class TextureAdjuster
         return paths;
     }
 
-    
+
 
     private IEnumerable<LineDefPath> TextureRuns(LineDefPath run)
     {

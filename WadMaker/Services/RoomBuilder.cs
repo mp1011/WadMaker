@@ -22,7 +22,7 @@ public class RoomBuilder
 
         foreach (var innerElement in room.InnerStructures)
         {
-            roomElements.Merge(BuildInternalElement(room, roomSector, innerElement));
+            roomElements.Merge(BuildInternalElement(room, roomSector, innerElement, roomElements));
         }
 
         AddLineSpecials(room, roomElements);
@@ -67,7 +67,7 @@ public class RoomBuilder
         return elements;
     }
 
-    public MapElements BuildInternalElement(Room room, Sector roomSector, Room innerElement)
+    public MapElements BuildInternalElement(Room room, Sector roomSector, Room innerElement, MapElements elements)
     {
         innerElement = innerElement.RelativeTo(room);
         var innerElements = Build(innerElement);
@@ -79,26 +79,46 @@ public class RoomBuilder
         var sectors = new[] { roomSector, innerElements.Sectors[0] };
 
         foreach (var line in lines)
-        {            
-            var lineSide = line.SideOfRoom(innerElement);
-            var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null, 
-                texturetop: innerElement.TextureForSide(lineSide).UpperString(),
-                texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
+        {
+            var backBelongsToRoom = _isPointInSector.Execute(line.BackTestPoint, roomSector, elements);
+            if (backBelongsToRoom)
+            {
+                var lineSide = line.SideOfRoom(innerElement);
+                var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null,
+                    texturetop: innerElement.TextureForSide(lineSide).UpperString(),
+                    texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
 
-            var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, texturemiddle: null,
-                texturetop: innerElement.TextureForSide(lineSide).UpperString(),
-                texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
+                var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, texturemiddle: null,
+                    texturetop: innerElement.TextureForSide(lineSide).UpperString(),
+                    texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
 
-            var newLine = new LineDef(line.V1, line.V2,
-                    frontSide,
-                    backSide,
-                    line.Data with { twosided = true, blocking = false });
-            newLine.LineSpecial = line.LineSpecial;
+                var newLine = new LineDef(line.V1, line.V2,
+                        frontSide,
+                        backSide,
+                        line.Data with { twosided = true, blocking = false });
+                newLine.LineSpecial = line.LineSpecial;
 
-            innerElements.LineDefs.Add(newLine);
+                innerElements.LineDefs.Add(newLine);
 
-            innerElements.SideDefs.Add(frontSide);
-            innerElements.SideDefs.Add(backSide);
+                innerElements.SideDefs.Add(frontSide);
+                innerElements.SideDefs.Add(backSide);
+            }
+            else
+            {
+                var lineSide = line.SideOfRoom(innerElement);
+
+                var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, 
+                    texturemiddle: innerElement.TextureForSide(lineSide).ToString()));
+
+                var newLine = new LineDef(line.V1, line.V2,
+                        frontSide,
+                        null,
+                        line.Data with { twosided = false, blocking = true });
+                newLine.LineSpecial = line.LineSpecial;
+
+                innerElements.LineDefs.Add(newLine);
+                innerElements.SideDefs.Add(frontSide);
+            }
         }
 
         return innerElements;

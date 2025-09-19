@@ -13,6 +13,7 @@ public class OverlappingLinedefResolver
 
     public IEnumerable<LineDef> Execute(MapElements mapElements)
     {
+        MapElements originalMapElements = CloneOriginalElements(mapElements);
         List<LineDef> modified = new List<LineDef>();
 
         int maxIterations = 100000; // safeguard against infinite loops
@@ -23,7 +24,7 @@ public class OverlappingLinedefResolver
                 break;
             else
             {
-                var modifiedLines = ResolveOverlappingPair(nextOverlap.Value.Item1, nextOverlap.Value.Item2, mapElements).ToArray();
+                var modifiedLines = ResolveOverlappingPair(nextOverlap.Value.Item1, nextOverlap.Value.Item2, originalMapElements).ToArray();
 
                 if (!modifiedLines.Any())
                     throw new Exception("Unable to resolve overlapping linedefs");
@@ -42,6 +43,18 @@ public class OverlappingLinedefResolver
         return modified;
     }
 
+    private MapElements CloneOriginalElements(MapElements mapElements)
+    {
+        return new MapElements
+        {
+            LineDefs = mapElements.LineDefs.Select(
+                p => new LineDef(p.V1, p.V2, p.Front, p.Back, p.Data)).ToList(),
+            SideDefs = mapElements.SideDefs.ToList(),
+            Sectors = mapElements.Sectors.ToList(),
+            Things = mapElements.Things.ToList(),
+            Vertices = mapElements.Vertices.ToList()
+        };
+    }
     private void RemoveOverlappingLines(LineDef line1, LineDef line2, MapElements mapElements)
     {
         mapElements.LineDefs.Remove(line1);
@@ -73,9 +86,9 @@ public class OverlappingLinedefResolver
         return null;
     }
 
-    private IEnumerable<LineDef> ResolveOverlappingPair(LineDef line1, LineDef line2, MapElements mapElements)
+    private IEnumerable<LineDef> ResolveOverlappingPair(LineDef line1, LineDef line2, MapElements originalMapElements)
     {
-        var possibleSectors = line1.Sectors.Union(line2.Sectors).Distinct().ToArray();
+        var possibleSectors = line1.Sectors.Union(line2.Sectors).Distinct().OrderBy(p=> originalMapElements.Sectors.IndexOf(p)).ToArray();
         var sourceSidedefs = line1.SideDefs.Union(line2.SideDefs).ToArray();
         var line1Texture = new TextureInfo(line1);
         var line2Texture = new TextureInfo(line2);
@@ -84,8 +97,8 @@ public class OverlappingLinedefResolver
         foreach(var line in splitLines)
         {
             // using "last" because we want the most recently added sector to take precence
-            Sector? frontSector = possibleSectors.LastOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, mapElements));
-            Sector? backSector = possibleSectors.LastOrDefault(p => p != frontSector && _isPointInSector.Execute(line.BackTestPoint, p, mapElements));
+            Sector? frontSector = possibleSectors.LastOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, originalMapElements));
+            Sector? backSector = possibleSectors.LastOrDefault(p => p != frontSector && _isPointInSector.Execute(line.BackTestPoint, p, originalMapElements));
 
             var frontSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == frontSector)?.Copy();
             var backSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == backSector)?.Copy();

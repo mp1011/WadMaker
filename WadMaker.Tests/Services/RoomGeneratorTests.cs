@@ -46,4 +46,23 @@ internal class RoomGeneratorTests : StandardTest
 
         Assert.That(alcove.UpperLeft.X, Is.EqualTo(150));
    }
+
+
+    [Test]
+    public void CanAddWindow()
+    {
+        var map = new Map();
+        var room1 = map.AddRoom(new Room(parent: map, size: new Size(400, 400)));
+        var room2 = map.AddRoom(new Room(parent: map, size: new Size(400, 400)))
+                       .Place().EastOf(room1, 16);
+
+        var window = RoomGenerator.AddStructure(room1, new Window(
+            Template: new Room { Floor = 32, Ceiling = -32 },
+            Width: 128,
+            AdjacentRoom: room2,
+            CenterPercent: 0.50));
+
+        Assert.That(window.Bounds.Width, Is.EqualTo(16));
+        Assert.That(window.Bounds.X, Is.EqualTo(room1.Bounds.Width));
+    }
 }

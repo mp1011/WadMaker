@@ -6,7 +6,7 @@ public class IsPointInSector
 
     public bool Execute(Point p, Sector sector, MapElements elements)
     {
-        var sectorLines = elements.LineDefs.Where(p => p.BelongsTo(sector));
+        var sectorLines = elements.LineDefs.Where(p => p.BelongsTo(sector) && p.Length > 0);
         if(!sectorLines.Any()) return false;
 
         var polygons = SectorPolygons(sectorLines).ToArray();
@@ -16,7 +16,7 @@ public class IsPointInSector
         return polygonsAtPoint.Length == 1;
     }
 
-    private bool IsPointInsidePolygon(Point point, Point[] polygon)
+    private bool IsPointInsidePolygon(Point point, PointPath polygon)
     {
         bool isInside = false;
         int j = polygon.Length - 1;
@@ -37,65 +37,79 @@ public class IsPointInSector
 
         return isInside;
     }
-    private IEnumerable<Point[]> SectorPolygons(IEnumerable<LineDef> lines)
+    private IEnumerable<PointPath> SectorPolygons(IEnumerable<LineDef> lines)
     {
-        var lineList = lines.ToList();
-
-        var safety = 0;
-        while (lineList.Count() >= 3)
-        {
-            var loop = LineLoop(lineList.First(), lineList);
-            yield return loop.ToArray();
-
-            if (!loop.Any())
-                break;
-
-            lineList.RemoveAll(p => loop.Any(q => p.Contains(q)));
-
-            if (safety++ > LoopLimit)
-                throw new Exception("Unable to determine line loops");
-        }
-    }
-
-    private IEnumerable<Point> LineLoop(LineDef start, IEnumerable<LineDef> lines) 
-    {
-        var remainingLines = lines.ToList();
-        List<Point> polygonPoints = new List<Point>();
-        polygonPoints.Add(start.V1);
-        polygonPoints.Add(start.V2);
-
-        remainingLines.Remove(start);
-        var safety = 0;
+        List<PointPath> paths = new List<PointPath>();
 
         while (true)
         {
-            var previousPoint = polygonPoints.Last();
+            var unusedPoint = lines.SelectMany(p=>p.Vertices)
+                .FirstOrDefault(p=> !paths.Any(path => path.Contains(p)));
 
-            var v1Match = remainingLines.FirstOrDefault(p => p.V1 == previousPoint);
-            var v2Match = remainingLines.FirstOrDefault(p => p.V2 == previousPoint);
+            if (unusedPoint == null)
+                break;
 
-            var next = (v1Match ?? v2Match);
-            if (next == null)
-                return Array.Empty<Point>();
-
-            remainingLines.Remove(next);
-
-            if (v1Match != null)
-            {
-                if (v1Match.V2 == polygonPoints.First())
-                    return polygonPoints;
-                polygonPoints.Add(v1Match.V2);
-            }
-            else if (v2Match != null)
-            {
-                if (v2Match.V1 == polygonPoints.First())
-                    return polygonPoints;
-                polygonPoints.Add(v2Match.V1);
-            }
-
-            if (safety++ > LoopLimit)
-                throw new Exception("Unable to determine line loops");
+            paths.AddRange(GetPathsFromPoint(unusedPoint, lines));
         }
+
+        return paths.Where(p => p.IsLooping);
     }
 
+    private PointPath[] GetPathsFromPoint(Point point, IEnumerable<LineDef> lines)
+    {
+        if(!lines.Any())
+            return Array.Empty<PointPath>();
+
+        List<PointPath> paths = new List<PointPath>();
+        LineDef nextLine = lines.First(p => p.Contains(point));       
+        PointPath currentPath = new PointPath(nextLine.V1, nextLine.V2);       
+        paths.Add(currentPath);
+        int currentPathIndex = 0;
+
+        while(currentPathIndex < paths.Count)
+        {
+            var possibleNextLines = lines.Where(p => p != nextLine && p.Contains(currentPath.Last())).ToArray();
+            if(!possibleNextLines.Any())
+                currentPathIndex++;
+            else if(possibleNextLines.Length == 1)
+            {
+                nextLine = possibleNextLines.First();
+                currentPath.Add(nextLine.OtherVertex(currentPath.Last()));
+            }
+            else 
+            {
+                nextLine = MostClockwise(currentPath[^2], currentPath[^1], possibleNextLines);
+                
+                foreach(var otherLines in possibleNextLines.Except(new[] { nextLine }))
+                {
+                    var newPath = new PointPath(currentPath.Last());
+                    newPath.Add(otherLines.OtherVertex(currentPath.Last()));
+
+                    if(!paths.Any(p=> p[0] == newPath[0] && p[1] == newPath[1]))
+                        paths.Add(newPath);
+                }
+
+                currentPath.Add(nextLine.OtherVertex(currentPath.Last()));
+            }
+
+            if(currentPath.IsLooping)
+                currentPathIndex++;
+        }
+
+        return paths.ToArray();
+    }
+
+    private LineDef MostClockwise(Point beforeAnchor, Point anchor, IEnumerable<LineDef> lineDefs)
+    {
+        var compareAngle = beforeAnchor.AngleTo(anchor);
+
+        return lineDefs.Select(line =>
+        {
+            var other = line.OtherVertex(anchor);
+            var angle = anchor.AngleTo(other);
+            return (line, angle);
+        }).OrderBy(p => (p.angle - compareAngle).AsAngle())
+        .First().line;
+
+    } 
 }
