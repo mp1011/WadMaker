@@ -62,6 +62,24 @@ public class Sector(Room Room, sector Data) : IElementWrapper<sector>
 
     public LineDef[] Activators { get; set; } = Array.Empty<LineDef>();
 
+    public ZDoomSectorSpecial SectorSpecial
+    {
+        get => (ZDoomSectorSpecial)(Data.special ?? 0);
+        set => Data = Data with { special = (int)value };
+    }
+
+    public Flat Floor
+    {
+        get => Data.texturefloor.ParseAs<Flat>() ?? Flat.Default;
+        set => Data = Data with { texturefloor = value.ToString() };
+    }
+
+    public Flat Ceiling
+    {
+        get => Data.textureceiling.ParseAs<Flat>() ?? Flat.Default;
+        set => Data = Data with { textureceiling = value.ToString() };
+    }
+
     public override string ToString()
     {
         if(Data.id.HasValue)

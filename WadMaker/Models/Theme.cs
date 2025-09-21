@@ -125,3 +125,12 @@ public record LineLengthGreaterOrEqualTo(int Amount) : LambdaThemeCondition(x=> 
 
 public record LineLengthIs(int Amount) : LambdaThemeCondition(x => x.Length == Amount)
 {}
+
+public record LowerFloorTextureIs(FlatsQuery FloorQuery) : ThemeCondition
+{
+    public override bool AppliesTo(LineDef lineDef)
+    {
+        var lowerSector = lineDef.Sectors.OrderBy(p => p.Room.Floor).First();
+        return FloorQuery.Execute().Contains(lowerSector.Floor);
+    }
+}

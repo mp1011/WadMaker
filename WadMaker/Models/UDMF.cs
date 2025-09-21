@@ -5,7 +5,8 @@ public record sector(
     int heightfloor,
     int heightceiling,
     int lightlevel,
-    int? id = null
+    int? id = null,
+    int? special = null
 ) : IMapElement;
 
 public record vertex(

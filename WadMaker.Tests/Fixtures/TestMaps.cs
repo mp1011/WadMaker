@@ -79,13 +79,13 @@ class TestMaps : StandardTest
     public Map TwoConnectedRoomsWithDifferentCeilings()
     {
         var map = new Map();
-        var leftRoom = new Room
+        var leftRoom = new Room(map)
         {
             UpperLeft = Point.Empty,
             BottomRight = new Point(256, -256),
             Ceiling = 128
         };
-        var rightRoom = new Room
+        var rightRoom = new Room(map)
         {
             UpperLeft = new Point(256, 0),
             BottomRight = new Point(512, -256),

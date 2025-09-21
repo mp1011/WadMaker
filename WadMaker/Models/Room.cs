@@ -46,6 +46,9 @@ public class Room : IShape, IThemed
 
     public List<Room> InnerStructures { get; } = new List<Room>();
 
+    // Added property
+    public ZDoomSectorSpecial SectorSpecial { get; set; } = ZDoomSectorSpecial.Normal;
+
     public Room() : this(NoTheme.Instance) { }
     public Room(IThemed parent) 
     {
@@ -92,6 +95,7 @@ public class Room : IShape, IThemed
             WallTexture = WallTexture,
             Tag = Tag,
             Theme = Theme,
+            SectorSpecial = SectorSpecial
         };
         copy.Things.AddRange(Things.Select(t => t.Copy(this, copy)));
         copy.ShapeModifiers.AddRange(ShapeModifiers);

@@ -3,10 +3,17 @@
 public record TechbaseTheme() : Theme(CreateRules())
 {
     public static IEnumerable<ThemeRule> CreateRules()
-    {
+    { 
+        // nukage pit walls
+        yield return new ThemeRule(new TextureQuery(new[] { "SlimeBottom" },
+            MaxHeight: 999),
+            new LowerFloorTextureIs(new FlatsQuery(new[] { "Slime" })));
+
         yield return new ThemeRule(new TextureQuery( new[] { "Tech", "Door" }, "Brown"), new IsDoor());
+
         yield return new ThemeRule(new TextureQuery( new[] { "Step" }), new FloorDifferenceLessOrEqualTo(16));
 
+      
         // short walls
         yield return new ThemeRule(new TextureQuery(new[] { "Light" }, MaxWidth: 16, MinWidth:16),
             new LineLengthIs(16).AndNot(new IsDoorSide()));

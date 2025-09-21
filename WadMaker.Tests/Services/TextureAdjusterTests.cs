@@ -1,4 +1,6 @@
-﻿using WadMaker.Models.LineSpecials;
+﻿using WadMaker.Config;
+using WadMaker.Models;
+using WadMaker.Models.LineSpecials;
 
 namespace WadMaker.Tests.Services;
 
@@ -219,6 +221,31 @@ internal class TextureAdjusterTests : StandardTest
         var udmf = MapToUDMF(testMap);
         var expected = File.ReadAllText("Fixtures//texture_test_techbase.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void CanApplyNukageTextureToPitWalls()
+    {
+        var map = new TestMaps().TwoConnectedRoomsWithDifferentCeilings();
+        map.Theme = new TechbaseTheme();
+        var pit = RoomGenerator.AddStructure(map.Rooms[1], new HazardPit(
+            Depth: 32,
+            Flat: AnimatedFlat.NUKAGE1,
+            Damage: DamagingSectorSpecial.Damage_10Percent,
+            Padding: new Padding(16)));
+        pit.Tag = 1;
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyThemes(mapElements);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+
+        var pitSector = mapElements.Sectors.Single(p => p.Tag == 1);
+        foreach(var line in pitSector.Lines)
+        {
+            var lowerTexture = line.Front.Data.texturebottom;
+            var textureInfo = DoomConfig.DoomTextureInfo[lowerTexture!];
+            Assert.That(textureInfo!.Size!.Height, Is.GreaterThanOrEqualTo(32));
+        }
     }
 }
 

@@ -144,6 +144,7 @@ public class RoomBuilder
     }
 
     private Sector Sector(Room room) => new Sector(room, new sector(
+        special: room.SectorSpecial == ZDoomSectorSpecial.Normal ? null : (int?)room.SectorSpecial,
         texturefloor: room.FloorTexture.ToString(),
         textureceiling: room.CeilingTexture.ToString(),
         heightfloor: room.Floor,

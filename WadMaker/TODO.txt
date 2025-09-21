@@ -28,9 +28,10 @@
 ------------- 8/31/2025
 --------------9/9/2025
 [x] easier way to create symettry, such as having four pillars evenly spaced
-[ ] function to add a "window" connecting two sectors
+[x] function to add a "window" connecting two sectors
 [ ] floor and ceiling textures
 [ ] ambush flag for monsters
+[ ] ability to create inner sector with same shape as parent
 
 
 Later

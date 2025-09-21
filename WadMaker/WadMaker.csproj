@@ -17,6 +17,9 @@
     <None Update="Config\monster_hp.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Config\flats_info.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Config\texture_info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -13,4 +13,11 @@ public static class EnumExtensions
             _ => throw new ArgumentOutOfRangeException()
         };
 
+    public static T To<T>(this Enum enumVal) where T : Enum
+    {
+        if (Enum.TryParse(typeof(T), enumVal.ToString(), out var result))
+            return (T)result;
+        throw new ArgumentException($"Could not convert {enumVal} to {typeof(T)}");
+    }
+
 }

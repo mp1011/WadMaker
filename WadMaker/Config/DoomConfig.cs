@@ -4,6 +4,8 @@ public static class DoomConfig
 {
     private static Dictionary<string, DoomTextureSize> _sizes;
     private static Dictionary<string, DoomTextureInfo> _infos;
+    private static Dictionary<string, DoomTextureInfo> _flatsInfos;
+
     private static Dictionary<int, DoomThingInfo> _things;
 
     private static Dictionary<ThingType, MonsterHp> _monsterHP;
@@ -12,6 +14,8 @@ public static class DoomConfig
 
     public static Dictionary<string, DoomTextureSize> DoomTextureSizes => _sizes ??= ParseDoomTextureSizes();
     public static Dictionary<string, DoomTextureInfo> DoomTextureInfo => _infos ??= ParseDoomTextureInfo();
+    public static Dictionary<string, DoomTextureInfo> DoomFlatsInfo => _flatsInfos ??= ParseDoomFlatsInfo();
+
     public static Dictionary<int, DoomThingInfo> DoomThingInfo => _things ??= ParseDoomThingInfo();
 
     public static Dictionary<ThingType, MonsterHp> MonsterHp => _monsterHP ??= ParseMonsterHp();
@@ -63,6 +67,15 @@ public static class DoomConfig
     private static Dictionary<string, DoomTextureInfo> ParseDoomTextureInfo()
     {
         var infos = JsonSerializer.Deserialize<DoomTextureInfo[]>(ReadFile("config/texture_info.json"), JsonSerializerOptions);
+
+        infos = infos!.Select(i => i with { Size = DoomTextureSizes.GetValueOrDefault(i.Name) }).ToArray();
+
+        return infos.ToDictionary(k => k.Name, v => v);
+    }
+
+    private static Dictionary<string, DoomTextureInfo> ParseDoomFlatsInfo()
+    {
+        var infos = JsonSerializer.Deserialize<DoomTextureInfo[]>(ReadFile("config/flats_info.json"), JsonSerializerOptions);
 
         infos = infos!.Select(i => i with { Size = DoomTextureSizes.GetValueOrDefault(i.Name) }).ToArray();
 
