@@ -124,7 +124,7 @@ internal class TextureAdjusterTests : StandardTest
 
         var theme = new Theme(new ThemeRule[]
         {
-            new ThemeRule(new TextureInfo(Texture.BIGDOOR5), new IsDoor()),
+            new ThemeRule(Texture: new TextureInfo(Texture.BIGDOOR5), Conditions: new IsDoor()),
         });
 
         foreach(var room in testMap.Rooms)
@@ -153,7 +153,7 @@ internal class TextureAdjusterTests : StandardTest
 
         var theme = new Theme(new ThemeRule[]
         {
-            new ThemeRule(new TextureQuery(new [] { themeName, "Door" }, color), new IsDoor()),
+            new ThemeRule(new TextureQuery(new [] { themeName, "Door" }, color), Conditions: new IsDoor()),
         });
 
         foreach (var room in testMap.Rooms)
@@ -189,7 +189,7 @@ internal class TextureAdjusterTests : StandardTest
 
         var theme = new Theme(new ThemeRule[]
         {
-            new ThemeRule(new TextureQuery(new [] { themeName, "Door" }, color), new IsDoor()),
+            new ThemeRule(new TextureQuery(new [] { themeName, "Door" }, color), Conditions: new IsDoor()),
         });
 
         foreach (var room in map.Rooms)
@@ -245,6 +245,8 @@ internal class TextureAdjusterTests : StandardTest
             var lowerTexture = line.Front.Data.texturebottom;
             var textureInfo = DoomConfig.DoomTextureInfo[lowerTexture!];
             Assert.That(textureInfo!.Size!.Height, Is.GreaterThanOrEqualTo(32));
+            Assert.That(line.Data.dontpegbottom, Is.False);
+            Assert.That(line.Front.Data.offsety, Is.EqualTo(-32));
         }
     }
 }

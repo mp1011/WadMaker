@@ -7,8 +7,9 @@ public record TextureInfo(
     Texture? Lower = null,
     bool? UpperUnpegged = null, // linedef
     bool? LowerUnpegged = null, // linedef
-    int? OffsetX = null, //sidedef`
-    int? OffsetY = null) //sidedef
+    int? OffsetX = null, //sidedef
+    int? OffsetY = null, //sidedef
+    bool? DrawLowerFromBottom = null) 
 {
     public TextureInfo(LineDef line) : this(
         Main: (line.Front.Data.texturemiddle ?? line.Front.Data.texturetop ?? line.Front.Data.texturebottom).ParseAs<Texture>(),
@@ -18,7 +19,8 @@ public record TextureInfo(
         UpperUnpegged: line.Data.dontpegtop,
         LowerUnpegged: line.Data.dontpegbottom,
         OffsetX: line.Front.Data.offsetx,
-        OffsetY: line.Front.Data.offsety)
+        OffsetY: line.Front.Data.offsety,
+        DrawLowerFromBottom: null)
     {
     }
 
@@ -36,6 +38,25 @@ public record TextureInfo(
         line.Data = line.Data with {  dontpegbottom = LowerUnpegged, dontpegtop = UpperUnpegged };
         ApplyTo(line.Front, line.Data.twosided);
         ApplyTo(line.Back, line.Data.twosided);
+
+        if (DrawLowerFromBottom.GetValueOrDefault())
+            Apply_DrawLowerFromBottom(line);
+    }
+
+    /// <summary>
+    /// Sets the Y Offset to the negative of the floor difference
+    /// </summary>
+    /// <param name="line"></param>
+    private void Apply_DrawLowerFromBottom(LineDef line)
+    {
+        line.Data = line.Data with { dontpegbottom = false };
+
+        var floors = line.Sectors.Select(p => p.FloorHeight).ToArray();
+        var floorDifference = floors.Max() - floors.Min();
+
+        line.Front.Data = line.Front.Data with { offsety = -floorDifference };
+        if(line.Back != null)
+            line.Back.Data = line.Back.Data with { offsety = -floorDifference };
     }
 
     public void ApplyTo(SideDef? side, bool? twosided)

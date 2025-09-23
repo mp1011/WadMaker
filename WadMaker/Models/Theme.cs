@@ -5,13 +5,29 @@ public record Theme(ThemeRule[] Rules)
     public Theme(IEnumerable<ThemeRule> Rules) : this(Rules.ToArray()) { }
 }
 
-public record ThemeRule(TextureInfo Texture, params ThemeCondition[] conditions)
+public record ThemeRule(TextureQuery? Query = null, TextureInfo? Texture = null, params ThemeCondition[] Conditions)
 {
-    public bool AppliesTo(LineDef lineDef) => conditions.All(c => c.AppliesTo(lineDef));
+    public bool AppliesTo(LineDef lineDef) => Conditions.All(c => c.AppliesTo(lineDef));
 
-    public ThemeRule(TextureQuery query, params ThemeCondition[] conditions)
-        : this(new TextureInfo(query.Execute().First()), conditions)
-    { }
+    public TextureInfo GetTexture(LineDef lineDef)
+    {
+        if (Query == null)
+            return Texture ?? new TextureInfo();
+        
+        var upper = Query.Execute(lineDef, TexturePart.Upper).FirstOrDefault();
+        var middle = Query.Execute(lineDef, TexturePart.Middle).FirstOrDefault();
+        var lower = Query.Execute(lineDef, TexturePart.Lower).FirstOrDefault();
+
+        if (Texture == null)
+            return new TextureInfo(Mid: middle, Upper: upper, Lower: lower);
+
+        return Texture with
+        {
+            Upper = Texture.Upper.HasValue ? Texture.Upper : upper,
+            Mid = Texture.Mid.HasValue ? Texture.Mid : middle,
+            Lower = Texture.Lower.HasValue ? Texture.Lower : lower
+        };
+    }
 }
 
 public abstract record ThemeCondition()

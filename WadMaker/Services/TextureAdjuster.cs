@@ -46,7 +46,7 @@ public class TextureAdjuster
         if (matchingRule == null)
             return;
 
-        matchingRule.Texture.ApplyTo(line);
+        matchingRule.GetTexture(line).ApplyTo(line);
     }
 
     private void SetLinePegs(MapElements mapElements)
@@ -55,9 +55,12 @@ public class TextureAdjuster
         {
             if (twoSidedLine.LineSpecial != null)
                 continue;
+            
+            if(twoSidedLine.Data.dontpegbottom == null)
+                twoSidedLine.Data = twoSidedLine.Data with { dontpegbottom = true };
 
-            // TODO - do we always want to do this?
-            twoSidedLine.Data = twoSidedLine.Data with { dontpegbottom = true, dontpegtop = true };
+            if (twoSidedLine.Data.dontpegtop == null)
+                twoSidedLine.Data = twoSidedLine.Data with { dontpegtop = true };
         }
     }
 
@@ -72,7 +75,7 @@ public class TextureAdjuster
             line.Front.Data = line.Front.Data with
             {
                 offsetx = totalWallWidth % textureSize.Width,
-                offsety = prev != null ? CalcYOffset(line, prev) : null
+                offsety = prev != null ? CalcYOffset(line, prev) : line.Front.Data.offsety
             };
             totalWallWidth += (int)line.Length;
             prev = line;
@@ -82,6 +85,9 @@ public class TextureAdjuster
     {
         if (!_config.HandleYOffet)
             return null;
+
+        if (line.Front.Data.offsety.HasValue)
+            return line.Front.Data.offsety;
 
         var prevFloor = previousLine.Front.Sector.Data.heightfloor;
         var thisFloor = line.Front.Sector.Data.heightfloor;

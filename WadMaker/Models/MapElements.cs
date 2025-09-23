@@ -80,11 +80,23 @@ public class Sector(Room Room, sector Data) : IElementWrapper<sector>
         set => Data = Data with { textureceiling = value.ToString() };
     }
 
+    public int FloorHeight
+    {
+        get => Data.heightfloor;
+        set => Data = Data with { heightfloor = value };
+    }
+
+    public int CeilingHeight
+    {
+        get => Data.heightceiling;
+        set => Data = Data with { heightceiling = value };
+    }
+
     public override string ToString()
     {
-        if(Data.id.HasValue)
+        if (Data.id.HasValue)
             return $"Sector #{Data.id}";
-        else 
+        else
             return base.ToString() ?? "";
     }
 }

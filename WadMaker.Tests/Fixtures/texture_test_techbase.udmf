@@ -1555,6 +1555,7 @@ sidedef
     sector = 0;
     texturemiddle = "STARBR2";
     offsetx = 52;
+    offsety = 112;
 }
 //80
 sidedef
@@ -1584,6 +1585,7 @@ sidedef
     sector = 0;
     texturemiddle = "STARBR2";
     offsetx = 52;
+    offsety = -16;
 }
 //84
 sidedef
@@ -1776,7 +1778,7 @@ sidedef
     sector = 10;
     texturemiddle = "STARBR2";
     offsetx = 116;
-    offsety = -112;
+    offsety = -240;
 }
 //109
 sidedef
@@ -1784,7 +1786,7 @@ sidedef
     sector = 9;
     texturemiddle = "STARBR2";
     offsetx = 116;
-    offsety = 16;
+    offsety = -112;
 }
 //110
 sidedef
@@ -1831,7 +1833,7 @@ sidedef
     sector = 11;
     texturemiddle = "STARBR2";
     offsetx = 36;
-    offsety = -112;
+    offsety = -240;
 }
 //116
 sidedef
@@ -1847,7 +1849,7 @@ sidedef
     sector = 12;
     texturemiddle = "STARBR2";
     offsetx = 20;
-    offsety = 16;
+    offsety = 128;
 }
 //118
 sidedef

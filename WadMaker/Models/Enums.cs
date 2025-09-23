@@ -42,6 +42,13 @@ public enum ResourceBalance
     Generous
 }
 
+public enum TexturePart
+{
+    Middle,
+    Upper,
+    Lower
+}
+
 public enum AnimatedFlat
 {
     None,
