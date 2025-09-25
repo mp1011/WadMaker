@@ -70,8 +70,7 @@ class HallGeneratorTests : StandardTest
             BottomRight = new Point(secondRoomOffsetX + 256, secondRoomOffsetY - 256)
         });
 
-        var hallGenerator = new HallGenerator();
-        map.Rooms.Add(hallGenerator.GenerateHall(new Hall(HallWidth, map.Rooms[0], map.Rooms[1])));
+        map.Rooms.Add(HallGenerator.GenerateHall(new Hall(HallWidth, map.Rooms[0], map.Rooms[1])));
         return map.Rooms.ToArray();
     }
 
@@ -89,8 +88,7 @@ class HallGeneratorTests : StandardTest
             UpperLeft = new Point(512, 0),
             BottomRight = new Point(768, -256)
         });
-        var hallGenerator = new HallGenerator();
-        var hall = hallGenerator.GenerateHall(
+        var hall = HallGenerator.GenerateHall(
             new Hall(HallWidth,
             map.Rooms[0], 
             map.Rooms[1],
@@ -101,6 +99,36 @@ class HallGeneratorTests : StandardTest
         Assert.That(door.Ceiling, Is.EqualTo(-128));
         Assert.That(door.Floor, Is.EqualTo(0));
         Assert.That(door.Bounds.Width, Is.EqualTo(16));
+    }
+
+    [TestCase(KeyType.Red)]
+    public void CanGenerateHallWithColoredDoor(KeyType color)
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(256, -256)
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(512, 0),
+            BottomRight = new Point(768, -256)
+        });
+
+        var hall = HallGenerator.GenerateHall(
+            new Hall(HallWidth,
+            map.Rooms[0],
+            map.Rooms[1],
+            Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: color)));
+
+        map.Rooms.Add(hall);
+        var door = hall.InnerStructures.First();
+
+        // check action special
+        // color bars should be evenly spaced from door
+        // appropriate texture for key color (different test under theming)
+        throw new NotImplementedException();
     }
 
     [Test]
@@ -120,8 +148,7 @@ class HallGeneratorTests : StandardTest
             Ceiling = 300
         });
 
-        var hallGenerator = new HallGenerator();
-        var hall = hallGenerator.GenerateHall(
+        var hall = HallGenerator.GenerateHall(
             new Hall(HallWidth,
             map.Rooms[0],
             map.Rooms[1],
@@ -165,7 +192,7 @@ class HallGeneratorTests : StandardTest
 
         var hall = new Hall(100, map.Rooms[0], map.Rooms[1]);
 
-        var generatedHall = new HallGenerator().GenerateHall(hall);
+        var generatedHall = HallGenerator.GenerateHall(hall);
 
         Assert.That(generatedHall.UpperLeft.X, Is.EqualTo(180));
         Assert.That(generatedHall.BottomRight.X, Is.EqualTo(1020));

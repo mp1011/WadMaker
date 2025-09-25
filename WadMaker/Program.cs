@@ -1,7 +1,7 @@
 ﻿
 using WadMaker.Services.Extractors;
 
-Map FourRoom()
+Map FourRoom(RoomGenerator roomGenerator)
 {
     var map = new Map();
 
@@ -40,7 +40,7 @@ Map FourRoom()
     });
 
 
-    var hallGenerator = new HallGenerator();
+    var hallGenerator = new HallGenerator(roomGenerator);
     map.Rooms.Add(hallGenerator.GenerateHall(
         new Hall(128,
         map.Rooms[0],
@@ -116,7 +116,7 @@ Map RoomSplitInTwo()
     return map;
 }
 
-Map FourStairs()
+Map FourStairs(RoomGenerator roomGenerator)
 {
     var map = new Map();
 
@@ -161,7 +161,7 @@ Map FourStairs()
     });
 
 
-    var hallGenerator = new HallGenerator();
+    var hallGenerator = new HallGenerator(roomGenerator);
     map.Rooms.Add(hallGenerator.GenerateHall(
         new Hall(128,
         map.Rooms[0],
@@ -209,7 +209,7 @@ Map RoomWithAlcove(RoomGenerator roomGenerator)
     return map;
 }
 
-Map NotchedRoomHall()
+Map NotchedRoomHall(RoomGenerator roomGenerator)
 {
     var map = new Map();
     map.Rooms.Add(new Room
@@ -229,7 +229,7 @@ Map NotchedRoomHall()
 
     var hall = new Hall(100, map.Rooms[0], map.Rooms[1]);
 
-    map.Rooms.Add(new HallGenerator().GenerateHall(hall));
+    map.Rooms.Add(new HallGenerator(roomGenerator).GenerateHall(hall));
     return map;
 }
 

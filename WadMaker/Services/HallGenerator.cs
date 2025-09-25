@@ -2,6 +2,13 @@
 
 public class HallGenerator
 {
+    private readonly RoomGenerator _roomGenerator;
+
+    public HallGenerator(RoomGenerator roomGenerator)
+    {
+        _roomGenerator = roomGenerator;
+    }
+
     public Room GenerateHall(Hall hall)
     {
         var side = HallSide(hall);
@@ -40,7 +47,9 @@ public class HallGenerator
 
         if (hall.Door != null)
         {
-            hallRoom.InnerStructures.Add(GenerateDoor(hall.Door, hallRoom, side));
+            var door = hallRoom.AddInnerStructure(GenerateDoor(hall.Door, hallRoom, side));
+            if(hall.Door.KeyColor != KeyType.None)
+                GenerateDoorColorBars(hallRoom, hall.Door, side);
         }
 
         if(hall.Stairs != null)
@@ -55,6 +64,29 @@ public class HallGenerator
 
 
         return hallRoom;
+    }
+
+    private void GenerateDoorColorBars(Room hall, Door door, Side hallSide)
+    {
+        // todo, different options for this
+
+        var colorBarTemplate = new Room {  Floor = 16, Ceiling = -16 };
+        // how to specify color without setting texture directly?
+        colorBarTemplate.WallTexture = new TextureInfo(Texture.DOORRED);
+
+        var doorRelativePosition = door.PositionInHall / (double)hall.Bounds.AxisLength(hallSide);
+        var doorRelativeWidth = door.Thickness / (double)hall.Bounds.AxisLength(hallSide);
+
+        _roomGenerator.AddStructure(hall,
+            new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), 16, 8, doorRelativePosition - doorRelativeWidth * 2));
+        _roomGenerator.AddStructure(hall,
+          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), 16, 8, doorRelativePosition - doorRelativeWidth * 2));
+
+        _roomGenerator.AddStructure(hall,
+           new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), 16, 8, doorRelativePosition + doorRelativeWidth * 2));
+        _roomGenerator.AddStructure(hall,
+          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), 16, 8, doorRelativePosition + doorRelativeWidth * 2));
+
     }
 
     private Point[] GetHallAnchors(Room room, Side side, int hallWidth, Point hallCenter)
@@ -132,8 +164,8 @@ public class HallGenerator
 
         if (door.Tag == null)
         {
-            doorRoom.LineSpecials[hallSide] = new DoorRaise(0, Speed.StandardDoor);
-            doorRoom.LineSpecials[hallSide.Opposite()] = new DoorRaise(0, Speed.StandardDoor);
+            doorRoom.LineSpecials[hallSide] = door.DoorSpecial();
+            doorRoom.LineSpecials[hallSide.Opposite()] = door.DoorSpecial();
         }
         else
         {

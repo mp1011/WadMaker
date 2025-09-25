@@ -280,7 +280,7 @@ public class ThingPlacer
                 if (countForRoom == 0)
                     continue;
 
-                AddFormation(placement.Monster, room, countForRoom, placement.Angle, ThingFlags.AllSkillsAndModes, ThingPlacement.Center, placement.Pattern, 32);
+                AddFormation(placement.Monster, room, countForRoom, placement.Angle, placement.Flags, ThingPlacement.Center, placement.Pattern, 32);
                 monstersPlaced += countForRoom;
             }
         }

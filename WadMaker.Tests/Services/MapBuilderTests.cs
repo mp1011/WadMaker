@@ -92,8 +92,8 @@ internal class MapBuilderTests : StandardTest
             UpperLeft = new Point(ulX, ulY),
             BottomRight = new Point(brX, brY)
         });
-        var hallGenerator = new HallGenerator();
-        map.Rooms.Add(hallGenerator.GenerateHall(
+
+        map.Rooms.Add(HallGenerator.GenerateHall(
             new Hall(128,
             map.Rooms[0],
             map.Rooms[1],

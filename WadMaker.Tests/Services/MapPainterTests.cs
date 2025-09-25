@@ -86,7 +86,7 @@ internal class MapPainterTests : StandardTest
         });
 
         var hall = new Hall(Room1: map.Rooms[0], Room2: map.Rooms[1], Width: 192);
-        map.Rooms.Add(new HallGenerator().GenerateHall(hall));
+        map.Rooms.Add(HallGenerator.GenerateHall(hall));
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//two_rooms_with_hall.udmf");
@@ -172,8 +172,7 @@ internal class MapPainterTests : StandardTest
             Ceiling = 300
         });
 
-        var hallGenerator = new HallGenerator();
-        var hall = hallGenerator.GenerateHall(
+        var hall = HallGenerator.GenerateHall(
             new Hall(64,
             map.Rooms[0],
             map.Rooms[1],
@@ -211,8 +210,7 @@ internal class MapPainterTests : StandardTest
             Ceiling = 500
         });
 
-        var hallGenerator = new HallGenerator();
-        var hall = hallGenerator.GenerateHall(
+        var hall = HallGenerator.GenerateHall(
             new Hall(64,
             map.Rooms[0],
             map.Rooms[1],

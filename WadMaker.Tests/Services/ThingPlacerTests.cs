@@ -146,6 +146,32 @@ internal class ThingPlacerTests : StandardTest
     }
 
     [TestCase]
+    public void CanSetAmbushFlagForThings()
+    {
+        var map = new TestMaps().LinearMap();
+        var mainRooms = map.Rooms
+            .Where(p => p.Bounds.Width == 256)
+            .OrderBy(p => p.UpperLeft.X)
+            .ToArray();
+
+        var path = new PlayerPath(mainRooms.Select(p => new PlayerPathNode(new Room[] { p }, Array.Empty<Room>())).ToArray());
+
+        var flags = ThingFlags.AllSkillsAndModes | ThingFlags.Ambush;
+
+        ThingPlacer.AddMonsters(path,
+            new MonsterPlacement(ThingType.Imp, 0.5, 1.0, EnemyDensity.Common, Angle.East, Flags: flags));
+
+        var mapElements = MapBuilder.Build(map);
+        var imps = mapElements.Things.Where(p => p.ThingType == ThingType.Imp).ToArray();
+
+        Assert.That(imps, Is.Not.Empty);
+        foreach(var imp in imps)
+        {
+            Assert.That(imp.Data.ambush, Is.True);
+        }
+    }
+
+    [TestCase]
     public void CanIncreaseMonsterDensityAlongPath()
     {
         var map = new TestMaps().LinearMap();

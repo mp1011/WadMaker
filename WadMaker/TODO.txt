@@ -29,14 +29,17 @@
 --------------9/9/2025
 [x] easier way to create symettry, such as having four pillars evenly spaced
 [x] function to add a "window" connecting two sectors
-[ ] floor and ceiling textures
-[ ] ambush flag for monsters
-[ ] ability to create inner sector with same shape as parent
+[x] floor and ceiling textures
+[x] ambush flag for monsters
+[x] ability to create inner sector with same shape as parent
+---------------9/23/2025
+[x] hall placement when sides are not on the bounding box (already done)
+[ ] keyed doors
 
 
 Later
 [ ] thing placement to also avoid placing items in sectors too small
-[ ] hall placement when sidse are not on the bounding box
+
 
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors

@@ -1,7 +1,7 @@
 ﻿
 namespace WadMaker.Tests.Services;
 
-public class ShapeModifierTests
+class ShapeModifierTests : StandardTest
 {
     [Test]
     public void CanInvertCorners()
@@ -38,5 +38,44 @@ public class ShapeModifierTests
         };
 
         Assert.That(modifiedPoints, Is.EquivalentTo(expectedPoints));
+    }
+
+    [Test]
+    public void CanMatchShapeOfParent()
+    {
+        var map = new Map();
+        var room = map.AddRoom(new Room(map, center: Point.Empty, size: new Size(400, 400)));
+        room.ShapeModifiers.Add(new InvertCorners { Width = 64 });
+
+        var innerShape = room.AddInnerStructure(new Room());
+        innerShape.ShapeModifiers.Add(new CopyParentShape(parent: room, padding: new Padding(32)));
+
+        var mapElements = MapBuilder.Build(map);
+
+        var innerLines = mapElements.Sectors[1].Lines.GroupBy(p => p.Length).ToDictionary(g => g.Key, v => v.ToArray());
+
+        Assert.That(innerLines[64].Length, Is.EqualTo(8));
+        Assert.That(innerLines[208].Length, Is.EqualTo(4));
+    }
+
+    [Test]
+    public void CanMatchShapeOfParentWithUnevenPadding()
+    {
+        var map = new Map();
+        var room = map.AddRoom(new Room(map, center: Point.Empty, size: new Size(400, 400)));
+        room.ShapeModifiers.Add(new InvertCorners { Width = 64 });
+
+        var innerShape = room.AddInnerStructure(new Room());
+        innerShape.ShapeModifiers.Add(new CopyParentShape(parent: room, 
+            padding: new Padding(8, 16, 32, 64)));
+
+        var mapElements = MapBuilder.Build(map);
+
+        var innerLines = mapElements.Sectors[1].Lines.GroupBy(p => p.Length).ToDictionary(g => g.Key, v => v.ToArray());
+
+        Assert.That(innerLines[64].Length, Is.EqualTo(8));
+        Assert.That(innerLines[232].Length, Is.EqualTo(2));
+        Assert.That(innerLines[192].Length, Is.EqualTo(2));
+
     }
 }

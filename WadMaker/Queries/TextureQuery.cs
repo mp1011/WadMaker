@@ -1,7 +1,5 @@
 ﻿namespace WadMaker.Queries;
 
-public record TextureQueryValue(int Value);
-
 public record TextureQuery(string[]? ThemeNames = null, string? ColorName = null, 
     int? MinWidth = null, 
     int? MaxWidth = null,

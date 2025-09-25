@@ -16,6 +16,17 @@ public enum Speed
     BlazingDoor = 64,
 }
 
+public enum KeyType
+{
+    None = 0,
+    Red = 1,
+    Blue = 2,
+    Yellow = 3,
+    RedSkull = 4,
+    BlueSkull = 5,
+    YellowSkull = 6
+}
+
 public enum Delay
 {
     StandardLift = 105,

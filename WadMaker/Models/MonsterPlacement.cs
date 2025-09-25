@@ -1,5 +1,5 @@
 ﻿public record MonsterPlacement(ThingType Monster, double BeginAt, double EndAt, EnemyDensity Density, Angle Angle,
-    ThingPattern Pattern = ThingPattern.Row)
+    ThingPattern Pattern = ThingPattern.Row, ThingFlags Flags = ThingFlags.AllSkillsAndModes)
 {
     public IEnumerable<PlayerPathNode> NodeRange(PlayerPath path)
     {
