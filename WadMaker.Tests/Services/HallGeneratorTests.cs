@@ -102,6 +102,8 @@ class HallGeneratorTests : StandardTest
     }
 
     [TestCase(KeyType.Red)]
+    [TestCase(KeyType.Yellow)]
+    [TestCase(KeyType.Blue)]
     public void CanGenerateHallWithColoredDoor(KeyType color)
     {
         var map = new Map();
@@ -123,12 +125,17 @@ class HallGeneratorTests : StandardTest
             Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: color)));
 
         map.Rooms.Add(hall);
-        var door = hall.InnerStructures.First();
 
-        // check action special
-        // color bars should be evenly spaced from door
-        // appropriate texture for key color (different test under theming)
-        throw new NotImplementedException();
+        var mapElements = MapBuilder.Build(map);
+
+        var doorLines = mapElements.LineDefs.Where(p => p.LineSpecial != null && p.LineSpecial.Type == LineSpecialType.Door_LockedRaise)
+            .ToArray();
+
+        Assert.That(doorLines.Length, Is.EqualTo(2));
+        foreach(var doorLine in doorLines)
+        {
+            Assert.That(doorLine.LineSpecial?.arg3, Is.EqualTo((int)color));
+        }
     }
 
     [Test]

@@ -71,10 +71,11 @@ public class HallGenerator
         // todo, different options for this
 
         var colorBarTemplate = new Room {  Floor = 16, Ceiling = -16 };
-        // how to specify color without setting texture directly?
-        colorBarTemplate.WallTexture = new TextureInfo(Texture.DOORRED);
 
-        var doorRelativePosition = door.PositionInHall / (double)hall.Bounds.AxisLength(hallSide);
+        var colorName = door.KeyColor.ToString().Replace("Skull", "");
+        colorBarTemplate.WallTexture = new TextureInfo(new TextureQuery(ColorName: colorName, ThemeNames: new[] { "ColorStrip" }));
+
+        var doorRelativePosition = (door.PositionInHall + (door.Thickness/2)) / (double)hall.Bounds.AxisLength(hallSide);
         var doorRelativeWidth = door.Thickness / (double)hall.Bounds.AxisLength(hallSide);
 
         _roomGenerator.AddStructure(hall,

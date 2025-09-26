@@ -435,12 +435,12 @@
   },
   {
     "Name": "DOORYEL",
-    "Themes": [ "DoorSide" ],
+    "Themes": [ "ColorStrip" ],
     "Color": "Yellow"
   },
   {
     "Name": "DOORYEL2",
-    "Themes": [ "DoorSide" ],
+    "Themes": [ "ColorStrip" ],
     "Color": "Yellow"
   },
   {

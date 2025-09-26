@@ -1,16 +1,39 @@
 ﻿namespace WadMaker.Models;
 
 public record TextureInfo(
-    Texture? Main = Texture.STONE,
-    Texture? Upper = null,
-    Texture? Mid = null,
-    Texture? Lower = null,
+    TextureQuery? Main,
+    TextureQuery? Upper = null,
+    TextureQuery? Mid = null,
+    TextureQuery? Lower = null,
     bool? UpperUnpegged = null, // linedef
     bool? LowerUnpegged = null, // linedef
     int? OffsetX = null, //sidedef
     int? OffsetY = null, //sidedef
-    bool? DrawLowerFromBottom = null) 
+    bool? DrawLowerFromBottom = null)
 {
+
+    public TextureInfo(Texture? Main = Texture.STONE,
+        Texture? Upper = null,
+        Texture? Mid = null,
+        Texture? Lower = null,
+        bool? UpperUnpegged = null, // linedef
+        bool? LowerUnpegged = null, // linedef
+        int? OffsetX = null, //sidedef
+        int? OffsetY = null, //sidedef
+        bool? DrawLowerFromBottom = null) : this(
+            Main: Main.HasValue ? new TextureQuery(Main.Value) : null,
+            Upper: Upper.HasValue ? new TextureQuery(Upper.Value) : null,
+            Mid: Mid.HasValue ? new TextureQuery(Mid.Value) : null,
+            Lower: Lower.HasValue ? new TextureQuery(Lower.Value) : null,
+            UpperUnpegged: UpperUnpegged,
+            LowerUnpegged: LowerUnpegged,
+            OffsetX: OffsetX,
+            OffsetY: OffsetY,
+            DrawLowerFromBottom: DrawLowerFromBottom)
+    {
+
+    }
+
     public TextureInfo(LineDef line) : this(
         Main: (line.Front.Data.texturemiddle ?? line.Front.Data.texturetop ?? line.Front.Data.texturebottom).ParseAs<Texture>(),
         Upper: line.Front.Data.texturetop.ParseAs<Texture>(),
@@ -24,20 +47,32 @@ public record TextureInfo(
     {
     }
 
-    public string UpperString() => Upper?.ToString() ?? this.ToString();
-
-    public string LowerString() => Lower?.ToString() ?? this.ToString();    
 
     public override string ToString()
     {
-        return (Main ?? Mid ?? Upper ?? Lower ?? Texture.MISSING).ToString();
+        throw new Exception("don't use this");
+    }
+
+    public TextureQuery GetQuery(TexturePart part)
+    {
+        return part switch
+        {
+            TexturePart.Upper => Upper ?? Main ?? TextureQuery.Missing,
+            TexturePart.Lower => Lower ?? Main ?? TextureQuery.Missing,
+            _ => Mid ?? Main ?? TextureQuery.Missing,
+        };
+    }
+
+    public Texture ResolveTexture(TexturePart part, LineDef line)
+    {
+        return GetQuery(part).Execute(line, part).FirstOrDefault();
     }
 
     public void ApplyTo(LineDef line)
     {
         line.Data = line.Data with {  dontpegbottom = LowerUnpegged, dontpegtop = UpperUnpegged };
-        ApplyTo(line.Front, line.Data.twosided);
-        ApplyTo(line.Back, line.Data.twosided);
+        ApplyTo(line.Front, line, line.Data.twosided);
+        ApplyTo(line.Back, line,line.Data.twosided);
 
         if (DrawLowerFromBottom.GetValueOrDefault())
             Apply_DrawLowerFromBottom(line);
@@ -59,7 +94,7 @@ public record TextureInfo(
             line.Back.Data = line.Back.Data with { offsety = -floorDifference };
     }
 
-    public void ApplyTo(SideDef? side, bool? twosided)
+    public void ApplyTo(SideDef? side, LineDef line, bool? twosided)
     {
         if (side == null)
             return;
@@ -69,8 +104,8 @@ public record TextureInfo(
             side.Data = side.Data with
             {
                 texturemiddle = null,
-                texturetop = (Upper ?? Main ?? Texture.MISSING).ToString(),
-                texturebottom = (Lower ?? Main ?? Texture.MISSING).ToString(),
+                texturetop = ResolveTexture(TexturePart.Upper, line).ToString(),
+                texturebottom = ResolveTexture(TexturePart.Lower, line).ToString(),
                 offsetx = OffsetX,
                 offsety = OffsetY
             };
@@ -79,7 +114,7 @@ public record TextureInfo(
         {
             side.Data = side.Data with
             {
-                texturemiddle = (Mid ?? Main ?? Texture.MISSING).ToString(),
+                texturemiddle = ResolveTexture(TexturePart.Middle, line).ToString(),
                 texturebottom = null,
                 texturetop = null,
                 offsetx = OffsetX,
@@ -90,7 +125,7 @@ public record TextureInfo(
         {
             side.Data = side.Data with
             {
-                texturemiddle = (Mid ?? Main ?? Texture.MISSING).ToString(),
+                texturemiddle = ResolveTexture(TexturePart.Middle, line).ToString(),
                 offsetx = OffsetX,
                 offsety = OffsetY
             };

@@ -9,6 +9,10 @@ public record TextureQuery(string[]? ThemeNames = null, string? ColorName = null
     bool? RepeatsVertically = null,
     string? TextureName = null)
 {
+    public static TextureQuery Missing { get; } = new TextureQuery(Texture.MISSING);
+
+    public TextureQuery(Texture texture) : this(TextureName: texture.ToString()) { }
+
     public Texture[] Execute(LineDef target, TexturePart texturePart)
     {
         if(TextureName != null)

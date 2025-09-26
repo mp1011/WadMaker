@@ -5,6 +5,7 @@ public enum LineSpecialType
     None=0,
     DoorOpen=11,
     DoorRaise=12,
+    Door_LockedRaise = 13,
     Plat_DownWaitUpStay=62,
     Exit_Normal=243
 }

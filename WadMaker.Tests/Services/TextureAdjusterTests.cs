@@ -249,5 +249,39 @@ internal class TextureAdjusterTests : StandardTest
             Assert.That(line.Front.Data.offsety, Is.EqualTo(-32));
         }
     }
+
+
+    [TestCase(KeyType.Red, Texture.DOORRED)]
+    [TestCase(KeyType.Yellow, Texture.DOORYEL)]
+    [TestCase(KeyType.Blue, Texture.DOORBLU)]
+    public void CanApplyThemeToDoorColorBars(KeyType color, Texture colorBarTexture)
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(256, -256)
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(512, 0),
+            BottomRight = new Point(768, -256)
+        });
+
+        var hall = HallGenerator.GenerateHall(
+            new Hall(128,
+            map.Rooms[0],
+            map.Rooms[1],
+            Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: color)));
+
+        map.Rooms.Add(hall);
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyThemes(mapElements);
+
+        var colorLines = mapElements.SideDefs.Where(p => p.Data.texturemiddle == colorBarTexture.ToString()).ToArray();
+
+        Assert.That(colorLines.Length, Is.EqualTo(12));
+    }
 }
 

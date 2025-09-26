@@ -84,18 +84,15 @@ public class RoomBuilder
             if (backBelongsToRoom || StaticFlags.InnerSectorLinesAlwaysStartTwoSided)
             {
                 var lineSide = line.SideOfRoom(innerElement);
-                var backSide = new SideDef(roomSector, new sidedef(sector: -1, texturemiddle: null,
-                    texturetop: innerElement.TextureForSide(lineSide).UpperString(),
-                    texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
-
-                var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, texturemiddle: null,
-                    texturetop: innerElement.TextureForSide(lineSide).UpperString(),
-                    texturebottom: innerElement.TextureForSide(lineSide).LowerString()));
+                var backSide = new SideDef(roomSector, new sidedef(sector: -1));
+                var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1));
 
                 var newLine = new LineDef(line.V1, line.V2,
                         frontSide,
                         backSide,
                         line.Data with { twosided = true, blocking = false });
+
+                innerElement.TextureForSide(lineSide).ApplyTo(newLine);
                 newLine.LineSpecial = line.LineSpecial;
 
                 innerElements.LineDefs.Add(newLine);
@@ -107,8 +104,7 @@ public class RoomBuilder
             {
                 var lineSide = line.SideOfRoom(innerElement);
 
-                var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1, 
-                    texturemiddle: innerElement.TextureForSide(lineSide).ToString()));
+                var frontSide = new SideDef(innerElements.Sectors.First(), new sidedef(sector: -1));
 
                 var newLine = new LineDef(line.V1, line.V2,
                         frontSide,
@@ -116,6 +112,7 @@ public class RoomBuilder
                         line.Data with { twosided = false, blocking = true });
                 newLine.LineSpecial = line.LineSpecial;
 
+                innerElement.TextureForSide(lineSide).ApplyTo(newLine);
                 innerElements.LineDefs.Add(newLine);
                 innerElements.SideDefs.Add(frontSide);
             }
@@ -159,7 +156,7 @@ public class RoomBuilder
 
     public IEnumerable<SideDef> SideDefs(Room room, vertex[] vertices, Sector sector)
     {
-        return vertices.Select(v => new SideDef(Sector: sector, Data: new sidedef(sector: -1, texturemiddle: room.WallTexture.ToString())));
+        return vertices.Select(v => new SideDef(Sector: sector, Data: new sidedef(sector: -1)));
     }
 
     public IEnumerable<SideDef> SideDefs(Cutout cutout, vertex[] vertices, Sector sector)

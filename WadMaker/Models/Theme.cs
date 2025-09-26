@@ -23,9 +23,9 @@ public record ThemeRule(TextureQuery? Query = null, TextureInfo? Texture = null,
 
         return Texture with
         {
-            Upper = Texture.Upper.HasValue ? Texture.Upper : upper,
-            Mid = Texture.Mid.HasValue ? Texture.Mid : middle,
-            Lower = Texture.Lower.HasValue ? Texture.Lower : lower
+            Upper = Texture.Upper ?? new TextureQuery(upper),
+            Mid = Texture.Mid ?? new TextureQuery(middle),
+            Lower = Texture.Lower ?? new TextureQuery(lower)
         };
     }
 }
