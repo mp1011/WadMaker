@@ -31,6 +31,7 @@ public static class ServiceContainer
         services.AddSingleton<IsOverlappingAnotherThingOfSameCategory>();
         services.AddSingleton<TextureQuery>();
         services.AddSingleton<DoorColorBarGenerator>();
+        services.AddSingleton<RoomPositionResolver>();
 
         if (ConfigVersion == 0)
             services.AddSingleton<IConfig, ConfigV0>();

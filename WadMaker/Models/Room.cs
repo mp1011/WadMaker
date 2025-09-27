@@ -1,4 +1,7 @@
-﻿namespace WadMaker.Models;
+﻿using System.Drawing;
+using WadMaker.Models.BuildingBlocks;
+
+namespace WadMaker.Models;
 
 public class Room : IShape, IThemed
 {    
@@ -11,7 +14,30 @@ public class Room : IShape, IThemed
     public Point UpperLeft { get; set; } = Point.Empty;
     public Point BottomRight { get; set; } = Point.Empty;
 
-    public Point Center => Bounds.Center;
+    public Point Center
+    {
+        get => Bounds.Center;
+        set
+        {
+            Point delta = new Point(Bounds.Center.X - value.X, Bounds.Center.Y - value.Y);
+            UpperLeft = UpperLeft.Add(delta);
+            BottomRight = BottomRight.Add(delta);
+        }
+    }
+
+    /// <summary>
+    /// Note, center point is preserved on size change
+    /// </summary>
+    public Size Size
+    {
+        get => Bounds.Size;
+        set
+        {
+            var center = Center;
+            UpperLeft = new Point(center.X - value.Width / 2, center.Y + value.Height / 2);
+            BottomRight = new Point(center.X + value.Width / 2, center.Y - value.Height / 2);
+        }
+    }
 
     public DRectangle Bounds => this.Bounds();
     public int VerticalHeight => Ceiling - Floor;
@@ -46,17 +72,15 @@ public class Room : IShape, IThemed
 
     public List<Room> InnerStructures { get; } = new List<Room>();
 
-    // Added property
+    public List<RoomRelation> RelatedRooms { get; } = new List<RoomRelation>();
+
     public ZDoomSectorSpecial SectorSpecial { get; set; } = ZDoomSectorSpecial.Normal;
 
     public Room() : this(NoTheme.Instance) { }
-    public Room(IThemed parent) 
+
+    public Room(IThemed parent, Point? center = null, Size? size = null)
     {
         Parent = parent;
-    }
-
-    public Room(IThemed parent, Point? center = null, Size? size = null) : this(parent)
-    {
         center ??= Point.Empty;
         size ??= new Size(128, 128);
 
@@ -68,6 +92,12 @@ public class Room : IShape, IThemed
     {
         Parent = parent;
         SetFromVertices(points);
+    }
+
+    public Room AddTo(Map map)
+    {
+        map.Rooms.Add(this);
+        return this;
     }
 
     public void SetFromVertices(IEnumerable<Point> points)
@@ -97,6 +127,10 @@ public class Room : IShape, IThemed
             Theme = Theme,
             SectorSpecial = SectorSpecial
         };
+
+        if (RelatedRooms.Any())
+            throw new Exception("Rooms with relations cannot be copied");
+
         copy.Things.AddRange(Things.Select(t => t.Copy(this, copy)));
         copy.ShapeModifiers.AddRange(ShapeModifiers);
         copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy(copy)));
@@ -129,5 +163,12 @@ public class Room : IShape, IThemed
         copy.Floor = parent.Floor + Floor;
         copy.Ceiling = parent.Ceiling + Ceiling;            
         return copy;
+    }
+
+    public Room CreateNeighbor(Side side, Anchor anchor, Anchor otherAnchor, int spacing)
+    {
+        var newRoom = new Room(Parent);
+        RelatedRooms.Add(new RoomRelation(side, newRoom, anchor, otherAnchor, spacing));
+        return newRoom;
     }
 }

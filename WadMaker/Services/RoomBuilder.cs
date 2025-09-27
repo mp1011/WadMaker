@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Services;
+﻿using WadMaker.Models.BuildingBlocks;
+
+namespace WadMaker.Services;
 public class RoomBuilder
 {
     private readonly IDProvider _idProvider;

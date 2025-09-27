@@ -38,6 +38,10 @@
 ----------------9/25/2025
 [x] skull textures for skull keys (differing widths)
 [ ] major overhaul - geometry types and relations first, then calculate exact positions at the end
+	[ ] relative positioning
+	[ ] non-center positioning
+	[ ] add to MapBuilder
+	[ ] add means of letting each room know what kind of block it is
 [ ] different styles of door color indicators
 
 Later

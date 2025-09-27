@@ -1,4 +1,4 @@
-﻿namespace WadMaker.Models;
+﻿namespace WadMaker.Models.BuildingBlocks;
 
 public record Door(int Thickness, TextureInfo Texture, TextureInfo TrackTexture, int PositionInHall, int? Tag = null, 
     KeyType KeyColor = KeyType.None, DoorColorBar? ColorBar = null)

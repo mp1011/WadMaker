@@ -1,4 +1,4 @@
-﻿namespace WadMaker.Models;
+﻿namespace WadMaker.Models.BuildingBlocks;
 
 public abstract record DoorColorBar();
 

@@ -5,6 +5,7 @@ global using System.Text.Json;
 global using WadMaker.Config;
 global using WadMaker.Extensions;
 global using WadMaker.Models;
+global using WadMaker.Models.BuildingBlocks;
 global using WadMaker.Models.Geometry;
 global using WadMaker.Models.LineSpecials;
 global using WadMaker.Models.Placement;
