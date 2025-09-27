@@ -34,8 +34,11 @@
 [x] ability to create inner sector with same shape as parent
 ---------------9/23/2025
 [x] hall placement when sides are not on the bounding box (already done)
-[ ] keyed doors
-
+[x] keyed doors
+----------------9/25/2025
+[x] skull textures for skull keys (differing widths)
+[ ] major overhaul - geometry types and relations first, then calculate exact positions at the end
+[ ] different styles of door color indicators
 
 Later
 [ ] thing placement to also avoid placing items in sectors too small

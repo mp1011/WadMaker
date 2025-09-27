@@ -40,7 +40,7 @@ Map FourRoom(RoomGenerator roomGenerator)
     });
 
 
-    var hallGenerator = new HallGenerator(roomGenerator);
+    var hallGenerator = new HallGenerator(roomGenerator, new DoorColorBarGenerator(roomGenerator));
     map.Rooms.Add(hallGenerator.GenerateHall(
         new Hall(128,
         map.Rooms[0],
@@ -161,7 +161,7 @@ Map FourStairs(RoomGenerator roomGenerator)
     });
 
 
-    var hallGenerator = new HallGenerator(roomGenerator);
+    var hallGenerator = new HallGenerator(roomGenerator, new DoorColorBarGenerator(roomGenerator));
     map.Rooms.Add(hallGenerator.GenerateHall(
         new Hall(128,
         map.Rooms[0],
@@ -229,7 +229,7 @@ Map NotchedRoomHall(RoomGenerator roomGenerator)
 
     var hall = new Hall(100, map.Rooms[0], map.Rooms[1]);
 
-    map.Rooms.Add(new HallGenerator(roomGenerator).GenerateHall(hall));
+    map.Rooms.Add(new HallGenerator(roomGenerator, new DoorColorBarGenerator(roomGenerator)).GenerateHall(hall));
     return map;
 }
 

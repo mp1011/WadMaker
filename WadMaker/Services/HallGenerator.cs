@@ -3,10 +3,12 @@
 public class HallGenerator
 {
     private readonly RoomGenerator _roomGenerator;
+    private readonly DoorColorBarGenerator _doorColorBarGenerator;
 
-    public HallGenerator(RoomGenerator roomGenerator)
+    public HallGenerator(RoomGenerator roomGenerator, DoorColorBarGenerator doorColorBarGenerator)
     {
         _roomGenerator = roomGenerator;
+        _doorColorBarGenerator = doorColorBarGenerator;
     }
 
     public Room GenerateHall(Hall hall)
@@ -48,8 +50,8 @@ public class HallGenerator
         if (hall.Door != null)
         {
             var door = hallRoom.AddInnerStructure(GenerateDoor(hall.Door, hallRoom, side));
-            if(hall.Door.KeyColor != KeyType.None)
-                GenerateDoorColorBars(hallRoom, hall.Door, side);
+            if(hall.Door.KeyColor != KeyType.None && hall.Door.ColorBar != null)
+                _doorColorBarGenerator.GenerateDoorColorBars(hallRoom, hall.Door, side);
         }
 
         if(hall.Stairs != null)
@@ -64,30 +66,6 @@ public class HallGenerator
 
 
         return hallRoom;
-    }
-
-    private void GenerateDoorColorBars(Room hall, Door door, Side hallSide)
-    {
-        // todo, different options for this
-
-        var colorBarTemplate = new Room {  Floor = 16, Ceiling = -16 };
-
-        var colorName = door.KeyColor.ToString().Replace("Skull", "");
-        colorBarTemplate.WallTexture = new TextureInfo(new TextureQuery(ColorName: colorName, ThemeNames: new[] { "ColorStrip" }));
-
-        var doorRelativePosition = (door.PositionInHall + (door.Thickness/2)) / (double)hall.Bounds.AxisLength(hallSide);
-        var doorRelativeWidth = door.Thickness / (double)hall.Bounds.AxisLength(hallSide);
-
-        _roomGenerator.AddStructure(hall,
-            new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), 16, 8, doorRelativePosition - doorRelativeWidth * 2));
-        _roomGenerator.AddStructure(hall,
-          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), 16, 8, doorRelativePosition - doorRelativeWidth * 2));
-
-        _roomGenerator.AddStructure(hall,
-           new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), 16, 8, doorRelativePosition + doorRelativeWidth * 2));
-        _roomGenerator.AddStructure(hall,
-          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), 16, 8, doorRelativePosition + doorRelativeWidth * 2));
-
     }
 
     private Point[] GetHallAnchors(Room room, Side side, int hallWidth, Point hallCenter)

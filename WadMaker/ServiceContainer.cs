@@ -30,6 +30,7 @@ public static class ServiceContainer
         services.AddSingleton<IsThingInBounds>();
         services.AddSingleton<IsOverlappingAnotherThingOfSameCategory>();
         services.AddSingleton<TextureQuery>();
+        services.AddSingleton<DoorColorBarGenerator>();
 
         if (ConfigVersion == 0)
             services.AddSingleton<IConfig, ConfigV0>();

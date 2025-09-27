@@ -254,6 +254,10 @@ internal class TextureAdjusterTests : StandardTest
     [TestCase(KeyType.Red, Texture.DOORRED)]
     [TestCase(KeyType.Yellow, Texture.DOORYEL)]
     [TestCase(KeyType.Blue, Texture.DOORBLU)]
+    [TestCase(KeyType.RedSkull, Texture.DOORRED2)]
+    [TestCase(KeyType.YellowSkull, Texture.DOORYEL2)]
+    [TestCase(KeyType.BlueSkull, Texture.DOORBLU2)]
+
     public void CanApplyThemeToDoorColorBars(KeyType color, Texture colorBarTexture)
     {
         var map = new Map();
@@ -272,7 +276,8 @@ internal class TextureAdjusterTests : StandardTest
             new Hall(128,
             map.Rooms[0],
             map.Rooms[1],
-            Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: color)));
+            Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: color, 
+                           ColorBar: new DoorColorBarRecessedAlcoves())));
 
         map.Rooms.Add(hall);
 
