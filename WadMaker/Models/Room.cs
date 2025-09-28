@@ -19,7 +19,7 @@ public class Room : IShape, IThemed
         get => Bounds.Center;
         set
         {
-            Point delta = new Point(Bounds.Center.X - value.X, Bounds.Center.Y - value.Y);
+            Point delta = new Point(value.X - Bounds.Center.X, value.Y - Bounds.Center.Y);
             UpperLeft = UpperLeft.Add(delta);
             BottomRight = BottomRight.Add(delta);
         }

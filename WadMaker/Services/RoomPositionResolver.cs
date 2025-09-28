@@ -32,6 +32,9 @@ public class RoomPositionResolver
 
     private void ResolveRoomRelation(Room room, RoomRelation relation)
     {
-        relation.Other.Place().ToSideOf(room, relation.Side);
+        var anchorPoint = relation.Anchor.GetPoint(room, relation.Side);
+        var otherAnchorPoint = relation.OtherAnchor.GetPoint(relation.Other, relation.Side.Opposite());
+
+        otherAnchorPoint.Position = anchorPoint.Position;
     }
 }
