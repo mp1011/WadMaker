@@ -1,11 +1,10 @@
-﻿using System.Drawing;
-using WadMaker.Models.BuildingBlocks;
-
-namespace WadMaker.Models;
+﻿namespace WadMaker.Models;
 
 public class Room : IShape, IThemed
 {    
     public IThemed Parent { get; }
+
+    public RoomBuildingBlock? BuildingBlock { get; set; }
 
     public List<Thing> Things{ get; } = new List<Thing>();
 
@@ -125,7 +124,8 @@ public class Room : IShape, IThemed
             WallTexture = WallTexture,
             Tag = Tag,
             Theme = Theme,
-            SectorSpecial = SectorSpecial
+            SectorSpecial = SectorSpecial,
+            BuildingBlock = BuildingBlock,           
         };
 
         if (RelatedRooms.Any())

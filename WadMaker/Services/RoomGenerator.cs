@@ -1,6 +1,4 @@
-﻿using WadMaker.Models.BuildingBlocks;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 
 public class RoomGenerator
 {
@@ -21,7 +19,7 @@ public class RoomGenerator
         alcoveRoom.BottomRight = alcovePoints.Item2;
 
         room.InnerStructures.Add(alcoveRoom);
-        return alcoveRoom;
+        return alcove.SetOn(alcoveRoom);
     }
 
     public Room AddStructure(Room room, Window window)
@@ -30,12 +28,12 @@ public class RoomGenerator
 
         int spaceBetween = Math.Abs(room.Bounds.SidePosition(side) - window.AdjacentRoom.Bounds.SidePosition(side.Opposite()));
 
-        return AddStructure(room, new Alcove(
+        return window.SetOn(AddStructure(room, new Alcove(
             window.Template,
             Side: side,
             Width: window.Width,
             Depth: spaceBetween,
-            CenterPercent: window.CenterPercent));
+            CenterPercent: window.CenterPercent)));
     }
 
     public Room AddStructure(Room room, HazardPit hazardPit)
@@ -52,7 +50,7 @@ public class RoomGenerator
         pit.BottomRight = new Point(room.Bounds.Width - hazardPit.Padding.Right, -(room.Bounds.Height - hazardPit.Padding.Bottom));
 
         room.InnerStructures.Add(pit);
-        return pit;
+        return hazardPit.SetOn(pit);
     }
 
     private (Point, Point) GetAlcoveSegment(Side side, Room room, Point centerPoint, int width, int depth)

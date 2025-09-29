@@ -38,9 +38,9 @@
 ----------------9/25/2025
 [x] skull textures for skull keys (differing widths)
 [ ] major overhaul - geometry types and relations first, then calculate exact positions at the end
-	[ ] relative positioning
-	[ ] non-center positioning
-	[ ] add to MapBuilder
+	[x] relative positioning
+	[x] non-center positioning
+	[ ] add to MapBuilder (maybe...)
 	[ ] add means of letting each room know what kind of block it is
 [ ] different styles of door color indicators
 
@@ -146,3 +146,10 @@ replace them, and process them all at once.
 ---- 9/17
 "replace all at once" doesn't work because there are often multiple overlaps at once
 we still want to do it one at a time, but we have to keep the original lines and sectors around for bounds checking
+
+---- 9/28
+we want rooms to know what kind of element they are so we can apply textures intelligently
+
+AlcoveRoom : Room
+	Alcove as Property
+	method to get new instance of type

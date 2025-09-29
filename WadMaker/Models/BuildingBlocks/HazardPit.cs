@@ -1,4 +1,4 @@
 ﻿namespace WadMaker.Models.BuildingBlocks;
 
-public record HazardPit(int Depth, AnimatedFlat Flat, DamagingSectorSpecial Damage, Padding Padding);
+public record HazardPit(int Depth, AnimatedFlat Flat, DamagingSectorSpecial Damage, Padding Padding) : RoomBuildingBlock();
 

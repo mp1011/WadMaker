@@ -288,5 +288,32 @@ internal class TextureAdjusterTests : StandardTest
 
         Assert.That(colorLines.Length, Is.EqualTo(12));
     }
+
+    [Test]
+    public void CanApplyThemeBasedOnRoomType()
+    {
+        var theme = new Theme(new ThemeRule[] {
+            new ThemeRule(new TextureQuery(Texture.TEKWALL4),
+            Conditions: new FrontRoomBuildingBlockTypeIs<Alcove>()) });
+
+        var map = new Map();
+        map.Theme = theme;  
+
+        var room = map.AddRoom(new Room(map, size: new Size(256,256)));
+        var alcove = RoomGenerator.AddStructure(room,
+            new Alcove(new Room { Floor = 16, Ceiling = -16, Tag = 1 }, Side.Left, 64, 8, 0.5));
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyThemes(mapElements);
+
+        var alcoveSector = mapElements.Sectors.Single(p => p.Tag == 1);
+        var alcoveLines = alcoveSector.Lines.Where(p => p.Back == null).ToArray();
+
+        Assert.That(alcoveLines.Length, Is.EqualTo(3));
+        foreach(var line in alcoveLines)
+        {
+            Assert.That(line.Front.Texture, Is.EqualTo(Texture.TEKWALL4.ToString()));
+        }
+    }
 }
 

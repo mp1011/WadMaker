@@ -25,6 +25,7 @@ public class HallGenerator
 
         // first, try using anchors as-s
         var hallRoom = CreateHallRoom(hall, room1Anchors.Union(room2Anchors).ToArray());
+        hall.SetOn(hallRoom);
 
         // if that didn't work, try getting room2 anchors aligned to room1's
         if (hallRoom.Bounds.AxisLength(side.ClockwiseTurn()) != hall.Width)
@@ -138,6 +139,7 @@ public class HallGenerator
             FloorTexture = hallRoom.FloorTexture,
             WallTexture = door.TrackTexture,
         };
+        door.SetOn(doorRoom);
 
         var doorPoints = GetHallSegment(hallSide, hallRoom.Bounds, door.PositionInHall, door.Thickness);
         doorRoom.UpperLeft = doorPoints.Item1;
@@ -160,7 +162,7 @@ public class HallGenerator
     }
 
     private IEnumerable<Room> GenerateStairs(Stairs stairs, Room hallRoom, Side hallSide)
-    {        
+    {
         int totalWidth = hallRoom.Bounds.AxisLength(hallSide) - stairs.StartPosition - stairs.EndPosition;
         int numSteps = totalWidth / stairs.StepWidth;
         if (numSteps == 0)
@@ -206,6 +208,7 @@ public class HallGenerator
             WallTexture = lift.SideTexture,
             Floor = upperFloor - hallRoom.Floor
         };
+        lift.SetOn(liftRoom);
         liftRoom.LineSpecials[hallSide.Opposite()] = new Plat_DownWaitUpStay(0, Speed.StandardLift);
         liftRoom.LineSpecials[hallSide] = new Plat_DownWaitUpStay(0, Speed.StandardLift);
 
@@ -235,13 +238,13 @@ public class HallGenerator
 
     private Room CreateStep(Stairs stairs, Room hallRoom, Point stepUpperLeft, Point stepBottomRight, int stepHeight)
     {
-        return new Room
+        return stairs.SetOn(new Room
         {
             Floor = stepHeight - hallRoom.Floor,
             UpperLeft = stepUpperLeft,
             BottomRight = stepBottomRight,
             WallTexture = stairs.StepTexture
-        };
+        });
     }
 
     private Room CreateHallRoom(Hall hall, Point[] vertices)

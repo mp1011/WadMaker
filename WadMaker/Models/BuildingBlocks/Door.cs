@@ -1,7 +1,7 @@
 ﻿namespace WadMaker.Models.BuildingBlocks;
 
 public record Door(int Thickness, TextureInfo Texture, TextureInfo TrackTexture, int PositionInHall, int? Tag = null, 
-    KeyType KeyColor = KeyType.None, DoorColorBar? ColorBar = null)
+    KeyType KeyColor = KeyType.None, DoorColorBar? ColorBar = null) : RoomBuildingBlock()
 {
     public Door(int Thickness, Texture Texture, Texture TrackTexture, int PositionInHall, int? Tag = null) :
         this(Thickness, new TextureInfo(Main: Texture), new TextureInfo(Main: TrackTexture, LowerUnpegged: true), PositionInHall, Tag)

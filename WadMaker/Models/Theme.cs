@@ -150,3 +150,13 @@ public record LowerFloorTextureIs(FlatsQuery FloorQuery) : ThemeCondition
         return FloorQuery.Execute().Contains(lowerSector.Floor);
     }
 }
+
+public record FrontRoomBuildingBlockTypeIs<T> : ThemeCondition
+    where T: class
+{
+    public override bool AppliesTo(LineDef lineDef)
+    {
+        var room = lineDef.Front.Sector.Room;
+        return room.BuildingBlock != null && room.BuildingBlock is T;
+    }
+}
