@@ -6,3 +6,8 @@ public record DoorColorBarRecessedAlcoves(int Distance = 8, int Floor = 16, int 
 {
     public int HalfWidth => Width / 2;
 }
+
+public record DoorColorBarFlat(int Distance = 8, int Width = 16) 
+    : DoorColorBarRecessedAlcoves(Distance: Distance, Width: Width, Ceiling:0, Floor:0, Depth: 0)
+{
+}

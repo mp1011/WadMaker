@@ -26,9 +26,11 @@ public class MapBuilder
         }
 
         _overlappingLinedefResolver.Execute(mapElements);
+        RemoveZeroLengthLines(mapElements);
         RemoveInvalidSidedefs(mapElements);
         EnsureSingleSidedLinedefsAreFacingInward(mapElements);
         EnsureActionLinedefsFacingCorrectDirection(mapElements);
+        RemoveUnusedElements(mapElements);
 
         foreach (var sideDef in mapElements.SideDefs)
         {
@@ -54,6 +56,24 @@ public class MapBuilder
         return mapElements;
     }
 
+    private void RemoveUnusedElements(MapElements mapElements)
+    {
+        if (!StaticFlags.ClearUnusedMapElements)
+            return;
+
+        var usedSectors = mapElements.LineDefs.SelectMany(p => p.Sectors).Distinct().ToArray();
+        var usedSideDefs = mapElements.LineDefs.SelectMany(p=>p.SideDefs).Distinct().ToArray();
+        var usedVertices = mapElements.LineDefs.SelectMany(p => p.Vertices).Distinct().ToArray();
+
+        var unusedSectors = mapElements.Sectors.Except(usedSectors).ToArray();
+        var unusedSideDefs = mapElements.SideDefs.Except(usedSideDefs).ToArray();
+        var unusedVertices = mapElements.Vertices.Except(usedVertices).ToArray();
+
+        mapElements.Sectors.RemoveMany(unusedSectors);
+        mapElements.SideDefs.RemoveMany(unusedSideDefs);
+        mapElements.Vertices.RemoveMany(unusedVertices);
+    }
+
     private void EnsureActionLinedefsFacingCorrectDirection(MapElements mapElements)
     {
         foreach(var specialLine in mapElements.LineDefs.Where(p=>p.LineSpecial != null && p.Back != null))
@@ -73,6 +93,15 @@ public class MapBuilder
                 line.FlipDirection();
             }
         }
+    }
+
+    private void RemoveZeroLengthLines(MapElements mapElements)
+    {
+        var invalidLines = mapElements.LineDefs.Where(p => p.Length == 0).ToArray();
+        var invalidSides = invalidLines.SelectMany(p => p.SideDefs).ToArray();
+
+        mapElements.LineDefs.RemoveMany(invalidLines);
+        mapElements.SideDefs.RemoveMany(invalidSides);
     }
 
     private void RemoveInvalidSidedefs(MapElements mapElements)

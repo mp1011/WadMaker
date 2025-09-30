@@ -212,7 +212,7 @@ internal class TextureAdjusterTests : StandardTest
 
     // room for improvement but ok for now
     [Test]
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false, clearUnusedMapElements: false)]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();
@@ -314,6 +314,41 @@ internal class TextureAdjusterTests : StandardTest
         {
             Assert.That(line.Front.Texture, Is.EqualTo(Texture.TEKWALL4.ToString()));
         }
+    }
+
+    [Test]
+    public void CanGenerateDoorColorBars()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(256, -256)
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(512, 0),
+            BottomRight = new Point(768, -256)
+        });
+
+        var doorColorBar = new DoorColorBarFlat(Distance: 0, Width: 16);
+        var hall = HallGenerator.GenerateHall(
+            new Hall(128,
+            map.Rooms[0],
+            map.Rooms[1],
+            Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: KeyType.Red,
+                           ColorBar: doorColorBar)));
+
+        map.Rooms.Add(hall);
+
+        var mapElements = MapBuilder.Build(map);
+
+        var colorBarLines = mapElements.LineDefs.Where(p => p.Front.Texture == Texture.DOORRED.ToString()).ToArray();
+
+        Assert.That(colorBarLines.Length, Is.EqualTo(4));
+
+        foreach(var line in colorBarLines)
+            Assert.That(line.Length, Is.EqualTo(16));
     }
 }
 

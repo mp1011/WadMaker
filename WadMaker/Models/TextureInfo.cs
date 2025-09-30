@@ -48,10 +48,7 @@ public record TextureInfo(
     }
 
 
-    public override string ToString()
-    {
-        throw new Exception("don't use this");
-    }
+    public override string ToString() => (Main ?? Mid ?? Upper ?? Lower)?.ToString() ?? "";
 
     public TextureQuery GetQuery(TexturePart part)
     {

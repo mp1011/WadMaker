@@ -13,12 +13,15 @@ public class WithStaticFlagsAttribute : NUnitAttribute, IWrapSetUpTearDown
 {
     public bool ClearUpperAndLowerTexturesOnOneSidedLines { get; }
     public bool InnerSectorLinesAlwaysStartTwoSided { get; }
+    public bool ClearUnusedMapElements { get; }
 
     public WithStaticFlagsAttribute(bool clearUpperAndLowerTexturesOnOneSidedLines=true, 
-        bool innerSectorLinesAlwaysStartTwoSided=false)
+        bool innerSectorLinesAlwaysStartTwoSided=false,
+        bool clearUnusedMapElements=true)
     {
         ClearUpperAndLowerTexturesOnOneSidedLines = clearUpperAndLowerTexturesOnOneSidedLines;
         InnerSectorLinesAlwaysStartTwoSided = innerSectorLinesAlwaysStartTwoSided;
+        ClearUnusedMapElements = clearUnusedMapElements;
     }
 
     public TestCommand Wrap(TestCommand command)

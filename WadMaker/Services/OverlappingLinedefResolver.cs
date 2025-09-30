@@ -93,6 +93,25 @@ public class OverlappingLinedefResolver
         var line1Texture = new TextureInfo(line1);
         var line2Texture = new TextureInfo(line2);
 
+        if (AreLinesFromCollapsedSector(line1, line2))
+        {
+            // find the non-collapsed sector
+            var sector = possibleSectors.FirstOrDefault(p => p.Room.Bounds.Area > 0);
+            if (sector != null)
+            {
+                var frontSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == sector)?.Copy();
+                if (frontSidedef != null)
+                {
+                    var newLine = new LineDef(line1.V1, line1.V2, frontSidedef, null, line1.Data with { twosided = null, blocking = true });
+                    line1Texture.ApplyTo(newLine);
+                    newLine.LineSpecial = line1.LineSpecial ?? line2.LineSpecial;
+                    yield return newLine;
+                    yield break;
+                }
+            }
+        }
+
+
         var splitLines = SplitOverlappingLines_IgnoreSidedefs(line1, line2).ToArray();
         foreach(var line in splitLines)
         {
@@ -125,7 +144,19 @@ public class OverlappingLinedefResolver
             else
                 throw new NotImplementedException("Unexpected overlapping linedef configuration");
 
-            if (line2.Front.Sector == frontSector)
+            var overlapsOriginalLine1 = newLine.Overlaps(line1);
+            var overlapsOriginalLine2 = newLine.Overlaps(line2);
+
+
+            if (line1.SideDefs.Union(line2.SideDefs).Any(p => p.Texture == Texture.DOORRED.ToString()))
+                Console.WriteLine("!");
+
+            throw new Exception("still need to be smarter here");
+            if (overlapsOriginalLine1 && !overlapsOriginalLine2)
+                line1Texture.ApplyTo(newLine);
+            else if(!overlapsOriginalLine1 && overlapsOriginalLine2)
+                line2Texture.ApplyTo(newLine);
+            else if (line2.Front.Sector == frontSector)
                 line2Texture.ApplyTo(newLine);
             else
                 line1Texture.ApplyTo(newLine);
@@ -133,6 +164,26 @@ public class OverlappingLinedefResolver
             newLine.LineSpecial = line1.LineSpecial ?? line2.LineSpecial;
             yield return newLine;
         }
+    }
+
+    /// <summary>
+    /// Determiens if the two lines overlap because they belong to a zero-area sector
+    /// </summary>
+    /// <param name="line1"></param>
+    /// <param name="line2"></param>
+    /// <returns></returns>
+    private bool AreLinesFromCollapsedSector(LineDef line1, LineDef line2)
+    {
+        if (line1.Length != line2.Length)
+            return false;
+
+        var line1Vertices = line1.Vertices.OrderBy(p => p.x).ThenBy(p => p.y).ToArray();
+        var line2Vertices = line1.Vertices.OrderBy(p => p.x).ThenBy(p => p.y).ToArray();
+
+        if (line1Vertices[0] != line2Vertices[0] || line1Vertices[1] != line2Vertices[1])
+            return false;
+
+        return line1.Front.Sector == line2.Front.Sector;
     }
 
     private IEnumerable<LineDef> SplitOverlappingLines_IgnoreSidedefs(LineDef line1, LineDef line2)

@@ -137,7 +137,7 @@ class HallGeneratorTests : StandardTest
             Assert.That(doorLine.LineSpecial?.arg3, Is.EqualTo((int)color));
         }
     }
-
+    
     [Test]
     public void CanGenerateStairs()
     {

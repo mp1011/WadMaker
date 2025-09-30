@@ -206,4 +206,25 @@ internal class MapBuilderTests : StandardTest
             Assert.That(line.Back, Is.Not.Null);
         }
     }
+
+    [Test]
+    public void RoomWithZeroAreaDoesNotBecomeASector()
+    {
+        var map = new Map();
+        var room = map.AddRoom(new Room(map, size: new Size(200,200)));
+        room.Tag = 1;
+
+        var unRoom = room.AddInnerStructure(new Room(map, 
+            center: new Point(room.Size.Width/2, 0), 
+            size: new Size(32, 0)));
+
+        unRoom.Tag = 2;
+        unRoom.WallTexture = new TextureInfo(Texture.REDWALL);
+
+        var mapElements = MapBuilder.Build(map);
+
+        Assert.That(mapElements.LineDefs.Count, Is.EqualTo(6));
+        Assert.That(mapElements.Sectors.Count, Is.EqualTo(1));
+        Assert.That(mapElements.SideDefs.Count(p=>p.Texture == Texture.REDWALL.ToString()), Is.EqualTo(1));
+    }
 }

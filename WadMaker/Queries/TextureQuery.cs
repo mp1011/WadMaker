@@ -62,7 +62,6 @@ public record TextureQuery(string[]? ThemeNames = null, string? ColorName = null
         return matches.Select(p => Enum.Parse<Texture>(p.Name)).ToArray();
     }
 
-
     private int LineHeight(LineDef target, TexturePart texturePart)
     {
         if(texturePart == TexturePart.Middle)
@@ -87,5 +86,13 @@ public record TextureQuery(string[]? ThemeNames = null, string? ColorName = null
         }
 
         return 0;
+    }
+
+    public override string ToString()
+    {
+        if (TextureName != null)
+            return TextureName;
+        else 
+            return base.ToString();
     }
 }

@@ -41,8 +41,9 @@
 	[x] relative positioning
 	[x] non-center positioning
 	[ ] add to MapBuilder (maybe...)
-	[ ] add means of letting each room know what kind of block it is
+	[x] add means of letting each room know what kind of block it is
 [ ] different styles of door color indicators
+	[ ] check if 0-width sector could be used for color bar wall strip
 
 Later
 [ ] thing placement to also avoid placing items in sectors too small

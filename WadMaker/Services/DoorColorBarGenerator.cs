@@ -36,17 +36,18 @@ public class DoorColorBarGenerator
         var doorEnd = door.PositionInHall + door.Thickness;
         int hallWidth = hall.Bounds.AxisLength(hallSide);
 
-        _roomGenerator.AddStructure(hall,
-            new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorStart - colorBar.Distance - colorBar.HalfWidth) / (double)hallWidth));
+        List<Room> alcoves = new List<Room>();
+        alcoves.Add(_roomGenerator.AddStructure(hall,
+            new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorStart - colorBar.Distance - colorBar.HalfWidth) / (double)hallWidth)));
+        alcoves.Add(_roomGenerator.AddStructure(hall,
+          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorStart - colorBar.Distance - colorBar.HalfWidth) / (double)hallWidth)));
+        alcoves.Add(_roomGenerator.AddStructure(hall,
+           new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorEnd + colorBar.Distance + colorBar.HalfWidth) / (double)hallWidth)));
+        alcoves.Add(_roomGenerator.AddStructure(hall,
+          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorEnd + colorBar.Distance + colorBar.HalfWidth) / (double)hallWidth)));
 
-        _roomGenerator.AddStructure(hall,
-          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorStart - colorBar.Distance - colorBar.HalfWidth) / (double)hallWidth));
-
-        _roomGenerator.AddStructure(hall,
-           new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorEnd + colorBar.Distance + colorBar.HalfWidth) / (double)hallWidth));
-        _roomGenerator.AddStructure(hall,
-          new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorEnd + colorBar.Distance + colorBar.HalfWidth) / (double)hallWidth));
-
+        foreach (var alcove in alcoves)
+            colorBar.SetOn(alcove);
     }
 
 }

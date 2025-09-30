@@ -19,6 +19,8 @@ public struct DRectangle
 
     public Size Size => new Size(Width, Height);
 
+    public int Area => Width * Height;
+
     public DRectangle(int x, int y, int width, int height)
     {
         X = x;
