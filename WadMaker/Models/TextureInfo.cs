@@ -34,6 +34,8 @@ public record TextureInfo(
 
     }
 
+    public static TextureInfo Default => new TextureInfo();
+
     public TextureInfo(LineDef line) : this(
         Main: (line.Front.Data.texturemiddle ?? line.Front.Data.texturetop ?? line.Front.Data.texturebottom).ParseAs<Texture>(),
         Upper: line.Front.Data.texturetop.ParseAs<Texture>(),

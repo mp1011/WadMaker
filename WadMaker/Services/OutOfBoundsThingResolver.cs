@@ -1,7 +1,4 @@
-﻿using WadMaker.Models;
-using WadMaker.Models.Geometry;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 
 public class OutOfBoundsThingResolver
 {

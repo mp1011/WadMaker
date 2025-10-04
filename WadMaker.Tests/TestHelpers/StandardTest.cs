@@ -46,11 +46,15 @@ internal class StandardTest
         return points;
     }
 
-    public string MapToUDMF(Map map)
+    public string MapToUDMF(Map map, bool ensureThingsInBounds = false)
     {
         var mapElements = MapBuilder.Build(map);
         TextureAdjuster.ApplyThemes(mapElements);
         TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+
+        if(ensureThingsInBounds)
+            OutOfBoundsThingResolver.EnsureThingsAreInBounds(map, mapElements);
+
         return MapPainter.Paint(mapElements);
     }
 }

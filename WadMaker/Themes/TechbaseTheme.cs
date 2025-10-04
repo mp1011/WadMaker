@@ -1,8 +1,8 @@
 ﻿namespace WadMaker.Themes;
 
-public record TechbaseTheme() : Theme(CreateRules())
+public record TechbaseTheme(int Version = 0) : Theme(CreateRules(Version))
 {
-    public static IEnumerable<ThemeRule> CreateRules()
+    public static IEnumerable<ThemeRule> CreateRules(int version)
     { 
         // nukage pit walls
         yield return new ThemeRule(new TextureQuery(new[] { "SlimeBottom" }, RepeatsVertically: false),
@@ -15,7 +15,14 @@ public record TechbaseTheme() : Theme(CreateRules())
         yield return new ThemeRule(new TextureQuery( new[] { "Step" }), 
             Conditions: new FloorDifferenceLessOrEqualTo(16));
 
-      
+        // door traks
+        if (version > 0)
+        {
+            yield return new ThemeRule(new TextureQuery(new[] { "DoorSide" }),
+                new TextureInfo(LowerUnpegged: true),
+                Conditions: new IsDoorSide());
+        }
+
         // short walls
         yield return new ThemeRule(new TextureQuery(new[] { "Light" }, MaxWidth: 16, MinWidth:16),
             Conditions: new LineLengthIs(16).AndNot(new IsDoorSide()));

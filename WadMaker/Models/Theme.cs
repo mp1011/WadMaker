@@ -93,7 +93,7 @@ public record IsDoorSide() : ThemeCondition
         if (lineDef.Back != null)
             return false;
 
-        return lineDef.Front.Sector.Lines.Any(p=>p.LineSpecial?.Type == LineSpecialType.DoorRaise);
+        return lineDef.Front.Sector.Lines.Any(p=>p.LineSpecial?.IsDoor == true);
     }
 }
 

@@ -209,8 +209,11 @@ public class HallGenerator
             Floor = upperFloor - hallRoom.Floor
         };
         lift.SetOn(liftRoom);
-        liftRoom.LineSpecials[hallSide.Opposite()] = new Plat_DownWaitUpStay(0, Speed.StandardLift);
-        liftRoom.LineSpecials[hallSide] = new Plat_DownWaitUpStay(0, Speed.StandardLift);
+
+        var activation = lift.AddWalkTrigger ? Activation.PlayerCross | Activation.PlayerUse | Activation.Repeating
+                                             : Activation.PlayerUse | Activation.Repeating;
+        liftRoom.LineSpecials[hallSide.Opposite()] = new Plat_DownWaitUpStay(0, Speed.StandardLift, Activation: activation);
+        liftRoom.LineSpecials[hallSide] = new Plat_DownWaitUpStay(0, Speed.StandardLift, Activation: activation);
 
         yield return liftRoom;
 

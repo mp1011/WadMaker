@@ -36,5 +36,7 @@ public class RoomPositionResolver
         var otherAnchorPoint = relation.OtherAnchor.GetPoint(relation.Other, relation.Side.Opposite());
 
         otherAnchorPoint.Position = anchorPoint.Position;
+
+        otherAnchorPoint.Position = otherAnchorPoint.Position.Move(relation.Side, relation.Spacing);
     }
 }

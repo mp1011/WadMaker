@@ -37,13 +37,31 @@
 [x] keyed doors
 ----------------9/25/2025
 [x] skull textures for skull keys (differing widths)
-[ ] major overhaul - geometry types and relations first, then calculate exact positions at the end
+[x] major overhaul - geometry types and relations first, then calculate exact positions at the end
 	[x] relative positioning
 	[x] non-center positioning
 	[ ] add to MapBuilder (maybe...)
 	[x] add means of letting each room know what kind of block it is
-[ ] different styles of door color indicators
-	[ ] check if 0-width sector could be used for color bar wall strip
+[x] different styles of door color indicators
+	[x] check if 0-width sector could be used for color bar wall strip
+---------------10/4/2025
+FIX NEXT:
+[ ] - rename to StructureBuilder or something
+[ ] - rework deferred placement, it is not intuitive as is
+[ ] - add easier ways of placing inner sectors
+[ ] - platforms that aren't in a hall
+[ ] - bounds calculation doesn't work when sector has "copy from parent" adjusters
+[ ] - resolve crossing lines
+[ ] - stairs, add options for ceilings 
+[ ] - standardize room and cutout, both should be able to use the same methods
+[ ] - have way to make a "slice" through a sector for easier ledges
+[ ] - bending halls
+[ ] - use Anchors for easier door positioning
+[ ] - sound blocking
+[ ] - easier way to center switch textures
+[ ] - make it easier to apply themes to halls
+[ ] - for monster placement, percentages for ranges may be harder to use
+
 
 Later
 [ ] thing placement to also avoid placing items in sectors too small
@@ -154,3 +172,13 @@ we want rooms to know what kind of element they are so we can apply textures int
 AlcoveRoom : Room
 	Alcove as Property
 	method to get new instance of type
+
+--- 10/4
+Notes from full map test
+
+CRITICAL:
+[x] lift needs option for walk trigger
+[x] enemies placed inside void
+[x] doortrak pegging not set
+[x] ammo placement seems not to be placing any ammo?
+

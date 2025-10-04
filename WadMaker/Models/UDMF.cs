@@ -34,7 +34,11 @@ public record linedef(
     bool? playeruse = null,
     bool? repeatspecial = null,
     bool? dontpegtop = null,
-    bool? dontpegbottom = null
+    bool? dontpegbottom = null,
+    bool? playercross = null,
+    bool? monstercross = null,
+    bool? monsteruse = null,
+    bool? impact = null
 ) : IMapElement;
 
 public record sidedef(

@@ -7,8 +7,14 @@ namespace WadMaker.Services.ShapeModifiers;
 /// </summary>
 public class AngledCorners : IShapeModifier
 {
+    public AngledCorners(int width=0)
+    {
+        Width = width;
+    }
+
     public int Width { get; set; } = 16;
 
+    
     public Point[] AlterPoints(Point[] points, IShape room)
     {
         List<Point> newPoints = new List<Point>();

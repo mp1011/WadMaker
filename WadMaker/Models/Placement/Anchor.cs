@@ -6,6 +6,8 @@ public abstract record Anchor(double Value)
 
     public static Anchor Percent(double value) => new RelativeAnchor(value);
 
+    public static Anchor Absolute(double value) => new AbsoluteAnchor(value);
+
     public abstract AnchorPoint GetPoint(IShape shape, Side side);
 }
 

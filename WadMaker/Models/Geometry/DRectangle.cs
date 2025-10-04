@@ -37,6 +37,11 @@ public struct DRectangle
         Height = size.Height;
     }
 
+    public Point RelativePoint(double relX, double relY)
+    {
+        return new Point((int)(Size.Width * relX), (int)(-Size.Height * relY));
+    }
+
     public bool IntersectsWith(DRectangle other)
     {
         return X < other.Right && Right > other.X &&

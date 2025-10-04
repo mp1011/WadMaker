@@ -171,4 +171,10 @@ public class Room : IShape, IThemed
         RelatedRooms.Add(new RoomRelation(side, newRoom, anchor, otherAnchor, spacing));
         return newRoom;
     }
+
+    public void MatchFloorAndCeilingTo(Room other, int floorAdjust=0, int ceilingAdjust=0)
+    {
+        Floor = other.Floor + floorAdjust;
+        Ceiling = other.Ceiling + ceilingAdjust;
+    }
 }
