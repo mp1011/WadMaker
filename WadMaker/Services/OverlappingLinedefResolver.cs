@@ -147,14 +147,14 @@ public class OverlappingLinedefResolver
             var overlapsOriginalLine1 = newLine.Overlaps(line1);
             var overlapsOriginalLine2 = newLine.Overlaps(line2);
 
-
-            if (line1.SideDefs.Union(line2.SideDefs).Any(p => p.Texture == Texture.DOORRED.ToString()))
-                Console.WriteLine("!");
-
-            throw new Exception("still need to be smarter here");
+            // still don't think this is fully right
             if (overlapsOriginalLine1 && !overlapsOriginalLine2)
                 line1Texture.ApplyTo(newLine);
             else if(!overlapsOriginalLine1 && overlapsOriginalLine2)
+                line2Texture.ApplyTo(newLine);
+            else if (newLine.SingleSided && newLine.InSamePositionAs(line1))
+                line1Texture.ApplyTo(newLine);
+            else if (newLine.SingleSided && newLine.InSamePositionAs(line2))
                 line2Texture.ApplyTo(newLine);
             else if (line2.Front.Sector == frontSector)
                 line2Texture.ApplyTo(newLine);

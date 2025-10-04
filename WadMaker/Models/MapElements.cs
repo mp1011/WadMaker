@@ -129,6 +129,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
 
+    public bool SingleSided => Back == null;
     public IEnumerable<Sector> Sectors
     {
         get
@@ -291,6 +292,11 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public bool Overlaps(LineDef other)
     {
         return OverlappingVertices(other).Length > 1;
+    }
+
+    public bool InSamePositionAs(LineDef other)
+    {
+        return (V1.Equals(other.V1) && V2.Equals(other.V2)) || (V2.Equals(other.V1) && V1.Equals(other.V2));
     }
 }
 
