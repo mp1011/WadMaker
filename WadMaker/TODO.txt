@@ -47,7 +47,7 @@
 ---------------10/4/2025
 FIX NEXT:
 [x] - rename to StructureBuilder or something
-[ ] - rework deferred placement, it is not intuitive as is
+[x] - rework deferred placement, it is not intuitive as is
 [ ] - add easier ways of placing inner sectors
 [ ] - platforms that aren't in a hall
 [ ] - bounds calculation doesn't work when sector has "copy from parent" adjusters

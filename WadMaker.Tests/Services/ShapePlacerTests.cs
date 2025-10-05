@@ -1,6 +1,6 @@
 ﻿namespace WadMaker.Tests.Services;
 
-internal class RoomPositionResolverTests : StandardTest
+internal class ShapePlacerTests : StandardTest
 {
 
     [Test]
