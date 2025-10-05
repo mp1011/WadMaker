@@ -25,7 +25,6 @@ internal class StandardTest
     protected Random Random => ServiceProvider.GetRequiredService<Random>();
 
     protected OutOfBoundsThingResolver OutOfBoundsThingResolver => ServiceProvider.GetRequiredService<OutOfBoundsThingResolver>();
-    protected RoomPositionResolver RoomPositionResolver => ServiceProvider.GetRequiredService<RoomPositionResolver>();
 
     public StandardTest()
     {

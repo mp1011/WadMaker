@@ -71,8 +71,6 @@ public class Room : IShape, IThemed
 
     public List<Room> InnerStructures { get; } = new List<Room>();
 
-    public List<RoomRelation> RelatedRooms { get; } = new List<RoomRelation>();
-
     public ZDoomSectorSpecial SectorSpecial { get; set; } = ZDoomSectorSpecial.Normal;
 
     public Room() : this(NoTheme.Instance) { }
@@ -128,9 +126,6 @@ public class Room : IShape, IThemed
             BuildingBlock = BuildingBlock,           
         };
 
-        if (RelatedRooms.Any())
-            throw new Exception("Rooms with relations cannot be copied");
-
         copy.Things.AddRange(Things.Select(t => t.Copy(this, copy)));
         copy.ShapeModifiers.AddRange(ShapeModifiers);
         copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy(copy)));
@@ -163,13 +158,6 @@ public class Room : IShape, IThemed
         copy.Floor = parent.Floor + Floor;
         copy.Ceiling = parent.Ceiling + Ceiling;            
         return copy;
-    }
-
-    public Room CreateNeighbor(Side side, Anchor anchor, Anchor otherAnchor, int spacing)
-    {
-        var newRoom = new Room(Parent);
-        RelatedRooms.Add(new RoomRelation(side, newRoom, anchor, otherAnchor, spacing));
-        return newRoom;
     }
 
     public void MatchFloorAndCeilingTo(Room other, int floorAdjust=0, int ceilingAdjust=0)

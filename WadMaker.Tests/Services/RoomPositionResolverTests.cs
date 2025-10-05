@@ -9,16 +9,14 @@ internal class RoomPositionResolverTests : StandardTest
         var map = new Map();
 
         var centerRoom = map.AddRoom(new Room(map));
-        var northRoom = centerRoom.CreateNeighbor(Side.Top, Anchor.MidPoint, Anchor.MidPoint, spacing: 0).AddTo(map);
+        var northRoom = map.AddRoom();
         centerRoom.Size = new Size(256, 256);
-        centerRoom.Center = new Point(1028, -128);
-       
+        centerRoom.Center = new Point(1028, -128);       
         northRoom.Center = new Point(64, -64);
 
         centerRoom.Tag = 1;
         northRoom.Tag = 2;
-
-        RoomPositionResolver.Execute(map);
+        northRoom.Place().NorthOf(centerRoom);
 
         Assert.That(northRoom.UpperLeft.Y, Is.EqualTo(centerRoom.UpperLeft.Y + northRoom.Size.Height));
         Assert.That(northRoom.BottomRight.Y, Is.EqualTo(centerRoom.UpperLeft.Y));
@@ -30,11 +28,12 @@ internal class RoomPositionResolverTests : StandardTest
         var map = new Map();
 
         var centerRoom = map.AddRoom(new Room(map));
-        var northRoom = centerRoom.CreateNeighbor(Side.Top, Anchor.MidPoint, Anchor.MidPoint, spacing: 0).AddTo(map);
-        var southRoom = centerRoom.CreateNeighbor(Side.Bottom, Anchor.MidPoint, Anchor.MidPoint, spacing: 0).AddTo(map);
-        var eastRoom = centerRoom.CreateNeighbor(Side.Right, Anchor.MidPoint, Anchor.MidPoint, spacing: 0).AddTo(map);
-        var westRoom = centerRoom.CreateNeighbor(Side.Left, Anchor.MidPoint, Anchor.MidPoint, spacing: 0).AddTo(map);
-        var southRoom2 = southRoom.CreateNeighbor(Side.Left, Anchor.MidPoint, Anchor.MidPoint, spacing: 0).AddTo(map);
+        var northRoom = map.AddRoom();
+        var southRoom = map.AddRoom();
+        var eastRoom = map.AddRoom();
+        var westRoom = map.AddRoom();
+        var southRoom2 = map.AddRoom();
+
         southRoom2.Size = new Size(64, 64);
 
         centerRoom.Center = new Point(0, 0);
@@ -43,7 +42,11 @@ internal class RoomPositionResolverTests : StandardTest
         centerRoom.Tag = 1;
         northRoom.Tag = 2;
 
-        RoomPositionResolver.Execute(map);
+        northRoom.Place().NorthOf(centerRoom);
+        southRoom.Place().SouthOf(centerRoom);
+        eastRoom.Place().EastOf(centerRoom);
+        westRoom.Place().WestOf(centerRoom);
+        southRoom2.Place().WestOf(southRoom);
 
         Assert.That(northRoom.UpperLeft.Y, Is.EqualTo(centerRoom.UpperLeft.Y + northRoom.Size.Height));
         Assert.That(northRoom.BottomRight.Y, Is.EqualTo(centerRoom.UpperLeft.Y));
@@ -61,22 +64,32 @@ internal class RoomPositionResolverTests : StandardTest
 
         var centerRoom = map.AddRoom(new Room(map));
 
-        var north1 = centerRoom.CreateNeighbor(Side.Top, Anchor.Percent(0.25), Anchor.MidPoint, 0).AddTo(map);
-        var north2 = centerRoom.CreateNeighbor(Side.Top, Anchor.Percent(0.75), Anchor.MidPoint, 0).AddTo(map);
+        var north1 = map.AddRoom();
+        var north2 = map.AddRoom();
 
-        var south1 = centerRoom.CreateNeighbor(Side.Bottom, Anchor.Percent(0.25), Anchor.MidPoint, 0).AddTo(map);
-        var south2 = centerRoom.CreateNeighbor(Side.Bottom, Anchor.Percent(0.75), Anchor.MidPoint, 0).AddTo(map);
+        var south1 = map.AddRoom();
+        var south2 = map.AddRoom();
 
-        var west1 = centerRoom.CreateNeighbor(Side.Left, Anchor.Percent(0.25), Anchor.MidPoint, 0).AddTo(map);
-        var west2 = centerRoom.CreateNeighbor(Side.Left, Anchor.Percent(0.75), Anchor.MidPoint, 0).AddTo(map);
+        var west1 = map.AddRoom();
+        var west2 = map.AddRoom();
 
-        var east1 = centerRoom.CreateNeighbor(Side.Right, Anchor.Percent(0.25), Anchor.MidPoint, 0).AddTo(map);
-        var east2 = centerRoom.CreateNeighbor(Side.Right, Anchor.Percent(0.75), Anchor.MidPoint, 0).AddTo(map);
+        var east1 = map.AddRoom();
+        var east2 = map.AddRoom();
 
         centerRoom.Center = new Point(0, 0);
         centerRoom.Size = new Size(512, 512);
 
-        RoomPositionResolver.Execute(map);
+        north1.Place().ToSideOf(centerRoom, Side.Top, targetAnchor: Anchor.Percent(0.25));
+        north2.Place().ToSideOf(centerRoom, Side.Top, targetAnchor: Anchor.Percent(0.75));
+
+        south1.Place().ToSideOf(centerRoom, Side.Bottom, targetAnchor: Anchor.Percent(0.25));
+        south2.Place().ToSideOf(centerRoom, Side.Bottom, targetAnchor: Anchor.Percent(0.75));
+
+        west1.Place().ToSideOf(centerRoom, Side.Left, targetAnchor: Anchor.Percent(0.25));
+        west2.Place().ToSideOf(centerRoom, Side.Left, targetAnchor: Anchor.Percent(0.75));
+
+        east1.Place().ToSideOf(centerRoom, Side.Right, targetAnchor: Anchor.Percent(0.25));
+        east2.Place().ToSideOf(centerRoom, Side.Right, targetAnchor: Anchor.Percent(0.75));
 
         Assert.That(north1.UpperLeft, Is.EqualTo(new Point(-192, 384)));
         Assert.That(north2.UpperLeft, Is.EqualTo(new Point(64, 384)));

@@ -6,8 +6,9 @@ public class Map : IThemed
 
     public Theme? Theme { get; set; }
 
-    public Room AddRoom(Room room)
+    public Room AddRoom(Room? room = null)
     {
+        room = room ?? new Room(this);
         Rooms.Add(room);
         return room;
     }

@@ -46,7 +46,7 @@
 	[x] check if 0-width sector could be used for color bar wall strip
 ---------------10/4/2025
 FIX NEXT:
-[ ] - rename to StructureBuilder or something
+[x] - rename to StructureBuilder or something
 [ ] - rework deferred placement, it is not intuitive as is
 [ ] - add easier ways of placing inner sectors
 [ ] - platforms that aren't in a hall

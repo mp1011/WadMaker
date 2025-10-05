@@ -37,12 +37,11 @@ class TechbaseOct25FullMapTest : StandardTest
            CenterPercent: 0.5));
 
 
-        var northHall = entrance.CreateNeighbor(Side.Top, Anchor.MidPoint, Anchor.MidPoint, 256)
-            .AddTo(map);
+        var northHall = map.AddRoom();                 
         northHall.Floor = 128;
         northHall.Ceiling = 256;
         northHall.Size = new Size(512 + 64, 128);
-        RoomPositionResolver.Execute(map);
+        northHall.Place().NorthOf(entrance, 256);
 
         HallGenerator.GenerateHall(new Hall(
             Width: 128,
@@ -50,24 +49,25 @@ class TechbaseOct25FullMapTest : StandardTest
             Room2: northHall,
             Stairs: new Stairs(TextureInfo.Default, 0, 0, 16, entrance, northHall))).AddTo(map);
 
-        var northWestRoom = northHall.CreateNeighbor(Side.Left, Anchor.MidPoint, Anchor.Absolute(64), spacing: 0).AddTo(map);
+        var northWestRoom = map.AddRoom();
         northWestRoom.MatchFloorAndCeilingTo(northHall);
         northWestRoom.Size = new Size(256, 256);       
         var pillar1 = new Cutout(size: new Size(128, 128), upperLeft: new Point(64,-64));
         northWestRoom.Pillars.Add(pillar1);
+        northWestRoom.Place().WestOf(northHall, anchor: Anchor.Absolute(64));
 
-        var northEastRoom = northHall.CreateNeighbor(Side.Right, Anchor.MidPoint, Anchor.Absolute(64), spacing: 0).AddTo(map);
+        var northEastRoom = map.AddRoom();
         northEastRoom.MatchFloorAndCeilingTo(northHall);
         northEastRoom.Size = new Size(256, 256);
         var pillar2 = new Cutout(size: new Size(128, 128), upperLeft: new Point(64, -64));
         northEastRoom.Pillars.Add(pillar2);
-        RoomPositionResolver.Execute(map);
+        northEastRoom.Place().EastOf(northHall, anchor: Anchor.Absolute(64));
 
-        var bigRoom = northEastRoom.CreateNeighbor(Side.Bottom, Anchor.MidPoint, Anchor.MidPoint, 64).AddTo(map);
+        var bigRoom = map.AddRoom();
         bigRoom.Size = new Size(512, 512);
         bigRoom.ShapeModifiers.Add(new InvertCorners { Width = 128 });
         bigRoom.MatchFloorAndCeilingTo(northEastRoom, ceilingAdjust: 128);
-        RoomPositionResolver.Execute(map);
+        bigRoom.Place().SouthOf(northEastRoom, gap: 64);
 
         HallGenerator.GenerateHall(new Hall(
             Width: 128,
@@ -91,11 +91,11 @@ class TechbaseOct25FullMapTest : StandardTest
         ThingPlacer.AddFormation(ThingType.Imp, leftLedge, 4, Angle.East, ThingFlags.AllSkillsAndModes | ThingFlags.Ambush, ThingPlacement.Center, ThingPattern.Row, 32);
         ThingPlacer.AddFormation(ThingType.Imp, rightLedge, 4, Angle.West, ThingFlags.AllSkillsAndModes | ThingFlags.Ambush, ThingPlacement.Center, ThingPattern.Row, 32);
 
-        var southRoom = bigRoom.CreateNeighbor(Side.Bottom, Anchor.MidPoint, Anchor.Percent(0.75), 128).AddTo(map);
+        var southRoom = map.AddRoom();
         southRoom.Size = new Size(256 + 128, 128 + 64);
         southRoom.Floor = 0;
         southRoom.Ceiling = 128;
-        RoomPositionResolver.Execute(map);
+        southRoom.Place().SouthOf(bigRoom, gap: 128, anchor: Anchor.Percent(0.75));
 
         HallGenerator.GenerateHall(new Hall(
             Width: 128,
@@ -104,9 +104,9 @@ class TechbaseOct25FullMapTest : StandardTest
             HallTemplate: new Room { Floor = 128, Ceiling = 128 + 112 },
             Lift: new Lift(TextureInfo.Default, 64, 64, bigRoom, southRoom, AddWalkTrigger: true))).AddTo(map);
 
-        var keyRoom = southRoom.CreateNeighbor(Side.Left, Anchor.MidPoint, Anchor.MidPoint, 16).AddTo(map);
+        var keyRoom = map.AddRoom();
         keyRoom.Size = new Size(128, 128);
-        RoomPositionResolver.Execute(map);
+        keyRoom.Place().WestOf(southRoom, gap: 16);
 
         StructureGenerator.AddStructure(southRoom, new Window(
             Template: new Room { Floor = 32, Ceiling = -32 },
@@ -131,10 +131,10 @@ class TechbaseOct25FullMapTest : StandardTest
         keyPedestal.Center = keyRoom.Bounds().RelativePoint(0.5, 0.5);
         ThingPlacer.AddThing(ThingType.Red_keycard, keyPedestal, 0.5, 0.5);
 
-        var acidRoom = northWestRoom.CreateNeighbor(Side.Bottom, Anchor.MidPoint, Anchor.MidPoint, 96).AddTo(map);
+        var acidRoom = map.AddRoom();
         acidRoom.MatchFloorAndCeilingTo(northWestRoom);
         acidRoom.Size = new Size(256, 512);
-        RoomPositionResolver.Execute(map);
+        acidRoom.Place().SouthOf(northWestRoom, gap: 96);
 
         var acidPit = StructureGenerator.AddStructure(acidRoom,
             new HazardPit(Depth: 24, AnimatedFlat.NUKAGE1, DamagingSectorSpecial.Damage_8Lava, new Padding(32, 64)));
