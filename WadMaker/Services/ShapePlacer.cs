@@ -9,6 +9,13 @@ public class ShapePlacer<T> where T : IShape
         Shape = shape;
     }
 
+    private void MakePositionRelative(IShape relativeTo)
+    {
+        var size = Shape.Bounds().Size;
+        Shape.UpperLeft = new Point(Shape.UpperLeft.X - relativeTo.UpperLeft.X, Shape.UpperLeft.Y - relativeTo.UpperLeft.Y);
+        Shape.BottomRight = Shape.UpperLeft.Add(size.Width, -size.Height);
+    }
+
     public T ToSideOf(IShape other, Side side, int gap = 0, Anchor? sourceAnchor = null, Anchor? targetAnchor = null)
     {
         var anchorPoint = (sourceAnchor ?? Anchor.MidPoint).GetPoint(Shape, side.Opposite());
@@ -16,6 +23,9 @@ public class ShapePlacer<T> where T : IShape
 
         anchorPoint.Position = otherAnchorPoint.Position.Move(side, gap);
 
+        if (other.Owns(Shape))
+            MakePositionRelative(other);
+            
         return Shape;
     }
 
@@ -24,5 +34,14 @@ public class ShapePlacer<T> where T : IShape
     public T NorthOf(IShape other, int gap = 0, Anchor? anchor = null) => ToSideOf(other, Side.Top, gap, sourceAnchor: anchor);
     public T SouthOf(IShape other, int gap = 0, Anchor? anchor = null) => ToSideOf(other, Side.Bottom, gap, sourceAnchor: anchor);
 
+    public T InCenterOf(IShape other)
+    {
+        Shape.Center = other.Center;
+        
+        if (other.Owns(Shape))
+            MakePositionRelative(other);
+
+        return Shape;
+    }
 
 }

@@ -51,16 +51,16 @@ class TechbaseOct25FullMapTest : StandardTest
 
         var northWestRoom = map.AddRoom();
         northWestRoom.MatchFloorAndCeilingTo(northHall);
-        northWestRoom.Size = new Size(256, 256);       
-        var pillar1 = new Cutout(size: new Size(128, 128), upperLeft: new Point(64,-64));
-        northWestRoom.Pillars.Add(pillar1);
+        northWestRoom.Size = new Size(256, 256);
+        var pillar1 = northWestRoom.AddPillar(size: new Size(128, 128));
+        pillar1.Place().InCenterOf(northWestRoom);
         northWestRoom.Place().WestOf(northHall, anchor: Anchor.Absolute(64));
 
         var northEastRoom = map.AddRoom();
         northEastRoom.MatchFloorAndCeilingTo(northHall);
         northEastRoom.Size = new Size(256, 256);
-        var pillar2 = new Cutout(size: new Size(128, 128), upperLeft: new Point(64, -64));
-        northEastRoom.Pillars.Add(pillar2);
+        var pillar2 = northEastRoom.AddPillar(size: new Size(128, 128));
+        pillar2.Place().InCenterOf(northEastRoom);
         northEastRoom.Place().EastOf(northHall, anchor: Anchor.Absolute(64));
 
         var bigRoom = map.AddRoom();

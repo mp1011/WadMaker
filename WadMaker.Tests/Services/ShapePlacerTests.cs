@@ -100,4 +100,17 @@ internal class ShapePlacerTests : StandardTest
         Assert.That(east1.UpperLeft, Is.EqualTo(new Point(256, 192)));
         Assert.That(east2.UpperLeft, Is.EqualTo(new Point(256, -64)));
     }
+
+    [Test]
+    public void InnerRoomIsPlacedRelativeToParent()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(512, 512), center: new Point(400, -400));
+
+        var inner = room.AddInnerStructure(size: new Size(128, 128));
+
+        inner.Place().EastOf(room, -128);
+
+        Assert.That(inner.UpperLeft.X, Is.EqualTo(room.Bounds.Width - inner.Bounds.Width));
+    }
 }

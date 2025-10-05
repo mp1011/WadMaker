@@ -6,11 +6,13 @@ public class Map : IThemed
 
     public Theme? Theme { get; set; }
 
-    public Room AddRoom(Room? room = null)
+    public Room AddRoom(Room room)
     {
         room = room ?? new Room(this);
         Rooms.Add(room);
         return room;
     }
+
+    public Room AddRoom(Point? center = null, Size? size = null) => AddRoom(new Room(this, center, size));
 }
 

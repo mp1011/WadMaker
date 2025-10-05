@@ -8,8 +8,18 @@ public class Cutout : IShape
     public Point BottomRight { get; set; } = Point.Empty;
     public Texture WallTexture { get; set; } = Texture.STONE;
 
+    public Point Center
+    {
+        get => this.Bounds().Center;
+        set
+        {
+            Point delta = new Point(value.X - this.Bounds().Center.X, value.Y - this.Bounds().Center.Y);
+            UpperLeft = UpperLeft.Add(delta);
+            BottomRight = BottomRight.Add(delta);
+        }
+    }
 
-    public Cutout(Point? upperLeft = null, Size? size = null)
+    public Cutout(Point? upperLeft = null, Point? center = null, Size ? size = null)
     {
         size ??= new Size(64, 64);
         UpperLeft = upperLeft ?? Point.Empty;
@@ -39,4 +49,6 @@ public class Cutout : IShape
         copy.ShapeModifiers.AddRange(ShapeModifiers);
         return copy;
     }
+
+    bool IShape.Owns(IShape other) => false;
 }

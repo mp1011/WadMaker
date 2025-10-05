@@ -69,6 +69,14 @@ public class Room : IShape, IThemed
 
     public List<Cutout> Pillars { get; } = new List<Cutout>();
 
+    public Cutout AddPillar(Cutout cutout)
+    {
+        Pillars.Add(cutout);
+        return cutout;
+    }
+
+    public Cutout AddPillar(Size? size = null) => AddPillar(new Cutout(size: size));
+
     public List<Room> InnerStructures { get; } = new List<Room>();
 
     public ZDoomSectorSpecial SectorSpecial { get; set; } = ZDoomSectorSpecial.Normal;
@@ -108,6 +116,8 @@ public class Room : IShape, IThemed
         InnerStructures.Add(room);
         return room;
     }
+
+    public Room AddInnerStructure(Point? center = null, Size? size = null) => AddInnerStructure(new Room(this, center, size));
 
     public Room Copy(IThemed newParent)
     {
@@ -165,4 +175,6 @@ public class Room : IShape, IThemed
         Floor = other.Floor + floorAdjust;
         Ceiling = other.Ceiling + ceilingAdjust;
     }
+
+    bool IShape.Owns(IShape other) => Pillars.Contains(other) || InnerStructures.Contains(other);
 }
