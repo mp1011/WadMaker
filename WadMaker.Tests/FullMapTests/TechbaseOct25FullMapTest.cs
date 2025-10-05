@@ -22,14 +22,14 @@ class TechbaseOct25FullMapTest : StandardTest
         skylight.CeilingTexture = Flat.F_SKY1;
         skylight.Ceiling = 16;
 
-        RoomGenerator.AddStructure(entrance, new Alcove(
+        StructureGenerator.AddStructure(entrance, new Alcove(
             Template: new Room {  Floor = 32, Ceiling = -32 },
             Side: Side.Left,
             Width: 128,
             Depth: 16,
             CenterPercent: 0.5));
 
-        RoomGenerator.AddStructure(entrance, new Alcove(
+        StructureGenerator.AddStructure(entrance, new Alcove(
            Template: new Room { Floor = 32, Ceiling = -32 },
            Side: Side.Right,
            Width: 128,
@@ -108,7 +108,7 @@ class TechbaseOct25FullMapTest : StandardTest
         keyRoom.Size = new Size(128, 128);
         RoomPositionResolver.Execute(map);
 
-        RoomGenerator.AddStructure(southRoom, new Window(
+        StructureGenerator.AddStructure(southRoom, new Window(
             Template: new Room { Floor = 32, Ceiling = -32 },
             AdjacentRoom: keyRoom,
             Width: 64,
@@ -136,7 +136,7 @@ class TechbaseOct25FullMapTest : StandardTest
         acidRoom.Size = new Size(256, 512);
         RoomPositionResolver.Execute(map);
 
-        var acidPit = RoomGenerator.AddStructure(acidRoom,
+        var acidPit = StructureGenerator.AddStructure(acidRoom,
             new HazardPit(Depth: 24, AnimatedFlat.NUKAGE1, DamagingSectorSpecial.Damage_8Lava, new Padding(32, 64)));
 
         HallGenerator.GenerateHall(new Hall(
@@ -152,7 +152,7 @@ class TechbaseOct25FullMapTest : StandardTest
                 KeyColor: KeyType.Red,
                 ColorBar: new DoorColorBarRecessedAlcoves()))).AddTo(map);
 
-        var exitAlcove = RoomGenerator.AddStructure(acidRoom,
+        var exitAlcove = StructureGenerator.AddStructure(acidRoom,
             new Alcove(new Room { Floor = 16, Ceiling = -16 }, Side.Bottom, 64, 8, 0.5));
 
         exitAlcove.SideTextures[Side.Bottom] = new TextureInfo(Texture.SW1BRN1);

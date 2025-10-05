@@ -1,7 +1,7 @@
 ﻿
 using WadMaker.Services.Extractors;
 
-Map FourRoom(RoomGenerator roomGenerator)
+Map FourRoom(StructureGenerator roomGenerator)
 {
     var map = new Map();
 
@@ -116,7 +116,7 @@ Map RoomSplitInTwo()
     return map;
 }
 
-Map FourStairs(RoomGenerator roomGenerator)
+Map FourStairs(StructureGenerator roomGenerator)
 {
     var map = new Map();
 
@@ -189,7 +189,7 @@ Map FourStairs(RoomGenerator roomGenerator)
     return map;
 }
 
-Map RoomWithAlcove(RoomGenerator roomGenerator)
+Map RoomWithAlcove(StructureGenerator roomGenerator)
 {
     var room = new Room
     {
@@ -209,7 +209,7 @@ Map RoomWithAlcove(RoomGenerator roomGenerator)
     return map;
 }
 
-Map NotchedRoomHall(RoomGenerator roomGenerator)
+Map NotchedRoomHall(StructureGenerator roomGenerator)
 {
     var map = new Map();
     map.Rooms.Add(new Room
@@ -245,7 +245,7 @@ map.Rooms.Add(new Room
     BottomRight = new Point(400, -300),
     WallTexture = new TextureInfo(Texture.BRICK7),
 });
- services.GetRequiredService<RoomGenerator>().AddStructure(map.Rooms[0],
+ services.GetRequiredService<StructureGenerator>().AddStructure(map.Rooms[0],
    new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
    Side: Side.Top,
    Width: 100,

@@ -238,7 +238,7 @@ class HallGeneratorTests : StandardTest
         var room1 = map.AddRoom(new Room {  UpperLeft = Point.Empty, BottomRight = new Point(256,-256) });
         var room2 = map.AddRoom(new Room(map, size: new Size(128, 128)).Place().EastOf(room1, 32));
 
-        var switchAlcove = RoomGenerator.AddStructure(room1, new Alcove(new Room { Floor = 16, Ceiling = -16 }, Side.Left, 64, 8, 0.5));
+        var switchAlcove = StructureGenerator.AddStructure(room1, new Alcove(new Room { Floor = 16, Ceiling = -16 }, Side.Left, 64, 8, 0.5));
         int doorTag = IDProvider.NextSectorIndex();
         switchAlcove.LineSpecials[Side.Left] = new DoorOpen(doorTag, Speed.StandardDoor);
 

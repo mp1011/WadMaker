@@ -1,14 +1,12 @@
-﻿using WadMaker.Models.BuildingBlocks;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 
 public class DoorColorBarGenerator
 {
-    private readonly RoomGenerator _roomGenerator;
+    private readonly StructureGenerator _structureGenerator;
 
-    public DoorColorBarGenerator(RoomGenerator roomGenerator)
+    public DoorColorBarGenerator(StructureGenerator roomGenerator)
     {
-        _roomGenerator = roomGenerator;
+        _structureGenerator = roomGenerator;
     }
 
     public void GenerateDoorColorBars(Room hall, Door door, Side hallSide)
@@ -37,13 +35,13 @@ public class DoorColorBarGenerator
         int hallWidth = hall.Bounds.AxisLength(hallSide);
 
         List<Room> alcoves = new List<Room>();
-        alcoves.Add(_roomGenerator.AddStructure(hall,
+        alcoves.Add(_structureGenerator.AddStructure(hall,
             new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorStart - colorBar.Distance - colorBar.HalfWidth) / (double)hallWidth)));
-        alcoves.Add(_roomGenerator.AddStructure(hall,
+        alcoves.Add(_structureGenerator.AddStructure(hall,
           new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorStart - colorBar.Distance - colorBar.HalfWidth) / (double)hallWidth)));
-        alcoves.Add(_roomGenerator.AddStructure(hall,
+        alcoves.Add(_structureGenerator.AddStructure(hall,
            new Alcove(colorBarTemplate, hallSide.ClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorEnd + colorBar.Distance + colorBar.HalfWidth) / (double)hallWidth)));
-        alcoves.Add(_roomGenerator.AddStructure(hall,
+        alcoves.Add(_structureGenerator.AddStructure(hall,
           new Alcove(colorBarTemplate, hallSide.CounterClockwiseTurn(), colorBar.Width, colorBar.Depth, (doorEnd + colorBar.Distance + colorBar.HalfWidth) / (double)hallWidth)));
 
         foreach (var alcove in alcoves)

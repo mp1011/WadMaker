@@ -260,7 +260,7 @@ internal class MapPainterTests : StandardTest
         switchRoom.SideTextures[Side.Left] = new TextureInfo(Texture.SW1GRAY);
         switchRoom.LineSpecials[Side.Left] = new Plat_DownWaitUpStay(Tag: 1, Speed.StandardLift, Delay.StandardLift);
 
-        RoomGenerator.AddStructure(map.Rooms[0], new Alcove(
+        StructureGenerator.AddStructure(map.Rooms[0], new Alcove(
             Template: switchRoom,
             Side: Side.Left,
             Width: 64,

@@ -1,15 +1,11 @@
-﻿using WadMaker.Models.BuildingBlocks;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 
 public class HallGenerator
 {
-    private readonly RoomGenerator _roomGenerator;
     private readonly DoorColorBarGenerator _doorColorBarGenerator;
 
-    public HallGenerator(RoomGenerator roomGenerator, DoorColorBarGenerator doorColorBarGenerator)
+    public HallGenerator(StructureGenerator roomGenerator, DoorColorBarGenerator doorColorBarGenerator)
     {
-        _roomGenerator = roomGenerator;
         _doorColorBarGenerator = doorColorBarGenerator;
     }
 

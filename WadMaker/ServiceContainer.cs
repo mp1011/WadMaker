@@ -14,7 +14,7 @@ public static class ServiceContainer
         services.AddSingleton<OverlappingLinedefResolver>();
         services.AddSingleton<MapPainter>();
         services.AddSingleton<IsPointInSector>();
-        services.AddSingleton<RoomGenerator>();
+        services.AddSingleton<StructureGenerator>();
         services.AddSingleton<TextureAdjuster>();
         services.AddSingleton<ThingPlacer>();
         services.AddSingleton<OverlappingThingResolver>();

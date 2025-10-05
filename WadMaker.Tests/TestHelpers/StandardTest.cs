@@ -17,7 +17,7 @@ internal class StandardTest
     protected RoomBuilder RoomBuilder => ServiceProvider.GetRequiredService<RoomBuilder>();
     protected TextureAdjuster TextureAdjuster => ServiceProvider.GetRequiredService<TextureAdjuster>();
 
-    protected RoomGenerator RoomGenerator => ServiceProvider.GetRequiredService<RoomGenerator>();
+    protected StructureGenerator StructureGenerator => ServiceProvider.GetRequiredService<StructureGenerator>();
     protected HallGenerator HallGenerator => ServiceProvider.GetRequiredService<HallGenerator>();
     protected ThingPlacer ThingPlacer => ServiceProvider.GetRequiredService<ThingPlacer>();
     protected IDProvider IDProvider => ServiceProvider.GetRequiredService<IDProvider>();

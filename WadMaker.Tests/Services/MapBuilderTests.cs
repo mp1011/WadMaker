@@ -134,7 +134,7 @@ internal class MapBuilderTests : StandardTest
             BottomRight = new Point(400, -400),
         };
 
-        var alcove = RoomGenerator.AddStructure(room,
+        var alcove = StructureGenerator.AddStructure(room,
             new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
             Side: Side.Left,
             Width: 100,
@@ -182,7 +182,7 @@ internal class MapBuilderTests : StandardTest
         room1.Tag = 1;
         room2.Tag = 2;
 
-        var window = RoomGenerator.AddStructure(room1, new Window(
+        var window = StructureGenerator.AddStructure(room1, new Window(
             Template: new Room { Floor = 32, Ceiling = -32, Tag = 3 },
             Width: 128,
             AdjacentRoom: room2,

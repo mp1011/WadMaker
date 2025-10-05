@@ -11,7 +11,7 @@ internal class RoomGeneratorTests : StandardTest
             BottomRight = new Point(400, -400),
         };
 
-        var alcove = RoomGenerator.AddStructure(room,
+        var alcove = StructureGenerator.AddStructure(room,
             new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
             Side: Side.Left,
             Width: 100,
@@ -34,7 +34,7 @@ internal class RoomGeneratorTests : StandardTest
             BottomRight = new Point(400, -300),
         };
 
-        var alcove = RoomGenerator.AddStructure(room,
+        var alcove = StructureGenerator.AddStructure(room,
             new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
             Side: Side.Top,
             Width: 100,
@@ -56,7 +56,7 @@ internal class RoomGeneratorTests : StandardTest
         var room2 = map.AddRoom(new Room(parent: map, size: new Size(400, 400)))
                        .Place().EastOf(room1, 16);
 
-        var window = RoomGenerator.AddStructure(room1, new Window(
+        var window = StructureGenerator.AddStructure(room1, new Window(
             Template: new Room { Floor = 32, Ceiling = -32 },
             Width: 128,
             AdjacentRoom: room2,
@@ -71,7 +71,7 @@ internal class RoomGeneratorTests : StandardTest
     {
         var map = new TestMaps().TwoConnectedRoomsWithDifferentCeilings();
         
-        var pit = RoomGenerator.AddStructure(map.Rooms[1], new HazardPit(
+        var pit = StructureGenerator.AddStructure(map.Rooms[1], new HazardPit(
             Depth: 32,
             Flat: AnimatedFlat.NUKAGE1,
             Damage: DamagingSectorSpecial.Damage_10Percent,

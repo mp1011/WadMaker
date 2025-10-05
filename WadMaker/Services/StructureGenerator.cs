@@ -1,6 +1,6 @@
 ﻿namespace WadMaker.Services;
 
-public class RoomGenerator
+public class StructureGenerator
 {
     public Room AddStructure(Room room, Alcove alcove)
     {

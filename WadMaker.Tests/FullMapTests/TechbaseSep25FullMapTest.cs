@@ -33,7 +33,7 @@ class TechbaseSep25FullMapTest : StandardTest
         // west room
         var westRoom = map.AddRoom(new Room(parent: map, size: new Size(512, 512)).Place().WestOf(longHall, 32));
         westRoom.ShapeModifiers.Add(new InvertCorners { Width = 128 });
-        RoomGenerator.AddStructure(westRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Bottom, 128, 16, 0.5));
+        StructureGenerator.AddStructure(westRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Bottom, 128, 16, 0.5));
 
         // west room to long hall door
         var doorTag = IDProvider.NextSectorIndex();
@@ -42,7 +42,7 @@ class TechbaseSep25FullMapTest : StandardTest
         
         // east room
         var eastRoom = map.AddRoom(new Room(parent: map, size: new Size(128, 256)).Place().EastOf(longHall, 32));
-        var westDoorSwitch = RoomGenerator.AddStructure(eastRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
+        var westDoorSwitch = StructureGenerator.AddStructure(eastRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
         westDoorSwitch.LineSpecials[Side.Right] = new DoorOpen(doorTag, Speed.StandardDoor);
         westDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE, LowerUnpegged: true);
 
@@ -92,7 +92,7 @@ class TechbaseSep25FullMapTest : StandardTest
             HallTemplate: new Room { Floor = 0, Ceiling = 128 }, 
             Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORTRAK, PositionInHall: 16))));
 
-        var exitDoorSwitch = RoomGenerator.AddStructure(exitRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
+        var exitDoorSwitch = StructureGenerator.AddStructure(exitRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Right, 64, 8, 0.5));
         exitDoorSwitch.LineSpecials[Side.Right] = new ExitNormal();
         exitDoorSwitch.SideTextures[Side.Right] = new TextureInfo(Texture.SW1BLUE, LowerUnpegged: true);
 

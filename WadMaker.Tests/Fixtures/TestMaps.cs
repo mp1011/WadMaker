@@ -50,7 +50,7 @@ class TestMaps : StandardTest
             Floor = -128
         };
         map.Rooms.Add(rightRoom);
-        RoomGenerator.AddStructure(rightRoom, new Alcove(new Room(rightRoom) { Floor = 32, Ceiling = -32 }, Side.Right, 128, 16, 0.5));
+        StructureGenerator.AddStructure(rightRoom, new Alcove(new Room(rightRoom) { Floor = 32, Ceiling = -32 }, Side.Right, 128, 16, 0.5));
 
         var topRoom = new Room(map)
         {

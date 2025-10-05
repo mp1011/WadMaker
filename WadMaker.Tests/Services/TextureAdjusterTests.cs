@@ -96,7 +96,7 @@ internal class TextureAdjusterTests : StandardTest
             WallTexture = new TextureInfo(Texture.BRICK7),
         });
 
-        RoomGenerator.AddStructure(map.Rooms[0],
+        StructureGenerator.AddStructure(map.Rooms[0],
            new Alcove(Template: new Room { Floor = 32, Ceiling = -32 },
            Side: Side.Top,
            Width: 100,
@@ -181,7 +181,7 @@ internal class TextureAdjusterTests : StandardTest
         var map = new Map();
         var room1 = map.AddRoom(new Room { UpperLeft = Point.Empty, BottomRight = new Point(256, -256) });
         var room2 = map.AddRoom(new Room(map, size: new Size(128, 128)).Place().EastOf(room1, 32));
-        var switchAlcove = RoomGenerator.AddStructure(room1, new Alcove(new Room { Floor = 16, Ceiling = -16 }, Side.Left, 64, 8, 0.5));
+        var switchAlcove = StructureGenerator.AddStructure(room1, new Alcove(new Room { Floor = 16, Ceiling = -16 }, Side.Left, 64, 8, 0.5));
         int doorTag = IDProvider.NextSectorIndex();
         switchAlcove.LineSpecials[Side.Left] = new DoorOpen(doorTag, Speed.StandardDoor);
         map.AddRoom(HallGenerator.GenerateHall(new Hall(128, room1, room2,
@@ -228,7 +228,7 @@ internal class TextureAdjusterTests : StandardTest
     {
         var map = new TestMaps().TwoConnectedRoomsWithDifferentCeilings();
         map.Theme = new TechbaseTheme();
-        var pit = RoomGenerator.AddStructure(map.Rooms[1], new HazardPit(
+        var pit = StructureGenerator.AddStructure(map.Rooms[1], new HazardPit(
             Depth: 32,
             Flat: AnimatedFlat.NUKAGE1,
             Damage: DamagingSectorSpecial.Damage_10Percent,
@@ -300,7 +300,7 @@ internal class TextureAdjusterTests : StandardTest
         map.Theme = theme;  
 
         var room = map.AddRoom(new Room(map, size: new Size(256,256)));
-        var alcove = RoomGenerator.AddStructure(room,
+        var alcove = StructureGenerator.AddStructure(room,
             new Alcove(new Room { Floor = 16, Ceiling = -16, Tag = 1 }, Side.Left, 64, 8, 0.5));
 
         var mapElements = MapBuilder.Build(map);
