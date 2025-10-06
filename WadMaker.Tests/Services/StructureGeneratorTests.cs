@@ -1,6 +1,6 @@
 ﻿namespace WadMaker.Tests.Services;
 
-internal class RoomGeneratorTests : StandardTest
+internal class StructureGeneratorTests : StandardTest
 {
     [Test]
     public void CanAddAlcove()
