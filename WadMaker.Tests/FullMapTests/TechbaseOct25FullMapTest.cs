@@ -102,7 +102,7 @@ class TechbaseOct25FullMapTest : StandardTest
             Room1: bigRoom,
             Room2: southRoom,
             HallTemplate: new Room { Floor = 128, Ceiling = 128 + 112 },
-            Lift: new Lift(TextureInfo.Default, 64, 64, bigRoom, southRoom, AddWalkTrigger: true))).AddTo(map);
+            Lift: new HallwayLift(TextureInfo.Default, 64, 64, bigRoom, southRoom, AddWalkTrigger: true))).AddTo(map);
 
         var keyRoom = map.AddRoom();
         keyRoom.Size = new Size(128, 128);

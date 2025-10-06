@@ -1,9 +1,26 @@
 ﻿
 namespace WadMaker.Services.StructureGenerators;
 
-internal class LiftGenerator : IMultiRoomStructureGenerator<Lift>
+internal class LiftGenerator : IMultiRoomStructureGenerator<HallwayLift>, ISideStructureGenerator<Lift>
 {
-    public IEnumerable<Room> AddStructure(Room hallRoom, Lift lift, Side hallSide)
+    public Room AddStructure(Room hallRoom, Lift lift, Side activationSide)
+    {
+        var liftRoom = hallRoom.AddInnerStructure(size: lift.Size);
+        liftRoom.WallTexture = lift.SideTexture;
+        liftRoom.Floor = 0;
+        liftRoom.Ceiling = 0;
+        lift.SetOn(liftRoom);
+
+        var activation = lift.AddWalkTrigger ? Activation.PlayerCross | Activation.PlayerUse | Activation.Repeating
+                                             : Activation.PlayerUse | Activation.Repeating;
+
+        liftRoom.LineSpecials[activationSide.Opposite()] = new Plat_DownWaitUpStay(0, Speed.StandardLift, Activation: activation);
+        liftRoom.LineSpecials[activationSide] = new Plat_DownWaitUpStay(0, Speed.StandardLift, Activation: activation);
+
+        return liftRoom;       
+    }
+
+    public IEnumerable<Room> AddStructure(Room hallRoom, HallwayLift lift, Side hallSide)
     {
         var liftPoints = hallRoom.Bounds.GetSegment(hallSide, lift.PositionInHall, lift.Width);
 

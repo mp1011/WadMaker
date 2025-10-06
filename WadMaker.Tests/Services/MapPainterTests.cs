@@ -214,7 +214,7 @@ internal class MapPainterTests : StandardTest
             new Hall(64,
             map.Rooms[0],
             map.Rooms[1],
-            Lift: new Lift(
+            Lift: new HallwayLift(
                 SideTexture: new TextureInfo(Lower: Texture.PLAT1),
                 32,
                 64,

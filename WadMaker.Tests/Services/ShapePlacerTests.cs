@@ -113,4 +113,24 @@ internal class ShapePlacerTests : StandardTest
 
         Assert.That(inner.UpperLeft.X, Is.EqualTo(room.Bounds.Width - inner.Bounds.Width));
     }
+
+    [Test]
+    public void CanPlaceItemsOnInnerSides()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(512, 512));
+
+        var ledge = room.AddInnerStructure(size: new Size(256, 256));
+        ledge.Place().InCenterOf(room);
+
+        var northPiece = ledge.AddInnerStructure(size: new Size(64, 64)).Place().InsideNorthOf(ledge);
+        var southPiece = ledge.AddInnerStructure(size: new Size(64, 64)).Place().InsideSouthOf(ledge);
+        var westPiece = ledge.AddInnerStructure(size: new Size(64, 64)).Place().InsideWestOf(ledge);
+        var eastPiece = ledge.AddInnerStructure(size: new Size(64, 64)).Place().InsideEastOf(ledge);
+
+        Assert.That(northPiece.UpperLeft.Y, Is.EqualTo(0));
+        Assert.That(southPiece.BottomRight.Y, Is.EqualTo(-ledge.Size.Height));
+        Assert.That(westPiece.UpperLeft.X, Is.EqualTo(0));
+        Assert.That(eastPiece.BottomRight.X, Is.EqualTo(ledge.Size.Width));
+    }
 }

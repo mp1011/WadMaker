@@ -49,7 +49,7 @@ FIX NEXT:
 [x] - rename to StructureBuilder or something
 [x] - rework deferred placement, it is not intuitive as is
 [x] - add easier ways of placing inner sectors
-[ ] - platforms that aren't in a hall
+[x] - platforms that aren't in a hall
 [ ] - bounds calculation doesn't work when sector has "copy from parent" adjusters
 [ ] - resolve crossing lines
 [ ] - stairs, add options for ceilings 

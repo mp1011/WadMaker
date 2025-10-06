@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Tests.Services;
+﻿using WadMaker.Models.LineSpecials;
+
+namespace WadMaker.Tests.Services;
 
 internal class StructureGeneratorTests : StandardTest
 {
@@ -86,5 +88,32 @@ internal class StructureGeneratorTests : StandardTest
         Assert.That(pitSector.Floor, Is.EqualTo(Flat.NUKAGE1));
         Assert.That(pitSector.Data.heightfloor, Is.EqualTo(room2Sector.Data.heightfloor - 32));
         Assert.That(pitSector.SectorSpecial, Is.EqualTo(ZDoomSectorSpecial.Damage_10Percent));
+    }
+
+    [Test]
+    public void CanAddLiftInsideRoom()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(512, 512));
+        room.Ceiling = 512;
+
+        var ledge = room.AddInnerStructure(size: new Size(256, 256));
+        ledge.Place().InCenterOf(room);
+        ledge.Floor = 128;
+        ledge.Ceiling = 0;
+
+        var lift = StructureGenerator.AddStructure(ledge, new Lift(
+            SideTexture: new TextureInfo(Texture.PLAT1),
+            DestinationRoom: room,
+            Size: new Size(128, 128),
+            AddWalkTrigger: false), Side.Left);
+
+        lift.Place().InsideWestOf(ledge);
+
+        var mapElements = MapBuilder.Build(map);
+        var liftLines = mapElements.LineDefs.Where(p=>p.LineSpecial != null && p.LineSpecial is Plat_DownWaitUpStay).ToList();
+
+        // special is getting added to other lines
+        Assert.That(liftLines.Count, Is.EqualTo(2));
     }
 }

@@ -68,7 +68,7 @@ class TestMaps : StandardTest
             Door: new Door(Thickness: 16, Texture.BIGDOOR1, Texture.DOORSTOP, 64))));
 
         map.Rooms.Add(HallGenerator.GenerateHall(new Hall(128, centerRoom, rightRoom, hallTemplates,
-            Lift: new Lift(new TextureInfo(Mid: Texture.STONE, Lower: Texture.PLAT1), 64, 128, centerRoom, rightRoom))));
+            Lift: new HallwayLift(new TextureInfo(Mid: Texture.STONE, Lower: Texture.PLAT1), 64, 128, centerRoom, rightRoom))));
 
         map.Rooms.Add(HallGenerator.GenerateHall(new Hall(128, centerRoom, topRoom, hallTemplates,
             Stairs: new Stairs(new TextureInfo(Mid: Texture.STONE, Lower: Texture.STEP1), 32, 32, 32, centerRoom, topRoom))));

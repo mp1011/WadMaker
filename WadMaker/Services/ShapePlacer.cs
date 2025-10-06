@@ -29,10 +29,21 @@ public class ShapePlacer<T> where T : IShape
         return Shape;
     }
 
+    public T ToInsideOf(IShape other, Side side, int gap = 0, Anchor? sourceAnchor = null, Anchor? targetAnchor = null)
+    {
+        return ToSideOf(other, side, gap - Shape.Bounds().AxisLength(side), sourceAnchor, targetAnchor);
+    }
+
     public T WestOf(IShape other, int gap = 0, Anchor? anchor = null) => ToSideOf(other, Side.Left, gap, sourceAnchor: anchor);
     public T EastOf(IShape other, int gap = 0, Anchor? anchor = null) => ToSideOf(other, Side.Right, gap, sourceAnchor: anchor);
     public T NorthOf(IShape other, int gap = 0, Anchor? anchor = null) => ToSideOf(other, Side.Top, gap, sourceAnchor: anchor);
     public T SouthOf(IShape other, int gap = 0, Anchor? anchor = null) => ToSideOf(other, Side.Bottom, gap, sourceAnchor: anchor);
+
+    public T InsideWestOf(IShape other, int gap = 0, Anchor? anchor = null) => ToInsideOf(other, Side.Left, gap, sourceAnchor: anchor);
+    public T InsideEastOf(IShape other, int gap = 0, Anchor? anchor = null) => ToInsideOf(other, Side.Right, gap, sourceAnchor: anchor);
+    public T InsideNorthOf(IShape other, int gap = 0, Anchor? anchor = null) => ToInsideOf(other, Side.Top, gap, sourceAnchor: anchor);
+    public T InsideSouthOf(IShape other, int gap = 0, Anchor? anchor = null) => ToInsideOf(other, Side.Bottom, gap, sourceAnchor: anchor);
+
 
     public T InCenterOf(IShape other)
     {
