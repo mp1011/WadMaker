@@ -1,6 +1,6 @@
-﻿namespace WadMaker.Services;
+﻿namespace WadMaker.Services.StructureGenerators;
 
-public class StructureGenerator
+class AlcoveGenerator : IStructureGenerator<Alcove>
 {
     public Room AddStructure(Room room, Alcove alcove)
     {
@@ -20,37 +20,6 @@ public class StructureGenerator
 
         room.InnerStructures.Add(alcoveRoom);
         return alcove.SetOn(alcoveRoom);
-    }
-
-    public Room AddStructure(Room room, Window window)
-    {
-        var side = window.AdjacentRoom.Bounds.SideRelativeTo(room.Bounds);
-
-        int spaceBetween = Math.Abs(room.Bounds.SidePosition(side) - window.AdjacentRoom.Bounds.SidePosition(side.Opposite()));
-
-        return window.SetOn(AddStructure(room, new Alcove(
-            window.Template,
-            Side: side,
-            Width: window.Width,
-            Depth: spaceBetween,
-            CenterPercent: window.CenterPercent)));
-    }
-
-    public Room AddStructure(Room room, HazardPit hazardPit)
-    {
-        var pit = new Room
-        {
-            SectorSpecial = hazardPit.Damage.To<ZDoomSectorSpecial>(),
-            Floor = -hazardPit.Depth,
-            FloorTexture = hazardPit.Flat.To<Flat>(),
-            Ceiling = 0
-        };
-
-        pit.UpperLeft = new Point(hazardPit.Padding.Left, -hazardPit.Padding.Top);
-        pit.BottomRight = new Point(room.Bounds.Width - hazardPit.Padding.Right, -(room.Bounds.Height - hazardPit.Padding.Bottom));
-
-        room.InnerStructures.Add(pit);
-        return hazardPit.SetOn(pit);
     }
 
     private (Point, Point) GetAlcoveSegment(Side side, Room room, Point centerPoint, int width, int depth)

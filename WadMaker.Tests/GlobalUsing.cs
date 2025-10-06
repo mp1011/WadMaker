@@ -9,6 +9,7 @@ global using WadMaker.Queries;
 global using WadMaker.Services;
 global using WadMaker.Models.Placement;
 global using WadMaker.Services.ShapeModifiers;
+global using WadMaker.Services.StructureGenerators;
 global using WadMaker.Tests.Fixtures;
 global using WadMaker.Tests.TestHelpers;
 global using WadMaker.Themes;

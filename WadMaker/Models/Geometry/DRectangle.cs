@@ -123,4 +123,33 @@ public struct DRectangle
             return dis.IntersectsWith(extendedBounds);
         });        
     }
+
+    public (Point, Point) GetSegment(Side side, int position, int width)
+    {
+        Point upperLeft, bottomRight;
+        switch (side)
+        {
+            case Side.Right:
+                upperLeft = side.ToPoint(position);
+                bottomRight = upperLeft.Add(new Point(width, -Height));
+                break;
+            case Side.Left:
+                upperLeft = side.ToPoint(position).Add(new Point(Width - width, 0));
+                bottomRight = upperLeft.Add(new Point(width, -Height));
+                break;
+            case Side.Bottom:
+                upperLeft = side.ToPoint(position);
+                bottomRight = upperLeft.Add(new Point(Width, -width));
+                break;
+            case Side.Top:
+                upperLeft = side.ToPoint(position).Add(new Point(0, -(Height - width)));
+                bottomRight = upperLeft.Add(new Point(Width, -width));
+                break;
+            default:
+                throw new Exception("Invalid Side");
+
+        }
+
+        return (upperLeft, bottomRight);
+    }
 }

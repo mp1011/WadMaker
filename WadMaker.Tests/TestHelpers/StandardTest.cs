@@ -1,4 +1,5 @@
-﻿using WadMaker.Tests.Fixtures;
+﻿using WadMaker.Services.StructureGenerators;
+using WadMaker.Tests.Fixtures;
 using WadMaker.Tests.Services;
 
 namespace WadMaker.Tests.TestHelpers;
@@ -18,7 +19,10 @@ internal class StandardTest
     protected TextureAdjuster TextureAdjuster => ServiceProvider.GetRequiredService<TextureAdjuster>();
 
     protected StructureGenerator StructureGenerator => ServiceProvider.GetRequiredService<StructureGenerator>();
-    protected HallGenerator HallGenerator => ServiceProvider.GetRequiredService<HallGenerator>();
+
+    // for compatability with older tests
+    protected StructureGenerator HallGenerator => ServiceProvider.GetRequiredService<StructureGenerator>();
+
     protected ThingPlacer ThingPlacer => ServiceProvider.GetRequiredService<ThingPlacer>();
     protected IDProvider IDProvider => ServiceProvider.GetRequiredService<IDProvider>();
 

@@ -9,3 +9,7 @@ public abstract record RoomBuildingBlock()
     }
 }
 
+public abstract record MultiRoomBuildingBlock() : RoomBuildingBlock
+{
+}
+
