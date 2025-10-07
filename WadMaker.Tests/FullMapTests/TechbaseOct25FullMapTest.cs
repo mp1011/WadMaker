@@ -11,14 +11,12 @@ class TechbaseOct25FullMapTest : StandardTest
         map.Theme = new TechbaseTheme(Version: 1);
 
         var entrance = map.AddRoom(new Room(map, size: new Size(256,256)));
-        entrance.ShapeModifiers.Add(new AngledCorners(64));
+        entrance.Shape.Modifiers.Add(new AngledCorners(64));
 
         var roomInner = entrance.AddInnerStructure(new Room(map) {  Floor = -8, Ceiling = 8 });
-        roomInner.UpperLeft = Point.Empty;
-        roomInner.BottomRight = new Point(entrance.Size.Width, -entrance.Size.Height);
-        roomInner.ShapeModifiers.Add(new CopyParentShape(new Padding(8), entrance));
+        roomInner.Shape.Initializer = new CopyParentShape(new Padding(8), entrance);
         var skylight = roomInner.AddInnerStructure(new Room(map, size: new Size(128, 128)));
-        skylight.Center = roomInner.Bounds().RelativePoint(0.5, 0.5);
+        skylight.Place().InCenterOf(roomInner);
         skylight.CeilingTexture = Flat.F_SKY1;
         skylight.Ceiling = 16;
 
@@ -65,7 +63,7 @@ class TechbaseOct25FullMapTest : StandardTest
 
         var bigRoom = map.AddRoom();
         bigRoom.Size = new Size(512, 512);
-        bigRoom.ShapeModifiers.Add(new InvertCorners { Width = 128 });
+        bigRoom.Shape.Modifiers.Add(new InvertCorners { Width = 128 });
         bigRoom.MatchFloorAndCeilingTo(northEastRoom, ceilingAdjust: 128);
         bigRoom.Place().SouthOf(northEastRoom, gap: 64);
 
@@ -77,7 +75,7 @@ class TechbaseOct25FullMapTest : StandardTest
             Door: new Door(16, TextureInfo.Default, TextureInfo.Default, 16))).AddTo(map);
 
         var skylight2 = bigRoom.AddInnerStructure(new Room { Ceiling = 32, CeilingTexture = Flat.F_SKY1 });
-        skylight2.ShapeModifiers.Add(new NGon { Sides = 6 });
+        skylight2.Shape.Modifiers.Add(new NGon { Sides = 6 });
         skylight2.Center = bigRoom.Bounds().RelativePoint(0.5, 0.5);
 
         var leftLedge = bigRoom.AddInnerStructure(new Room { Floor = 128, Ceiling = 0 });
@@ -127,7 +125,7 @@ class TechbaseOct25FullMapTest : StandardTest
         southPassage3.BottomRight = new Point(keyRoom.UpperLeft.X + 32 + 64, keyRoom.UpperLeft.Y);
 
         var keyPedestal = keyRoom.AddInnerStructure(new Room(map, size: new Size(32, 32)) { Floor = 32 });
-        keyPedestal.ShapeModifiers.Add(new NGon { Sides = 8 });
+        keyPedestal.Shape.Modifiers.Add(new NGon { Sides = 8 });
         keyPedestal.Center = keyRoom.Bounds().RelativePoint(0.5, 0.5);
         ThingPlacer.AddThing(ThingType.Red_keycard, keyPedestal, 0.5, 0.5);
 

@@ -11,7 +11,7 @@ internal class RoomBuilderTests : StandardTest
             BottomRight = new Point(128, -128),
         };
 
-        room.ShapeModifiers.Add(new InvertCorners { Width = 16 });
+        room.Shape.Modifiers.Add(new InvertCorners { Width = 16 });
 
         var elements = RoomBuilder.Build(room);
         Assert.That(elements.Vertices, Has.Count.EqualTo(12));
@@ -27,7 +27,7 @@ internal class RoomBuilderTests : StandardTest
             BottomRight = new Point(400, -400),
         };
 
-        room.ShapeModifiers.Add(new AngledCorners { Width = 16 });
+        room.Shape.Modifiers.Add(new AngledCorners { Width = 16 });
 
         var elements = RoomBuilder.Build(room);
         Assert.That(elements.Vertices, Has.Count.EqualTo(8));
@@ -43,7 +43,7 @@ internal class RoomBuilderTests : StandardTest
             BottomRight = new Point(400, -400),
         };
 
-        room.ShapeModifiers.Add(new NGon { Sides = 32 });
+        room.Shape.Modifiers.Add(new NGon { Sides = 32 });
 
         var elements = RoomBuilder.Build(room);
         Assert.That(elements.Vertices, Has.Count.EqualTo(32));
@@ -58,7 +58,7 @@ internal class RoomBuilderTests : StandardTest
             BottomRight = new Point(400, -400),
         };
 
-        room.ShapeModifiers.Add(new NotchedSides { Width = 128, Depth = 32 });
+        room.Shape.Modifiers.Add(new NotchedSides { Width = 128, Depth = 32 });
 
         var elements = RoomBuilder.Build(room);
         var linesByLength = elements.LineDefs.GroupBy(p => p.Length).ToDictionary(k=>k.Key, k => k.ToList());
@@ -77,7 +77,7 @@ internal class RoomBuilderTests : StandardTest
             BottomRight = new Point(256, -256),
         };
 
-        room.InnerStructures.Add(new Room
+        room.AddInnerStructure(new Room
         {
             UpperLeft = new Point(64, -64),
             BottomRight = new Point(128, -128),

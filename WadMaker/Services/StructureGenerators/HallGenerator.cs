@@ -57,12 +57,12 @@ public class HallGenerator : IStructureGenerator<Hall>
 
         if(hall.Stairs != null)
         {
-            hallRoom.InnerStructures.AddRange(_structureGenerator.AddMultiRoomStructure(hallRoom, hall.Stairs, side));
+            hallRoom.AddInnerStructures(_structureGenerator.AddMultiRoomStructure(hallRoom, hall.Stairs, side));
         }
 
         if (hall.Lift != null)
         {
-            hallRoom.InnerStructures.AddRange(_structureGenerator.AddMultiRoomStructure(hallRoom, hall.Lift, side));
+            hallRoom.AddInnerStructures(_structureGenerator.AddMultiRoomStructure(hallRoom, hall.Lift, side));
         }
 
 
@@ -77,7 +77,7 @@ public class HallGenerator : IStructureGenerator<Hall>
             hallCenter.Move(side.CounterClockwiseTurn(), hallWidth / 2)
         };
 
-        var roomLines = room.GetPoints().WithNeighbors().ToArray();
+        var roomLines = room.Shape.CalculatePoints().WithNeighbors().ToArray();
         var intersectingLine = roomLines.FirstOrDefault(line => anchors.All(a => a.Intersects(line.Item2, line.Item3)));
 
         // if anchors are on a wall, we don't need to do anything

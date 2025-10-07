@@ -18,7 +18,7 @@ class AlcoveGenerator : IStructureGenerator<Alcove>
         alcoveRoom.UpperLeft = alcovePoints.Item1;
         alcoveRoom.BottomRight = alcovePoints.Item2;
 
-        room.InnerStructures.Add(alcoveRoom);
+        room.AddInnerStructure(alcoveRoom);
         return alcove.SetOn(alcoveRoom);
     }
 

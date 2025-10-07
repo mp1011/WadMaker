@@ -1,6 +1,4 @@
-﻿using WadMaker.Models.BuildingBlocks;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 public class RoomBuilder
 {
     private readonly IDProvider _idProvider;
@@ -151,9 +149,9 @@ public class RoomBuilder
         heightceiling: room.Floor + room.VerticalHeight,
         lightlevel: 127));
 
-    private IEnumerable<vertex> Vertices(IShape room)
+    private IEnumerable<vertex> Vertices(IWithShape room)
     {
-        return room.GetPoints().Select(p => new vertex(p.X, p.Y));
+        return room.Shape.CalculatePoints().Select(p => new vertex(p.X, p.Y));
     }
 
     public IEnumerable<SideDef> SideDefs(Room room, vertex[] vertices, Sector sector)

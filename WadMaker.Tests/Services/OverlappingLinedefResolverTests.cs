@@ -68,7 +68,7 @@ class OverlappingLinedefResolverTests : StandardTest
             BottomRight = new Point(128, -128)
         });
 
-        map.Rooms[0].InnerStructures.Add(
+        map.Rooms[0].AddInnerStructure(
             new Room
             {
                 Floor = 0,
@@ -96,7 +96,7 @@ class OverlappingLinedefResolverTests : StandardTest
             Tag = 1,
         });
 
-        map.Rooms[0].InnerStructures.Add(
+        map.Rooms[0].AddInnerStructure(
             new Room
             {
                 UpperLeft = new Point(50, 0),
@@ -104,7 +104,7 @@ class OverlappingLinedefResolverTests : StandardTest
                 Tag = 2
             });
 
-        map.Rooms[0].InnerStructures.Add(
+        map.Rooms[0].AddInnerStructure(
            new Room
            {
                UpperLeft = new Point(100, 0),
@@ -135,7 +135,7 @@ class OverlappingLinedefResolverTests : StandardTest
             Tag = 1
         });
 
-        map.Rooms[0].InnerStructures.Add(
+        map.Rooms[0].AddInnerStructure(
             new Room
             {
                 UpperLeft = new Point(100, 0),

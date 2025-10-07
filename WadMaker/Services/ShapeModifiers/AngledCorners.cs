@@ -1,5 +1,4 @@
-﻿
-namespace WadMaker.Services.ShapeModifiers;
+﻿namespace WadMaker.Services.ShapeModifiers;
 
 
 /// <summary>
@@ -15,7 +14,7 @@ public class AngledCorners : IShapeModifier
     public int Width { get; set; } = 16;
 
     
-    public Point[] AlterPoints(Point[] points, IShape room)
+    public Point[] AlterPoints(Point[] points)
     {
         List<Point> newPoints = new List<Point>();
         foreach (var point in points.WithNeighbors())

@@ -1,6 +1,6 @@
 ﻿namespace WadMaker.Services;
 
-public class MultiShapePlacer<T> where T : IShape
+public class MultiShapePlacer<T> where T : IWithShape
 {
     public T[] Shapes { get; }
 
@@ -9,7 +9,7 @@ public class MultiShapePlacer<T> where T : IShape
         Shapes = shapes.ToArray();
     }
 
-    public T[] InLine(IShape container, Side direction, double position, Padding padding)
+    public T[] InLine(IWithShape container, Side direction, double position, Padding padding)
     {
         if (Shapes.Length <= 1)
             return Shapes;
@@ -39,7 +39,7 @@ public class MultiShapePlacer<T> where T : IShape
         return Shapes;
     }
 
-    public T[] InGrid(IShape container, int columns, Padding padding)
+    public T[] InGrid(IWithShape container, int columns, Padding padding)
     {
         int rows = Shapes.Length / columns;
         if (Shapes.Length < 4)

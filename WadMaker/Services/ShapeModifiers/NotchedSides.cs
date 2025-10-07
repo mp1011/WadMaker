@@ -1,5 +1,4 @@
-﻿
-namespace WadMaker.Services.ShapeModifiers;
+﻿namespace WadMaker.Services.ShapeModifiers;
 
 /// <summary>
 /// Removes a chunk from each side
@@ -9,7 +8,7 @@ public class NotchedSides : IShapeModifier
     public int Width { get; set; }  
     public int Depth { get; set; }
 
-    public Point[] AlterPoints(Point[] points, IShape room)
+    public Point[] AlterPoints(Point[] points)
     {
         var center = points.CentralPoint();
         var newPoints = new List<Point>();

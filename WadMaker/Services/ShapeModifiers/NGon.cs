@@ -8,7 +8,7 @@ public class NGon : IShapeModifier
 {
     public int Sides { get; set; } = 16;
 
-    public Point[] AlterPoints(Point[] points, IShape room)
+    public Point[] AlterPoints(Point[] points)
     {
         if (points.Length != 4)
             return points;

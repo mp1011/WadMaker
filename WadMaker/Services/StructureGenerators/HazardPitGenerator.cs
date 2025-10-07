@@ -15,7 +15,7 @@ internal class HazardPitGenerator : IStructureGenerator<HazardPit>
         pit.UpperLeft = new Point(hazardPit.Padding.Left, -hazardPit.Padding.Top);
         pit.BottomRight = new Point(room.Bounds.Width - hazardPit.Padding.Right, -(room.Bounds.Height - hazardPit.Padding.Bottom));
 
-        room.InnerStructures.Add(pit);
+        room.AddInnerStructure(pit);
         return hazardPit.SetOn(pit);
     }
 }

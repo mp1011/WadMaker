@@ -1,20 +1,21 @@
-﻿
-namespace WadMaker.Services.ShapeModifiers;
+﻿namespace WadMaker.Services.ShapeModifiers;
 
-public class CopyParentShape : IShapeModifier
+public class CopyParentShape : IShapeInitializer
 {
     private readonly Padding _padding;
-    private readonly IShape _parent;
+    private readonly IWithShape _parent;
 
-    public CopyParentShape(Padding padding, IShape parent)
+    public bool BoundingBoxFromPoints => true;
+
+    public CopyParentShape(Padding padding, IWithShape parent)
     {
         _padding = padding;
         _parent = parent;
     }
 
-    public Point[] AlterPoints(Point[] points, IShape room)
+    public Point[] InitializePoints(Shape shape)
     {
-        var parentPoints = _parent.GetPoints();
+        var parentPoints = _parent.Shape.CalculatePoints();
         var center = parentPoints.CentralPoint();
 
         return parentPoints.Select(p => AlterPoint(p, center))

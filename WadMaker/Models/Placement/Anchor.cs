@@ -8,12 +8,12 @@ public abstract record Anchor(double Value)
 
     public static Anchor Absolute(double value) => new AbsoluteAnchor(value);
 
-    public abstract AnchorPoint GetPoint(IShape shape, Side side);
+    public abstract AnchorPoint GetPoint(IWithShape shape, Side side);
 }
 
 public record AbsoluteAnchor(double Value) : Anchor(Value)
 {
-    public override AnchorPoint GetPoint(IShape shape, Side side)
+    public override AnchorPoint GetPoint(IWithShape shape, Side side)
     {
         return new AnchorPoint(shape, shape.Bounds().GetRelativeSidePoint(side, (int)Value));
     }
@@ -21,7 +21,7 @@ public record AbsoluteAnchor(double Value) : Anchor(Value)
 
 public record RelativeAnchor(double Value) : Anchor(Value)
 {
-    public override AnchorPoint GetPoint(IShape shape, Side side)
+    public override AnchorPoint GetPoint(IWithShape shape, Side side)
     {
         return new AnchorPoint(shape, shape.Bounds().GetRelativeSidePoint(side, (int)(shape.Bounds().SideLength(side) * Value)));
     }

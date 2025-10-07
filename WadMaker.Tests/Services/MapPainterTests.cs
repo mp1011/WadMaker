@@ -109,12 +109,12 @@ internal class MapPainterTests : StandardTest
             BottomRight = new Point(256, -256)
         });
 
-        map.Rooms[0].Pillars.Add(new Cutout{
+        map.Rooms[0].AddPillar(new Cutout{
             UpperLeft = new Point(148,-128),
             BottomRight = new Point(148+64, -128-64),
             WallTexture = Texture.STONE2});
 
-        map.Rooms[0].Pillars[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
+        map.Rooms[0].Pillars.First().Shape.Modifiers.Add(new InvertCorners { Width = 8 });
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_pillar.udmf");
@@ -138,7 +138,7 @@ internal class MapPainterTests : StandardTest
             BottomRight = new Point(256, -256)
         });
 
-        map.Rooms[0].InnerStructures.Add(new Room
+        map.Rooms[0].AddInnerStructure(new Room
         {
             UpperLeft = new Point(148, -128),
             BottomRight = new Point(148 + 64, -128 - 64),
@@ -147,7 +147,7 @@ internal class MapPainterTests : StandardTest
             Ceiling = 32,
         });
 
-        map.Rooms[0].InnerStructures[0].ShapeModifiers.Add(new InvertCorners { Width = 8 });
+        map.Rooms[0].InnerStructures.First().Shape.Modifiers.Add(new InvertCorners { Width = 8 });
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
         var udmf = MapPainter.Paint(MapBuilder.Build(map));
         var expected = File.ReadAllText("Fixtures//room_with_inner_structure.udmf");
@@ -249,7 +249,7 @@ internal class MapPainterTests : StandardTest
             WallTexture = new TextureInfo(Texture.PLAT1),
             Tag = 1,
         };
-        map.Rooms[0].InnerStructures.Add(liftRoom);
+        map.Rooms[0].AddInnerStructure(liftRoom);
 
         //switch
         var switchRoom = new Room

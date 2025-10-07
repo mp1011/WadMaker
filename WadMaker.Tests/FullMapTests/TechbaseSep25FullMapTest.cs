@@ -12,11 +12,11 @@ class TechbaseSep25FullMapTest : StandardTest
 
         //entrance
         var entrance = map.AddRoom(new Room(parent: map, center: new Point(0, 0), size: new Size(256, 256)));
-        entrance.ShapeModifiers.Add(new AngledCorners { Width = 64 });
-        entrance.Pillars.Add(new Cutout { UpperLeft = new Point(64, -64), BottomRight = new Point(96, -32) });
-        entrance.Pillars.Add(new Cutout { UpperLeft = new Point(256 - 64 - 32, -64), BottomRight = new Point(256 - 64, -32) });
-        entrance.Pillars.Add(new Cutout { UpperLeft = new Point(64, -256 + 64 + 32), BottomRight = new Point(96, -256 + 64) });
-        entrance.Pillars.Add(new Cutout { UpperLeft = new Point(256 - 64 - 32, -256 + 64 + 32), BottomRight = new Point(256 - 64, -256 + 64) });
+        entrance.Shape.Modifiers.Add(new AngledCorners { Width = 64 });
+        entrance.AddPillar(new Cutout { UpperLeft = new Point(64, -64), BottomRight = new Point(96, -32) });
+        entrance.AddPillar(new Cutout { UpperLeft = new Point(256 - 64 - 32, -64), BottomRight = new Point(256 - 64, -32) });
+        entrance.AddPillar(new Cutout { UpperLeft = new Point(64, -256 + 64 + 32), BottomRight = new Point(96, -256 + 64) });
+        entrance.AddPillar(new Cutout { UpperLeft = new Point(256 - 64 - 32, -256 + 64 + 32), BottomRight = new Point(256 - 64, -256 + 64) });
         ThingPlacer.AddThing(ThingType.Player1_start, entrance, 0.5, 0.5, ThingFlags.AllSkillsAndModes, Angle.North);
 
         //long hall
@@ -32,7 +32,7 @@ class TechbaseSep25FullMapTest : StandardTest
 
         // west room
         var westRoom = map.AddRoom(new Room(parent: map, size: new Size(512, 512)).Place().WestOf(longHall, 32));
-        westRoom.ShapeModifiers.Add(new InvertCorners { Width = 128 });
+        westRoom.Shape.Modifiers.Add(new InvertCorners { Width = 128 });
         StructureGenerator.AddStructure(westRoom, new Alcove(new Room { Floor = 32, Ceiling = -32 }, Side.Bottom, 128, 16, 0.5));
 
         // west room to long hall door

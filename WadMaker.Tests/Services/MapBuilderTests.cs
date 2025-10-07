@@ -16,7 +16,7 @@ internal class MapBuilderTests : StandardTest
             BottomRight = new Point(300, -300)
         });
 
-        map.Rooms[0].Pillars.Add(new Cutout
+        map.Rooms[0].AddPillar(new Cutout
         {
             UpperLeft = new Point(100, 0),
             BottomRight = new Point(200, -50),
@@ -39,7 +39,7 @@ internal class MapBuilderTests : StandardTest
             Tag = 1,
         });
 
-        map.Rooms[0].InnerStructures.Add(new Room
+        map.Rooms[0].AddInnerStructure(new Room
         {
             UpperLeft = new Point(100, -100),
             BottomRight = new Point(300, -300),
@@ -48,7 +48,7 @@ internal class MapBuilderTests : StandardTest
             Tag = 2,
         });
 
-        map.Rooms[0].InnerStructures[0].InnerStructures.Add(new Room
+        map.Rooms[0].InnerStructures.First().AddInnerStructure(new Room
         {
             UpperLeft = new Point(50, -50),
             BottomRight = new Point(100, -100),
@@ -163,7 +163,7 @@ internal class MapBuilderTests : StandardTest
         room.Tag = 1;
 
         room.AddInnerStructure(new Room { UpperLeft = Point.Empty, BottomRight = new Point(64, -64) });
-        room.InnerStructures[0].Tag = 2;
+        room.InnerStructures.First().Tag = 2;
 
         var mapElements = MapBuilder.Build(map);
         Assert.That(mapElements.Sectors[0].Lines.Count, Is.EqualTo(6));

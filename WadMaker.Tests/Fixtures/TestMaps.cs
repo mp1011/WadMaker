@@ -1,6 +1,4 @@
-﻿using WadMaker.Models;
-
-namespace WadMaker.Tests.Fixtures;
+﻿namespace WadMaker.Tests.Fixtures;
 
 class TestMaps : StandardTest
 {
@@ -16,16 +14,16 @@ class TestMaps : StandardTest
             BottomRight = new Point(200, -200)
         };
 
-        centerRoom.ShapeModifiers.Add(new InvertCorners { Width = 16 });
+        centerRoom.Shape.Modifiers.Add(new InvertCorners { Width = 16 });
         map.Rooms.Add(centerRoom);
-        centerRoom.InnerStructures.Add(new Room(centerRoom)
+        centerRoom.AddInnerStructure(new Room(centerRoom)
         {
             Floor = -16,
             Ceiling = 0,
             UpperLeft = new Point(32, -32),
             BottomRight = new Point(128, -128),
         });
-        centerRoom.InnerStructures[0].ShapeModifiers.Add(new NGon { Sides = 16 });
+        centerRoom.InnerStructures.First().Shape.Modifiers.Add(new NGon { Sides = 16 });
 
         var leftRoom = new Room(map)
         {
@@ -33,8 +31,8 @@ class TestMaps : StandardTest
             BottomRight = new Point(-400, -200),
         };
         map.Rooms.Add(leftRoom);
-        leftRoom.ShapeModifiers.Add(new AngledCorners { Width = 16 });
-        leftRoom.InnerStructures.Add(new Room(leftRoom)
+        leftRoom.Shape.Modifiers.Add(new AngledCorners { Width = 16 });
+        leftRoom.AddInnerStructure(new Room(leftRoom)
         {
             UpperLeft = new Point(50, -50),
             BottomRight = new Point(50 + 64, -50 - 64),
@@ -60,7 +58,7 @@ class TestMaps : StandardTest
             Ceiling = 256
         };
 
-        topRoom.Pillars.Add(new Cutout {  UpperLeft = new Point(64,-64), BottomRight = new Point(96,-96) });
+        topRoom.AddPillar(new Cutout {  UpperLeft = new Point(64,-64), BottomRight = new Point(96,-96) });
         map.Rooms.Add(topRoom);
 
 
@@ -134,7 +132,7 @@ class TestMaps : StandardTest
             BottomRight = new Point(400, -400)
         };
 
-        room.Pillars.Add(new Cutout
+        room.AddPillar(new Cutout
         {
             UpperLeft = new Point(100, -100),
             BottomRight = new Point(300, -300)

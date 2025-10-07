@@ -21,19 +21,19 @@ class IsPointInSectorTests : StandardTest
             BottomRight = new Point(400, -400)
         };
 
-        room.Pillars.Add(new Cutout
+        room.AddPillar(new Cutout
         {
             UpperLeft = new Point(100, -100),
             BottomRight = new Point(200, -200),
         });
 
-        room.Pillars.Add(new Cutout
+        room.AddPillar(new Cutout
         {
             UpperLeft = new Point(300, -300),
             BottomRight = new Point(340, -340),
         });
 
-        room.ShapeModifiers.Add(new InvertCorners { Width = 50 });
+        room.Shape.Modifiers.Add(new InvertCorners { Width = 50 });
 
         var map = new Map();
         map.Rooms.Add(room);

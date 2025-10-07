@@ -16,7 +16,7 @@ class ShapeModifierTests : StandardTest
             new Point(0,-100)
         };
 
-        var modifiedPoints = modifier.AlterPoints(points, new Room());
+        var modifiedPoints = modifier.AlterPoints(points);
 
         var expectedPoints = new[]
         {
@@ -45,10 +45,10 @@ class ShapeModifierTests : StandardTest
     {
         var map = new Map();
         var room = map.AddRoom(new Room(map, center: Point.Empty, size: new Size(400, 400)));
-        room.ShapeModifiers.Add(new InvertCorners { Width = 64 });
+        room.Shape.Modifiers.Add(new InvertCorners { Width = 64 });
 
         var innerShape = room.AddInnerStructure(new Room());
-        innerShape.ShapeModifiers.Add(new CopyParentShape(parent: room, padding: new Padding(32)));
+        innerShape.Shape.Initializer = new CopyParentShape(parent: room, padding: new Padding(32));
 
         var mapElements = MapBuilder.Build(map);
 
@@ -63,11 +63,11 @@ class ShapeModifierTests : StandardTest
     {
         var map = new Map();
         var room = map.AddRoom(new Room(map, center: Point.Empty, size: new Size(400, 400)));
-        room.ShapeModifiers.Add(new InvertCorners { Width = 64 });
+        room.Shape.Modifiers.Add(new InvertCorners { Width = 64 });
 
         var innerShape = room.AddInnerStructure(new Room());
-        innerShape.ShapeModifiers.Add(new CopyParentShape(parent: room, 
-            padding: new Padding(8, 16, 32, 64)));
+        innerShape.Shape.Initializer = new CopyParentShape(parent: room, 
+            padding: new Padding(8, 16, 32, 64));
 
         var mapElements = MapBuilder.Build(map);
 
@@ -76,6 +76,18 @@ class ShapeModifierTests : StandardTest
         Assert.That(innerLines[64].Length, Is.EqualTo(8));
         Assert.That(innerLines[232].Length, Is.EqualTo(2));
         Assert.That(innerLines[192].Length, Is.EqualTo(2));
+    }
 
+    [Test]
+    public void ShapeBoundsAreUpdatedWhenShapeMatchesParent()
+    {
+        var map = new Map();
+        var room = map.AddRoom(new Room(map, center: Point.Empty, size: new Size(400, 400)));
+
+        var inner = room.AddInnerStructure(size: new Size(0, 0));
+        inner.Shape.Initializer = new CopyParentShape(new Padding(10), room);
+
+        Assert.That(inner.UpperLeft, Is.EqualTo(new Point(10, -10)));
+        Assert.That(inner.Bounds.Width, Is.EqualTo(380));
     }
 }

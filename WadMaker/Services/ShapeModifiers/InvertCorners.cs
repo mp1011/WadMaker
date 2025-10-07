@@ -1,5 +1,4 @@
-﻿
-namespace WadMaker.Services.ShapeModifiers;
+﻿namespace WadMaker.Services.ShapeModifiers;
 
 
 /// <summary>
@@ -9,7 +8,7 @@ public class InvertCorners : IShapeModifier
 {
     public int Width { get; set; } = 16;
 
-    public Point[] AlterPoints(Point[] points, IShape room)
+    public Point[] AlterPoints(Point[] points)
     {
         var center = points.CentralPoint();
         List<Point> newPoints = new List<Point>();

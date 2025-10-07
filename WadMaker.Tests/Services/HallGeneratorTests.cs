@@ -194,8 +194,8 @@ class HallGeneratorTests : StandardTest
             BottomRight = new Point(1200, -200)
         });
 
-        map.Rooms[0].ShapeModifiers.Add(new NotchedSides { Width = 160, Depth = 20 });
-        map.Rooms[1].ShapeModifiers.Add(new NotchedSides { Width = 160, Depth = 20 });
+        map.Rooms[0].Shape.Modifiers.Add(new NotchedSides { Width = 160, Depth = 20 });
+        map.Rooms[1].Shape.Modifiers.Add(new NotchedSides { Width = 160, Depth = 20 });
 
         var hall = new Hall(100, map.Rooms[0], map.Rooms[1]);
 

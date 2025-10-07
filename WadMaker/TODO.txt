@@ -182,3 +182,22 @@ CRITICAL:
 [x] doortrak pegging not set
 [x] ammo placement seems not to be placing any ammo?
 
+--- 10/5
+how to handle bounds for shapes that use the "copy from parent" modifier?
+
+in UpperLeft/BottomRight...
+calculate the points, creating a second extension method that passes in the initial points
+set upperleft and bottomright based on max/mins of these points
+
+...but, shape modifiers are meant to be composed.
+"copy from parent" is different because it does not modify existing points but replaces them 
+
+counter-counter point, shape modifiers are currently the only way to manipulate shape
+
+-- 10/6
+relative vs absolute positioning is troublesome
+let shapes know that their position is relative to something else
+change "RelativeTo" to ToAbsolutePositioned
+take that code out of the shape initializer and let the Shape class itself handle it
+
+check room copy to see how we should handle relative shapes

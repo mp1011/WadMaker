@@ -2,11 +2,11 @@
 
 public class AnchorPoint
 {
-    private IShape _shape;
+    private IWithShape _shape;
 
     private Point _absolutePosition;
 
-    public AnchorPoint(IShape shape, Point relativePoint)
+    public AnchorPoint(IWithShape shape, Point relativePoint)
     {
         _absolutePosition = shape.UpperLeft.Add(relativePoint.X, relativePoint.Y); 
         _shape = shape;

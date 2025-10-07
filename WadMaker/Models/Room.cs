@@ -1,27 +1,31 @@
 ﻿namespace WadMaker.Models;
 
-public class Room : IShape, IThemed
+public class Room : IWithShape, IThemed
 {    
     public IThemed Parent { get; }
+
+    public Shape Shape { get; private set; }
 
     public RoomBuildingBlock? BuildingBlock { get; set; }
 
     public List<Thing> Things{ get; } = new List<Thing>();
 
-    public List<IShapeModifier> ShapeModifiers { get; } = new List<IShapeModifier>();
+    public Point UpperLeft
+    {
+        get => Shape.UpperLeft;
+        set => Shape.UpperLeft = value;
+    }
 
-    public Point UpperLeft { get; set; } = Point.Empty;
-    public Point BottomRight { get; set; } = Point.Empty;
+    public Point BottomRight
+    {
+        get => Shape.BottomRight;
+        set => Shape.BottomRight = value;
+    }
 
     public Point Center
     {
-        get => Bounds.Center;
-        set
-        {
-            Point delta = new Point(value.X - Bounds.Center.X, value.Y - Bounds.Center.Y);
-            UpperLeft = UpperLeft.Add(delta);
-            BottomRight = BottomRight.Add(delta);
-        }
+        get => Shape.Center;
+        set => Shape.Center = value;        
     }
 
     /// <summary>
@@ -67,17 +71,20 @@ public class Room : IShape, IThemed
 
     public Dictionary<Side, LineSpecial> LineSpecials { get; private set; } = new Dictionary<Side, LineSpecial>();
 
-    public List<Cutout> Pillars { get; } = new List<Cutout>();
+    private List<Cutout> _pillars = new List<Cutout>();
+    public IEnumerable<Cutout> Pillars => _pillars;
 
     public Cutout AddPillar(Cutout cutout)
     {
-        Pillars.Add(cutout);
+        _pillars.Add(cutout);
+        cutout.Shape.RelativeTo = this.Shape;
         return cutout;
     }
 
     public Cutout AddPillar(Size? size = null) => AddPillar(new Cutout(size: size));
 
-    public List<Room> InnerStructures { get; } = new List<Room>();
+    private List<Room> _innerStructures = new List<Room>();
+    public IEnumerable<Room> InnerStructures => _innerStructures;
 
     public ZDoomSectorSpecial SectorSpecial { get; set; } = ZDoomSectorSpecial.Normal;
 
@@ -86,16 +93,13 @@ public class Room : IShape, IThemed
     public Room(IThemed parent, Point? center = null, Size? size = null)
     {
         Parent = parent;
-        center ??= Point.Empty;
-        size ??= new Size(128, 128);
-
-        UpperLeft = new Point(center.Value.X - size.Value.Width / 2, center.Value.Y + size.Value.Height / 2);
-        BottomRight = new Point(center.Value.X + size.Value.Width / 2, center.Value.Y - size.Value.Height / 2);
+        Shape = new Shape(center: center, size: size);
     }
 
     public Room(IThemed parent, IEnumerable<Point> points)
     {
         Parent = parent;
+        Shape = new Shape();
         SetFromVertices(points);
     }
 
@@ -111,9 +115,17 @@ public class Room : IShape, IThemed
         BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
     }
 
+    public IEnumerable<Room> AddInnerStructures(IEnumerable<Room> rooms)
+    {
+        foreach (var room in rooms)
+            AddInnerStructure(room);
+        return rooms;
+    }
+
     public Room AddInnerStructure(Room room)
     {
-        InnerStructures.Add(room);
+        room.Shape.RelativeTo = this.Shape;
+        _innerStructures.Add(room);
         return room;
     }
 
@@ -123,8 +135,6 @@ public class Room : IShape, IThemed
     {
         var copy = new Room(newParent)
         {
-            UpperLeft = UpperLeft,
-            BottomRight = BottomRight,
             Floor = Floor,
             Ceiling = Ceiling,
             CeilingTexture = CeilingTexture,
@@ -135,11 +145,11 @@ public class Room : IShape, IThemed
             SectorSpecial = SectorSpecial,
             BuildingBlock = BuildingBlock,           
         };
+        copy.Shape = Shape.Copy();
 
         copy.Things.AddRange(Things.Select(t => t.Copy(this, copy)));
-        copy.ShapeModifiers.AddRange(ShapeModifiers);
-        copy.InnerStructures.AddRange(InnerStructures.Select(p => p.Copy(copy)));
-        copy.Pillars.AddRange(Pillars.Select(p => p.Copy()));
+        copy._innerStructures.AddRange(InnerStructures.Select(p => p.Copy(copy)));
+        copy._pillars.AddRange(Pillars.Select(p => p.Copy()));
         copy.LineSpecials = LineSpecials.ToDictionary(k => k.Key, v => v.Value);
         copy.SideTextures = SideTextures.ToDictionary(k => k.Key, v => v.Value);
         return copy;
@@ -175,6 +185,4 @@ public class Room : IShape, IThemed
         Floor = other.Floor + floorAdjust;
         Ceiling = other.Ceiling + ceilingAdjust;
     }
-
-    bool IShape.Owns(IShape other) => Pillars.Contains(other) || InnerStructures.Contains(other);
 }
