@@ -40,6 +40,44 @@ public class OverlappingLinedefResolver
             }
         }
 
+        modified.AddRange(ResolveCrossingLines(originalMapElements, mapElements));
+        return modified;
+    }
+
+    private IEnumerable<LineDef> ResolveCrossingLines(MapElements originalMapElements, MapElements mapElements)
+    {
+        Dictionary<(Sector, Sector), Sector> overlapSectors = new();
+
+        List<LineDef> modified = new();
+
+        int maxIterations = 100000; // safeguard against infinite loops
+        while (--maxIterations > 0)
+        {
+            var nextCrossing = NextCrossingPair(mapElements);
+            if (nextCrossing == null)
+                break;
+            else
+            {
+                var modifiedLines = ResolveCrossingPair(nextCrossing.Value.Item1, nextCrossing.Value.Item2, originalMapElements, overlapSectors).ToArray();
+
+                if (!modifiedLines.Any())
+                    throw new Exception("Unable to resolve crossing linedefs");
+
+                RemoveOverlappingLines(nextCrossing.Value.Item1, nextCrossing.Value.Item2, mapElements);
+
+                mapElements.LineDefs.AddRange(modifiedLines);
+
+                var sideDefs = modifiedLines.SelectMany(l => l.SideDefs).ToArray();
+                mapElements.SideDefs.AddRange(sideDefs.Where(s => !mapElements.SideDefs.Contains(s)));
+
+                var vertices = modifiedLines.SelectMany(p => p.Vertices).Distinct().ToArray();
+                mapElements.Vertices.AddRange(vertices.Where(v => !mapElements.Vertices.Contains(v)));
+
+                modified.AddRange(modifiedLines);
+            }
+        }
+
+        mapElements.Sectors.AddRange(overlapSectors.Values);
         return modified;
     }
 
@@ -80,6 +118,23 @@ public class OverlappingLinedefResolver
             if (overlap != null)            
                 return (lineDef, overlap);
             
+            index++;
+        }
+
+        return null;
+    }
+
+    private (LineDef, LineDef)? NextCrossingPair(MapElements mapElements)
+    {
+        int index = 0;
+        foreach (var lineDef in mapElements.LineDefs)
+        {
+            var overlap = mapElements.LineDefs.Skip(index + 1)
+                .FirstOrDefault(p => p.Crosses(lineDef));
+
+            if (overlap != null)
+                return (lineDef, overlap);
+
             index++;
         }
 
@@ -170,6 +225,75 @@ public class OverlappingLinedefResolver
 
             yield return newLine;
         }
+    }
+
+    private IEnumerable<LineDef> ResolveCrossingPair(LineDef line1, LineDef line2, MapElements originalMapElements,
+         Dictionary<(Sector, Sector), Sector> overlapSectors)
+    {
+        var sectors = line1.Sectors.Union(line2.Sectors).Distinct().ToArray();
+        var vertices = line1.Vertices.Union(line2.Vertices).ToArray();
+        var sides = line1.SideDefs.Union(line2.SideDefs).ToArray();
+
+        var intersectionPoint = line1.IntersectionPoint(line2)!;
+        var intersectionVertex = new vertex(intersectionPoint.Value.X, intersectionPoint.Value.Y);
+
+        // create initial lines with arbitrary sidedefs
+        var lines = vertices.Select(v => new LineDef(v, intersectionVertex, line1.Front, null, new linedef())).ToArray();
+
+        return lines.Select(line =>
+        {
+            LineDef originalLine;
+            if (line.Angle == line1.Angle.Opposite)
+            {
+                originalLine = line1;
+                line.FlipDirection();
+            }
+            else if (line.Angle == line1.Angle)
+            {
+                originalLine = line1;
+            }
+            else if (line.Angle == line2.Angle.Opposite)
+            {
+                originalLine = line2;
+                line.FlipDirection();
+            }
+            else
+            {
+                originalLine = line2;
+            }
+
+            var texture = new TextureInfo(originalLine);
+
+            var frontSectors = originalMapElements.Sectors.Where(s => _isPointInSector.Execute(line.FrontTestPoint, s, originalMapElements)).ToArray();
+            var backSectors = originalMapElements.Sectors.Where(s => _isPointInSector.Execute(line.BackTestPoint, s, originalMapElements)).ToArray();
+
+            if (frontSectors.Length == 1 && backSectors.Length == 0)
+            {
+                return new LineDef(line.V1, line.V2, originalLine.Front.Copy(), null, originalLine.Data);
+            }
+            else if(frontSectors.Length == 2 && backSectors.Length == 1)
+            {
+                var backSide = sides.First(p => p.Sector == backSectors[0]).Copy();
+
+                var overlapSector = overlapSectors.Try((frontSectors[0], frontSectors[1]))
+                    ?? overlapSectors.Try((frontSectors[1], frontSectors[0]));
+
+                if(overlapSector == null)
+                {
+                    overlapSector = new Sector(frontSectors[0].Room, frontSectors[0].Data);
+                    overlapSectors[(frontSectors[0], frontSectors[1])] = overlapSector;
+                }
+
+                var frontSide = new SideDef(overlapSector, originalLine.Front.Data);
+                var newLine = new LineDef(line.V1, line.V2, frontSide, backSide, originalLine.Data with { twosided = true, blocking = false});
+                texture.ApplyTo(newLine);
+                return newLine;
+            }
+            else
+            {
+                throw new NotImplementedException("this needs more work");
+            }
+        }).ToArray();
     }
 
     /// <summary>

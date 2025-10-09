@@ -205,7 +205,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
 
     public double FrontAngle => V1.FrontSidedefAngle(V2);
 
-    public double Angle => V1.AngleTo(V2);
+    public Angle Angle => new Angle(V1.AngleTo(V2));
 
     public bool BelongsTo(Sector sector)
     {
@@ -292,6 +292,48 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public bool Overlaps(LineDef other)
     {
         return OverlappingVertices(other).Length > 1;
+    }
+
+    public bool Crosses(LineDef other) => IntersectionPoint(other) != null;
+
+    public Point? IntersectionPoint(LineDef other)
+    {
+        //copilot authored
+
+        // Line 1: (x1, y1) to (x2, y2)
+        // Line 2: (x3, y3) to (x4, y4)
+        double x1 = V1.x, y1 = V1.y;
+        double x2 = V2.x, y2 = V2.y;
+        double x3 = other.V1.x, y3 = other.V1.y;
+        double x4 = other.V2.x, y4 = other.V2.y;
+
+        double denom = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+        if (Math.Abs(denom) < double.Epsilon)
+            return null; // Lines are parallel or coincident
+
+        double pre = (x1 * y2 - y1 * x2);
+        double post = (x3 * y4 - y3 * x4);
+        double x = (pre * (x3 - x4) - (x1 - x2) * post) / denom;
+        double y = (pre * (y3 - y4) - (y1 - y2) * post) / denom;
+
+        // Check if intersection is within both segments
+        bool onThis =
+            Math.Min(x1, x2) - double.Epsilon <= x && x <= Math.Max(x1, x2) + double.Epsilon &&
+            Math.Min(y1, y2) - double.Epsilon <= y && y <= Math.Max(y1, y2) + double.Epsilon;
+        bool onOther =
+            Math.Min(x3, x4) - double.Epsilon <= x && x <= Math.Max(x3, x4) + double.Epsilon &&
+            Math.Min(y3, y4) - double.Epsilon <= y && y <= Math.Max(y3, y4) + double.Epsilon;
+
+        if (onThis && onOther)
+        {
+            var pt = new Point((int)Math.Round(x), (int)Math.Round(y));
+            if (pt == V1 || pt == V2 || pt == other.V1 || pt == other.V2)
+                return null;
+            else
+                return pt;
+        }
+        else
+            return null;
     }
 
     public bool InSamePositionAs(LineDef other)

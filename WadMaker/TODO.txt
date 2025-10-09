@@ -50,10 +50,10 @@ FIX NEXT:
 [x] - rework deferred placement, it is not intuitive as is
 [x] - add easier ways of placing inner sectors
 [x] - platforms that aren't in a hall
-[ ] - bounds calculation doesn't work when sector has "copy from parent" adjusters
-[ ] - resolve crossing lines
+[x] - bounds calculation doesn't work when sector has "copy from parent" adjusters
+[x] - resolve crossing lines (first pass anyway)
 [ ] - stairs, add options for ceilings 
-[ ] - standardize room and cutout, both should be able to use the same methods
+[x] - standardize room and cutout, both should be able to use the same methods
 [ ] - have way to make a "slice" through a sector for easier ledges
 [ ] - bending halls
 [ ] - use Anchors for easier door positioning
@@ -61,6 +61,7 @@ FIX NEXT:
 [ ] - easier way to center switch textures
 [ ] - make it easier to apply themes to halls
 [ ] - for monster placement, percentages for ranges may be harder to use
+[ ] - different options for resolving overlaps
 
 
 Later

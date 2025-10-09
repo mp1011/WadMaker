@@ -149,4 +149,19 @@ class OverlappingLinedefResolverTests : StandardTest
         Assert.That(mapElements.LineDefs.Count(p => p.Back == null), Is.EqualTo(6));
 
     }
+
+    [Test]
+    public void CanResolveCrossingLines()
+    {
+        var map = new Map();
+        var room1 = map.AddRoom(size: new Size(200, 200));
+        var room2 = map.AddRoom(size: new Size(200, 200));
+
+        room2.Center = room1.Center.Add(100, 100);
+
+        var mapElements = MapBuilder.Build(map);
+
+        Assert.That(mapElements.Sectors.Count, Is.EqualTo(3));
+        Assert.That(mapElements.LineDefs.Count, Is.EqualTo(12));
+    }
 }
