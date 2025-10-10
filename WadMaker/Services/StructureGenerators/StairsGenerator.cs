@@ -9,15 +9,19 @@ internal class StairsGenerator : IMultiRoomStructureGenerator<Stairs>
         if (numSteps == 0)
             yield break;
 
-        int heightPerStep = (stairs.EndRoom.Floor - stairs.StartRoom.Floor) / numSteps;
-        int currentHeight = stairs.StartRoom.Floor;
+        int floorChangePerStep = (stairs.EndRoom.Floor - stairs.StartRoom.Floor) / numSteps;
+        int ceilingChangePerStep = (stairs.EndRoom.Ceiling - stairs.StartRoom.Ceiling) / numSteps;
+
+        int currentFloor = 0;
+        int currentCeiling = 0;
 
         var nextStepPoints = hallRoom.Bounds.GetSegment(hallSide, stairs.StartPosition, stairs.StepWidth);
         int stepNum = 0;
         while (stepNum++ < numSteps)
         {
-            currentHeight += heightPerStep;
-            yield return CreateStep(stairs, hallRoom, nextStepPoints.Item1, nextStepPoints.Item2, currentHeight);
+            currentFloor += floorChangePerStep;
+            currentCeiling += ceilingChangePerStep;
+            yield return CreateStep(stairs, hallRoom, nextStepPoints.Item1, nextStepPoints.Item2, currentFloor, currentCeiling);
 
             nextStepPoints = (nextStepPoints.Item1.Move(hallSide, stairs.StepWidth),
                               nextStepPoints.Item2.Move(hallSide, stairs.StepWidth));
@@ -28,19 +32,25 @@ internal class StairsGenerator : IMultiRoomStructureGenerator<Stairs>
         if (remainingWidth > 0)
         {
             var endSegment = hallRoom.Bounds.GetSegment(hallSide.Opposite(), 0, remainingWidth);
-            yield return CreateStep(stairs, hallRoom, endSegment.Item1, endSegment.Item2, stairs.EndRoom.Floor);
+            yield return CreateStep(stairs, hallRoom, endSegment.Item1, endSegment.Item2, 
+                stairs.EndRoom.Floor - stairs.StartRoom.Floor,
+                stairs.EndRoom.Ceiling - stairs.StartRoom.Ceiling);
         }
     }
 
-    private Room CreateStep(Stairs stairs, Room hallRoom, Point stepUpperLeft, Point stepBottomRight, int stepHeight)
+    private Room CreateStep(Stairs stairs, Room hallRoom, Point stepUpperLeft, Point stepBottomRight, int stepHeight, int ceilingHeight)
     {
-        return stairs.SetOn(new Room
-        {
-            Floor = stepHeight - hallRoom.Floor,
-            UpperLeft = stepUpperLeft,
-            BottomRight = stepBottomRight,
-            WallTexture = stairs.StepTexture
-        });
+        var stepRoom = stairs.StepTemplate?.Copy(hallRoom) ?? new Room(hallRoom);
+        stepRoom.Floor = stepHeight;
+        if (stairs.FixedCeiling.HasValue)
+            stepRoom.Ceiling = stairs.FixedCeiling.Value;
+        else
+            stepRoom.Ceiling = ceilingHeight;
+        stepRoom.UpperLeft = stepUpperLeft;
+        stepRoom.BottomRight = stepBottomRight;
+        stepRoom.WallTexture = stairs.StepTexture;
+
+        return stairs.SetOn(stepRoom);
     }
 
 

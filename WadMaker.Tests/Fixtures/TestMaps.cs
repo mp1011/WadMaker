@@ -69,7 +69,7 @@ class TestMaps : StandardTest
             Lift: new HallwayLift(new TextureInfo(Mid: Texture.STONE, Lower: Texture.PLAT1), 64, 128, centerRoom, rightRoom))));
 
         map.Rooms.Add(HallGenerator.GenerateHall(new Hall(128, centerRoom, topRoom, hallTemplates,
-            Stairs: new Stairs(new TextureInfo(Mid: Texture.STONE, Lower: Texture.STEP1), 32, 32, 32, centerRoom, topRoom))));
+            Stairs: new Stairs(new TextureInfo(Mid: Texture.STONE, Lower: Texture.STEP1), 32, 32, 32, centerRoom, topRoom, FixedCeiling: 128))));
 
         return map;
     }

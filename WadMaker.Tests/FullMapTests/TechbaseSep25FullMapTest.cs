@@ -62,6 +62,7 @@ class TechbaseSep25FullMapTest : StandardTest
                 StartPosition: 8,
                 EndPosition: 0,
                 StepWidth: 16,
+                FixedCeiling: 128,
                 StartRoom: westRoom,
                 EndRoom: stairCorner))));
 
@@ -79,6 +80,7 @@ class TechbaseSep25FullMapTest : StandardTest
                StartPosition: 8,
                EndPosition: 0,
                StepWidth: 16,
+               FixedCeiling: 128,
                StartRoom: stairCorner,
                EndRoom: block1))));
 

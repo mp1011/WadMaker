@@ -43,7 +43,7 @@ class TechbaseOct25FullMapTest : StandardTest
             Width: 128,
             Room1: entrance,
             Room2: northHall,
-            Stairs: new Stairs(TextureInfo.Default, 0, 0, 16, entrance, northHall))).AddTo(map);
+            Stairs: new Stairs(TextureInfo.Default, 0, 0, 16, entrance, northHall, FixedCeiling: 128))).AddTo(map);
 
         var northWestRoom = map.AddRoom();
         northWestRoom.MatchFloorAndCeilingTo(northHall);

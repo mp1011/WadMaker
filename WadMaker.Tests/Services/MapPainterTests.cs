@@ -182,7 +182,8 @@ internal class MapPainterTests : StandardTest
                 50,
                 StepWidth: 30,
                 map.Rooms[0], 
-                map.Rooms[1])));
+                map.Rooms[1],
+                FixedCeiling: 128)));
 
         map.Rooms.Add(hall);
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);

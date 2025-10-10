@@ -179,6 +179,51 @@ class HallGeneratorTests : StandardTest
     }
 
     [Test]
+    public void CanGenerateStairsWithAscendingCeiling()
+    {
+        var map = new Map();
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(0, 0),
+            BottomRight = new Point(100, -256)
+        });
+        map.Rooms.Add(new Room
+        {
+            UpperLeft = new Point(500, 0),
+            BottomRight = new Point(600, -256),
+            Floor = 100,
+            Ceiling = 300
+        });
+
+        var hall = HallGenerator.GenerateHall(
+            new Hall(HallWidth,
+            map.Rooms[0],
+            map.Rooms[1],
+            Stairs: new Stairs(
+                StepTexture: new TextureInfo(Main: Texture.STEP1),
+                50,
+                50,
+                StepWidth: 30,
+                map.Rooms[0],
+                map.Rooms[1]))).AddTo(map);
+
+
+        Assert.That(hall.InnerStructures.Count, Is.EqualTo(11));
+
+        int lastFloor = hall.InnerStructures.First().Floor;
+        int lastCeiling = hall.InnerStructures.First().Ceiling;
+        foreach (var step in hall.InnerStructures.Skip(1).Take(9))
+        {
+            Assert.That(step.Floor, Is.GreaterThan(lastFloor));
+            Assert.That(step.Ceiling, Is.GreaterThan(lastCeiling));
+
+            lastFloor = step.Floor;
+            lastCeiling = step.Ceiling;
+        }
+    }
+    
+
+    [Test]
     public void CanGenerateHallWhenRoomSidesNotOnBounds()
     {
         var map = new Map();
