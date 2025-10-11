@@ -90,4 +90,44 @@ class ShapeModifierTests : StandardTest
         Assert.That(inner.UpperLeft, Is.EqualTo(new Point(10, -10)));
         Assert.That(inner.Bounds.Width, Is.EqualTo(380));
     }
+
+    [Test]
+    public void CanMakeLShapedRoom()
+    {
+        var map = new Map();
+        var room = map.AddRoom(center: Point.Empty, size: new Size(400, 400));
+        var room2 = map.AddRoom(center: Point.Empty, size: new Size(400, 400));
+        room2.Place().EastOf(room, 256);
+        room2.Shape.Center = room2.Shape.Center.Add(0, 400);
+
+        var bendyHall = map.AddRoom(size: new Size(128, 128 * 5));
+        bendyHall.Place().NorthOf(room, 0);
+        bendyHall.Shape.UpperLeft = bendyHall.Shape.UpperLeft.Set(y: room2.UpperLeft.Y - 64);
+        bendyHall.Shape.BottomRight = bendyHall.Shape.BottomRight.Set(x: room2.UpperLeft.X);
+        bendyHall.Shape.Modifiers.Add(new Bend(Side.Bottom | Side.Right, 128));
+        bendyHall.Tag = 1;
+
+        var mapElements = MapBuilder.Build(map);
+        var bendSector = mapElements.Sectors.First(s => s.Tag == 1);
+
+        var cornerVertex = bendSector.Lines.SelectMany(p => p.Vertices).FirstOrDefault(p => p == new vertex(64, 408));
+        Assert.That(cornerVertex, Is.Not.Null);
+    }
+
+
+    [TestCase(Side.Top | Side.Left)]
+    [TestCase(Side.Top | Side.Right)]
+    [TestCase(Side.Bottom | Side.Left)]
+    [TestCase(Side.Bottom | Side.Right)]
+    public void CanMakeLShapedRoomForAllCorners(Side corner)
+    {
+        var map = new Map();
+        var room = map.AddRoom(center: Point.Empty, size: new Size(400, 400));
+        room.Shape.Modifiers.Add(new Bend(corner, 128));
+       
+        var mapElements = MapBuilder.Build(map);
+
+        var hallEnds = mapElements.LineDefs.Where(p => p.Length == 128).ToArray();
+        Assert.That(hallEnds.Length == 2); 
+    }
 }

@@ -52,9 +52,8 @@ FIX NEXT:
 [x] - platforms that aren't in a hall
 [x] - bounds calculation doesn't work when sector has "copy from parent" adjusters
 [x] - resolve crossing lines (first pass anyway)
-[ ] - stairs, add options for ceilings 
+[x] - stairs, add options for ceilings 
 [x] - standardize room and cutout, both should be able to use the same methods
-[ ] - have way to make a "slice" through a sector for easier ledges
 [ ] - bending halls
 [ ] - use Anchors for easier door positioning
 [ ] - sound blocking
@@ -66,6 +65,7 @@ FIX NEXT:
 
 Later
 [ ] thing placement to also avoid placing items in sectors too small
+[ ] - have way to make a "slice" through a sector for easier ledges (or dock, unsure)
 
 
 7/6/2025
@@ -202,3 +202,15 @@ change "RelativeTo" to ToAbsolutePositioned
 take that code out of the shape initializer and let the Shape class itself handle it
 
 check room copy to see how we should handle relative shapes
+
+-- 10/10
+come back to docking idea, maybe we want it maybe not
+[Test]
+    public void CanDockInnerShapeToSideOfParent()
+    {
+        var map = new Map();
+        var room = map.AddRoom(new Room(map, center: Point.Empty, size: new Size(400, 400)));
+        var ledge = room.AddInnerStructure();
+
+        throw new NotImplementedException();
+    }

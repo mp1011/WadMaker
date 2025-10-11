@@ -4,7 +4,7 @@ namespace WadMaker.Tests.Services;
 
 internal class MapPainterTests : StandardTest
 {
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void MapPainterCanCreateBasicRoom()
     {
@@ -26,7 +26,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void MapPainterCanCreateTwoUnconnectedRooms()
     {
@@ -58,7 +58,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void MapPainterCanCreateTwoRoomsConnectedByHall()
     {
@@ -93,7 +93,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomWithPillar()
     {
@@ -122,7 +122,7 @@ internal class MapPainterTests : StandardTest
 
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomWithInnerStructure()
     {
@@ -154,7 +154,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomsConnectedByStairs()
     {
@@ -192,7 +192,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomsConnectedByLift()
     {
@@ -229,7 +229,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false, innerSectorLinesAlwaysStartTwoSided: true)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.InnerSectorLinesAlwaysStartTwoSided)]
     [Test]
     public void CanCreateRoomWithButtonActivatedLift()
     {
@@ -273,7 +273,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DisableMoveTowardRoundingFix)]
     [Test]
     public void CanGenerateTextureTestMap()
     {

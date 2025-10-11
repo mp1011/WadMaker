@@ -58,7 +58,7 @@ public class MapBuilder
 
     private void RemoveUnusedElements(MapElements mapElements)
     {
-        if (!StaticFlags.ClearUnusedMapElements)
+        if (Legacy.Flags.HasFlag(LegacyFlags.DontClearUnusedMapElements))
             return;
 
         var usedSectors = mapElements.LineDefs.SelectMany(p => p.Sectors).Distinct().ToArray();

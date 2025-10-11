@@ -5,6 +5,7 @@ namespace WadMaker.Tests.FullMapTests;
 class TechbaseSep25FullMapTest : StandardTest
 {
     [TestCase]
+    [WithStaticFlags(LegacyFlags.DisableMoveTowardRoundingFix)]
     public void CanCreateFullyPlayableMap()
     {
         var map = new Map();

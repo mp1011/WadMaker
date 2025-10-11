@@ -2,18 +2,18 @@
 
 public interface IShapeInitializer
 {
-    Point[] InitializePoints(Shape shape);
+    Point[] InitializePoints(Shape shape, Point initialUpperLeft, Point initialBottomRight);
     bool BoundingBoxFromPoints => false;
 }
 
 public class BoundingBoxInitializer : IShapeInitializer
 {
-    public Point[] InitializePoints(Shape shape) =>
+    public Point[] InitializePoints(Shape shape, Point upperLeft, Point bottomRight) =>
         new[]
          {
-            new Point(shape.UpperLeft.X, shape.UpperLeft.Y),
-            new Point(shape.BottomRight.X, shape.UpperLeft.Y),
-            new Point(shape.BottomRight.X, shape.BottomRight.Y),
-            new Point(shape.UpperLeft.X, shape.BottomRight.Y),
+            new Point(upperLeft.X, upperLeft.Y),
+            new Point(bottomRight.X, upperLeft.Y),
+            new Point(bottomRight.X, bottomRight.Y),
+            new Point(upperLeft.X, bottomRight.Y),
         };    
 }

@@ -109,6 +109,11 @@ public static class GeometryExtensions
         return new Point(pt.X + dx, pt.Y + dy);
     }
 
+    public static Point Set(this Point pt, int? x = null, int? y = null)
+    {
+        return new Point(x ?? pt.X, y ?? pt.Y);
+    }
+
     public static Point CentralPoint(this IEnumerable<Point> points)
     {
         if (!points.Any())
@@ -133,6 +138,27 @@ public static class GeometryExtensions
     {
         if (point == target || delta <= 0)
             return point;
+
+        if (!Legacy.Flags.HasFlag(LegacyFlags.DisableMoveTowardRoundingFix))
+        {
+            // handle axis aligned separately to avoid rounding errors
+            if (point.X == target.X)
+            {
+                if (point.Y < target.Y)
+                    return new Point(point.X, point.Y + (int)delta);
+                else
+                    return new Point(point.X, point.Y - (int)delta);
+            }
+
+            if (point.Y == target.Y)
+            {
+                if (point.X < target.X)
+                    return new Point(point.X + (int)delta, point.Y);
+                else
+                    return new Point(point.X - (int)delta, point.Y);
+            }
+        }
+
         double angle = Math.Atan2(target.Y - point.Y, target.X - point.X);
         return new Point(
             (int)(point.X + delta * Math.Cos(angle)),

@@ -11,17 +11,12 @@ namespace WadMaker.Tests.TestHelpers;
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
 public class WithStaticFlagsAttribute : NUnitAttribute, IWrapSetUpTearDown
 {
-    public bool ClearUpperAndLowerTexturesOnOneSidedLines { get; }
-    public bool InnerSectorLinesAlwaysStartTwoSided { get; }
-    public bool ClearUnusedMapElements { get; }
+    public LegacyFlags Flags { get; }
 
-    public WithStaticFlagsAttribute(bool clearUpperAndLowerTexturesOnOneSidedLines=true, 
-        bool innerSectorLinesAlwaysStartTwoSided=false,
-        bool clearUnusedMapElements=true)
+  
+    public WithStaticFlagsAttribute(LegacyFlags flags)
     {
-        ClearUpperAndLowerTexturesOnOneSidedLines = clearUpperAndLowerTexturesOnOneSidedLines;
-        InnerSectorLinesAlwaysStartTwoSided = innerSectorLinesAlwaysStartTwoSided;
-        ClearUnusedMapElements = clearUnusedMapElements;
+        Flags = flags;
     }
 
     public TestCommand Wrap(TestCommand command)
@@ -41,17 +36,15 @@ public class WithStaticFlagsAttribute : NUnitAttribute, IWrapSetUpTearDown
         }
 
         public override TestResult Execute(TestExecutionContext context)
-        {            
-            StaticFlags.ClearUpperAndLowerTexturesOnOneSidedLines = _attribute.ClearUpperAndLowerTexturesOnOneSidedLines;
-            StaticFlags.InnerSectorLinesAlwaysStartTwoSided = _attribute.InnerSectorLinesAlwaysStartTwoSided;
-
+        {         
+            Legacy.Flags = _attribute.Flags;    
             try
             {
                 return innerCommand.Execute(context);
             }
             finally
             {
-                StaticFlags.Reset();
+                Legacy.Flags = LegacyFlags.None;
             }
         }
     }

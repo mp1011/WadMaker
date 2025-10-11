@@ -13,7 +13,7 @@ public class CopyParentShape : IShapeInitializer
         _parent = parent;
     }
 
-    public Point[] InitializePoints(Shape shape)
+    public Point[] InitializePoints(Shape shape, Point _a, Point _b)
     {
         var parentPoints = _parent.Shape.CalculatePoints();
         var center = parentPoints.CentralPoint();

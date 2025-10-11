@@ -109,7 +109,7 @@ public record TextureInfo(
                 offsety = OffsetY
             };
         }
-        else if(StaticFlags.ClearUpperAndLowerTexturesOnOneSidedLines)
+        else if(!Legacy.Flags.HasFlag(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines))
         {
             side.Data = side.Data with
             {

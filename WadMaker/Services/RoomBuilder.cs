@@ -81,7 +81,7 @@ public class RoomBuilder
         foreach (var line in lines)
         {
             var backBelongsToRoom = _isPointInSector.Execute(line.BackTestPoint, roomSector, elements);
-            if (backBelongsToRoom || StaticFlags.InnerSectorLinesAlwaysStartTwoSided)
+            if (backBelongsToRoom || Legacy.Flags.HasFlag(LegacyFlags.InnerSectorLinesAlwaysStartTwoSided))
             {
                 var lineSide = line.SideOfRoom(innerElement);
                 var backSide = new SideDef(roomSector, new sidedef(sector: -1));

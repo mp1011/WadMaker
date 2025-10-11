@@ -212,7 +212,7 @@ internal class TextureAdjusterTests : StandardTest
 
     // room for improvement but ok for now
     [Test]
-    [WithStaticFlags(clearUpperAndLowerTexturesOnOneSidedLines: false, clearUnusedMapElements: false)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DontClearUnusedMapElements | LegacyFlags.DisableMoveTowardRoundingFix)]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();

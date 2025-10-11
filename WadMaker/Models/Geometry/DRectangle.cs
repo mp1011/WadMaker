@@ -37,6 +37,36 @@ public struct DRectangle
         Height = size.Height;
     }
 
+    public DRectangle(Point upperLeft, Point bottomRight)
+    {
+        X = upperLeft.X;
+        Y = upperLeft.Y;
+        Width = bottomRight.X - upperLeft.X;
+        Height = Math.Abs(upperLeft.Y - bottomRight.Y);
+    }
+
+    public DRectangle(IEnumerable<Point> points)
+    {
+        if (!points.Any())
+            throw new ArgumentException("Points collection cannot be empty", nameof(points));
+        X = points.Min(p => p.X);
+        Y = points.Max(p => p.Y);
+        Width = points.Max(p => p.X) - X;
+        Height = Math.Abs(Y - points.Min(p => p.Y));
+    }
+
+    public Point GetCorner(Side corner)
+    {
+        return corner switch
+        {
+            Side.Top | Side.Left => new Point(X, Y),
+            Side.Top | Side.Right => new Point(Right, Y),
+            Side.Bottom | Side.Left => new Point(X, Bottom),
+            Side.Bottom | Side.Right => new Point(Right, Bottom),
+            _ => throw new Exception("Invalid corner"),
+        };
+    }
+
     public Point RelativePoint(double relX, double relY)
     {
         return new Point((int)(Size.Width * relX), (int)(-Size.Height * relY));

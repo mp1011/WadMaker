@@ -1,12 +1,13 @@
 ﻿namespace WadMaker.Models;
 
+[Flags]
 public enum Side 
 {
     None,
-    Left,
-    Right,
-    Top,
-    Bottom
+    Left = 1,
+    Right = 2,
+    Top = 4,
+    Bottom = 8
 }
 
 public enum Speed

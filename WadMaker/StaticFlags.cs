@@ -1,19 +1,15 @@
 ﻿namespace WadMaker;
 
-public static class StaticFlags
+[Flags]
+public enum LegacyFlags
 {
-    public static bool ClearUpperAndLowerTexturesOnOneSidedLines;
-    public static bool InnerSectorLinesAlwaysStartTwoSided;
-    public static bool ClearUnusedMapElements;
-    static StaticFlags()
-    {
-        Reset();
-    }
-
-    public static void Reset()
-    {
-        ClearUpperAndLowerTexturesOnOneSidedLines = true;
-        InnerSectorLinesAlwaysStartTwoSided = false;
-        ClearUnusedMapElements = true;
-    }
+    None = 0,
+    DontClearUpperAndLowerTexturesOnOneSidedLines = 1,
+    InnerSectorLinesAlwaysStartTwoSided = 2,
+    DontClearUnusedMapElements = 4,
+    DisableMoveTowardRoundingFix = 8
+}
+public static class Legacy
+{
+    public static LegacyFlags Flags = LegacyFlags.None;
 }

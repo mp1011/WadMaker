@@ -95,7 +95,7 @@ public class Shape
 
     public Point[] CalculatePoints()
     {
-        var initialPoints = Initializer.InitializePoints(this);
+        var initialPoints = Initializer.InitializePoints(this, _upperLeft, _bottomRight);
 
         return Modifiers
             .Aggregate(initialPoints, (p, s) => s.AlterPoints(p))
@@ -136,15 +136,5 @@ public class Shape
         copy.Initializer = Initializer;
         copy.Modifiers.AddRange(Modifiers);
         return copy;
-    }
-
-    private void ComputeBoundingBox()
-    {
-        var points = CalculatePoints();
-        if (points.Length == 0)
-            return;
-        UpperLeft = new Point(points.Min(p => p.X), points.Max(p => p.Y));
-        BottomRight = new Point(points.Max(p => p.X), points.Min(p => p.Y));
-        AdjustToRelative();
     }
 }
