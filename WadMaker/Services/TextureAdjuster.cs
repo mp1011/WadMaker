@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Services;
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace WadMaker.Services;
 
 public class TextureAdjuster
 {
@@ -23,7 +25,7 @@ public class TextureAdjuster
         SetLinePegs(mapElements);
         return mapElements;
     }
-
+    
     public MapElements ApplyThemes(MapElements mapElements)
     {
         foreach (var sector in mapElements.Sectors)
@@ -71,16 +73,27 @@ public class TextureAdjuster
 
         foreach (var line in lines)
         {
-            var textureSize = DoomConfig.DoomTextureSizes[line.Front.Texture];
             line.Front.Data = line.Front.Data with
             {
-                offsetx = totalWallWidth % textureSize.Width,
+                offsetx = CalcXOffset(line, totalWallWidth),
                 offsety = prev != null ? CalcYOffset(line, prev) : line.Front.Data.offsety
             };
             totalWallWidth += (int)line.Length;
             prev = line;
         }
     }
+
+    private int CalcXOffset(LineDef line, int totalWallWidth)
+    {
+        if (line.Front.Data.offsetx.HasValue && !Legacy.Flags.HasFlag(LegacyFlags.OverwriteExistingXOffset))
+        {
+            return line.Front.Data.offsetx.Value;
+        }
+
+        var textureSize = DoomConfig.DoomTextureSizes[line.Front.Texture];
+        return totalWallWidth % textureSize.Width;
+    }
+
     private int? CalcYOffset(LineDef line, LineDef previousLine)
     {
         if (!_config.HandleYOffet)

@@ -273,7 +273,7 @@ internal class MapPainterTests : StandardTest
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DisableMoveTowardRoundingFix)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
     [Test]
     public void CanGenerateTextureTestMap()
     {

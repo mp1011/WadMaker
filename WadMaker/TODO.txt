@@ -55,8 +55,7 @@ FIX NEXT:
 [x] - stairs, add options for ceilings 
 [x] - standardize room and cutout, both should be able to use the same methods
 [x] - bending halls
-
-[ ] - sound blocking
+[x] - sound blocking
 [ ] - easier way to center switch textures
 [ ] - make it easier to apply themes to halls
 [ ] - for monster placement, percentages for ranges may be harder to use

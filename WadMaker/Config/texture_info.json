@@ -1338,7 +1338,13 @@
   {
     "Name": "SW1CMT",
     "Themes": [ "Switch" ],
-    "Color": "White"
+    "Color": "White",
+    "Regions": [
+      {
+        "Label": "Switch",
+        "Location":  [16,72,32,32]
+      }
+    ]
   },
   {
     "Name": "SW1COMM",

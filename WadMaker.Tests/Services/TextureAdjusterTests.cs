@@ -85,7 +85,8 @@ internal class TextureAdjusterTests : StandardTest
         Assert.That(elements.LineDefs[3].Front.Data.offsetx, Is.EqualTo(0)); // left
     }
 
-    [Test] 
+    [Test]
+    [WithStaticFlags(LegacyFlags.OverwriteExistingXOffset)]
     public void CanAdjustUpperAndLowerTextures()
     {
         var map = new Map();
@@ -212,7 +213,7 @@ internal class TextureAdjusterTests : StandardTest
 
     // room for improvement but ok for now
     [Test]
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DontClearUnusedMapElements | LegacyFlags.DisableMoveTowardRoundingFix)]
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DontClearUnusedMapElements | LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();
@@ -349,6 +350,23 @@ internal class TextureAdjusterTests : StandardTest
 
         foreach(var line in colorBarLines)
             Assert.That(line.Length, Is.EqualTo(16));
+    }
+
+    [Test]
+    public void CanAutoAlignSwitch()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(256, 256));
+
+        var alcove = room.AddInnerStructure(StructureGenerator.AddStructure(room, new Alcove(new Room { Floor = 16, Ceiling = -64 }, Side.Top, 32, 8, 0.5)));
+        alcove.SideTextures[Side.Top] = new TextureInfo(new TextureQuery(Texture.SW1CMT),
+            AutoAlign: new AutoAlignment(RegionLabel: "Switch", texturePosition: new PointF(0.5f,0.5f), wallPosition: new PointF(0.5f, 0.5f)));
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+        var switchLine = mapElements.LineDefs.Single(p => p.Front.Texture == Texture.SW1CMT.ToString());
+        Assert.That(switchLine.Front.Data.offsetx, Is.EqualTo(16));
+        Assert.That(switchLine.Front.Data.offsety, Is.EqualTo(64));
     }
 }
 

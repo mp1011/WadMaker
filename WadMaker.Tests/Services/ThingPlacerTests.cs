@@ -25,7 +25,7 @@ internal class ThingPlacerTests : StandardTest
         }
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.InnerSectorLinesAlwaysStartTwoSided | LegacyFlags.DontClearUnusedMapElements)]   
+    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.InnerSectorLinesAlwaysStartTwoSided | LegacyFlags.DontClearUnusedMapElements | LegacyFlags.OverwriteExistingXOffset)]   
     [TestCase(ThingPattern.Triangle)]
     [TestCase(ThingPattern.Square)] // could be better, but fine for now
     [TestCase(ThingPattern.Circle)]
