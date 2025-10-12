@@ -295,4 +295,22 @@ class HallGeneratorTests : StandardTest
         Assert.That(door.LineSpecials.Try(Side.Left), Is.Null);
         Assert.That(door.LineSpecials.Try(Side.Right), Is.Null);
     }
+
+    [Test]
+    public void HallCanBlockSound()
+    {
+        var map = new Map();
+        var room1 = map.AddRoom(size: new Size(256, 256));
+        var room2 = map.AddRoom(size: new Size(256, 256)).Place().NorthOf(room1, 128);
+
+        var hall = new Hall(Width: 128, Room1: room1, Room2: room2, BlocksSound: true);
+        StructureGenerator.AddStructure(room1, hall).AddTo(map);
+
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
+        ThingPlacer.AddThing(ThingType.Imp, room2, 0.5, 0.5, angle: Angle.North, flags: ThingFlags.AllSkillsAndModes);
+
+        var elements = MapBuilder.Build(map);
+        var soundBlockingLines = elements.LineDefs.Where(p => p.BlocksSounds).ToArray();
+        Assert.That(soundBlockingLines, Is.Not.Empty);
+    }
 }

@@ -129,6 +129,15 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
 
+    public bool BlocksSounds
+    {
+        get => Data.blocksound.GetValueOrDefault();
+        set
+        {
+            Data = Data with { blocksound = value ? true : null };
+        }
+    }
+
     public bool SingleSided => Back == null;
     public IEnumerable<Sector> Sectors
     {

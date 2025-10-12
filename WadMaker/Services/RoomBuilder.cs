@@ -168,7 +168,8 @@ public class RoomBuilder
     {
         return vertices.WithNeighbors().Select((v, index) =>
         {
-            var line = new LineDef(V1: v.Item2, V2: v.Item3, Front: sidedefs[index], Back: null, Data: new linedef(blocking: true));
+            bool? blockSound = room.BlocksSound ? true : null;
+            var line = new LineDef(V1: v.Item2, V2: v.Item3, Front: sidedefs[index], Back: null, Data: new linedef(blocking: true, blocksound: blockSound));
             var lineTexture = room.TextureForSide(line.SideOfRoom(room));
             lineTexture?.ApplyTo(line);
             return line;

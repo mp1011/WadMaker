@@ -6,4 +6,5 @@ public record Hall(int Width,
     Room? HallTemplate=null, 
     Door? Door=null, 
     Stairs? Stairs=null,
-    HallwayLift? Lift=null) : RoomBuildingBlock();
+    HallwayLift? Lift=null,
+    bool BlocksSound = false) : RoomBuildingBlock();

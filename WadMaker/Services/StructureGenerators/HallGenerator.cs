@@ -108,7 +108,8 @@ public class HallGenerator : IStructureGenerator<Hall>
                 Floor = hall.HallTemplate.Floor,
                 FloorTexture = hall.HallTemplate.FloorTexture,
                 CeilingTexture = hall.HallTemplate.CeilingTexture,
-                WallTexture = hall.HallTemplate.WallTexture
+                WallTexture = hall.HallTemplate.WallTexture,
+                BlocksSound = hall.BlocksSound
             };
         }
         else
@@ -119,7 +120,8 @@ public class HallGenerator : IStructureGenerator<Hall>
                 Floor = hall.Room1.Floor,
                 FloorTexture = hall.Room1.FloorTexture,
                 CeilingTexture = hall.Room1.CeilingTexture,
-                WallTexture = hall.Room1.WallTexture
+                WallTexture = hall.Room1.WallTexture,
+                BlocksSound = hall.BlocksSound
             };
         }
     }

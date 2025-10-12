@@ -38,7 +38,8 @@ public record linedef(
     bool? playercross = null,
     bool? monstercross = null,
     bool? monsteruse = null,
-    bool? impact = null
+    bool? impact = null,
+    bool? blocksound = null
 ) : IMapElement;
 
 public record sidedef(

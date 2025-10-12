@@ -46,7 +46,9 @@ public class Room : IWithShape, IThemed
     public int VerticalHeight => Ceiling - Floor;
 
     public int Ceiling { get; set; } = 128;
-    public int Floor { get; set; } = 0;
+    public int Floor { get; set; } = 0;    
+    public bool BlocksSound { get; set; }
+
     public Flat FloorTexture { get; set; } = Flat.Default;
     public Flat CeilingTexture { get; set; } = Flat.Default;
 
@@ -143,7 +145,8 @@ public class Room : IWithShape, IThemed
             Tag = Tag,
             Theme = Theme,
             SectorSpecial = SectorSpecial,
-            BuildingBlock = BuildingBlock,           
+            BuildingBlock = BuildingBlock,
+            BlocksSound = BlocksSound
         };
         copy.Shape = Shape.Copy();
 

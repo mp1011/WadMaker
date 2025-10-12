@@ -54,8 +54,8 @@ FIX NEXT:
 [x] - resolve crossing lines (first pass anyway)
 [x] - stairs, add options for ceilings 
 [x] - standardize room and cutout, both should be able to use the same methods
-[ ] - bending halls
-[ ] - use Anchors for easier door positioning
+[x] - bending halls
+
 [ ] - sound blocking
 [ ] - easier way to center switch textures
 [ ] - make it easier to apply themes to halls
@@ -66,7 +66,7 @@ FIX NEXT:
 Later
 [ ] thing placement to also avoid placing items in sectors too small
 [ ] - have way to make a "slice" through a sector for easier ledges (or dock, unsure)
-
+[ ] - use Anchors for easier door positioning
 
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors

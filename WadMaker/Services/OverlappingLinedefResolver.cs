@@ -223,6 +223,7 @@ public class OverlappingLinedefResolver
             else 
                 newLine.LineSpecial = line1.LineSpecial ?? line2.LineSpecial;
 
+            newLine.BlocksSounds = line1.BlocksSounds || line2.BlocksSounds;
             yield return newLine;
         }
     }
