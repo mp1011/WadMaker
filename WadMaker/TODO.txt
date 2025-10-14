@@ -213,3 +213,6 @@ come back to docking idea, maybe we want it maybe not
 
         throw new NotImplementedException();
     }
+
+-- 10/12
+move LineHeight function to its own query, and use it in auto-offset calculation

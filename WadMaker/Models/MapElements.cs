@@ -129,6 +129,16 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
 
+    private TextureInfo? _texture;
+    public TextureInfo TextureInfo
+    {
+        get => _texture ??= new TextureInfo(Texture.STONE);
+        set
+        {
+            _texture = value;
+        }
+    }
+
     public bool BlocksSounds
     {
         get => Data.blocksound.GetValueOrDefault();
@@ -242,19 +252,14 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         return null;
     }
 
-    public LineDef ApplyTexture(Room room)
+    public LineDef SetTexture(Room room)
     {
         var side = SideOfRoom(room);
         var texture = room.TextureForSide(side);
-        texture.ApplyTo(this);
+        TextureInfo = texture;
         return this;
     }
 
-    public LineDef ApplyTexture(TextureInfo texture)
-    {
-        texture.ApplyTo(this);
-        return this;
-    }
 
     public IEnumerable<SideDef> SideDefs
     {

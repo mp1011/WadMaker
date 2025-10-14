@@ -731,8 +731,6 @@ sidedef
 {
     sector = 3;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //42
@@ -754,8 +752,6 @@ sidedef
 {
     sector = 3;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //45
@@ -835,8 +831,6 @@ sidedef
 {
     sector = 6;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //56
@@ -858,8 +852,6 @@ sidedef
 {
     sector = 6;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //59
@@ -939,8 +931,6 @@ sidedef
 {
     sector = 9;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //70
@@ -962,8 +952,6 @@ sidedef
 {
     sector = 9;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //73
@@ -1014,8 +1002,6 @@ sidedef
 {
     sector = 12;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //80
@@ -1037,8 +1023,6 @@ sidedef
 {
     sector = 12;
     texturemiddle = "DOORTRAK";
-    texturetop = "DOORTRAK";
-    texturebottom = "DOORTRAK";
     offsetx = 0;
 }
 //83

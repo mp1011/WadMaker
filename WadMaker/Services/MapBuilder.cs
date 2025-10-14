@@ -119,7 +119,6 @@ public class MapBuilder
             {
                 mapElements.SideDefs.Remove(lineDef.Back!);
                 lineDef.RemoveBack();
-                new TextureInfo(lineDef).ApplyTo(lineDef);
             }
         }
     }

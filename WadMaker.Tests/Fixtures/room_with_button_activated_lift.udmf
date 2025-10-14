@@ -178,24 +178,18 @@ sidedef
 {
     sector = 2;
     texturemiddle = "STONE";
-    texturetop = "STONE";
-    texturebottom = "STONE";
 }
 //12
 sidedef
 {
     sector = 2;
     texturemiddle = "STONE";
-    texturetop = "STONE";
-    texturebottom = "STONE";
 }
 //13
 sidedef
 {
     sector = 2;
     texturemiddle = "SW1GRAY";
-    texturetop = "SW1GRAY";
-    texturebottom = "SW1GRAY";
 }
 //14
 sidedef

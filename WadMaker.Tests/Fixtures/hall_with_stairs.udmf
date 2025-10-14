@@ -832,14 +832,14 @@ sidedef
 {
     sector = 13;
     texturetop = "STONE";
-    texturebottom = "STONE";
+    texturebottom = "STEP1";
 }
 //58
 sidedef
 {
     sector = 1;
     texturetop = "STONE";
-    texturebottom = "STONE";
+    texturebottom = "STEP1";
 }
 //59
 sidedef

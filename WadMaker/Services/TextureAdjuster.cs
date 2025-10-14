@@ -1,4 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
+﻿using WadMaker.Models;
 
 namespace WadMaker.Services;
 
@@ -26,6 +26,15 @@ public class TextureAdjuster
         return mapElements;
     }
     
+    public MapElements ApplyTextures(MapElements mapElements)
+    {
+        foreach (var line in mapElements.LineDefs)
+        {
+            ApplyTexture(line);
+        }
+        return mapElements;
+    }
+
     public MapElements ApplyThemes(MapElements mapElements)
     {
         foreach (var sector in mapElements.Sectors)
@@ -48,7 +57,8 @@ public class TextureAdjuster
         if (matchingRule == null)
             return;
 
-        matchingRule.GetTexture(line).ApplyTo(line);
+        line.TextureInfo = matchingRule.GetTexture(line);
+        ApplyTexture(line);
     }
 
     private void SetLinePegs(MapElements mapElements)
@@ -158,8 +168,6 @@ public class TextureAdjuster
         return paths;
     }
 
-
-
     private IEnumerable<LineDefPath> TextureRuns(LineDefPath run)
     {
         return run.SplitBy(LinesShareTexture);
@@ -182,5 +190,88 @@ public class TextureAdjuster
         return false;
     }
 
+    public void ApplyLineTexture(linedef line)
+    {
 
+    }
+
+    public Texture ResolveTexture(TexturePart part, LineDef line)
+    {
+        if (line.TextureInfo == null)
+            return Texture.MISSING;
+
+        return line.TextureInfo.GetQuery(part).Execute(line, part).FirstOrDefault();
+    }
+
+    public void ApplyTexture(LineDef line)
+    {
+        if (line.TextureInfo == null)
+            return;
+
+        line.Data = line.Data with { dontpegbottom = line.TextureInfo.LowerUnpegged, dontpegtop = line.TextureInfo.UpperUnpegged };
+        ApplyTexture(line.Front, line, line.Data.twosided);
+        ApplyTexture(line.Back, line, line.Data.twosided);
+
+        if (line.TextureInfo.DrawLowerFromBottom.GetValueOrDefault())
+            Apply_DrawLowerFromBottom(line);
+    }
+
+    /// <summary>
+    /// Sets the Y Offset to the negative of the floor difference
+    /// </summary>
+    /// <param name="line"></param>
+    private void Apply_DrawLowerFromBottom(LineDef line)
+    {
+        line.Data = line.Data with { dontpegbottom = false };
+
+        var floors = line.Sectors.Select(p => p.FloorHeight).ToArray();
+        var floorDifference = floors.Max() - floors.Min();
+
+        line.Front.Data = line.Front.Data with { offsety = -floorDifference };
+        if (line.Back != null)
+            line.Back.Data = line.Back.Data with { offsety = -floorDifference };
+    }
+
+    private void ApplyTexture(SideDef? side, LineDef line, bool? twosided)
+    {
+        if (side == null || line.TextureInfo == null)
+            return;
+
+        if (twosided.HasValue && twosided.Value)
+        {
+            side.Data = side.Data with
+            {
+                texturemiddle = null,
+                texturetop = ResolveTexture(TexturePart.Upper, line).ToString(),
+                texturebottom = ResolveTexture(TexturePart.Lower, line).ToString(),
+                offsetx = line.TextureInfo.OffsetX,
+                offsety = line.TextureInfo.OffsetY
+            };
+        }
+        else
+        {
+            side.Data = side.Data with
+            {
+                texturemiddle = ResolveTexture(TexturePart.Middle, line).ToString(),
+                texturebottom = null,
+                texturetop = null,
+            };
+        }
+
+
+        if (line.TextureInfo.AutoAlign != null)
+        {
+            line.Data = line.Data with { dontpegtop = false, dontpegbottom = false };
+            var autoOffset = line.TextureInfo.AutoAlign?.CalcOffset(side.Texture, line) ?? new Point(0, 0);
+            int ox = autoOffset.X + line.TextureInfo.OffsetX.GetValueOrDefault();
+            int oy = autoOffset.Y + line.TextureInfo.OffsetY.GetValueOrDefault();
+
+            side.Data = side.Data with
+            {
+                offsetx = ox == 0 ? null : ox,
+                offsety = oy == 0 ? null : oy
+            };
+
+        }
+    }
 }

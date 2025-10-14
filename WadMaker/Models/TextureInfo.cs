@@ -37,20 +37,6 @@ public record TextureInfo(
 
     public static TextureInfo Default => new TextureInfo();
 
-    public TextureInfo(LineDef line) : this(
-        Main: (line.Front.Data.texturemiddle ?? line.Front.Data.texturetop ?? line.Front.Data.texturebottom).ParseAs<Texture>(),
-        Upper: line.Front.Data.texturetop.ParseAs<Texture>(),
-        Mid: line.Front.Data.texturemiddle.ParseAs<Texture>(),
-        Lower: line.Front.Data.texturebottom.ParseAs<Texture>(),
-        UpperUnpegged: line.Data.dontpegtop,
-        LowerUnpegged: line.Data.dontpegbottom,
-        OffsetX: line.Front.Data.offsetx,
-        OffsetY: line.Front.Data.offsety,
-        DrawLowerFromBottom: null)
-    {
-    }
-
-
     public override string ToString() => (Main ?? Mid ?? Upper ?? Lower)?.ToString() ?? "";
 
     public TextureQuery GetQuery(TexturePart part)
@@ -61,99 +47,24 @@ public record TextureInfo(
             TexturePart.Lower => Lower ?? Main ?? TextureQuery.Missing,
             _ => Mid ?? Main ?? TextureQuery.Missing,
         };
-    }
-
-    public Texture ResolveTexture(TexturePart part, LineDef line)
-    {
-        return GetQuery(part).Execute(line, part).FirstOrDefault();
-    }
-
-    public void ApplyTo(LineDef line)
-    {
-        line.Data = line.Data with {  dontpegbottom = LowerUnpegged, dontpegtop = UpperUnpegged };
-        ApplyTo(line.Front, line, line.Data.twosided);
-        ApplyTo(line.Back, line,line.Data.twosided);
-
-        if (DrawLowerFromBottom.GetValueOrDefault())
-            Apply_DrawLowerFromBottom(line);
-    }
-
-    /// <summary>
-    /// Sets the Y Offset to the negative of the floor difference
-    /// </summary>
-    /// <param name="line"></param>
-    private void Apply_DrawLowerFromBottom(LineDef line)
-    {
-        line.Data = line.Data with { dontpegbottom = false };
-
-        var floors = line.Sectors.Select(p => p.FloorHeight).ToArray();
-        var floorDifference = floors.Max() - floors.Min();
-
-        line.Front.Data = line.Front.Data with { offsety = -floorDifference };
-        if(line.Back != null)
-            line.Back.Data = line.Back.Data with { offsety = -floorDifference };
-    }
-
-    public void ApplyTo(SideDef? side, LineDef line, bool? twosided)
-    {
-        if (side == null)
-            return;
-
-        if(twosided.HasValue && twosided.Value)
-        {
-            side.Data = side.Data with
-            {
-                texturemiddle = null,
-                texturetop = ResolveTexture(TexturePart.Upper, line).ToString(),
-                texturebottom = ResolveTexture(TexturePart.Lower, line).ToString(),
-                offsetx = OffsetX,
-                offsety = OffsetY
-            };
-        }
-        else if(!Legacy.Flags.HasFlag(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines))
-        {
-            var texture = ResolveTexture(TexturePart.Middle, line).ToString();
-            var autoOffset = AutoAlign?.CalcOffset(texture, line) ?? new Point(0, 0);
-            int ox = autoOffset.X + OffsetX.GetValueOrDefault();
-            int oy = autoOffset.Y + OffsetY.GetValueOrDefault();
-
-            side.Data = side.Data with
-            {
-                texturemiddle = ResolveTexture(TexturePart.Middle, line).ToString(),
-                texturebottom = null,
-                texturetop = null,
-                offsetx = ox == 0 ? null : ox,
-                offsety = oy == 0 ? null : oy
-            };
-        }
-        else
-        {
-            side.Data = side.Data with
-            {
-                texturemiddle = ResolveTexture(TexturePart.Middle, line).ToString(),
-                offsetx = OffsetX,
-                offsety = OffsetY
-            };
-        }
-    }
+    }   
 }
 
-public record AutoAlignment(string? RegionLabel, PointF texturePosition, PointF wallPosition)
+public record AutoAlignment(string? RegionLabel, PointF TexturePosition, PointF WallPosition, TexturePart Part)
 {
     public Point CalcOffset(string texture, LineDef line)
     {
-        // note - currently only works with single sided linse
-        if (line.Back != null)
-            throw new NotSupportedException("Not supported (yet)");
-
         var textureInfo = DoomConfig.DoomTextureInfo[texture];
         var region = textureInfo.Regions.Single(p => p.Label == RegionLabel);
-
-        Point regionCursor = new Point((int)(texturePosition.X * region.Width), (int)(texturePosition.Y * region.Height));
-        Point wallCursor = new Point((int)(line.Length * wallPosition.X), (int)(line.Front.Sector.Height * wallPosition.Y));
+        int wallHeight = new WallHeight(line, Part).Execute();
+        Point regionCursor = new Point((int)(TexturePosition.X * region.Width), (int)(TexturePosition.Y * region.Height));
+        Point wallCursor = new Point((int)(line.Length * WallPosition.X), (int)(wallHeight * WallPosition.Y));
 
         Point textureCursor = regionCursor.Add(region.X, region.Y);
 
-        return new Point(textureCursor.X - wallCursor.X, textureCursor.Y - wallCursor.Y);
+        if(Part == TexturePart.Upper)
+            return new Point(textureCursor.X - wallCursor.X, textureCursor.Y + wallCursor.Y);
+        else 
+            return new Point(textureCursor.X - wallCursor.X, textureCursor.Y - wallCursor.Y);
     }
 }

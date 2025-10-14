@@ -20,6 +20,7 @@ internal class TextureAdjusterTests : StandardTest
         });
 
         var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
         TextureAdjuster.AdjustOffsetsAndPegs(elements);
 
         Assert.That(elements.LineDefs[0].Front.Data.offsetx, Is.EqualTo(0));
@@ -39,6 +40,7 @@ internal class TextureAdjusterTests : StandardTest
         }
 
         var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
         TextureAdjuster.AdjustOffsetsAndPegs(elements);
 
         var lowerRoomLines = elements.Sectors.First(p => p.Data.heightceiling == 112)
@@ -77,6 +79,7 @@ internal class TextureAdjusterTests : StandardTest
 
 
         var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
         TextureAdjuster.AdjustOffsetsAndPegs(elements);
 
         Assert.That(elements.LineDefs[0].Front.Data.offsetx, Is.EqualTo(36)); // top
@@ -105,6 +108,7 @@ internal class TextureAdjusterTests : StandardTest
            CenterPercent: 0.50));
 
         var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
         TextureAdjuster.AdjustOffsetsAndPegs(elements);
 
         var topLines = elements.LineDefs.Where(p => p.V1.y == 0 && p.V2.y == 0).ToArray();
@@ -134,6 +138,7 @@ internal class TextureAdjusterTests : StandardTest
         }
 
         var mapElements = MapBuilder.Build(testMap);
+        TextureAdjuster.ApplyTextures(mapElements);
         TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
         TextureAdjuster.ApplyThemes(mapElements);
 
@@ -163,6 +168,7 @@ internal class TextureAdjusterTests : StandardTest
         }
 
         var mapElements = MapBuilder.Build(testMap);
+        TextureAdjuster.ApplyTextures(mapElements);
         TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
         TextureAdjuster.ApplyThemes(mapElements);
 
@@ -199,6 +205,7 @@ internal class TextureAdjusterTests : StandardTest
         }
 
         var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
         TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
         TextureAdjuster.ApplyThemes(mapElements);
 
@@ -213,7 +220,7 @@ internal class TextureAdjusterTests : StandardTest
 
     // room for improvement but ok for now
     [Test]
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DontClearUnusedMapElements | LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
+    [WithStaticFlags(LegacyFlags.DontClearUnusedMapElements | LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();
@@ -283,6 +290,7 @@ internal class TextureAdjusterTests : StandardTest
         map.Rooms.Add(hall);
 
         var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
         TextureAdjuster.ApplyThemes(mapElements);
 
         var colorLines = mapElements.SideDefs.Where(p => p.Data.texturemiddle == colorBarTexture.ToString()).ToArray();
@@ -343,7 +351,7 @@ internal class TextureAdjusterTests : StandardTest
         map.Rooms.Add(hall);
 
         var mapElements = MapBuilder.Build(map);
-
+        TextureAdjuster.ApplyTextures(mapElements);
         var colorBarLines = mapElements.LineDefs.Where(p => p.Front.Texture == Texture.DOORRED.ToString()).ToArray();
 
         Assert.That(colorBarLines.Length, Is.EqualTo(4));
@@ -360,13 +368,54 @@ internal class TextureAdjusterTests : StandardTest
 
         var alcove = room.AddInnerStructure(StructureGenerator.AddStructure(room, new Alcove(new Room { Floor = 16, Ceiling = -64 }, Side.Top, 32, 8, 0.5)));
         alcove.SideTextures[Side.Top] = new TextureInfo(new TextureQuery(Texture.SW1CMT),
-            AutoAlign: new AutoAlignment(RegionLabel: "Switch", texturePosition: new PointF(0.5f,0.5f), wallPosition: new PointF(0.5f, 0.5f)));
+            AutoAlign: new AutoAlignment(RegionLabel: "Switch", TexturePosition: new PointF(0.5f,0.5f), WallPosition: new PointF(0.5f, 0.5f), Part: TexturePart.Middle));
 
         var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
         TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
         var switchLine = mapElements.LineDefs.Single(p => p.Front.Texture == Texture.SW1CMT.ToString());
         Assert.That(switchLine.Front.Data.offsetx, Is.EqualTo(16));
         Assert.That(switchLine.Front.Data.offsety, Is.EqualTo(64));
+    }
+
+    [Test]
+    public void CanAutoAlignSwitchOnLowerTexture()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(256, 256));
+
+        var inner = room.AddInnerStructure(new Room(map, size: new Size(8,32)) { Floor = 32, Ceiling = 0 });
+        inner.Place().ToInsideOf(room, Side.Left, -32);
+
+        inner.SideTextures[Side.Right] = new TextureInfo(new TextureQuery(Texture.SW1CMT),
+            AutoAlign: new AutoAlignment(RegionLabel: "Switch", TexturePosition: new PointF(0.5f, 0.5f), WallPosition: new PointF(0.5f, 0.5f), Part: TexturePart.Lower));
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+        var switchLine = mapElements.LineDefs.Single(p => p.Front.Texture == Texture.SW1CMT.ToString());
+        Assert.That(switchLine.Back.Data.offsetx, Is.EqualTo(16));
+        Assert.That(switchLine.Back.Data.offsety, Is.EqualTo(72));
+    }
+
+    [Test]
+    public void CanAutoAlignSwitchOnUpperTexture()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(256, 256));
+
+        var inner = room.AddInnerStructure(new Room(map, size: new Size(8, 32)) { Floor = 0, Ceiling = -32 });
+        inner.Place().ToInsideOf(room, Side.Left, -32);
+
+        inner.SideTextures[Side.Right] = new TextureInfo(new TextureQuery(Texture.SW1CMT),
+            AutoAlign: new AutoAlignment(RegionLabel: "Switch", TexturePosition: new PointF(0.5f, 0.5f), WallPosition: new PointF(0.5f, 0.5f), Part: TexturePart.Upper));
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+        var switchLine = mapElements.LineDefs.Single(p => p.Front.Texture == Texture.SW1CMT.ToString());
+        Assert.That(switchLine.Back.Data.offsetx, Is.EqualTo(16));
+        Assert.That(switchLine.Back.Data.offsety, Is.EqualTo(104));
     }
 }
 

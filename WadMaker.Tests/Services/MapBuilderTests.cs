@@ -100,7 +100,7 @@ internal class MapBuilderTests : StandardTest
             Door: new Door(16, Texture.BIGDOOR2, Texture.DOORTRAK, 64))));
 
         var mapElements = MapBuilder.Build(map);
-
+        TextureAdjuster.ApplyTextures(mapElements);
         Assert.That(mapElements.SideDefs.Count, Is.EqualTo(24));
         
         var doorSector = mapElements.Sectors.Last();
@@ -222,7 +222,7 @@ internal class MapBuilderTests : StandardTest
         unRoom.WallTexture = new TextureInfo(Texture.REDWALL);
 
         var mapElements = MapBuilder.Build(map);
-
+        TextureAdjuster.ApplyTextures(mapElements);
         Assert.That(mapElements.LineDefs.Count, Is.EqualTo(6));
         Assert.That(mapElements.Sectors.Count, Is.EqualTo(1));
         Assert.That(mapElements.SideDefs.Count(p=>p.Texture == Texture.REDWALL.ToString()), Is.EqualTo(1));

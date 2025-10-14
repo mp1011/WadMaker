@@ -145,8 +145,8 @@ public class OverlappingLinedefResolver
     {
         var possibleSectors = line1.Sectors.Union(line2.Sectors).Distinct().OrderBy(p=> originalMapElements.Sectors.IndexOf(p)).ToArray();
         var sourceSidedefs = line1.SideDefs.Union(line2.SideDefs).ToArray();
-        var line1Texture = new TextureInfo(line1);
-        var line2Texture = new TextureInfo(line2);
+        var line1Texture = line1.TextureInfo;
+        var line2Texture = line2.TextureInfo;
 
         if (AreLinesFromCollapsedSector(line1, line2))
         {
@@ -158,7 +158,7 @@ public class OverlappingLinedefResolver
                 if (frontSidedef != null)
                 {
                     var newLine = new LineDef(line1.V1, line1.V2, frontSidedef, null, line1.Data with { twosided = null, blocking = true });
-                    line1Texture.ApplyTo(newLine);
+                    newLine.TextureInfo = line1Texture;
                     newLine.LineSpecial = line1.LineSpecial ?? line2.LineSpecial;
                     yield return newLine;
                     yield break;
@@ -204,17 +204,17 @@ public class OverlappingLinedefResolver
 
             // still don't think this is fully right
             if (overlapsOriginalLine1 && !overlapsOriginalLine2)
-                line1Texture.ApplyTo(newLine);
-            else if(!overlapsOriginalLine1 && overlapsOriginalLine2)
-                line2Texture.ApplyTo(newLine);
+                newLine.TextureInfo = line1Texture;
+            else if (!overlapsOriginalLine1 && overlapsOriginalLine2)
+                newLine.TextureInfo = line2Texture;
             else if (newLine.SingleSided && newLine.InSamePositionAs(line1))
-                line1Texture.ApplyTo(newLine);
+                newLine.TextureInfo = line1Texture;
             else if (newLine.SingleSided && newLine.InSamePositionAs(line2))
-                line2Texture.ApplyTo(newLine);
+                newLine.TextureInfo = line2Texture;
             else if (line2.Front.Sector == frontSector)
-                line2Texture.ApplyTo(newLine);
+                newLine.TextureInfo = line2Texture;
             else
-                line1Texture.ApplyTo(newLine);
+                newLine.TextureInfo = line1Texture;
 
             if (overlapsOriginalLine1 && !overlapsOriginalLine2)
                 newLine.LineSpecial = line1.LineSpecial;
@@ -263,7 +263,7 @@ public class OverlappingLinedefResolver
                 originalLine = line2;
             }
 
-            var texture = new TextureInfo(originalLine);
+            var texture = originalLine.TextureInfo;
 
             var frontSectors = originalMapElements.Sectors.Where(s => _isPointInSector.Execute(line.FrontTestPoint, s, originalMapElements)).ToArray();
             var backSectors = originalMapElements.Sectors.Where(s => _isPointInSector.Execute(line.BackTestPoint, s, originalMapElements)).ToArray();
@@ -287,7 +287,7 @@ public class OverlappingLinedefResolver
 
                 var frontSide = new SideDef(overlapSector, originalLine.Front.Data);
                 var newLine = new LineDef(line.V1, line.V2, frontSide, backSide, originalLine.Data with { twosided = true, blocking = false});
-                texture.ApplyTo(newLine);
+                newLine.TextureInfo = texture;
                 return newLine;
             }
             else

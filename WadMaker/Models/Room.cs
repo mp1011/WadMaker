@@ -146,7 +146,7 @@ public class Room : IWithShape, IThemed
             Theme = Theme,
             SectorSpecial = SectorSpecial,
             BuildingBlock = BuildingBlock,
-            BlocksSound = BlocksSound
+            BlocksSound = BlocksSound,            
         };
         copy.Shape = Shape.Copy();
 

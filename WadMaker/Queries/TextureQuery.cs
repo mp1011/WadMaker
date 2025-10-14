@@ -62,31 +62,7 @@ public record TextureQuery(string[]? ThemeNames = null, string? ColorName = null
         return matches.Select(p => Enum.Parse<Texture>(p.Name)).ToArray();
     }
 
-    private int LineHeight(LineDef target, TexturePart texturePart)
-    {
-        if(texturePart == TexturePart.Middle)
-        {
-            return target.Sectors.Select(p => p.Height).Min();
-        }
-        else if(texturePart == TexturePart.Lower)
-        {
-            int[] floors = target.Sectors.Select(p => p.FloorHeight).ToArray();
-            if (floors.Length < 2)
-                return 0;
-            else
-                return floors.Max() - floors.Min();
-        }
-        else if (texturePart == TexturePart.Upper)
-        {
-            int[] ceilings = target.Sectors.Select(p => p.CeilingHeight).ToArray();
-            if (ceilings.Length < 2)
-                return 0;
-            else
-                return ceilings.Max() - ceilings.Min();
-        }
-
-        return 0;
-    }
+    private int LineHeight(LineDef target, TexturePart texturePart) => new WallHeight(target, texturePart).Execute();   
 
     public override string ToString()
     {

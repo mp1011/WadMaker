@@ -49,12 +49,24 @@ internal class StandardTest
         return points;
     }
 
+    /// <summary>
+    ///  legacy support for old tests
+    /// </summary>
+    /// <param name="map"></param>
+    public string MapToUDMF_Simple(Map map)
+    {
+        var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
+        return MapPainter.Paint(elements);
+    }
+
     public string MapToUDMF(Map map, bool ensureThingsInBounds = false, bool addPlayerStart=false)
     {
         if (addPlayerStart)
             ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
 
         var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
         TextureAdjuster.ApplyThemes(mapElements);
         TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
 

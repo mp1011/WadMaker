@@ -62,7 +62,10 @@ public class RoomBuilder
         var sidedefs = SideDefs(pillar, vertices, roomSector).ToArray();
         elements.SideDefs.AddRange(sidedefs);
 
-        elements.LineDefs.AddRange(LineDefsOutward(vertices, sidedefs));
+        var lines = LineDefsOutward(vertices, sidedefs).ToArray();
+        foreach (var line in lines)
+            line.TextureInfo = new TextureInfo(pillar.WallTexture);
+        elements.LineDefs.AddRange(lines);
 
         return elements;
     }
@@ -92,7 +95,7 @@ public class RoomBuilder
                         backSide,
                         line.Data with { twosided = true, blocking = false });
 
-                innerElement.TextureForSide(lineSide).ApplyTo(newLine);
+                newLine.TextureInfo = innerElement.TextureForSide(lineSide);
                 newLine.LineSpecial = line.LineSpecial;
 
                 innerElements.LineDefs.Add(newLine);
@@ -112,7 +115,7 @@ public class RoomBuilder
                         line.Data with { twosided = false, blocking = true });
                 newLine.LineSpecial = line.LineSpecial;
 
-                innerElement.TextureForSide(lineSide).ApplyTo(newLine);
+                newLine.TextureInfo = innerElement.TextureForSide(lineSide);
                 innerElements.LineDefs.Add(newLine);
                 innerElements.SideDefs.Add(frontSide);
             }
@@ -171,7 +174,7 @@ public class RoomBuilder
             bool? blockSound = room.BlocksSound ? true : null;
             var line = new LineDef(V1: v.Item2, V2: v.Item3, Front: sidedefs[index], Back: null, Data: new linedef(blocking: true, blocksound: blockSound));
             var lineTexture = room.TextureForSide(line.SideOfRoom(room));
-            lineTexture?.ApplyTo(line);
+            line.TextureInfo = lineTexture;
             return line;
         });        
     }

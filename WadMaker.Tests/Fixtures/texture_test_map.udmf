@@ -978,49 +978,49 @@ sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 232;
+    offsetx = 164;
 }
 //3
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 248;
+    offsetx = 180;
 }
 //4
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 36;
+    offsetx = 140;
 }
 //5
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 52;
+    offsetx = 156;
 }
 //6
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 68;
+    offsetx = 172;
 }
 //7
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 236;
+    offsetx = 84;
 }
 //8
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 252;
+    offsetx = 100;
 }
 //9
 sidedef
@@ -1376,35 +1376,35 @@ sidedef
 {
     sector = 4;
     texturemiddle = "STONE";
-    offsetx = 208;
+    offsetx = 140;
 }
 //57
 sidedef
 {
     sector = 4;
     texturemiddle = "STONE";
-    offsetx = 96;
+    offsetx = 28;
 }
 //58
 sidedef
 {
     sector = 5;
     texturemiddle = "STONE";
-    offsetx = 188;
+    offsetx = 120;
 }
 //59
 sidedef
 {
     sector = 5;
     texturemiddle = "STONE";
-    offsetx = 204;
+    offsetx = 136;
 }
 //60
 sidedef
 {
     sector = 5;
     texturemiddle = "STONE";
-    offsetx = 76;
+    offsetx = 8;
 }
 //61
 sidedef
@@ -1542,14 +1542,14 @@ sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 212;
+    offsetx = 144;
 }
 //80
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 8;
+    offsetx = 196;
 }
 //81
 sidedef
@@ -1557,7 +1557,7 @@ sidedef
     sector = 0;
     texturetop = "STONE";
     texturebottom = "STONE";
-    offsetx = 112;
+    offsetx = 216;
 }
 //82
 sidedef
@@ -1571,14 +1571,14 @@ sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 16;
+    offsetx = 120;
 }
 //84
 sidedef
 {
     sector = 0;
     texturemiddle = "STONE";
-    offsetx = 12;
+    offsetx = 116;
 }
 //85
 sidedef
@@ -1586,7 +1586,7 @@ sidedef
     sector = 0;
     texturetop = "STONE";
     texturebottom = "STONE";
-    offsetx = 204;
+    offsetx = 136;
 }
 //86
 sidedef
@@ -1636,7 +1636,7 @@ sidedef
 {
     sector = 4;
     texturemiddle = "STONE";
-    offsetx = 152;
+    offsetx = 84;
 }
 //93
 sidedef
@@ -1644,7 +1644,7 @@ sidedef
     sector = 4;
     texturetop = "STONE";
     texturebottom = "STONE";
-    offsetx = 188;
+    offsetx = 120;
 }
 //94
 sidedef
@@ -1658,21 +1658,21 @@ sidedef
 {
     sector = 4;
     texturemiddle = "STONE";
-    offsetx = 60;
+    offsetx = 248;
 }
 //96
 sidedef
 {
     sector = 4;
     texturemiddle = "STONE";
-    offsetx = 40;
+    offsetx = 228;
 }
 //97
 sidedef
 {
     sector = 4;
     texturemiddle = "STONE";
-    offsetx = 172;
+    offsetx = 104;
 }
 //98
 sidedef
@@ -1714,7 +1714,7 @@ sidedef
 {
     sector = 7;
     texturemiddle = "STONE";
-    offsetx = 32;
+    offsetx = 136;
 }
 //104
 sidedef
@@ -1735,28 +1735,28 @@ sidedef
 {
     sector = 9;
     texturemiddle = "STONE";
-    offsetx = 28;
+    offsetx = 216;
 }
 //107
 sidedef
 {
     sector = 10;
     texturemiddle = "STONE";
-    offsetx = 92;
+    offsetx = 24;
 }
 //108
 sidedef
 {
     sector = 10;
     texturemiddle = "STONE";
-    offsetx = 80;
+    offsetx = 184;
 }
 //109
 sidedef
 {
     sector = 9;
     texturemiddle = "STONE";
-    offsetx = 208;
+    offsetx = 56;
 }
 //110
 sidedef
@@ -1778,7 +1778,7 @@ sidedef
 {
     sector = 11;
     texturemiddle = "STONE";
-    offsetx = 220;
+    offsetx = 152;
 }
 //113
 sidedef
@@ -1786,7 +1786,7 @@ sidedef
     sector = 11;
     texturetop = "STONE";
     texturebottom = "STONE";
-    offsetx = 172;
+    offsetx = 104;
 }
 //114
 sidedef
@@ -1800,21 +1800,21 @@ sidedef
 {
     sector = 11;
     texturemiddle = "STONE";
-    offsetx = 44;
+    offsetx = 232;
 }
 //116
 sidedef
 {
     sector = 13;
     texturemiddle = "STONE";
-    offsetx = 148;
+    offsetx = 80;
 }
 //117
 sidedef
 {
     sector = 12;
     texturemiddle = "STONE";
-    offsetx = 180;
+    offsetx = 112;
 }
 //118
 sidedef
@@ -1865,7 +1865,7 @@ sidedef
 {
     sector = 14;
     texturemiddle = "STONE";
-    offsetx = 116;
+    offsetx = 48;
 }
 //125
 sidedef
@@ -1894,7 +1894,7 @@ sidedef
 {
     sector = 15;
     texturemiddle = "STONE";
-    offsetx = 84;
+    offsetx = 16;
 }
 //129
 sidedef
@@ -1923,7 +1923,7 @@ sidedef
 {
     sector = 16;
     texturemiddle = "STONE";
-    offsetx = 52;
+    offsetx = 240;
 }
 //133
 sidedef
@@ -1952,7 +1952,7 @@ sidedef
 {
     sector = 17;
     texturemiddle = "STONE";
-    offsetx = 20;
+    offsetx = 208;
 }
 //137
 sidedef
@@ -1981,7 +1981,7 @@ sidedef
 {
     sector = 18;
     texturemiddle = "STONE";
-    offsetx = 244;
+    offsetx = 176;
 }
 //141
 sidedef
@@ -2010,7 +2010,7 @@ sidedef
 {
     sector = 19;
     texturemiddle = "STONE";
-    offsetx = 212;
+    offsetx = 144;
 }
 //145
 sidedef
@@ -2039,7 +2039,7 @@ sidedef
 {
     sector = 20;
     texturemiddle = "STONE";
-    offsetx = 180;
+    offsetx = 112;
 }
 //149
 sidedef
@@ -2068,7 +2068,7 @@ sidedef
 {
     sector = 21;
     texturemiddle = "STONE";
-    offsetx = 148;
+    offsetx = 80;
 }
 //153
 sidedef
@@ -2097,7 +2097,7 @@ sidedef
 {
     sector = 22;
     texturemiddle = "STONE";
-    offsetx = 116;
+    offsetx = 48;
 }
 //157
 sidedef
@@ -2111,22 +2111,22 @@ sidedef
 {
     sector = 23;
     texturetop = "STONE";
-    texturebottom = "STONE";
-    offsetx = 196;
+    texturebottom = "STEP1";
+    offsetx = 0;
 }
 //159
 sidedef
 {
     sector = 6;
     texturetop = "STONE";
-    texturebottom = "STONE";
+    texturebottom = "STEP1";
 }
 //160
 sidedef
 {
     sector = 23;
     texturemiddle = "STONE";
-    offsetx = 68;
+    offsetx = 0;
 }
 //161
 sidedef

@@ -4,7 +4,6 @@
 public enum LegacyFlags
 {
     None = 0,
-    DontClearUpperAndLowerTexturesOnOneSidedLines = 1,
     InnerSectorLinesAlwaysStartTwoSided = 2,
     DontClearUnusedMapElements = 4,
     DisableMoveTowardRoundingFix = 8,

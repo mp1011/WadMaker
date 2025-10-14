@@ -4,7 +4,6 @@ namespace WadMaker.Tests.Services;
 
 internal class MapPainterTests : StandardTest
 {
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void MapPainterCanCreateBasicRoom()
     {
@@ -21,12 +20,11 @@ internal class MapPainterTests : StandardTest
         });
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
 
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var udmf = MapToUDMF_Simple(map);
         var expected = File.ReadAllText("Fixtures//basicmap.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void MapPainterCanCreateTwoUnconnectedRooms()
     {
@@ -53,12 +51,11 @@ internal class MapPainterTests : StandardTest
             BottomRight = new Point(356, -256)
         });
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var udmf = MapToUDMF_Simple(map);
         var expected = File.ReadAllText("Fixtures//two_unconnected_rooms.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void MapPainterCanCreateTwoRoomsConnectedByHall()
     {
@@ -88,12 +85,11 @@ internal class MapPainterTests : StandardTest
         var hall = new Hall(Room1: map.Rooms[0], Room2: map.Rooms[1], Width: 192);
         map.Rooms.Add(HallGenerator.GenerateHall(hall));
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var udmf = MapToUDMF_Simple(map);
         var expected = File.ReadAllText("Fixtures//two_rooms_with_hall.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomWithPillar()
     {
@@ -116,13 +112,14 @@ internal class MapPainterTests : StandardTest
 
         map.Rooms[0].Pillars.First().Shape.Modifiers.Add(new InvertCorners { Width = 8 });
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
+        var udmf = MapPainter.Paint(elements);
         var expected = File.ReadAllText("Fixtures//room_with_pillar.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
 
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomWithInnerStructure()
     {
@@ -149,12 +146,12 @@ internal class MapPainterTests : StandardTest
 
         map.Rooms[0].InnerStructures.First().Shape.Modifiers.Add(new InvertCorners { Width = 8 });
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+
+        var udmf = MapToUDMF_Simple(map);
         var expected = File.ReadAllText("Fixtures//room_with_inner_structure.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomsConnectedByStairs()
     {
@@ -187,12 +184,11 @@ internal class MapPainterTests : StandardTest
 
         map.Rooms.Add(hall);
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var udmf = MapToUDMF_Simple(map);
         var expected = File.ReadAllText("Fixtures//hall_with_stairs.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines)]
     [Test]
     public void CanCreateRoomsConnectedByLift()
     {
@@ -224,12 +220,12 @@ internal class MapPainterTests : StandardTest
 
         map.Rooms.Add(hall);
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var udmf = MapToUDMF_Simple(map);
         var expected = File.ReadAllText("Fixtures//hall_with_lift.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.InnerSectorLinesAlwaysStartTwoSided)]
+    [WithStaticFlags(LegacyFlags.InnerSectorLinesAlwaysStartTwoSided)]
     [Test]
     public void CanCreateRoomWithButtonActivatedLift()
     {
@@ -268,12 +264,12 @@ internal class MapPainterTests : StandardTest
             Depth: 8,
             CenterPercent: 0.25));
         ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
-        var udmf = MapPainter.Paint(MapBuilder.Build(map));
+        var udmf = MapToUDMF_Simple(map);
         var expected = File.ReadAllText("Fixtures//room_with_button_activated_lift.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
 
-    [WithStaticFlags(LegacyFlags.DontClearUpperAndLowerTexturesOnOneSidedLines | LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
+    [WithStaticFlags(LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
     [Test]
     public void CanGenerateTextureTestMap()
     {
