@@ -107,9 +107,11 @@ public class SideDef(Sector Sector, sidedef Data) : IElementWrapper<sidedef>
 
     public Sector Sector { get; set; } = Sector;
 
+    public TextureInfo? TextureInfo { get; set; }
+
     public SideDef Copy()
     {
-        return new SideDef(Sector, Data);
+        return new SideDef(Sector, Data) { TextureInfo = TextureInfo };
     }
 
     public void Resolve(MapElements mapElements)
@@ -132,7 +134,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     private TextureInfo? _texture;
     public TextureInfo TextureInfo
     {
-        get => _texture ??= new TextureInfo(Texture.STONE);
+        get =>  _texture ?? Front.TextureInfo ?? Back?.TextureInfo ?? new TextureInfo(Texture.STONE);
         set
         {
             _texture = value;

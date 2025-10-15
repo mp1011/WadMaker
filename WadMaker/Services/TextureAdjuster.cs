@@ -1,4 +1,5 @@
-﻿using WadMaker.Models;
+﻿using System.Drawing;
+using WadMaker.Models;
 
 namespace WadMaker.Services;
 
@@ -57,7 +58,9 @@ public class TextureAdjuster
         if (matchingRule == null)
             return;
 
-        line.TextureInfo = matchingRule.GetTexture(line);
+        foreach(var side in line.SideDefs.Where(p=>p.Sector == sector))
+            side.TextureInfo = matchingRule.GetTexture(line);
+
         ApplyTexture(line);
     }
 
@@ -195,24 +198,24 @@ public class TextureAdjuster
 
     }
 
-    public Texture ResolveTexture(TexturePart part, LineDef line)
+    public Texture ResolveTexture(TexturePart part, LineDef line, SideDef side)
     {
-        if (line.TextureInfo == null)
+        var textureInfo = side.TextureInfo ?? line.TextureInfo;
+        if (textureInfo == null)
             return Texture.MISSING;
 
-        return line.TextureInfo.GetQuery(part).Execute(line, part).FirstOrDefault();
+        return textureInfo.GetQuery(part).Execute(line, part).FirstOrDefault();
     }
 
     public void ApplyTexture(LineDef line)
     {
-        if (line.TextureInfo == null)
-            return;
-
-        line.Data = line.Data with { dontpegbottom = line.TextureInfo.LowerUnpegged, dontpegtop = line.TextureInfo.UpperUnpegged };
+        var lineTexture = TextureForLine(line);
+        line.Data = line.Data with { dontpegbottom = lineTexture.LowerUnpegged, dontpegtop = lineTexture.UpperUnpegged };
+        
         ApplyTexture(line.Front, line, line.Data.twosided);
         ApplyTexture(line.Back, line, line.Data.twosided);
 
-        if (line.TextureInfo.DrawLowerFromBottom.GetValueOrDefault())
+        if(lineTexture.DrawLowerFromBottom.GetValueOrDefault())
             Apply_DrawLowerFromBottom(line);
     }
 
@@ -232,6 +235,31 @@ public class TextureAdjuster
             line.Back.Data = line.Back.Data with { offsety = -floorDifference };
     }
 
+    /// <summary>
+    /// Determines the best texture to use for the line itself
+    /// </summary>
+    /// <param name="line"></param>
+    /// <returns></returns>
+    private TextureInfo TextureForLine(LineDef line)
+    {
+        if (line.SingleSided)
+            return line.Front.TextureInfo ?? line.TextureInfo;
+
+        if(line.Front.Sector.Floor > line.Back!.Sector.Floor)
+            return line.Front.TextureInfo ?? line.TextureInfo;
+
+        if (line.Front.Sector.Ceiling > line.Back!.Sector.Ceiling)
+            return line.Front.TextureInfo ?? line.TextureInfo;
+
+        if (line.Back!.Sector.Floor > line.Front.Sector.Floor)
+            return line.Back.TextureInfo ?? line.TextureInfo;
+
+        if (line.Back!.Sector.Ceiling > line.Front.Sector.Ceiling)
+            return line.Back.TextureInfo ?? line.TextureInfo;
+
+        return line.TextureInfo;
+    }
+
     private void ApplyTexture(SideDef? side, LineDef line, bool? twosided)
     {
         if (side == null || line.TextureInfo == null)
@@ -242,8 +270,8 @@ public class TextureAdjuster
             side.Data = side.Data with
             {
                 texturemiddle = null,
-                texturetop = ResolveTexture(TexturePart.Upper, line).ToString(),
-                texturebottom = ResolveTexture(TexturePart.Lower, line).ToString(),
+                texturetop = ResolveTexture(TexturePart.Upper, line, side).ToString(),
+                texturebottom = ResolveTexture(TexturePart.Lower, line, side).ToString(),
                 offsetx = line.TextureInfo.OffsetX,
                 offsety = line.TextureInfo.OffsetY
             };
@@ -252,7 +280,7 @@ public class TextureAdjuster
         {
             side.Data = side.Data with
             {
-                texturemiddle = ResolveTexture(TexturePart.Middle, line).ToString(),
+                texturemiddle = ResolveTexture(TexturePart.Middle, line, side).ToString(),
                 texturebottom = null,
                 texturetop = null,
             };

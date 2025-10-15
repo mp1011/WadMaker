@@ -1,6 +1,4 @@
-﻿using WadMaker.Models.LineSpecials;
-
-namespace WadMaker.Tests.FullMapTests;
+﻿namespace WadMaker.Tests.FullMapTests;
 
 class TechbaseSep25FullMapTest : StandardTest
 {

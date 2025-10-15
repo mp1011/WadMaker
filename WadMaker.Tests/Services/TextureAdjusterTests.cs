@@ -417,5 +417,43 @@ internal class TextureAdjusterTests : StandardTest
         Assert.That(switchLine.Back.Data.offsetx, Is.EqualTo(16));
         Assert.That(switchLine.Back.Data.offsety, Is.EqualTo(104));
     }
+
+    [Test]
+    public void CanApplyMultipleThemesToMap()
+    {
+        var map = new TestMaps().TwoConnectedRoomsWithDifferentCeilings();
+
+        var theme1 = new Theme(new ThemeRule[]
+        {
+            new ThemeRule(Texture: new TextureInfo(Texture.BFALL1), Conditions: new TrueCondition()),
+        });
+
+        var theme2 = new Theme(new ThemeRule[]
+        {
+            new ThemeRule(Texture: new TextureInfo(Texture.BRICK10), Conditions: new TrueCondition()),
+        });
+
+        map.Rooms[0].Theme = theme1;
+        map.Rooms[0].Tag = 1;
+
+        map.Rooms[1].Theme = theme2;
+        map.Rooms[1].Tag = 2;
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
+        TextureAdjuster.ApplyThemes(mapElements);
+
+        var room1Sides = mapElements.SideDefs.Where(p => p.Sector.Tag == 1).ToArray();
+        var room2Sides = mapElements.SideDefs.Where(p => p.Sector.Tag == 2).ToArray();
+
+        Assert.That(room1Sides, Is.Not.Empty);
+        Assert.That(room2Sides, Is.Not.Empty);
+
+        foreach(var side in room1Sides)
+            Assert.That(side.Texture, Is.EqualTo(Texture.BFALL1.ToString()));
+
+        foreach (var side in room2Sides)
+            Assert.That(side.Texture, Is.EqualTo(Texture.BRICK10.ToString()));
+    }
 }
 
