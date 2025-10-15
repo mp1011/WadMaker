@@ -240,4 +240,32 @@ internal class ThingPlacerTests : StandardTest
 
         Assert.That(Query.IsPointInSector.Execute(placedThing.Position, mapElements.Sectors[0], mapElements), Is.EqualTo(!inVoid));
     }
+
+    [TestCase]
+    public void CanPlaceMonstersWithExplicitRanges()
+    {
+        var map = new TestMaps().LinearMap();
+        var mainRooms = map.Rooms
+            .Where(p => p.Bounds.Width == 256)
+            .OrderBy(p => p.UpperLeft.X)
+            .ToArray();
+
+        var path = new PlayerPath(mainRooms.Select(p => new PlayerPathNode(new Room[] { p }, Array.Empty<Room>())).ToArray());
+
+        ThingPlacer.AddMonsters(path,
+            new MonsterPlacement(ThingType.Imp, 0, 0, EnemyDensity.Single, Angle.East, ThingPattern.Row));
+
+        ThingPlacer.AddMonsters(path,
+           new MonsterPlacement(ThingType.Demon, 1, 2, EnemyDensity.Single, Angle.East, ThingPattern.Row));
+
+        ThingPlacer.AddMonsters(path,
+          new MonsterPlacement(ThingType.Lost_soul, 4, 4, EnemyDensity.Single, Angle.East, ThingPattern.Row));
+
+
+        Assert.That(mainRooms[0].Things.Count(p => p.ThingType == ThingType.Imp), Is.EqualTo(1));
+        Assert.That(mainRooms[1].Things.Count(p => p.ThingType == ThingType.Demon), Is.EqualTo(1));
+        Assert.That(mainRooms[2].Things.Count(p => p.ThingType == ThingType.Demon), Is.EqualTo(1));
+        Assert.That(mainRooms[3].Things.Count(), Is.EqualTo(0));
+        Assert.That(mainRooms[4].Things.Count(p => p.ThingType == ThingType.Lost_soul), Is.EqualTo(1));
+    }
 }

@@ -56,16 +56,16 @@ FIX NEXT:
 [x] - standardize room and cutout, both should be able to use the same methods
 [x] - bending halls
 [x] - sound blocking
-[ ] - easier way to center switch textures
-[ ] - make it easier to apply themes to halls
+[x] - easier way to center switch textures
 [ ] - for monster placement, percentages for ranges may be harder to use
-[ ] - different options for resolving overlaps
+
 
 
 Later
 [ ] thing placement to also avoid placing items in sectors too small
 [ ] - have way to make a "slice" through a sector for easier ledges (or dock, unsure)
 [ ] - use Anchors for easier door positioning
+[ ] - different options for resolving intersections
 
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors
