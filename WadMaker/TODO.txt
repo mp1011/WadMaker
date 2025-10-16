@@ -57,7 +57,9 @@ FIX NEXT:
 [x] - bending halls
 [x] - sound blocking
 [x] - easier way to center switch textures
-[ ] - for monster placement, percentages for ranges may be harder to use
+[x] - for monster placement, percentages for ranges may be harder to use
+----------------10/14/2025
+[ ] - more advanced texturing
 
 
 

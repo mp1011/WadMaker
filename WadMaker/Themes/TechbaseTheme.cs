@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Themes;
+﻿using WadMaker.Models.Theming;
+
+namespace WadMaker.Themes;
 
 public record TechbaseTheme(int Version = 0) : Theme(CreateRules(Version))
 {
@@ -6,7 +8,7 @@ public record TechbaseTheme(int Version = 0) : Theme(CreateRules(Version))
     { 
         // nukage pit walls
         yield return new ThemeRule(new TextureQuery(new[] { "SlimeBottom" }, RepeatsVertically: false),
-                                   new TextureInfo(DrawLowerFromBottom: true),
+                                   Texture: new TextureInfo(DrawLowerFromBottom: true),
             Conditions: new LowerFloorTextureIs(new FlatsQuery(new[] { "Slime" })));
 
         yield return new ThemeRule(new TextureQuery( new[] { "Tech", "Door" }, "Brown"), 
@@ -19,7 +21,7 @@ public record TechbaseTheme(int Version = 0) : Theme(CreateRules(Version))
         if (version > 0)
         {
             yield return new ThemeRule(new TextureQuery(new[] { "DoorSide" }),
-                new TextureInfo(LowerUnpegged: true),
+                Texture: new TextureInfo(LowerUnpegged: true),
                 Conditions: new IsDoorSide());
         }
 

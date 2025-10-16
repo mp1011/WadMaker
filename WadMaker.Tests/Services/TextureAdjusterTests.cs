@@ -1,6 +1,7 @@
-﻿using WadMaker.Config;
-using WadMaker.Models;
+﻿using System.Drawing;
+using WadMaker.Config;
 using WadMaker.Models.LineSpecials;
+using WadMaker.Models.Theming;
 
 namespace WadMaker.Tests.Services;
 
@@ -218,9 +219,50 @@ internal class TextureAdjusterTests : StandardTest
         }
     }
 
-    // room for improvement but ok for now
     [Test]
-    [WithStaticFlags(LegacyFlags.DontClearUnusedMapElements | LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
+    public void CanApplyThemeRuleToFlats()
+    {
+        var map = new TestMaps().TextureTestMap();
+        var theme = new Theme(new ThemeRule[]
+        {
+            new ThemeRule(FloorQuery: new FlatsQuery( new [] { "Step" }), Conditions: new FrontRoomBuildingBlockTypeIs<Stairs>()),
+        });
+        map.Theme = theme;
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyThemes(mapElements);
+        var steps = mapElements.Sectors.Where(p => p.Room.BuildingBlock is Stairs).ToArray();
+
+        Assert.That(steps, Is.Not.Empty);
+        foreach(var step in steps)
+        {
+            Assert.That(step.Floor, Is.EqualTo(Flat.STEP1));
+        }
+    }
+
+
+    [Test]
+    public void CanApplyThemeRuleToDoorSectors()
+    {
+        var map = new TestMaps().TextureTestMap();
+        var theme = new Theme(new ThemeRule[]
+        {
+            new ThemeRule(Ceiling: Flat.TLITE6_1, Conditions: new IsDoor()),
+        });
+        map.Theme = theme;
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyThemes(mapElements);
+        var doors = mapElements.Sectors.Where(p => p.Room.BuildingBlock is Door).ToArray();
+
+        Assert.That(doors, Is.Not.Empty);
+        foreach (var door in doors)
+        {
+            Assert.That(door.Ceiling, Is.EqualTo(Flat.TLITE6_1));
+        }
+    }
+
+    [Test]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();

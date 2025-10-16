@@ -60,6 +60,8 @@ public class Sector(Room Room, sector Data) : IElementWrapper<sector>
 
     public LineDef[] Lines { get; set; } = Array.Empty<LineDef>();
 
+    public SideDef[] SideDefs => Lines.SelectMany(p => p.SideDefs).Where(p => p.Sector == this).Distinct().ToArray();
+
     public LineDef[] Activators { get; set; } = Array.Empty<LineDef>();
 
     public ZDoomSectorSpecial SectorSpecial

@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using WadMaker.Models;
+using WadMaker.Models.Theming;
 
 namespace WadMaker.Services;
 
@@ -43,6 +43,8 @@ public class TextureAdjuster
             if (sector.Room.Theme == null)
                 continue;
 
+            ApplyTheme(sector);
+
             foreach (var line in mapElements.LineDefs.Where(p => p.BelongsTo(sector)))
             {
                 ApplyTheme(sector.Room.Theme, sector, line);
@@ -52,9 +54,23 @@ public class TextureAdjuster
         return mapElements;
     }
 
+    private void ApplyTheme(Sector sector)
+    {
+        var theme = sector.Room.Theme;
+        if (theme == null)
+            return;
+
+        var matchingRule = theme.SectorRules.FirstOrDefault(p => p.AppliesTo(sector));
+        if (matchingRule == null)
+            return;
+
+        sector.Floor = matchingRule.GetFloor(sector);
+        sector.Ceiling = matchingRule.GetCeiling(sector);
+    }
+
     private void ApplyTheme(Theme theme, Sector sector, LineDef line)
     {
-        var matchingRule = theme.Rules.FirstOrDefault(p => p.AppliesTo(line));
+        var matchingRule = theme.LineRules.FirstOrDefault(p => p.AppliesTo(line));
         if (matchingRule == null)
             return;
 

@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Models;
+﻿using WadMaker.Models.Theming;
+
+namespace WadMaker.Models;
 
 public interface IThemed
 {

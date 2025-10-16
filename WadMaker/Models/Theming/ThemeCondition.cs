@@ -1,38 +1,10 @@
-﻿namespace WadMaker.Models;
-
-public record Theme(ThemeRule[] Rules)
-{
-    public Theme(IEnumerable<ThemeRule> Rules) : this(Rules.ToArray()) { }
-}
-
-public record ThemeRule(TextureQuery? Query = null, TextureInfo? Texture = null, params ThemeCondition[] Conditions)
-{
-    public bool AppliesTo(LineDef lineDef) => Conditions.All(c => c.AppliesTo(lineDef));
-
-    public TextureInfo GetTexture(LineDef lineDef)
-    {
-        if (Query == null)
-            return Texture ?? new TextureInfo();
-        
-        var upper = Query.Execute(lineDef, TexturePart.Upper).FirstOrDefault();
-        var middle = Query.Execute(lineDef, TexturePart.Middle).FirstOrDefault();
-        var lower = Query.Execute(lineDef, TexturePart.Lower).FirstOrDefault();
-
-        if (Texture == null)
-            return new TextureInfo(Mid: middle, Upper: upper, Lower: lower);
-
-        return Texture with
-        {
-            Upper = Texture.Upper ?? new TextureQuery(upper),
-            Mid = Texture.Mid ?? new TextureQuery(middle),
-            Lower = Texture.Lower ?? new TextureQuery(lower)
-        };
-    }
-}
+﻿namespace WadMaker.Models.Theming;
 
 public abstract record ThemeCondition()
 {
     public abstract bool AppliesTo(LineDef lineDef);
+
+    public abstract bool AppliesTo(Sector sector);
 
     public ThemeCondition AndNot(ThemeCondition other)
     {
@@ -45,21 +17,33 @@ public abstract record ThemeCondition()
     }
 }
 
+public abstract record LineOnlyThemeCondition() : ThemeCondition
+{
+    public override bool AppliesTo(Sector sectord) => false;
+}
+
 public record LambdaThemeCondition(Func<LineDef, bool> Condition) : ThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef) => Condition(lineDef);
+    public override bool AppliesTo(Sector sector) => false; // maybe?
 }
 
 public record TrueCondition() : ThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef) => true;
+    public override bool AppliesTo(Sector sector) => true;
 }
 
 public record And(params ThemeCondition[] Conditions) : ThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef)
     {
-        return Conditions.All(c=> c.AppliesTo(lineDef));
+        return Conditions.All(c => c.AppliesTo(lineDef));
+    }
+
+    public override bool AppliesTo(Sector sector)
+    {
+        return Conditions.All(c => c.AppliesTo(sector));
     }
 }
 
@@ -68,6 +52,11 @@ public record Not(ThemeCondition Condition) : ThemeCondition
     public override bool AppliesTo(LineDef lineDef)
     {
         return !Condition.AppliesTo(lineDef);
+    }
+
+    public override bool AppliesTo(Sector sector)
+    {
+        return !Condition.AppliesTo(sector);
     }
 }
 
@@ -84,20 +73,28 @@ public record IsDoor() : ThemeCondition
 
         return activators.Any();
     }
+
+    public override bool AppliesTo(Sector sector)
+    {
+        if(sector.Tag.HasValue)
+            sector.Activators.Any(p=>p.LineSpecial?.IsDoor == true);
+
+        return sector.Lines.Any(p=> p.Back != null && p.LineSpecial?.IsDoor == true && p.LineSpecial?.AppliesToBackSector == true);
+    }
 }
 
-public record IsDoorSide() : ThemeCondition
+public record IsDoorSide() : LineOnlyThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef)
     {
         if (lineDef.Back != null)
             return false;
 
-        return lineDef.Front.Sector.Lines.Any(p=>p.LineSpecial?.IsDoor == true);
+        return lineDef.Front.Sector.Lines.Any(p => p.LineSpecial?.IsDoor == true);
     }
 }
 
-public record HasLineSpecial() : ThemeCondition
+public record HasLineSpecial() : LineOnlyThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef)
     {
@@ -105,7 +102,7 @@ public record HasLineSpecial() : ThemeCondition
     }
 }
 
-public record FloorDifferenceLessOrEqualTo(int Amount) : ThemeCondition
+public record FloorDifferenceLessOrEqualTo(int Amount) : LineOnlyThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef)
     {
@@ -124,25 +121,20 @@ public record FloorDifferenceLessOrEqualTo(int Amount) : ThemeCondition
 
 public record SectorHeightGreaterOrEqualTo(int Amount) : ThemeCondition
 {
-    public override bool AppliesTo(LineDef lineDef)
-    {
-        if (lineDef.Front.Sector.Height >= Amount)
-            return true;
-
-        if (lineDef.Back != null && lineDef.Back.Sector.Height >= Amount)
-            return true;
-
-        return false;
-    }
+    public override bool AppliesTo(LineDef lineDef) =>
+        lineDef.Sectors.Any(AppliesTo);
+    
+    public override bool AppliesTo(Sector sector) => 
+        sector.Height >= Amount;
 }
 
-public record LineLengthGreaterOrEqualTo(int Amount) : LambdaThemeCondition(x=> x.Length >= Amount)
-{}
+public record LineLengthGreaterOrEqualTo(int Amount) : LambdaThemeCondition(x => x.Length >= Amount)
+{ }
 
 public record LineLengthIs(int Amount) : LambdaThemeCondition(x => x.Length == Amount)
-{}
+{ }
 
-public record LowerFloorTextureIs(FlatsQuery FloorQuery) : ThemeCondition
+public record LowerFloorTextureIs(FlatsQuery FloorQuery) : LineOnlyThemeCondition
 {
     public override bool AppliesTo(LineDef lineDef)
     {
@@ -152,11 +144,12 @@ public record LowerFloorTextureIs(FlatsQuery FloorQuery) : ThemeCondition
 }
 
 public record FrontRoomBuildingBlockTypeIs<T> : ThemeCondition
-    where T: class
+    where T : class
 {
-    public override bool AppliesTo(LineDef lineDef)
+    public override bool AppliesTo(LineDef lineDef) => AppliesTo(lineDef.Front.Sector);
+
+    public override bool AppliesTo(Sector sector)
     {
-        var room = lineDef.Front.Sector.Room;
-        return room.BuildingBlock != null && room.BuildingBlock is T;
+        return sector.Room.BuildingBlock != null && sector.Room.BuildingBlock is T;
     }
 }

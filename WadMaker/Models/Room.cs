@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Models;
+﻿using WadMaker.Models.Theming;
+
+namespace WadMaker.Models;
 
 public class Room : IWithShape, IThemed
 {    
@@ -49,8 +51,8 @@ public class Room : IWithShape, IThemed
     public int Floor { get; set; } = 0;    
     public bool BlocksSound { get; set; }
 
-    public Flat FloorTexture { get; set; } = Flat.Default;
-    public Flat CeilingTexture { get; set; } = Flat.Default;
+    public FlatsQuery FloorTexture { get; set; } = FlatsQuery.Default;
+    public FlatsQuery CeilingTexture { get; set; } = FlatsQuery.Default;
 
     private Theme? _theme;
     public Theme? Theme
