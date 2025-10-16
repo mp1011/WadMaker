@@ -262,11 +262,12 @@ internal class TextureAdjusterTests : StandardTest
         }
     }
 
+    // still room for improvement
     [Test]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();
-        testMap.Theme = new TechbaseTheme();
+        testMap.Theme = new TechbaseTheme(Version: 2);
         ThingPlacer.AddPlayerStartToFirstRoomCenter(testMap);
         var udmf = MapToUDMF(testMap);
         var expected = File.ReadAllText("Fixtures//texture_test_techbase.udmf");

@@ -90,7 +90,7 @@ public record IsDoorSide() : LineOnlyThemeCondition
         if (lineDef.Back != null)
             return false;
 
-        return lineDef.Front.Sector.Lines.Any(p => p.LineSpecial?.IsDoor == true);
+        return new FrontRoomBuildingBlockTypeIs<Door>().AppliesTo(lineDef);
     }
 }
 

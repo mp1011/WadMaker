@@ -1856,49 +1856,49 @@ sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 81;
+    offsetx = 65;
 }
 //1
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 34;
+    offsetx = 18;
 }
 //2
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 99;
+    offsetx = 83;
 }
 //3
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 7;
+    offsetx = 119;
 }
 //4
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 72;
+    offsetx = 56;
 }
 //5
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 108;
+    offsetx = 92;
 }
 //6
 sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 45;
+    offsetx = 29;
 }
 //7
 sidedef
@@ -2262,7 +2262,7 @@ sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 3;
+    offsetx = 115;
 }
 //58
 sidedef
@@ -2379,7 +2379,7 @@ sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 18;
+    offsetx = 2;
 }
 //74
 sidedef
@@ -2401,7 +2401,7 @@ sidedef
 {
     sector = 0;
     texturemiddle = "STARBR2";
-    offsetx = 16;
+    offsetx = 0;
 }
 //77
 sidedef
@@ -2480,15 +2480,15 @@ sidedef
 sidedef
 {
     sector = 2;
-    texturemiddle = "STARBR2";
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //88
 sidedef
 {
     sector = 2;
-    texturemiddle = "STARBR2";
-    offsetx = 36;
+    texturemiddle = "LITE5";
+    offsetx = 0;
 }
 //89
 sidedef
@@ -3267,14 +3267,14 @@ sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 16;
+    offsetx = 0;
 }
 //197
 sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 3;
+    offsetx = 115;
 }
 //198
 sidedef
@@ -3679,7 +3679,7 @@ sidedef
 {
     sector = 46;
     texturemiddle = "STARBR2";
-    offsetx = 51;
+    offsetx = 35;
 }
 //254
 sidedef
@@ -3743,8 +3743,8 @@ sidedef
 sidedef
 {
     sector = 49;
-    texturemiddle = "STARBR2";
-    offsetx = 49;
+    texturemiddle = "LITE5";
+    offsetx = 0;
 }
 //263
 sidedef
@@ -3778,7 +3778,7 @@ sidedef
 sidedef
 {
     sector = 49;
-    texturemiddle = "STARBR2";
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //268
@@ -3786,7 +3786,7 @@ sidedef
 {
     sector = 31;
     texturemiddle = "STARBR2";
-    offsetx = 105;
+    offsetx = 89;
 }
 //269
 sidedef
@@ -3794,7 +3794,7 @@ sidedef
     sector = 31;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 51;
+    offsetx = 35;
 }
 //270
 sidedef

@@ -218,3 +218,13 @@ come back to docking idea, maybe we want it maybe not
 
 -- 10/12
 move LineHeight function to its own query, and use it in auto-offset calculation
+
+
+-- 10/16
+step texture
+different texture around circle
+dont split monitor in texture
+lift floor
+lift texture only on active side
+alcoves
+pillars

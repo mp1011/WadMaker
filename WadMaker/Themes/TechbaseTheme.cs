@@ -14,8 +14,23 @@ public record TechbaseTheme(int Version = 0) : Theme(CreateRules(Version))
         yield return new ThemeRule(new TextureQuery( new[] { "Tech", "Door" }, "Brown"), 
             Conditions: new IsDoor());
 
-        yield return new ThemeRule(new TextureQuery( new[] { "Step" }), 
-            Conditions: new FloorDifferenceLessOrEqualTo(16));
+        if (version <= 1)
+        {
+            yield return new ThemeRule(new TextureQuery(new[] { "Step" }),
+                Conditions: new FloorDifferenceLessOrEqualTo(16));
+        }
+        else if(version >= 2)
+        {
+            yield return new ThemeRule(Floor: Flat.STEP2,
+                Conditions: new FrontRoomBuildingBlockTypeIs<Stairs>());
+
+            yield return new ThemeRule(Texture: new TextureInfo(Texture.TEKWALL1),
+                Conditions: new FrontRoomBuildingBlockTypeIs<Alcove>().And(new LineLengthGreaterOrEqualTo(32)));
+
+            yield return new ThemeRule(new TextureQuery(new[] { "Step" }),
+                Conditions: new FloorDifferenceLessOrEqualTo(16).And(new FrontRoomBuildingBlockTypeIs<Stairs>()));
+        }
+
 
         // door traks
         if (version > 0)

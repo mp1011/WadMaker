@@ -2081,14 +2081,14 @@ sidedef
 {
     sector = 22;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 72;
 }
 //37
 sidedef
 {
     sector = 22;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 72;
 }
 //38
 sidedef
@@ -2165,28 +2165,28 @@ sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //49
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //50
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //51
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //52
 sidedef
@@ -2284,7 +2284,7 @@ sidedef
     sector = 26;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //65
 sidedef
@@ -2299,7 +2299,7 @@ sidedef
     sector = 27;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //67
 sidedef
@@ -2343,14 +2343,14 @@ sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 32;
+    offsetx = 64;
 }
 //73
 sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 96;
+    offsetx = 0;
 }
 //74
 sidedef
@@ -2569,7 +2569,7 @@ sidedef
 {
     sector = 39;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 88;
 }
 //104
 sidedef
@@ -3414,7 +3414,7 @@ sidedef
 {
     sector = 22;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 8;
 }
 //220
 sidedef
@@ -3450,21 +3450,21 @@ sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //225
 sidedef
 {
     sector = 26;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //226
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //227
 sidedef
@@ -3472,7 +3472,7 @@ sidedef
     sector = 24;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //228
 sidedef
@@ -3486,49 +3486,49 @@ sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //230
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //231
 sidedef
 {
     sector = 27;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //232
 sidedef
 {
     sector = 27;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //233
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //234
 sidedef
 {
     sector = 27;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //235
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //236
 sidedef
@@ -3536,7 +3536,7 @@ sidedef
     sector = 24;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //237
 sidedef
@@ -3550,34 +3550,34 @@ sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //239
 sidedef
 {
     sector = 24;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //240
 sidedef
 {
     sector = 26;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //241
 sidedef
 {
     sector = 26;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //242
 sidedef
 {
     sector = 28;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //243
@@ -3591,15 +3591,15 @@ sidedef
 sidedef
 {
     sector = 28;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //245
 sidedef
 {
     sector = 28;
-    texturemiddle = "DOORSTOP";
-    offsetx = 0;
+    texturemiddle = "STARBR2";
+    offsetx = 32;
 }
 //246
 sidedef
@@ -3612,7 +3612,7 @@ sidedef
 sidedef
 {
     sector = 28;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "LITE5";
     offsetx = 0;
 }
 //248
@@ -3620,14 +3620,14 @@ sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //249
 sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 96;
+    offsetx = 0;
 }
 //250
 sidedef
@@ -3635,7 +3635,7 @@ sidedef
     sector = 30;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 32;
+    offsetx = 64;
 }
 //251
 sidedef
@@ -3649,7 +3649,7 @@ sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 96;
+    offsetx = 0;
 }
 //253
 sidedef
@@ -3685,28 +3685,28 @@ sidedef
 {
     sector = 32;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //258
 sidedef
 {
     sector = 33;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //259
 sidedef
 {
     sector = 32;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 96;
 }
 //260
 sidedef
 {
     sector = 33;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 32;
 }
 //261
 sidedef
@@ -3757,7 +3757,7 @@ sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 32;
+    offsetx = 64;
 }
 //268
 sidedef
@@ -3765,7 +3765,7 @@ sidedef
     sector = 30;
     texturetop = "STARBR2";
     texturebottom = "STARBR2";
-    offsetx = 96;
+    offsetx = 0;
 }
 //269
 sidedef
@@ -3779,7 +3779,7 @@ sidedef
 {
     sector = 30;
     texturemiddle = "STARBR2";
-    offsetx = 32;
+    offsetx = 64;
 }
 //271
 sidedef
@@ -3830,14 +3830,14 @@ sidedef
 {
     sector = 39;
     texturemiddle = "STARBR2";
-    offsetx = 0;
+    offsetx = 24;
 }
 //278
 sidedef
 {
     sector = 39;
     texturemiddle = "STARBR2";
-    offsetx = 64;
+    offsetx = 88;
 }
 //279
 sidedef
@@ -3879,7 +3879,7 @@ sidedef
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //285
@@ -3901,15 +3901,15 @@ sidedef
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //288
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
-    offsetx = 0;
+    texturemiddle = "STARBR2";
+    offsetx = 32;
 }
 //289
 sidedef
@@ -3930,15 +3930,15 @@ sidedef
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //292
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
-    offsetx = 0;
+    texturemiddle = "STARBR2";
+    offsetx = 32;
 }
 //293
 sidedef
@@ -3959,14 +3959,14 @@ sidedef
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //296
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //297
@@ -3988,7 +3988,7 @@ sidedef
 sidedef
 {
     sector = 42;
-    texturemiddle = "DOORSTOP";
+    texturemiddle = "STARBR2";
     offsetx = 0;
 }
 //300
@@ -5839,7 +5839,6 @@ linedef
     v2 = 147;
     sidefront = 242;
     blocking = true;
-    dontpegbottom = true;
 }
 //181
 linedef
@@ -5857,7 +5856,6 @@ linedef
     v2 = 144;
     sidefront = 244;
     blocking = true;
-    dontpegbottom = true;
 }
 //183
 linedef
@@ -5866,7 +5864,6 @@ linedef
     v2 = 149;
     sidefront = 245;
     blocking = true;
-    dontpegbottom = true;
 }
 //184
 linedef
@@ -5884,7 +5881,6 @@ linedef
     v2 = 142;
     sidefront = 247;
     blocking = true;
-    dontpegbottom = true;
 }
 //186
 linedef
@@ -6159,7 +6155,6 @@ linedef
     v2 = 216;
     sidefront = 284;
     blocking = true;
-    dontpegbottom = true;
 }
 //215
 linedef
@@ -6181,7 +6176,6 @@ linedef
     v2 = 206;
     sidefront = 287;
     blocking = true;
-    dontpegbottom = true;
 }
 //217
 linedef
@@ -6190,7 +6184,6 @@ linedef
     v2 = 218;
     sidefront = 288;
     blocking = true;
-    dontpegbottom = true;
 }
 //218
 linedef
@@ -6212,7 +6205,6 @@ linedef
     v2 = 211;
     sidefront = 291;
     blocking = true;
-    dontpegbottom = true;
 }
 //220
 linedef
@@ -6221,7 +6213,6 @@ linedef
     v2 = 224;
     sidefront = 292;
     blocking = true;
-    dontpegbottom = true;
 }
 //221
 linedef
@@ -6243,7 +6234,6 @@ linedef
     v2 = 213;
     sidefront = 295;
     blocking = true;
-    dontpegbottom = true;
 }
 //223
 linedef
@@ -6252,7 +6242,6 @@ linedef
     v2 = 226;
     sidefront = 296;
     blocking = true;
-    dontpegbottom = true;
 }
 //224
 linedef
@@ -6274,7 +6263,6 @@ linedef
     v2 = 208;
     sidefront = 299;
     blocking = true;
-    dontpegbottom = true;
 }
 //226
 linedef
