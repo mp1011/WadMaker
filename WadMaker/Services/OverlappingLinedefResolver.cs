@@ -174,8 +174,14 @@ public class OverlappingLinedefResolver
             Sector? frontSector = possibleSectors.LastOrDefault(p => _isPointInSector.Execute(line.FrontTestPoint, p, originalMapElements));
             Sector? backSector = possibleSectors.LastOrDefault(p => p != frontSector && _isPointInSector.Execute(line.BackTestPoint, p, originalMapElements));
 
-            var frontSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == frontSector)?.Copy();
-            var backSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == backSector)?.Copy();
+            var originalFrontSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == frontSector);
+            var originalBackSidedef = sourceSidedefs.FirstOrDefault(p => p.Sector == backSector);
+            var frontSidedef = originalFrontSidedef?.Copy();
+            var backSidedef = originalBackSidedef?.Copy();
+
+            var originalFrontLine = new[] { line1, line2 }.FirstOrDefault(p => p.SideDefs.Contains(originalFrontSidedef));
+            var originalBackLine = new[] { line1, line2 }.FirstOrDefault(p => p.SideDefs.Contains(originalBackSidedef));
+
 
             LineDef newLine;
 
@@ -202,7 +208,8 @@ public class OverlappingLinedefResolver
             var overlapsOriginalLine1 = newLine.Overlaps(line1);
             var overlapsOriginalLine2 = newLine.Overlaps(line2);
 
-            // still don't think this is fully right
+
+            // figure out which texture to apply to each side
             if (overlapsOriginalLine1 && !overlapsOriginalLine2)
                 newLine.TextureInfo = line1Texture;
             else if (!overlapsOriginalLine1 && overlapsOriginalLine2)
@@ -211,16 +218,20 @@ public class OverlappingLinedefResolver
                 newLine.TextureInfo = line1Texture;
             else if (newLine.SingleSided && newLine.InSamePositionAs(line2))
                 newLine.TextureInfo = line2Texture;
-            else if (line2.Front.Sector == frontSector)
-                newLine.TextureInfo = line2Texture;
             else
-                newLine.TextureInfo = line1Texture;
+            {
+                if (frontSidedef != null)
+                    frontSidedef.TextureInfo = originalFrontSidedef!.TextureInfo ?? originalFrontLine!.TextureInfo;
+
+                if (backSidedef != null)
+                    backSidedef.TextureInfo = originalBackSidedef!.TextureInfo ?? originalBackLine!.TextureInfo;
+            }
 
             if (overlapsOriginalLine1 && !overlapsOriginalLine2)
                 newLine.LineSpecial = line1.LineSpecial;
             else if (!overlapsOriginalLine1 && overlapsOriginalLine2)
                 newLine.LineSpecial = line2.LineSpecial;
-            else 
+            else
                 newLine.LineSpecial = line1.LineSpecial ?? line2.LineSpecial;
 
             newLine.BlocksSounds = line1.BlocksSounds || line2.BlocksSounds;

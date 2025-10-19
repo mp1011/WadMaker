@@ -10,7 +10,8 @@ public record TextureInfo(
     int? OffsetX = null, //sidedef
     int? OffsetY = null, //sidedef
     bool? DrawLowerFromBottom = null,
-    AutoAlignment? AutoAlign = null)
+    AutoAlignment? AutoAlign = null,
+    TextureInfo? Alternate = null)
 {
 
     public TextureInfo(Texture? Main = Texture.STONE,

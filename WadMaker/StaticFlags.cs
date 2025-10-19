@@ -8,6 +8,7 @@ public enum LegacyFlags
     DontClearUnusedMapElements = 4,
     DisableMoveTowardRoundingFix = 8,
     OverwriteExistingXOffset = 16,
+    IgnoreColumnStops = 32
 }
 public static class Legacy
 {

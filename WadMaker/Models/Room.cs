@@ -128,6 +128,8 @@ public class Room : IWithShape, IThemed
 
     public Room AddInnerStructure(Room room)
     {
+        if (_innerStructures.Contains(room))
+            throw new Exception("Attempted to add same structure twice");
         room.Shape.RelativeTo = this.Shape;
         _innerStructures.Add(room);
         return room;

@@ -102,14 +102,43 @@ public class TextureAdjuster
 
         foreach (var line in lines)
         {
+            int offsetX = CalcXOffset(line, totalWallWidth);
+            if(!OffsetAlignsWithColumnStops(line,offsetX))
+            {
+                line.TextureInfo = line.TextureInfo.Alternate ?? throw new Exception("Texture does not fit to wall and no alternate was provided");
+
+                //not sure about this
+                line.Front.TextureInfo = null;
+                
+                offsetX = 0;
+                ApplyTexture(line);
+                totalWallWidth = -(int)line.Length;
+            }
+
             line.Front.Data = line.Front.Data with
             {
-                offsetx = CalcXOffset(line, totalWallWidth),
+                offsetx = offsetX,
                 offsety = prev != null ? CalcYOffset(line, prev) : line.Front.Data.offsety
             };
             totalWallWidth += (int)line.Length;
             prev = line;
         }
+    }
+
+    private bool OffsetAlignsWithColumnStops(LineDef line, int offsetX)
+    {
+        if(Legacy.Flags.HasFlag(LegacyFlags.IgnoreColumnStops))
+            return true;
+
+        var texture = TextureForAlignment(line);
+        var textureInfo = DoomConfig.DoomTextureInfo[texture.ToString()];
+        if(textureInfo.ColumnStops == null)
+            return true;
+
+        int leftSide = offsetX % textureInfo.Size!.Width;
+        int rightSide = (offsetX + (int)line.Length) % textureInfo.Size!.Width;
+
+        return textureInfo.ColumnStops.Contains(leftSide) && textureInfo.ColumnStops.Contains(rightSide);   
     }
 
     private int CalcXOffset(LineDef line, int totalWallWidth)
@@ -209,11 +238,6 @@ public class TextureAdjuster
         return false;
     }
 
-    public void ApplyLineTexture(linedef line)
-    {
-
-    }
-
     public Texture ResolveTexture(TexturePart part, LineDef line, SideDef side)
     {
         var textureInfo = side.TextureInfo ?? line.TextureInfo;
@@ -261,16 +285,16 @@ public class TextureAdjuster
         if (line.SingleSided)
             return line.Front.TextureInfo ?? line.TextureInfo;
 
-        if(line.Front.Sector.Floor > line.Back!.Sector.Floor)
+        if(line.Front.Sector.FloorHeight > line.Back!.Sector.FloorHeight)
             return line.Front.TextureInfo ?? line.TextureInfo;
 
-        if (line.Front.Sector.Ceiling > line.Back!.Sector.Ceiling)
+        if (line.Front.Sector.CeilingHeight > line.Back!.Sector.CeilingHeight)
             return line.Front.TextureInfo ?? line.TextureInfo;
 
-        if (line.Back!.Sector.Floor > line.Front.Sector.Floor)
+        if (line.Back!.Sector.FloorHeight > line.Front.Sector.FloorHeight)
             return line.Back.TextureInfo ?? line.TextureInfo;
 
-        if (line.Back!.Sector.Ceiling > line.Front.Sector.Ceiling)
+        if (line.Back!.Sector.CeilingHeight > line.Front.Sector.CeilingHeight)
             return line.Back.TextureInfo ?? line.TextureInfo;
 
         return line.TextureInfo;
@@ -317,5 +341,19 @@ public class TextureAdjuster
             };
 
         }
+    }
+
+    /// <summary>
+    /// Returns the texture used to determine alignment.
+    /// </summary>
+    /// <param name="line"></param>
+    /// <returns></returns>
+    private Texture TextureForAlignment(LineDef line)
+    {
+        // needs improvement
+        if (line.SingleSided)
+            return line.Front.Data.texturemiddle.ParseAs<Texture>() ?? Texture.MISSING;
+        else
+            return line.Front.Data.texturebottom.ParseAs<Texture>() ?? Texture.MISSING;
     }
 }

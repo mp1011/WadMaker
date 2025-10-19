@@ -1,7 +1,7 @@
 ﻿namespace WadMaker.Models;
 
 public record DoomTextureSize(string Name, int Width, int Height);
-public record DoomTextureInfo(string Name, string[] Themes, DoomTextureRegion[] Regions, string Color, string Comment, DoomTextureSize? Size);
+public record DoomTextureInfo(string Name, string[] Themes, DoomTextureRegion[] Regions, int[] ColumnStops, string Color, string Comment, DoomTextureSize? Size);
 
 public record DoomTextureRegion(string Label, int[] Location)
 {

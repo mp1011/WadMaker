@@ -264,6 +264,7 @@ internal class TextureAdjusterTests : StandardTest
 
     // still room for improvement
     [Test]
+    [WithStaticFlags(LegacyFlags.IgnoreColumnStops)]
     public void CanApplyTechTheme()
     {
         var testMap = new TestMaps().TextureTestMap();
@@ -275,6 +276,7 @@ internal class TextureAdjusterTests : StandardTest
     }
 
     [Test]
+    [WithStaticFlags(LegacyFlags.IgnoreColumnStops)]
     public void CanApplyNukageTextureToPitWalls()
     {
         var map = new TestMaps().TwoConnectedRoomsWithDifferentCeilings();
@@ -409,7 +411,7 @@ internal class TextureAdjusterTests : StandardTest
         var map = new Map();
         var room = map.AddRoom(size: new Size(256, 256));
 
-        var alcove = room.AddInnerStructure(StructureGenerator.AddStructure(room, new Alcove(new Room { Floor = 16, Ceiling = -64 }, Side.Top, 32, 8, 0.5)));
+        var alcove = StructureGenerator.AddStructure(room, new Alcove(new Room { Floor = 16, Ceiling = -64 }, Side.Top, 32, 8, 0.5));
         alcove.SideTextures[Side.Top] = new TextureInfo(new TextureQuery(Texture.SW1CMT),
             AutoAlign: new AutoAlignment(RegionLabel: "Switch", TexturePosition: new PointF(0.5f,0.5f), WallPosition: new PointF(0.5f, 0.5f), Part: TexturePart.Middle));
 
@@ -497,6 +499,88 @@ internal class TextureAdjusterTests : StandardTest
 
         foreach (var side in room2Sides)
             Assert.That(side.Texture, Is.EqualTo(Texture.BRICK10.ToString()));
+    }
+
+    [Test]
+    public void OffsetsObeyColumnStops()
+    {
+        var map = new Map();
+        var room = map.AddRoom();
+        room.BottomRight = room.UpperLeft.Add(128, -112);
+      
+        room.WallTexture = new TextureInfo(new TextureQuery(Texture.STARBR2), Alternate: new TextureInfo(Texture.BROWN1));
+
+        var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
+        TextureAdjuster.AdjustOffsetsAndPegs(elements);
+
+        var fitLines = elements.LineDefs.Where(p => p.Length == 128).ToArray();
+        var nofitLines = elements.LineDefs.Where(p => p.Length < 128).ToArray();
+
+        Assert.That(fitLines, Is.Not.Empty);
+        Assert.That(nofitLines, Is.Not.Empty);
+
+        foreach (var line in fitLines)
+            Assert.That(line.Front.Data.texturemiddle, Is.EqualTo(Texture.STARBR2.ToString()));
+
+        foreach (var line in nofitLines)
+            Assert.That(line.Front.Data.texturemiddle, Is.EqualTo(Texture.BROWN1.ToString()));
+    }
+
+    [Test]
+    public void OffsetsObeyColumnStops2()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(246,246));
+        room.Shape.Modifiers.Add(new InvertCorners { Width = 64 });
+        
+        room.WallTexture = new TextureInfo(new TextureQuery(Texture.STARBR2), Alternate: new TextureInfo(Texture.BROWN1));
+
+        var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
+        TextureAdjuster.AdjustOffsetsAndPegs(elements);
+
+        var fitLines = elements.LineDefs.Where(p => p.Length == 64).ToArray();
+        var nofitLines = elements.LineDefs.Where(p => p.Length != 64).ToArray();
+
+        Assert.That(fitLines, Is.Not.Empty);
+        Assert.That(nofitLines, Is.Not.Empty);
+
+        foreach (var line in fitLines)
+            Assert.That(line.Front.Data.texturemiddle, Is.EqualTo(Texture.STARBR2.ToString()));
+
+        foreach (var line in nofitLines)
+            Assert.That(line.Front.Data.texturemiddle, Is.EqualTo(Texture.BROWN1.ToString()));
+    }
+
+    [Test]
+    public void OffsetsObeyColumnStopsWithTwoSidedLines()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(256, 256));
+
+        StructureGenerator.AddStructure(room, new Alcove(64, 0, Side.Top, 64, 16, 0.4));      
+        room.WallTexture = new TextureInfo(new TextureQuery(Texture.STARBR2), Alternate: new TextureInfo(Texture.BROWN1));
+
+        var elements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(elements);
+        TextureAdjuster.AdjustOffsetsAndPegs(elements);
+
+        var fitLines = elements.Sectors[0].Lines.Where(p => p.Length == 256).ToArray();
+        var nofitLines = elements.Sectors[0].Lines.Where(p => p.SingleSided && p.Length != 256).ToArray();
+        var twoSidedLine = elements.Sectors[0].Lines.Single(p => p.Back != null);
+
+
+        Assert.That(fitLines, Is.Not.Empty);
+        Assert.That(nofitLines, Is.Not.Empty);
+
+        foreach (var line in fitLines)
+            Assert.That(line.Front.Data.texturemiddle, Is.EqualTo(Texture.STARBR2.ToString()));
+
+        foreach (var line in nofitLines)
+            Assert.That(line.Front.Data.texturemiddle, Is.EqualTo(Texture.BROWN1.ToString()));
+
+        Assert.That(twoSidedLine.Front!.Data.texturebottom, Is.EqualTo(Texture.STARBR2.ToString()));
     }
 }
 

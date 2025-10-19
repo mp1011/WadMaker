@@ -288,7 +288,7 @@ sidedef
 {
     sector = 3;
     texturetop = "STONE";
-    texturebottom = "PLAT1";
+    texturebottom = "STONE";
 }
 //20
 sidedef

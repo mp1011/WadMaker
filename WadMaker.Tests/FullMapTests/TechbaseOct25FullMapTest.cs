@@ -3,7 +3,7 @@
 class TechbaseOct25FullMapTest : StandardTest
 {
     [TestCase]
-    [WithStaticFlags(LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset)]
+    [WithStaticFlags(LegacyFlags.DisableMoveTowardRoundingFix | LegacyFlags.OverwriteExistingXOffset | LegacyFlags.IgnoreColumnStops)]
     public void CanCreateFullyPlayableMap()
     {
         var map = new Map();

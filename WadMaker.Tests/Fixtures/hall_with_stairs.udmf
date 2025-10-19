@@ -839,7 +839,7 @@ sidedef
 {
     sector = 1;
     texturetop = "STONE";
-    texturebottom = "STEP1";
+    texturebottom = "STONE";
 }
 //59
 sidedef

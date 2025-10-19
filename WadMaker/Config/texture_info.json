@@ -1157,7 +1157,8 @@
   {
     "Name": "STARBR2",
     "Themes": [ "Tech" ],
-    "Color": "Brown"
+    "Color": "Brown",
+    "ColumnStops": [ 0, 32, 64, 96, 128 ]
   },
   {
     "Name": "STARG1",

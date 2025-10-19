@@ -59,7 +59,9 @@ FIX NEXT:
 [x] - easier way to center switch textures
 [x] - for monster placement, percentages for ranges may be harder to use
 ----------------10/14/2025
-[ ] - more advanced texturing
+[x] - more advanced texturing
+[ ] - avoid splitting textures at bad spots like in the middle of a monitor
+[ ] - light levels
 
 
 
@@ -221,10 +223,8 @@ move LineHeight function to its own query, and use it in auto-offset calculation
 
 
 -- 10/16
-step texture
-different texture around circle
-dont split monitor in texture
-lift floor
-lift texture only on active side
-alcoves
-pillars
+texture improvements
+	a texture like STARBR2 has 32 pixel columns which shouldn't be separated
+	COMPSTA1 has irregular columns
+
+	when overlapping lines merge it is not correctly putting the right textures on each side
