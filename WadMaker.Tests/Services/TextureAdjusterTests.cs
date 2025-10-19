@@ -582,5 +582,23 @@ internal class TextureAdjusterTests : StandardTest
 
         Assert.That(twoSidedLine.Front!.Data.texturebottom, Is.EqualTo(Texture.STARBR2.ToString()));
     }
+
+
+    [Test]
+    public void CanDistributeTexturesThatMatchQuery()
+    {
+        var map = new Map();
+        map.Theme = new Theme(new ThemeRule[] {
+            new ThemeRule(new TextureQuery(ThemeNames: ["Marble"], Distribution: TextureDistribution.Random)) });
+
+        var room = map.AddRoom(size: new Size(256, 256));
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
+        TextureAdjuster.ApplyThemes(mapElements);
+
+        var uniqueTextures = mapElements.SideDefs.Select(p => p.Data.texturemiddle).Distinct().ToArray();
+        Assert.That(uniqueTextures.Length, Is.GreaterThan(1));
+    }
 }
 

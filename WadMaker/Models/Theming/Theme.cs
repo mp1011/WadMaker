@@ -20,26 +20,6 @@ public record ThemeRule(TextureQuery? Query = null,
     public bool AppliesTo(LineDef lineDef) => Conditions.All(c => c.AppliesTo(lineDef));
     public bool AppliesTo(Sector sector) => Conditions.All(c => c.AppliesTo(sector));
 
-    public TextureInfo GetTexture(LineDef lineDef)
-    {
-        if (Query == null)
-            return Texture ?? new TextureInfo();
-        
-        var upper = Query.Execute(lineDef, TexturePart.Upper).FirstOrDefault();
-        var middle = Query.Execute(lineDef, TexturePart.Middle).FirstOrDefault();
-        var lower = Query.Execute(lineDef, TexturePart.Lower).FirstOrDefault();
-
-        if (Texture == null)
-            return new TextureInfo(Mid: middle, Upper: upper, Lower: lower);
-
-        return Texture with
-        {
-            Upper = Texture.Upper ?? new TextureQuery(upper),
-            Mid = Texture.Mid ?? new TextureQuery(middle),
-            Lower = Texture.Lower ?? new TextureQuery(lower)
-        };
-    }
-
     public Flat GetFloor(Sector sector)
     {
         if (FloorQuery == null)

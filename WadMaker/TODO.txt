@@ -60,8 +60,8 @@ FIX NEXT:
 [x] - for monster placement, percentages for ranges may be harder to use
 ----------------10/14/2025
 [x] - more advanced texturing
-[ ] - avoid splitting textures at bad spots like in the middle of a monitor
-[ ] - light levels
+[x] - avoid splitting textures at bad spots like in the middle of a monitor
+[x] - light levels
 
 
 
@@ -70,6 +70,7 @@ Later
 [ ] - have way to make a "slice" through a sector for easier ledges (or dock, unsure)
 [ ] - use Anchors for easier door positioning
 [ ] - different options for resolving intersections
+[ ] - apply regions and column stops to more textures
 
 7/6/2025
 not creating lines correctly, they seem not to associate with the right sectors

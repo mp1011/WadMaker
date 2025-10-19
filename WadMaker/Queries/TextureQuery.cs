@@ -7,7 +7,8 @@ public record TextureQuery(string[]? ThemeNames = null, string? ColorName = null
     int? MaxHeight = null,
     bool? RepeatsHorizontally = null,
     bool? RepeatsVertically = null,
-    string? TextureName = null)
+    string? TextureName = null,
+    TextureDistribution Distribution = TextureDistribution.FirstMatch)
 {
     public static TextureQuery Missing { get; } = new TextureQuery(Texture.MISSING);
 

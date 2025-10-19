@@ -92,6 +92,8 @@ public class Room : IWithShape, IThemed
 
     public ZDoomSectorSpecial SectorSpecial { get; set; } = ZDoomSectorSpecial.Normal;
 
+    public int LightLevel { get; set; } = 127;
+
     public Room() : this(NoTheme.Instance) { }
 
     public Room(IThemed parent, Point? center = null, Size? size = null)
@@ -150,7 +152,8 @@ public class Room : IWithShape, IThemed
             Theme = Theme,
             SectorSpecial = SectorSpecial,
             BuildingBlock = BuildingBlock,
-            BlocksSound = BlocksSound,            
+            BlocksSound = BlocksSound,
+            LightLevel = LightLevel,
         };
         copy.Shape = Shape.Copy();
 

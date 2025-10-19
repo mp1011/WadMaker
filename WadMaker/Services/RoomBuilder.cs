@@ -150,7 +150,7 @@ public class RoomBuilder
         heightfloor: room.Floor,
         id: room.Tag,
         heightceiling: room.Floor + room.VerticalHeight,
-        lightlevel: 127));
+        lightlevel: room.LightLevel));
 
     private IEnumerable<vertex> Vertices(IWithShape room)
     {

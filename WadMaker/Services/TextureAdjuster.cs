@@ -1,15 +1,14 @@
-﻿using System.Drawing;
-using WadMaker.Models.Theming;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 
 public class TextureAdjuster
 {
     private readonly IConfig _config;
+    private readonly Random _random;
 
-    public TextureAdjuster(IConfig config)
+    public TextureAdjuster(IConfig config, Random random)
     {
         _config = config;
+        _random = random;
     }
 
     /// <summary>
@@ -75,10 +74,45 @@ public class TextureAdjuster
             return;
 
         foreach(var side in line.SideDefs.Where(p=>p.Sector == sector))
-            side.TextureInfo = matchingRule.GetTexture(line);
+            side.TextureInfo = GetTextureFromThemeRule(line, matchingRule);
 
         ApplyTexture(line);
     }
+
+    private TextureInfo GetTextureFromThemeRule(LineDef lineDef, ThemeRule rule)
+    {
+        if (rule.Query == null)
+            return rule.Texture ?? new TextureInfo();
+
+        var upper = GetTextureFromQuery(lineDef, rule.Query, TexturePart.Upper);
+        var middle = GetTextureFromQuery(lineDef, rule.Query, TexturePart.Middle);
+        var lower = GetTextureFromQuery(lineDef, rule.Query, TexturePart.Lower);
+
+        if (rule.Texture == null)
+            return new TextureInfo(Mid: middle, Upper: upper, Lower: lower);
+
+        return rule.Texture with
+        {
+            Upper = rule.Texture.Upper ?? new TextureQuery(upper),
+            Mid = rule.Texture.Mid ?? new TextureQuery(middle),
+            Lower = rule.Texture.Lower ?? new TextureQuery(lower)
+        };
+    }
+
+    private Texture GetTextureFromQuery(LineDef lineDef, TextureQuery query, TexturePart texturePart)
+    {
+        var matches = query.Execute(lineDef, texturePart);
+        switch(query.Distribution)
+        {
+            case TextureDistribution.FirstMatch:
+                return matches.FirstOrDefault();
+            case TextureDistribution.Random:
+                return matches.PickRandom(_random);
+            default:
+                return Texture.MISSING;
+        }      
+    }
+
 
     private void SetLinePegs(MapElements mapElements)
     {

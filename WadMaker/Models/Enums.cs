@@ -17,6 +17,12 @@ public enum Speed
     BlazingDoor = 64,
 }
 
+public enum TextureDistribution
+{
+    FirstMatch = 0,
+    Random = 1,
+}
+
 public enum KeyType
 {
     None = 0,

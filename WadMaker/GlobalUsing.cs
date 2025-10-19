@@ -9,11 +9,11 @@ global using WadMaker.Models.BuildingBlocks;
 global using WadMaker.Models.Geometry;
 global using WadMaker.Models.LineSpecials;
 global using WadMaker.Models.Placement;
+global using WadMaker.Models.Theming;
 global using WadMaker.Queries;
 global using WadMaker.Services;
 global using WadMaker.Services.ShapeModifiers;
 global using WadMaker.Services.StructureGenerators;
-
 global using System.Globalization;
 global using CsvHelper;
 global using System.Text.RegularExpressions;
