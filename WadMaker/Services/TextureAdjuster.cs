@@ -233,7 +233,7 @@ public class TextureAdjuster
             if (loopProtect == 0)
                 throw new Exception("Unable to get line paths");
 
-            var usedLines = paths.SelectMany(p => p.ToArray()).ToArray();
+            var usedLines = paths.SelectMany(p => p.ToArray()).Distinct().ToArray();
 
             var nextUnusedLine = mapElements.LineDefs.FirstOrDefault(p => !usedLines.Contains(p));
             if (nextUnusedLine != null)

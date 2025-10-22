@@ -94,6 +94,8 @@ public class Room : IWithShape, IThemed
 
     public int LightLevel { get; set; } = 127;
 
+    public string? Comment { get; set; }
+
     public Room() : this(NoTheme.Instance) { }
 
     public Room(IThemed parent, Point? center = null, Size? size = null)

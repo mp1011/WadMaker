@@ -98,7 +98,7 @@ public struct DRectangle
             case Side.Right:
                 return new Point(Width, 0);
             default:
-                return new Point(0, Height);
+                return new Point(0, -Height);
         }
     }
 
@@ -181,5 +181,11 @@ public struct DRectangle
         }
 
         return (upperLeft, bottomRight);
+    }
+
+    public bool ContainsPoint(Point p)
+    {
+        return p.X >= X && p.X < Right &&
+               p.Y <= Y && p.Y > Bottom;
     }
 }

@@ -6,7 +6,8 @@ public record sector(
     int heightceiling,
     int lightlevel,
     int? id = null,
-    int? special = null
+    int? special = null,
+    string? comment = null
 ) : IMapElement;
 
 public record vertex(

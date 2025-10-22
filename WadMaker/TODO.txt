@@ -62,6 +62,9 @@ FIX NEXT:
 [x] - more advanced texturing
 [x] - avoid splitting textures at bad spots like in the middle of a monitor
 [x] - light levels
+----------------10/19/2025
+[ ] - texture gallery map
+[ ] - standardize whether structure generators also add elements to the map
 
 
 
@@ -229,3 +232,8 @@ texture improvements
 	COMPSTA1 has irregular columns
 
 	when overlapping lines merge it is not correctly putting the right textures on each side
+
+
+-- 10/19
+grid placement needs to use size of largest item in each row/column
+optimize so it doesn't take too long

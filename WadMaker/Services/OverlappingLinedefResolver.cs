@@ -46,6 +46,9 @@ public class OverlappingLinedefResolver
 
     private IEnumerable<LineDef> ResolveCrossingLines(MapElements originalMapElements, MapElements mapElements)
     {
+        if(Legacy.Flags.HasFlag(LegacyFlags.DontResolveCrossingLines))
+            return Array.Empty<LineDef>();
+
         Dictionary<(Sector, Sector), Sector> overlapSectors = new();
 
         List<LineDef> modified = new();

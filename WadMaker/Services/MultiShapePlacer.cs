@@ -41,31 +41,37 @@ public class MultiShapePlacer<T> where T : IWithShape
 
     public T[] InGrid(IWithShape container, int columns, Padding padding)
     {
-        int rows = Shapes.Length / columns;
+        int rows = (int)Math.Ceiling((double)Shapes.Length / columns);
         if (Shapes.Length < 4)
             return Shapes;
 
         // place corners first
+        var upperRowShapes = Shapes.Take(columns).ToArray();
+        var maxHeightInFirstRow = upperRowShapes.Max(p => p.Bounds().Height);
 
         // upper left
         Shapes[0].MoveTo(new Point(
             padding.Left + Shapes[0].Bounds().Width / 2, 
-            -padding.Top - Shapes[0].Bounds().Height / 2));
+            -padding.Top - maxHeightInFirstRow / 2));
 
         // upper right
         Shapes[columns-1].MoveTo(new Point(
             container.Bounds().Width - padding.Right - Shapes[columns - 1].Bounds().Width / 2,
-            -padding.Top - Shapes[columns - 1].Bounds().Height / 2));
+            -padding.Top - maxHeightInFirstRow / 2));
 
-        // lower left 
-        Shapes[Shapes.Length - columns].MoveTo(new Point(
-            padding.Left + Shapes[Shapes.Length - columns].Bounds().Width / 2,
-            -(container.Bounds().Height - padding.Bottom - Shapes[Shapes.Length - columns].Bounds().Height / 2)));
+        // lower left
+        var numItemsInLastRow = Shapes.Length - columns * (rows - 1);
+        var itemsInLastRow = Shapes.Skip(Shapes.Length - numItemsInLastRow).ToArray();
+        var maxHeightInLastRow = itemsInLastRow.Max(p => p.Bounds().Height);
+
+        Shapes[Shapes.Length - numItemsInLastRow].MoveTo(new Point(
+            padding.Left + Shapes[Shapes.Length - numItemsInLastRow].Bounds().Width / 2,
+            -(container.Bounds().Height - padding.Bottom - maxHeightInLastRow / 2)));
 
         // lower right
         Shapes[Shapes.Length - 1].MoveTo(new Point(
              container.Bounds().Width - padding.Right - Shapes[Shapes.Length - 1].Bounds().Width / 2,
-             -(container.Bounds().Height - padding.Bottom - Shapes[Shapes.Length - 1].Bounds().Height / 2)));
+             -(container.Bounds().Height - padding.Bottom - maxHeightInLastRow / 2)));
 
         Point cursor = Point.Empty;
         int height = Shapes.First().Bounds().Center.Y - Shapes.Last().Bounds().Center.Y;
@@ -92,7 +98,7 @@ public class MultiShapePlacer<T> where T : IWithShape
             int width = rowShapes.Last().Bounds().Center.X - rowShapes.First().Bounds().Center.X;
             int dx = width / (columns - 1);
 
-            for(int col = 0; col < columns; col++)
+            for(int col = 0; col < rowShapes.Length; col++)
             {
                 rowShapes[col].MoveTo(cursor);
                 cursor = cursor.Add(dx, 0);

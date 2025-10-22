@@ -6,6 +6,9 @@ public class IsPointInSector
 
     public bool Execute(Point p, Sector sector, MapElements elements)
     {
+        if (!sector.Room.Bounds.ContainsPoint(p))
+            return false;
+
         var sectorLines = elements.LineDefs.Where(p => p.BelongsTo(sector) && p.Length > 0);
         if(!sectorLines.Any()) return false;
 
