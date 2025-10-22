@@ -1,7 +1,4 @@
-﻿using System.Xml.Linq;
-using WadMaker.Models.LineSpecials;
-
-namespace WadMaker.Services;
+﻿namespace WadMaker.Services;
 
 public class MapBuilder
 {
@@ -106,7 +103,12 @@ public class MapBuilder
 
     private void RemoveInvalidSidedefs(MapElements mapElements)
     {
-        foreach(var lineDef in mapElements.LineDefs.Where(p=>p.Back != null))
+        var lineDefsToInspect = mapElements.LineDefs.Where(p => p.Back != null).ToArray();
+
+        var sideDefsToRemove = new ConcurrentBag<SideDef>();
+        var linesNeedingBackRemoval = new ConcurrentBag<LineDef>();
+
+        Parallel.ForEach(lineDefsToInspect, lineDef =>  
         {
             Sector? frontSector = mapElements.Sectors.FirstOrDefault(p => _isPointInSector.Execute(lineDef.FrontTestPoint, p, mapElements));
             Sector? backSector = mapElements.Sectors.FirstOrDefault(p => _isPointInSector.Execute(lineDef.BackTestPoint, p, mapElements));
@@ -115,11 +117,25 @@ public class MapBuilder
             {
                 // should do something, but don't know what
             }
-            else if(backSector == null)
+            else if (backSector == null)
             {
-                mapElements.SideDefs.Remove(lineDef.Back!);
-                lineDef.RemoveBack();
+                var back = lineDef.Back;
+                if (back != null)
+                    sideDefsToRemove.Add(back);
+
+                linesNeedingBackRemoval.Add(lineDef);
             }
+        });
+
+        var distinctSideDefs = sideDefsToRemove.Distinct().ToArray();
+        var distinctLines = linesNeedingBackRemoval.Distinct().ToArray();
+
+        if (distinctSideDefs.Length > 0)
+            mapElements.SideDefs.RemoveMany(distinctSideDefs);
+
+        foreach (var line in distinctLines)
+        {
+            line.RemoveBack();
         }
     }
 }

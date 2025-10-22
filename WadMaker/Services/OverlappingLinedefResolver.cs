@@ -2,12 +2,10 @@
 
 public class OverlappingLinedefResolver
 {
-    private IAnnotator _annotator;
     private IsPointInSector _isPointInSector;
 
-    public OverlappingLinedefResolver(IAnnotator annotator, IsPointInSector isPointInSector)
+    public OverlappingLinedefResolver(IsPointInSector isPointInSector)
     {
-        _annotator = annotator;
         _isPointInSector = isPointInSector;
     }
 
@@ -112,16 +110,17 @@ public class OverlappingLinedefResolver
 
     private (LineDef, LineDef)? NextOverlappingPair(MapElements mapElements)
     {
-        int index = 0;
-        foreach (var lineDef in mapElements.LineDefs)
+        var lineDefs = mapElements.LineDefs;
+        int count = lineDefs.Count;
+        for (int i = 0; i < count; i++)
         {
-            var overlap = mapElements.LineDefs.Skip(index + 1)
-                .FirstOrDefault(p => p.Overlaps(lineDef));
-
-            if (overlap != null)            
-                return (lineDef, overlap);
-            
-            index++;
+            var lineDef = lineDefs[i];
+            for (int j = i + 1; j < count; j++)
+            {
+                var candidate = lineDefs[j];
+                if (candidate.Overlaps(lineDef))
+                    return (lineDef, candidate);
+            }
         }
 
         return null;

@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WadMaker", "WadMaker.csproj", "{686C6257-0B02-46F1-95F0-092012365960}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WadMaker.Tests", "..\WadMaker.Tests\WadMaker.Tests.csproj", "{49BF1242-3237-4AA9-882E-6FA9A5817B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WadMaker.Tests.Performance", "..\WadMaker.Tests.Performance\WadMaker.Tests.Performance.csproj", "{86E05262-708E-4793-BA8F-DD6C7911ECE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{49BF1242-3237-4AA9-882E-6FA9A5817B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49BF1242-3237-4AA9-882E-6FA9A5817B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49BF1242-3237-4AA9-882E-6FA9A5817B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86E05262-708E-4793-BA8F-DD6C7911ECE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86E05262-708E-4793-BA8F-DD6C7911ECE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86E05262-708E-4793-BA8F-DD6C7911ECE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86E05262-708E-4793-BA8F-DD6C7911ECE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

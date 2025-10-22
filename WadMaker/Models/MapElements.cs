@@ -133,6 +133,19 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
 
+    private DRectangle? _boundingBox;
+    public DRectangle BoundingBox
+    {
+        get
+        {
+            if(_boundingBox.HasValue)
+                return _boundingBox.Value;
+
+            _boundingBox = new DRectangle(new Point[] { V1, V2 });
+            return _boundingBox.Value;
+        }
+    }
+
     private TextureInfo? _texture;
     public TextureInfo TextureInfo
     {
@@ -309,6 +322,9 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
 
     public bool Overlaps(LineDef other)
     {
+        if (!BoundingBox.IntersectsWith(other.BoundingBox))
+            return false;
+
         return OverlappingVertices(other).Length > 1;
     }
 

@@ -1,10 +1,8 @@
-﻿using WadMaker.Services.StructureGenerators;
-using WadMaker.Tests.Fixtures;
-using WadMaker.Tests.Services;
+﻿using WadMaker.Tests.Services;
 
 namespace WadMaker.Tests.TestHelpers;
 
-internal class StandardTest
+public class StandardTest
 {
     protected virtual int ConfigVersion { get; } = 0;
 

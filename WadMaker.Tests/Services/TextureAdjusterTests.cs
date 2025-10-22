@@ -1,11 +1,9 @@
-﻿using System.Drawing;
-using WadMaker.Config;
-using WadMaker.Models.LineSpecials;
+﻿using WadMaker.Config;
 using WadMaker.Models.Theming;
 
 namespace WadMaker.Tests.Services;
 
-internal class TextureAdjusterTests : StandardTest
+public class TextureAdjusterTests : StandardTest
 {
     protected override int ConfigVersion { get; } = 1;
     

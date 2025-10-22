@@ -33,7 +33,7 @@ class OverlappingLinedefResolverTests : StandardTest
 
         var mapElements = RoomBuilder.Build(map.Rooms[0]).Merge(RoomBuilder.Build(map.Rooms[1]));
 
-        var overlappingLinedefResolver = new OverlappingLinedefResolver(new TestAnnotator(), new IsPointInSector());
+        var overlappingLinedefResolver = new OverlappingLinedefResolver(new IsPointInSector());
         var results = overlappingLinedefResolver.Execute(mapElements).ToArray();
 
         Assert.That(results.Count(), Is.EqualTo(3));

@@ -74,8 +74,8 @@ public struct DRectangle
 
     public bool IntersectsWith(DRectangle other)
     {
-        return X < other.Right && Right > other.X &&
-               Y > other.Bottom && Bottom < other.Y;
+        return X <= other.Right && Right >= other.X &&
+               Y >= other.Bottom && Bottom <= other.Y;
     }
 
     public int AxisLength(Side side)
@@ -185,7 +185,7 @@ public struct DRectangle
 
     public bool ContainsPoint(Point p)
     {
-        return p.X >= X && p.X < Right &&
-               p.Y <= Y && p.Y > Bottom;
+        return p.X >= X && p.X <= Right &&
+               p.Y <= Y && p.Y >= Bottom;
     }
 }
