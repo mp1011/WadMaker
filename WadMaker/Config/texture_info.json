@@ -42,7 +42,13 @@
   {
     "Name": "BIGBRIK3",
     "Themes": [ "Brick", "Lights", "BottomLights" ],
-    "Color": "Brown"
+    "Regions": [
+      {
+        "Label": "HorizontalLights",
+        "Location": [ 0, 116, 64, 12 ]
+      }
+    ],
+    "Color" : "Brown"
   },
   {
     "Name": "BIGDOOR1",
@@ -82,11 +88,23 @@
   {
     "Name": "BLAKWAL1",
     "Themes": [ "City" ],
+    "Regions": [
+      {
+        "Label": "Panel",
+        "Location": [ 0, 0, 64, 64 ]
+      }
+    ],
     "Color": "Black"
   },
   {
     "Name": "BLAKWAL2",
     "Themes": [ "City" ],
+    "Regions": [
+      {
+        "Label": "Panel",
+        "Location": [ 0, 0, 64, 64 ]
+      }
+    ],
     "Color": "Black"
   },
   {
@@ -158,12 +176,28 @@
   {
     "Name": "BRICKLIT",
     "Themes": [ "Brick", "Light" ],
+    "Regions": [
+      {
+        "Label": "LampGlow",
+        "Location": [ 0, 16, 64, 48 ]
+      },
+      {
+        "Label": "Lamp",
+        "Location": [ 27, 32, 12, 22 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "BRNPOIS",
     "Themes": [ "Base" ],
     "Color": "Green",
+    "Regions": [
+      {
+        "Label": "PoisonSign",
+        "Location": [ 1, 60, 62, 36 ]
+      }
+    ],
     "Comment": "poison sign, connections to other textures"
 
   },
@@ -211,6 +245,12 @@
   {
     "Name": "BRONZE4",
     "Themes": [ "Base", "Lights", "BottomLights" ],
+    "Regions": [
+      {
+        "Label": "HorizontalLights",
+        "Location": [ 0, 116, 64, 12 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -267,26 +307,60 @@
   {
     "Name": "BSTONE3",
     "Themes": [ "Rock", "Light" ],
+    "Regions": [
+      {
+        "Label": "LampGlow",
+        "Location": [ 0, 16, 64, 48 ]
+      },
+      {
+        "Label": "Lamp",
+        "Location": [ 27, 32, 12, 22 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "CEMENT1",
     "Themes": [ "Base" ],
+    "Regions": [
+      {
+        "Label": "CautionStrip",
+        "Location": [ 17, 119, 64, 9 ]
+      }
+    ],
     "Color": "White"
   },
   {
     "Name": "CEMENT2",
     "Themes": [ "Base" ],
+    "Regions": [
+      {
+        "Label": "CautionStrip",
+        "Location": [ 17, 119, 64, 9 ]
+      }
+    ],
     "Color": "White"
   },
   {
     "Name": "CEMENT3",
     "Themes": [ "Base" ],
+    "Regions": [
+      {
+        "Label": "CautionStrip",
+        "Location": [ 17, 119, 64, 9 ]
+      }
+    ],
     "Color": "White"
   },
   {
     "Name": "CEMENT4",
     "Themes": [ "Base" ],
+    "Regions": [
+      {
+        "Label": "CautionStrip",
+        "Location": [ 17, 119, 64, 9 ]
+      }
+    ],
     "Color": "White"
   },
   {
@@ -328,23 +402,92 @@
     "Name": "COMPSTA1",
     "Themes": [ "Tech", "Computer" ],
     "Color": "Gray",
-    "Comment":  "Has Monitors"
+    "Regions": [
+      {
+        "Label": "BigMonitor1",
+        "Location": [ 5, 4, 48, 40 ]
+      },
+      {
+        "Label": "BigMonitor2",
+        "Location": [ 56, 4, 32, 40 ]
+      },
+      {
+        "Label": "SmallMonitor1",
+        "Location": [ 93, 4, 31, 17 ]
+      },
+      {
+        "Label": "SmallMonitor2",
+        "Location": [ 93, 27, 31, 17 ]
+      }
+    ],
+    "Comment": "Has Monitors"
   },
   {
     "Name": "COMPSTA2",
     "Themes": [ "Tech", "Computer" ],
     "Color": "Gray",
+    "Color": "Gray",
+    "Regions": [
+      {
+        "Label": "BigMonitor1",
+        "Location": [ 5, 4, 48, 40 ]
+      },
+      {
+        "Label": "BigMonitor2",
+        "Location": [ 56, 4, 32, 40 ]
+      },
+      {
+        "Label": "SmallMonitor1",
+        "Location": [ 93, 4, 31, 17 ]
+      },
+      {
+        "Label": "SmallMonitor2",
+        "Location": [ 93, 27, 31, 17 ]
+      }
+    ],
     "Comment": "Has Monitors"
   },
   {
     "Name": "COMPTALL",
     "Themes": [ "Tech" ],
-    "Color": "Gray",
+    "Regions": [
+      {
+        "Label": "Vent",
+        "Location": [ 0, 0, 32, 64 ]
+      },
+      {
+        "Label": "Monitor",
+        "Location": [ 192, 0, 64, 44 ]
+      },
+      {
+        "Label": "ComputerStuff1",
+        "Location": [ 128, 75, 64, 16 ]
+      },
+      {
+        "Label": "ComputerStuff2",
+        "Location": [ 128, 91, 64, 16 ]
+      },
+      {
+        "Label": "ComputerStuff3",
+        "Location": [ 192, 75, 64, 16 ]
+      },
+      {
+        "Label": "ComputerStuff4",
+        "Location": [ 192, 91, 64, 16 ]
+      }
+    ],
+    "Color": "Gray"
   },
   {
     "Name": "COMPWERD",
     "Themes": [ "Tech" ],
-    "Color": "Gray"
+    "Color": "Gray",
+    "Regions": [
+      {
+        "Label": "Panel",
+        "Location": [ 0, 0, 64, 64 ]
+      }
+    ]
   },
   {
     "Name": "CRACKLE2",
@@ -369,23 +512,55 @@
   {
     "Name": "CRATE3",
     "Themes": [ "Crate" ],
+    "Regions": [
+      {
+        "Label": "GrayCrate",
+        "Location": [ 0, 0, 64, 64 ]
+      },
+      {
+        "Label": "TanCrate",
+        "Location": [ 0, 64, 64, 64 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "CRATELIT",
     "Themes": [ "Crate" ],
     "Color": "Brown",
-    "Comment":  "has smaller crates"
+    "Regions": [
+      {
+        "Label": "MediumCrate",
+        "Location": [ 0, 0, 32, 32 ]
+      }
+    ],
+    "Comment" : "has smaller crates"
   },
   {
     "Name": "CRATINY",
     "Themes": [ "Crate" ],
     "Color": "Gray",
+    "Regions": [
+      {
+        "Label": "MediumCrate",
+        "Location": [ 0, 0, 16, 16 ]
+      }
+    ],
     "Comment": "very small crates"
   },
   {
     "Name": "CRATWIDE",
     "Themes": [ "Crate" ],
+    "Regions": [
+      {
+        "Label": "BigGrayCrate",
+        "Location": [ 0, 0, 128, 64 ]
+      },
+      {
+        "Label": "BigTanCrate",
+        "Location": [ 0, 64, 128, 64 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -447,12 +622,36 @@
     "Name": "EXITDOOR",
     "Themes": [ "Door" ],
     "Color": "Gray",
-    "Comment":  "extra stuff to the side"
+    "Regions": [
+      {
+        "Label": "LightStrip",
+        "Location": [ 112, 0, 16, 72 ]
+      },
+      {
+        "Label": "Pipe1",
+        "Location": [ 64, 0, 24, 72 ]
+      },
+      {
+        "Label": "Pipe2",
+        "Location": [ 88, 0, 24, 72 ]
+      }
+    ],
+    "Comment": "extra stuff to the side"
   },
   {
     "Name": "EXITSIGN",
     "Themes": [ "Exit" ],
     "Color": "Gray",
+    "Regions": [
+      {
+        "Label": "Sign",
+        "Location": [ 0, 0, 32, 16 ]
+      },
+      {
+        "Label": "Side",
+        "Location": [ 32, 0, 8, 16 ]
+      }
+    ],
     "Comment": "sign with sides"
   },
   {
@@ -496,6 +695,12 @@
   {
     "Name": "GRAY4",
     "Themes": [ "Base" ],
+    "Regions": [
+      {
+        "Label": "Panel",
+        "Location": [ 0, 0, 64, 64 ]
+      },
+    ],
     "Color": "Gray"
   },
   {
@@ -703,6 +908,12 @@
   {
     "Name": "METAL7",
     "Themes": [ "Metal", "BottomLights" ],
+    "Regions": [
+      {
+        "Label": "HorizontalLights",
+        "Location": [ 0, 112, 64, 16 ]
+      }
+    ],
     "Color": "Gray"
   },
   {

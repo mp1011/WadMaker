@@ -19,6 +19,7 @@ public static class ThingTypeExtensions
             ThingType.Zombieman => ThingCategory.Monster,
             ThingType.Shotgun_guy => ThingCategory.Monster,
             ThingType.Hell_knight => ThingCategory.Monster,
+            ThingType.Revenant => ThingCategory.Monster,
             ThingType.Mancubus => ThingCategory.Monster,
             ThingType.Pain_elemental => ThingCategory.Monster,
             ThingType.Commander_Keen => ThingCategory.Monster,

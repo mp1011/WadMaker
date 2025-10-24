@@ -63,7 +63,9 @@ FIX NEXT:
 [x] - avoid splitting textures at bad spots like in the middle of a monitor
 [x] - light levels
 ----------------10/19/2025
-[ ] - texture gallery map
+[x] - texture gallery map
+[ ] - texture region test map + finish adding
+[ ] - optimization, create test which scales number of inner sectors and checks the time
 [ ] - standardize whether structure generators also add elements to the map
 
 
