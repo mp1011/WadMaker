@@ -13,6 +13,7 @@ public class OverlappingLinedefResolver
     {
         MapElements originalMapElements = CloneOriginalElements(mapElements);
         List<LineDef> modified = new List<LineDef>();
+        mapElements.ClearSectorPolygonCache();
 
         int maxIterations = 100000; // safeguard against infinite loops
         while (--maxIterations > 0)
@@ -38,7 +39,10 @@ public class OverlappingLinedefResolver
             }
         }
 
+        mapElements.ClearSectorPolygonCache();
         modified.AddRange(ResolveCrossingLines(originalMapElements, mapElements));
+
+        mapElements.ClearSectorPolygonCache();
         return modified;
     }
 

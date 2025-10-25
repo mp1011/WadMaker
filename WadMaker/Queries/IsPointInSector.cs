@@ -9,10 +9,15 @@ public class IsPointInSector
         if (!sector.Room.Bounds.ContainsPoint(p))
             return false;
 
-        var sectorLines = elements.LineDefs.Where(p => p.BelongsTo(sector) && p.Length > 0);
-        if(!sectorLines.Any()) return false;
+        var polygons = sector.PolygonsCache;
+        if (polygons == null)
+        {
+            var sectorLines = elements.LineDefs.Where(p => p.BelongsTo(sector) && p.Length > 0);
+            if (!sectorLines.Any()) return false;
 
-        var polygons = SectorPolygons(sectorLines).ToArray();
+            polygons = SectorPolygons(sectorLines).ToArray();
+            sector.PolygonsCache = polygons;
+        }
         var polygonsAtPoint = polygons.Where(polygon => IsPointInsidePolygon(p, polygon)).ToArray();
 
         // if point is in two polygons at once, one of them must be a void inside the sector

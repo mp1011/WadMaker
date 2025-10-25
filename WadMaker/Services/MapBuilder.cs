@@ -99,6 +99,7 @@ public class MapBuilder
 
         mapElements.LineDefs.RemoveMany(invalidLines);
         mapElements.SideDefs.RemoveMany(invalidSides);
+        mapElements.ClearSectorPolygonCache();
     }
 
     private void RemoveInvalidSidedefs(MapElements mapElements)
@@ -137,5 +138,7 @@ public class MapBuilder
         {
             line.RemoveBack();
         }
+
+        mapElements.ClearSectorPolygonCache();
     }
 }

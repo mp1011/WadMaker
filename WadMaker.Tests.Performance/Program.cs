@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using WadMaker.Tests.Performance;
 
-Measure(() => new StressTestMap().Create(1400, 80));
+Measure(() => new StressTestMap().Create(9000, 640));
 //PromptTest();
 
 void PromptTest()
@@ -10,8 +10,8 @@ void PromptTest()
     int pillars = 10;
     while (true)
     {
-        int size = (int)((Math.Sqrt(pillars) + 2) * 128);
-
+        int size = (int)((Math.Sqrt(pillars) + 2) * 256);
+        
         Console.Write($"Generating room with {pillars} pillars ({size}x{size})....");
         Measure(() => new StressTestMap().Create(size, pillars));
 

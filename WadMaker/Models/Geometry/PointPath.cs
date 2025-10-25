@@ -9,6 +9,7 @@ public class PointPath : IEnumerable<Point>
     public bool IsLooping => LoopStart != null;
 
     private List<Point> _list = new List<Point>();
+    private HashSet<Point> _pointsHash = new HashSet<Point>();
 
     public int Length => _list.Count;
 
@@ -20,21 +21,28 @@ public class PointPath : IEnumerable<Point>
             Add(pt);
     }
 
+    public bool Contains(Point point) => _pointsHash.Contains(point);
+
     public void Add(Point point)
     {
-        if (_list.Contains(point))
+        if (Contains(point))
         {
             LoopStart = point;
             return;
         }
 
         _list.Add(point);
+        _pointsHash.Add(point);
     }
 
     public PointPath Copy()
     {
         var copy = new PointPath();
         copy._list.AddRange(_list);
+
+        foreach (var pt in _list)
+            copy._pointsHash.Add(pt);
+
         copy.LoopStart = LoopStart;
         return copy;
     }

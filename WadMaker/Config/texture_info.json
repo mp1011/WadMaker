@@ -738,16 +738,34 @@
   {
     "Name": "GSTFONT1",
     "Themes": [ "Animated", "Marble", "Blood", "BloodBottom" ],
-    "Color": "Green",
+    "Regions": [
+      {
+        "Label": "Face",
+        "Location": [ 5, 51, 53, 44 ]
+      }
+    ],
+    "Color": "Green"
   },
   {
     "Name": "GSTGARG",
     "Themes": [ "Marble", "Face" ],
+    "Regions": [
+      {
+        "Label": "Face",
+        "Location": [ 15, 16, 34, 43 ]
+      }
+    ],
     "Color": "Green"
   },
   {
     "Name": "GSTLION",
     "Themes": [ "Marble", "Face" ],
+    "Regions": [
+      {
+        "Label": "Face",
+        "Location": [ 15, 16, 34, 44 ]
+      }
+    ],
     "Color": "Green"
   },
   {
@@ -763,6 +781,12 @@
   {
     "Name": "GSTSATYR",
     "Themes": [ "Marble", "Face" ],
+    "Regions": [
+      {
+        "Label": "Face",
+        "Location": [ 15, 16, 35, 54 ]
+      }
+    ],
     "Color": "Green"
   },
   {
@@ -807,12 +831,24 @@
   },
   {
     "Name": "LITE3",
-    "Themes": [ "Light"],
+    "Themes": [ "Light" ],
+    "Regions": [
+      {
+        "Label": "LightBulb",
+        "Location": [ 0, 0, 32, 8 ]
+      }
+    ],
     "Color": "White"
   },
   {
     "Name": "LITE5",
     "Themes": [ "Light" ],
+    "Regions": [
+      {
+        "Label": "LightBulb",
+        "Location": [ 0, 0, 16, 8 ]
+      }
+    ],
     "Color": "White"
   },
   {
@@ -823,6 +859,12 @@
   {
     "Name": "LITEBLU4",
     "Themes": [ "Light" ],
+    "Regions": [
+      {
+        "Label": "LightBulb",
+        "Location": [ 0, 0, 16, 8 ]
+      }
+    ],
     "Color": "Blue"
   },
   {
@@ -883,11 +925,27 @@
   {
     "Name": "METAL2",
     "Themes": [ "Metal" ],
+    "Regions": [
+      {
+        "Label": "Panel",
+        "Location": [ 0, 0, 32, 64 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "METAL3",
     "Themes": [ "Metal" ],
+    "Regions": [
+      {
+        "Label": "ElectricSign",
+        "Location": [ 32, 32, 32, 32 ]
+      },
+      {
+        "Label": "ElectricalPanel",
+        "Location": [ 32, 64, 32, 64 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
@@ -898,6 +956,12 @@
   {
     "Name": "METAL5",
     "Themes": [ "Metal" ],
+    "Regions": [
+      {
+        "Label": "Vent",
+        "Location": [ 32, 32, 32, 32 ]
+      },
+    ],
     "Color": "Gray"
   },
   {
@@ -959,11 +1023,23 @@
   {
     "Name": "MODWALL3",
     "Themes": [ "Building" ],
+    "Regions": [
+      {
+        "Label": "Panel",
+        "Location": [ 0, 0, 64, 64 ]
+      }
+    ],
     "Color": "Black"
   },
   {
     "Name": "MODWALL4",
     "Themes": [ "Building" ],
+    "Regions": [
+      {
+        "Label": "Panel",
+        "Location": [ 0, 0, 32, 64 ]
+      }
+    ],
     "Color": "Black"
   },
   {
@@ -985,11 +1061,27 @@
   {
     "Name": "PANBLACK",
     "Themes": [ "Wood" ],
+    "Regions": [
+      {
+        "Label": "Flag",
+        "Location": [ 17, 9, 32, 107 ]
+      },
+      {
+        "Label": "Rope",
+        "Location": [ 4, 0, 7, 128 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "PANBLUE",
     "Themes": [ "Wood" ],
+    "Regions": [
+      {
+        "Label": "Flag",
+        "Location": [ 17, 9, 32, 107 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -1020,12 +1112,32 @@
   {
     "Name": "PANEL1",
     "Themes": [ "Wood" ],
+    "Regions": [
+      {
+        "Label": "FramedPanel",
+        "Location": [ 11, 4, 42, 32 ]
+      },
+      {
+        "Label": "FramedPanel2",
+        "Location": [ 11, 44, 42, 40 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "PANEL2",
     "Themes": [ "Wood" ],
-    "Color": "Brown"
+    "Color": "Brown",
+    "Regions": [
+      {
+        "Label": "FramedPanel",
+        "Location": [ 4, 4, 57, 32 ]
+      },
+      {
+        "Label": "FramedPanel2",
+        "Location": [ 4, 44, 57, 40 ]
+      }
+    ]
   },
   {
     "Name": "PANEL3",
@@ -1040,6 +1152,12 @@
   {
     "Name": "PANEL5",
     "Themes": [ "Wood" ],
+    "Regions": [
+      {
+        "Label": "Painting",
+        "Location": [ 10, 18, 44, 40 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -1065,6 +1183,12 @@
   {
     "Name": "PANRED",
     "Themes": [ "Wood" ],
+    "Regions": [
+      {
+        "Label": "Flag",
+        "Location": [ 17, 9, 32, 107 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -1075,6 +1199,16 @@
   {
     "Name": "PIPE2",
     "Themes": [ "Pipes" ],
+    "Regions": [
+      {
+        "Label": "Pipe",
+        "Location": [ 128, 9, 15, 128 ]
+      },
+      {
+        "Label": "Pipe2",
+        "Location": [ 12, 9, 15, 128 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -1090,6 +1224,12 @@
   {
     "Name": "PIPES",
     "Themes": [ "Pipes" ],
+    "Regions": [
+      {
+        "Label": "Pipe",
+        "Location": [ 0, 0, 20, 128 ]
+      }
+    ],
     "Color": "White"
   },
   {
@@ -1170,11 +1310,39 @@
   {
     "Name": "SILVER2",
     "Themes": [ "Base" ],
+    "Regions": [
+      {
+        "Label": "BlueLight",
+        "Location": [ 7, 16, 11, 37 ]
+      }
+    ],
     "Color": "Blue"
   },
   {
     "Name": "SILVER3",
-    "Themes": [ "Base" ],
+    "Themes": [ "Base", "Computer" ],
+    "Regions": [
+      {
+        "Label": "ComputerStuff1",
+        "Location": [ 11, 31, 42, 10 ]
+      },
+      {
+        "Label": "ComputerStuff2",
+        "Location": [ 11, 45, 42, 10 ]
+      },
+      {
+        "Label": "ComputerStuff3",
+        "Location": [ 11, 59, 42, 10 ]
+      },
+      {
+        "Label": "ComputerStuff4",
+        "Location": [ 11, 73, 42, 10 ]
+      },
+      {
+        "Label": "ComputerStuff5",
+        "Location": [ 11, 87, 42, 10 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
@@ -1338,12 +1506,69 @@
     "Name": "SPACEW3",
     "Themes": [ "Tech" ],
     "Color": "Gray",
+    "Regions": [
+      {
+        "Label": "Monitor1",
+        "Location": [ 5, 7, 21, 15 ]
+      },
+      {
+        "Label": "Monitor2",
+        "Location": [ 5, 28, 21, 15 ]
+      },
+      {
+        "Label": "Monitor3",
+        "Location": [ 5, 71, 21, 15 ]
+      },
+      {
+        "Label": "Monitor4",
+        "Location": [ 5, 92, 21, 15 ]
+      },
+      {
+        "Label": "Monitor5",
+        "Location": [ 37, 7, 21, 15 ]
+      }
+
+    ],
     "Comment":  "Monitors"
   },
   {
     "Name": "SPACEW4",
     "Themes": [ "Tech" ],
-    "Color": "Brown"
+    "Color": "Brown",
+    "Regions": [
+      {
+        "Label": "Panel1",
+        "Location": [ 0, 0, 32, 32 ]
+      },
+      {
+        "Label": "Panel2",
+        "Location": [ 32, 0, 32, 32 ]
+      },
+      {
+        "Label": "Panel3",
+        "Location": [ 0, 32, 32, 32 ]
+      },
+      {
+        "Label": "Panel4",
+        "Location": [ 32, 32, 32, 32 ]
+      },
+      {
+        "Label": "Panel5",
+        "Location": [ 0, 64, 32, 32 ]
+      },
+      {
+        "Label": "Panel6",
+        "Location": [ 32, 64, 32, 32 ]
+      },
+      {
+        "Label": "Panel7",
+        "Location": [ 0, 96, 32, 32 ]
+      },
+      {
+        "Label": "Panel8",
+        "Location": [ 32, 96, 32, 32 ]
+      }
+    ]
   },
   {
     "Name": "SPCDOOR1",
@@ -1514,37 +1739,79 @@
   {
     "Name": "SW1BLUE",
     "Themes": [ "Switch", "Skull" ],
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 14, 66, 37, 39 ]
+      }
+    ],
     "Color": "Blue"
   },
   {
     "Name": "SW1BRCOM",
-    "Themes": [ "Switch"],
+    "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 48, 72, 33, 33 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1BRIK",
     "Themes": [ "Switch" ],
     "Color": "Gray",
-    "Comment":  "Most switches go with some texture"
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 16, 72, 33, 33 ]
+      }
+    ],
+    "Comment": "Most switches go with some texture"
   },
   {
     "Name": "SW1BRN1",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 48, 72, 33, 33 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1BRN2",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SingleButtonSwitch",
+        "Location": [ 20, 79, 24, 24 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1BRNGN",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SingleButtonSwitch",
+        "Location": [ 20, 79, 24, 24 ]
+      }
+    ],
     "Color": "Green"
   },
   {
     "Name": "SW1BROWN",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "LeverSwitch",
+        "Location": [ 48, 72, 32, 32 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -1561,96 +1828,210 @@
   {
     "Name": "SW1COMM",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 15, 18, 33, 33 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1COMP",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedButtonSwitch",
+        "Location": [ 16, 72, 32, 32 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1DIRT",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 16, 20, 33, 33 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1EXIT",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedButtonSwitch",
+        "Location": [ 0, 16, 32, 32 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1GARG",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "GargoyleSwitch",
+        "Location": [ 12, 62, 41, 48 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1GRAY",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedButtonSwitch",
+        "Location": [ 16, 70, 32, 32 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1GRAY1",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SingleButtonSwitch",
+        "Location": [ 20, 79, 24, 24 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1GSTON",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 13, 67, 37, 39 ]
+      }
+    ],
     "Color": "Green"
   },
   {
     "Name": "SW1HOT",
     "Themes": [ "Switch", "Skull" ],
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 12, 66, 37, 39 ]
+      }
+    ],
     "Color": "Red"
   },
   {
     "Name": "SW1LION",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "GargoyleSwitch",
+        "Location": [ 12, 62, 41, 48 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1MARB",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 13, 55, 37, 39 ]
+      }
+    ],
     "Color": "Green"
   },
   {
     "Name": "SW1MET2",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 16, 20, 33, 33 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1METAL",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SingleButtonSwitch",
+        "Location": [ 20, 68, 24, 24 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1MOD1",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SingleButtonSwitch",
+        "Location": [ 20, 80, 24, 24 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1PANEL",
     "Themes": [ "Switch", "Skull" ],
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 14, 64, 37, 39 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1PIPE",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "LeverSwitch",
+        "Location": [ 48, 76, 32, 32 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1ROCK",
     "Themes": [ "Switch" ],
-    "Color": "Gray"
+    "Color": "Gray",
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 14, 66, 37, 39 ]
+      }
+    ]
   },
   {
     "Name": "SW1SATYR",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "GargoyleSwitch",
+        "Location": [ 12, 62, 41, 48 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1SKIN",
     "Themes": [ "Switch", "Flesh" ],
+    "Regions": [
+      {
+        "Label": "EyeSwitch",
+        "Location": [ 0, 64, 64, 48 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
@@ -1661,61 +2042,133 @@
   {
     "Name": "SW1SLAD",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SmallRedSwitch",
+        "Location": [ 24, 73, 16, 24 ]
+      }
+    ],
     "Color": "Green"
   },
   {
     "Name": "SW1STARG",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 48, 72, 33, 33 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1STON1",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 16, 78, 33, 33 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1STON2",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 48, 72, 33, 33 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1STON6",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedButtonSwitch",
+        "Location": [ 16, 72, 32, 32 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1STONE",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 48, 72, 33, 33 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1STRTN",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "RedGreenSwitch",
+        "Location": [ 16, 72, 33, 33 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1TEK",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SingleButtonSwitch",
+        "Location": [ 20, 79, 24, 24 ]
+      }
+    ],
     "Color": "Green"
   },
   {
     "Name": "SW1VINE",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SingleButtonSwitch",
+        "Location": [ 20, 84, 24, 24 ]
+      }
+    ],
     "Color": "Gray"
   },
   {
     "Name": "SW1WDMET",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "BlueRedSkullSwitch",
+        "Location": [ 24, 52, 16, 24 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1WOOD",
     "Themes": [ "Switch", "Skull" ],
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 14, 66, 37, 39 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "SW1ZIM",
     "Themes": [ "Switch" ],
+    "Regions": [
+      {
+        "Label": "SkullSwitch",
+        "Location": [ 16, 66, 37, 39 ]
+      }
+    ],
     "Color": "Green"
   },
   {
@@ -1760,7 +2213,13 @@
   },
   {
     "Name": "TEKGREN1",
-    "Themes": [ "Tech"],
+    "Themes": [ "Tech" ],
+    "Regions": [
+      {
+        "Label": "CautionStripPanel",
+        "Location": [ 0, 0, 64, 24 ]
+      }
+    ],
     "Color": "Green"
   },
   {
@@ -1826,11 +2285,55 @@
   {
     "Name": "WOOD3",
     "Themes": [ "Wood" ],
+    "Regions": [
+      {
+        "Label": "Panel1",
+        "Location": [ 0, 0, 64, 64 ]
+      },
+      {
+        "Label": "Panel2",
+        "Location": [ 64, 0, 64, 64 ]
+      },
+      {
+        "Label": "Panel3",
+        "Location": [ 128, 0, 64, 64 ]
+      },
+      {
+        "Label": "Panel4",
+        "Location": [ 192, 0, 64, 64 ]
+      },
+      {
+        "Label": "Panel5",
+        "Location": [ 0, 64, 64, 64 ]
+      },
+      {
+        "Label": "Panel6",
+        "Location": [ 64, 64, 64, 64 ]
+      },
+      {
+        "Label": "Panel7",
+        "Location": [ 128, 64, 64, 64 ]
+      },
+      {
+        "Label": "Panel8",
+        "Location": [ 192, 64, 64, 64 ]
+      }
+    ],
     "Color": "Brown"
   },
   {
     "Name": "WOOD4",
     "Themes": [ "Wood" ],
+    "Regions": [
+      {
+        "Label": "Panel1",
+        "Location": [ 0, 0, 64, 64 ]
+      },
+      {
+        "Label": "Panel2",
+        "Location": [ 0, 64, 64, 64 ]
+      },
+    ],
     "Color": "Brown"
   },
   {

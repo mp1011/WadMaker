@@ -33,7 +33,7 @@ internal class StressTestMap : StandardTest
 
         bigRoom.InnerStructures.Place().InGrid(bigRoom, (int)Math.Sqrt(bigRoom.InnerStructures.Count()), new Padding(128));
 
-        ThingPlacer.AddFormation(ThingType.Arachnotron, bigRoom, 400, Angle.North, ThingFlags.AllSkillsAndModes, ThingPlacement.Center, ThingPattern.Triangle, 128);
+        ThingPlacer.AddFormation(ThingType.Arachnotron, bigRoom, 400, Angle.North, ThingFlags.AllSkillsAndModes, new ThingPlacement(0.5,0.1), ThingPattern.Triangle, 128);
         var udmf = MapToUDMF(map);
         return udmf;
     }

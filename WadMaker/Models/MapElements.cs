@@ -63,6 +63,11 @@ public class Sector(Room Room, sector Data) : IElementWrapper<sector>
     public SideDef[] SideDefs => Lines.SelectMany(p => p.SideDefs).Where(p => p.Sector == this).Distinct().ToArray();
 
     public LineDef[] Activators { get; set; } = Array.Empty<LineDef>();
+  
+    /// <summary>
+    /// Not guaranteed to be up to date
+    /// </summary>
+    public PointPath[]? PolygonsCache { get; set; }
 
     public ZDoomSectorSpecial SectorSpecial
     {
@@ -383,6 +388,14 @@ public class MapElements
     public List<SideDef> SideDefs { get; set; } = new List<SideDef>();
     public List<LineDef> LineDefs { get; set; } = new List<LineDef>();
     public List<Thing> Things { get; set; } = new List<Thing>();
+
+    public void ClearSectorPolygonCache()
+    {
+        foreach (var sector in Sectors)
+        {
+            sector.PolygonsCache = null;
+        }
+    }
 
     public MapElements Merge(MapElements other)
     {

@@ -603,7 +603,7 @@ internal class TextureAdjusterTests : StandardTest
     public void TextureRegionTestMap()
     {
         var map = new Map();
-        var room = map.AddRoom(size: new Size(1024, 1024));
+        var room = map.AddRoom(size: new Size(2048, 2048));
 
         var textures = DoomConfig.DoomTextureInfo.Values.Where(p => p.Regions?.Any() == true).ToArray();
 
@@ -624,7 +624,8 @@ internal class TextureAdjusterTests : StandardTest
 
         var udmf = MapToUDMF(map, addPlayerStart: true);
 
-        throw new NotImplementedException();
+        var expected = File.ReadAllText("Fixtures//texture_region_gallery.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
     }
 }
 
