@@ -1,4 +1,6 @@
-﻿namespace WadMaker.Services;
+﻿using System.Xml.Linq;
+
+namespace WadMaker.Services;
 
 public class MapBuilder
 {
@@ -28,6 +30,7 @@ public class MapBuilder
         EnsureSingleSidedLinedefsAreFacingInward(mapElements);
         EnsureActionLinedefsFacingCorrectDirection(mapElements);
         RemoveUnusedElements(mapElements);
+        AddEndcapLines(mapElements);
 
         foreach (var sideDef in mapElements.SideDefs)
         {
@@ -51,6 +54,74 @@ public class MapBuilder
         }
 
         return mapElements;
+    }
+
+    private void AddEndcapLines(MapElements mapElements)
+    {
+        var linesToSplit = mapElements.LineDefs.Where(p => p.TextureInfo.HasEndCaps).ToArray();
+
+        foreach (var line in linesToSplit)
+        {
+            var midLine = line;
+
+            if (line.TextureInfo.LeftCap != null)               
+                midLine = AddLeftEndcap(mapElements, line).Item2;
+            
+            if (midLine.TextureInfo.RightCap != null)
+                AddRightEndcap(mapElements, midLine);
+        }
+    }
+
+    private (LineDef, LineDef) AddLeftEndcap(MapElements elements, LineDef line)
+    {
+        var textureInfo = DoomConfig.DoomTextureInfo[line.TextureInfo.LeftCap.ToString()!];
+        var splitLines = SplitLine(line, elements, textureInfo.Size!.Width);
+
+        // todo, not sure about this
+        splitLines.Item1.Front.TextureInfo = line.TextureInfo with { Main = new TextureQuery(line.TextureInfo.LeftCap!.Value), Mid = null };
+        return splitLines;
+    }
+
+    private (LineDef, LineDef) AddRightEndcap(MapElements elements, LineDef line)
+    {
+        var textureInfo = DoomConfig.DoomTextureInfo[line.TextureInfo.RightCap.ToString()!];
+        var splitLines = SplitLine(line, elements, (int)(line.Length - textureInfo.Size!.Width));
+
+        // todo, not sure about this
+        splitLines.Item2.Front.TextureInfo = line.TextureInfo with { Main = new TextureQuery(line.TextureInfo.RightCap!.Value), Mid = null };
+        return splitLines;
+    }
+
+    private (LineDef,LineDef) SplitLine(LineDef line, MapElements mapElements, int splitPosition)
+    {
+        // is v1 always where we want to start?
+        var newVertex = new vertex(line.V1Point.MoveToward(line.V2Point, splitPosition));
+
+        mapElements.LineDefs.Remove(line);
+        mapElements.SideDefs.RemoveMany(line.SideDefs);
+
+        var newLeftLine = new LineDef(
+            V1: line.V1,
+            V2: newVertex,
+            Front: line.Front,
+            Back: line.Back,
+            Data: line.Data);
+
+        var newRightLine = new LineDef(
+           V1: newVertex,
+           V2: line.V2,
+           Front: line.Front.Copy(),
+           Back: line.Back?.Copy(),
+           Data: line.Data);
+
+        mapElements.LineDefs.Add(newLeftLine);
+        mapElements.LineDefs.Add(newRightLine);
+
+        mapElements.SideDefs.AddRange(newLeftLine.SideDefs);
+        mapElements.SideDefs.AddRange(newRightLine.SideDefs);
+        mapElements.Vertices.Add(newVertex);
+        
+        return (newLeftLine, newRightLine);
     }
 
     private void RemoveUnusedElements(MapElements mapElements)

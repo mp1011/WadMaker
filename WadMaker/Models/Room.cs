@@ -67,7 +67,7 @@ public class Room : IWithShape, IThemed
         }
     }
 
-    public TextureInfo WallTexture { get; set; } = new TextureInfo();
+    public TextureInfo WallTexture { get; set; } = TextureInfo.Default;
 
     public Dictionary<Side, TextureInfo> SideTextures { get; private set; } = new Dictionary<Side, TextureInfo>();
 

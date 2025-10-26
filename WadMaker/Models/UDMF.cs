@@ -16,6 +16,8 @@ public record vertex(
 ) : IMapElement
 {
     public static implicit operator Point(vertex v) => new Point((int) v.x, (int) v.y);
+
+    public vertex(Point p) : this(p.X,p.Y) { }
 }
 
 public record linedef(

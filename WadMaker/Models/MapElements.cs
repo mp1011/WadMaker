@@ -137,6 +137,8 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
     public vertex[] Vertices => new[] { V1, V2 };
     public vertex V1 { get; private set; } = V1;
     public vertex V2 { get; private set; } = V2;
+    public Point V1Point => V1;
+    public Point V2Point => V2;
 
     private DRectangle? _boundingBox;
     public DRectangle BoundingBox

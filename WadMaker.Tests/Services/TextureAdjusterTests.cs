@@ -654,4 +654,43 @@ internal class TextureAdjusterTests : StandardTest
         var expected = File.ReadAllText("Fixtures//column_stops_gallery.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
+
+    [Test]
+    public void CanAddTextureEndcaps()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(256, 256));
+
+        var room2 = map.AddRoom(size: new Size(256, 32));
+        room2.Place().NorthOf(room);
+        room2.Floor = 64;
+
+        room.SideTextures[Side.Top] = new TextureInfo(
+            Lower: new TextureQuery(Texture.BROWN1),
+            Mid: new TextureQuery(Texture.BRNSMALC),
+            LeftCap: Texture.BRNSMALL,
+            RightCap: Texture.BRNSMALR,
+            LowerUnpegged: false,
+            UpperUnpegged: false);
+
+        ThingPlacer.AddPlayerStartToFirstRoomCenter(map);
+
+        var mapElements = MapBuilder.Build(map);
+        TextureAdjuster.ApplyTextures(mapElements);
+        TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
+
+        var twoSidedLines = mapElements.LineDefs.Where(p => p.Back != null).ToArray();
+
+        Assert.That(twoSidedLines.Length, Is.EqualTo(3));
+        Assert.That(twoSidedLines.SingleOrDefault(p => p.Front.Data.texturemiddle == Texture.BRNSMALC.ToString()), Is.Not.Null);
+        Assert.That(twoSidedLines.SingleOrDefault(p => p.Front.Data.texturemiddle == Texture.BRNSMALL.ToString()), Is.Not.Null);
+        Assert.That(twoSidedLines.SingleOrDefault(p => p.Front.Data.texturemiddle == Texture.BRNSMALR.ToString()), Is.Not.Null);
+
+        foreach(var line in twoSidedLines)
+        {
+            Assert.That(line.Front.Data.texturebottom, Is.EqualTo(Texture.BROWN1.ToString()));
+        }
+
+
+    }
 }

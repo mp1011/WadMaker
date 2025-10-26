@@ -82,7 +82,7 @@ public class TextureAdjuster
     private TextureInfo GetTextureFromThemeRule(LineDef lineDef, ThemeRule rule)
     {
         if (rule.Query == null)
-            return rule.Texture ?? new TextureInfo();
+            return rule.Texture ?? TextureInfo.Default;
 
         var upper = GetTextureFromQuery(lineDef, rule.Query, TexturePart.Upper);
         var middle = GetTextureFromQuery(lineDef, rule.Query, TexturePart.Middle);
@@ -272,11 +272,16 @@ public class TextureAdjuster
         return false;
     }
 
-    public Texture ResolveTexture(TexturePart part, LineDef line, SideDef side)
+    public Texture ResolveTextureOrDefault(TexturePart part, LineDef line, SideDef side)
+    {
+        return ResolveTexture(part, line, side) ?? Texture.MISSING;
+    }
+
+    public Texture? ResolveTexture(TexturePart part, LineDef line, SideDef side)
     {
         var textureInfo = side.TextureInfo ?? line.TextureInfo;
         if (textureInfo == null)
-            return Texture.MISSING;
+            return null;
 
         return textureInfo.GetQuery(part).Execute(line, part).FirstOrDefault();
     }
@@ -343,9 +348,9 @@ public class TextureAdjuster
         {
             side.Data = side.Data with
             {
-                texturemiddle = null,
-                texturetop = ResolveTexture(TexturePart.Upper, line, side).ToString(),
-                texturebottom = ResolveTexture(TexturePart.Lower, line, side).ToString(),
+                texturemiddle = ResolveTexture(TexturePart.Middle, line, side)?.ToString(),
+                texturetop = ResolveTextureOrDefault(TexturePart.Upper, line, side).ToString(),
+                texturebottom = ResolveTextureOrDefault(TexturePart.Lower, line, side).ToString(),
                 offsetx = line.TextureInfo.OffsetX,
                 offsety = line.TextureInfo.OffsetY
             };
@@ -354,7 +359,7 @@ public class TextureAdjuster
         {
             side.Data = side.Data with
             {
-                texturemiddle = ResolveTexture(TexturePart.Middle, line, side).ToString(),
+                texturemiddle = ResolveTextureOrDefault(TexturePart.Middle, line, side).ToString(),
                 texturebottom = null,
                 texturetop = null,
             };

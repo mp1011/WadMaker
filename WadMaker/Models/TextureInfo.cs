@@ -1,7 +1,7 @@
 ﻿namespace WadMaker.Models;
 
 public record TextureInfo(
-    TextureQuery? Main,
+    TextureQuery? Main = null,
     TextureQuery? Upper = null,
     TextureQuery? Mid = null,
     TextureQuery? Lower = null,
@@ -12,7 +12,9 @@ public record TextureInfo(
     bool? DrawLowerFromBottom = null,
     AutoAlignment? AutoAlign = null,
     TextureInfo? Alternate = null,
-    bool IgnoreColumnStops = false)
+    bool IgnoreColumnStops = false,
+    Texture? LeftCap = null,
+    Texture? RightCap = null)
 {
 
     public TextureInfo(Texture? Main = Texture.STONE,
@@ -37,7 +39,9 @@ public record TextureInfo(
 
     }
 
-    public static TextureInfo Default => new TextureInfo();
+    public static TextureInfo Default => new TextureInfo(Texture.STONE);
+
+    public bool HasEndCaps => LeftCap != null || RightCap != null;
 
     public override string ToString() => (Main ?? Mid ?? Upper ?? Lower)?.ToString() ?? "";
 
