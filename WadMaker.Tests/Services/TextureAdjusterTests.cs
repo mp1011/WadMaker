@@ -6,7 +6,7 @@ namespace WadMaker.Tests.Services;
 internal class TextureAdjusterTests : StandardTest
 {
     protected override int ConfigVersion { get; } = 1;
-    
+
     [Test]
     public void CanAlignTextures()
     {
@@ -131,7 +131,7 @@ internal class TextureAdjusterTests : StandardTest
             new ThemeRule(Texture: new TextureInfo(Texture.BIGDOOR5), Conditions: new IsDoor()),
         });
 
-        foreach(var room in testMap.Rooms)
+        foreach (var room in testMap.Rooms)
         {
             room.Theme = theme;
         }
@@ -143,7 +143,7 @@ internal class TextureAdjusterTests : StandardTest
 
         var doorLines = mapElements.LineDefs.Where(p => p.LineSpecial?.Type == Models.LineSpecials.LineSpecialType.DoorRaise).ToArray();
         Assert.That(doorLines, Is.Not.Empty);
-        foreach(var doorLine in doorLines)
+        foreach (var doorLine in doorLines)
         {
             Assert.That(doorLine.Front.Data.texturetop, Is.EqualTo(Texture.BIGDOOR5.ToString()));
         }
@@ -232,7 +232,7 @@ internal class TextureAdjusterTests : StandardTest
         var steps = mapElements.Sectors.Where(p => p.Room.BuildingBlock is Stairs).ToArray();
 
         Assert.That(steps, Is.Not.Empty);
-        foreach(var step in steps)
+        foreach (var step in steps)
         {
             Assert.That(step.Floor, Is.EqualTo(Flat.STEP1));
         }
@@ -291,7 +291,7 @@ internal class TextureAdjusterTests : StandardTest
         TextureAdjuster.AdjustOffsetsAndPegs(mapElements);
 
         var pitSector = mapElements.Sectors.Single(p => p.Tag == 1);
-        foreach(var line in pitSector.Lines)
+        foreach (var line in pitSector.Lines)
         {
             var lowerTexture = line.Front.Data.texturebottom;
             var textureInfo = DoomConfig.DoomTextureInfo[lowerTexture!];
@@ -327,7 +327,7 @@ internal class TextureAdjusterTests : StandardTest
             new Hall(128,
             map.Rooms[0],
             map.Rooms[1],
-            Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: color, 
+            Door: new Door(16, new TextureInfo(Texture.BIGDOOR2), new TextureInfo(Texture.BIGDOOR2), 64, KeyColor: color,
                            ColorBar: new DoorColorBarRecessedAlcoves())));
 
         map.Rooms.Add(hall);
@@ -349,9 +349,9 @@ internal class TextureAdjusterTests : StandardTest
             Conditions: new FrontRoomBuildingBlockTypeIs<Alcove>()) });
 
         var map = new Map();
-        map.Theme = theme;  
+        map.Theme = theme;
 
-        var room = map.AddRoom(new Room(map, size: new Size(256,256)));
+        var room = map.AddRoom(new Room(map, size: new Size(256, 256)));
         var alcove = StructureGenerator.AddStructure(room,
             new Alcove(new Room { Floor = 16, Ceiling = -16, Tag = 1 }, Side.Left, 64, 8, 0.5));
 
@@ -362,7 +362,7 @@ internal class TextureAdjusterTests : StandardTest
         var alcoveLines = alcoveSector.Lines.Where(p => p.Back == null).ToArray();
 
         Assert.That(alcoveLines.Length, Is.EqualTo(3));
-        foreach(var line in alcoveLines)
+        foreach (var line in alcoveLines)
         {
             Assert.That(line.Front.Texture, Is.EqualTo(Texture.TEKWALL4.ToString()));
         }
@@ -399,7 +399,7 @@ internal class TextureAdjusterTests : StandardTest
 
         Assert.That(colorBarLines.Length, Is.EqualTo(4));
 
-        foreach(var line in colorBarLines)
+        foreach (var line in colorBarLines)
             Assert.That(line.Length, Is.EqualTo(16));
     }
 
@@ -411,7 +411,7 @@ internal class TextureAdjusterTests : StandardTest
 
         var alcove = StructureGenerator.AddStructure(room, new Alcove(new Room { Floor = 16, Ceiling = -64 }, Side.Top, 32, 8, 0.5));
         alcove.SideTextures[Side.Top] = new TextureInfo(new TextureQuery(Texture.SW1CMT),
-            AutoAlign: new AutoAlignment(RegionLabel: "Switch", TexturePosition: new PointF(0.5f,0.5f), WallPosition: new PointF(0.5f, 0.5f), Part: TexturePart.Middle));
+            AutoAlign: new AutoAlignment(RegionLabel: "Switch", TexturePosition: new PointF(0.5f, 0.5f), WallPosition: new PointF(0.5f, 0.5f), Part: TexturePart.Middle));
 
         var mapElements = MapBuilder.Build(map);
         TextureAdjuster.ApplyTextures(mapElements);
@@ -427,7 +427,7 @@ internal class TextureAdjusterTests : StandardTest
         var map = new Map();
         var room = map.AddRoom(size: new Size(256, 256));
 
-        var inner = room.AddInnerStructure(new Room(map, size: new Size(8,32)) { Floor = 32, Ceiling = 0 });
+        var inner = room.AddInnerStructure(new Room(map, size: new Size(8, 32)) { Floor = 32, Ceiling = 0 });
         inner.Place().ToInsideOf(room, Side.Left, -32);
 
         inner.SideTextures[Side.Right] = new TextureInfo(new TextureQuery(Texture.SW1CMT),
@@ -492,7 +492,7 @@ internal class TextureAdjusterTests : StandardTest
         Assert.That(room1Sides, Is.Not.Empty);
         Assert.That(room2Sides, Is.Not.Empty);
 
-        foreach(var side in room1Sides)
+        foreach (var side in room1Sides)
             Assert.That(side.Texture, Is.EqualTo(Texture.BFALL1.ToString()));
 
         foreach (var side in room2Sides)
@@ -505,7 +505,7 @@ internal class TextureAdjusterTests : StandardTest
         var map = new Map();
         var room = map.AddRoom();
         room.BottomRight = room.UpperLeft.Add(128, -112);
-      
+
         room.WallTexture = new TextureInfo(new TextureQuery(Texture.STARBR2), Alternate: new TextureInfo(Texture.BROWN1));
 
         var elements = MapBuilder.Build(map);
@@ -529,9 +529,9 @@ internal class TextureAdjusterTests : StandardTest
     public void OffsetsObeyColumnStops2()
     {
         var map = new Map();
-        var room = map.AddRoom(size: new Size(246,246));
+        var room = map.AddRoom(size: new Size(246, 246));
         room.Shape.Modifiers.Add(new InvertCorners { Width = 64 });
-        
+
         room.WallTexture = new TextureInfo(new TextureQuery(Texture.STARBR2), Alternate: new TextureInfo(Texture.BROWN1));
 
         var elements = MapBuilder.Build(map);
@@ -557,7 +557,7 @@ internal class TextureAdjusterTests : StandardTest
         var map = new Map();
         var room = map.AddRoom(size: new Size(256, 256));
 
-        StructureGenerator.AddStructure(room, new Alcove(64, 0, Side.Top, 64, 16, 0.4));      
+        StructureGenerator.AddStructure(room, new Alcove(64, 0, Side.Top, 64, 16, 0.4));
         room.WallTexture = new TextureInfo(new TextureQuery(Texture.STARBR2), Alternate: new TextureInfo(Texture.BROWN1));
 
         var elements = MapBuilder.Build(map);
@@ -607,15 +607,15 @@ internal class TextureAdjusterTests : StandardTest
 
         var textures = DoomConfig.DoomTextureInfo.Values.Where(p => p.Regions?.Any() == true).ToArray();
 
-        foreach(var texture in textures)
+        foreach (var texture in textures)
         {
-            foreach(var region in texture.Regions)
+            foreach (var region in texture.Regions)
             {
                 var column = room.AddInnerStructure(size: new Size(region.Width, region.Width));
                 column.Ceiling = 0;
                 column.Floor = region.Height;
 
-                column.WallTexture = new TextureInfo(new TextureQuery(TextureName: texture.Name),
+                column.WallTexture = new TextureInfo(new TextureQuery(TextureName: texture.Name), IgnoreColumnStops: true,
                     AutoAlign: new AutoAlignment(region.Label, PointF.Empty, PointF.Empty, TexturePart.Lower));
             }
         }
@@ -627,5 +627,31 @@ internal class TextureAdjusterTests : StandardTest
         var expected = File.ReadAllText("Fixtures//texture_region_gallery.udmf");
         Assert.That(udmf, Is.EqualTo(expected));
     }
-}
 
+    [Test]
+    public void ColumnStopsTestMap()
+    {
+        var map = new Map();
+        var room = map.AddRoom(size: new Size(2048, 2048));
+
+        var textures = DoomConfig.DoomTextureInfo.Values.Where(p => p.ColumnStops?.Length > 0).ToArray();
+
+        foreach(var texture in textures)
+        {
+            foreach(var columnStop in texture.ColumnStops.WithNeighbors())
+            {
+                int width = Math.Abs(columnStop.Item3 - columnStop.Item2) % texture.Size!.Width;
+                var column = room.AddInnerStructure(size: new Size(width, width));
+                column.Ceiling = 0;
+                column.Floor = texture.Size.Height;
+                column.WallTexture = new TextureInfo(new TextureQuery(TextureName: texture.Name), OffsetX: columnStop.Item2);
+            }
+        }
+
+        room.InnerStructures.Place().InGrid(room, (int)Math.Sqrt(room.InnerStructures.Count()), new Padding(32));
+        var udmf = MapToUDMF(map, addPlayerStart: true);
+
+        var expected = File.ReadAllText("Fixtures//column_stops_gallery.udmf");
+        Assert.That(udmf, Is.EqualTo(expected));
+    }
+}

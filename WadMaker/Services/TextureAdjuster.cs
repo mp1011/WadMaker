@@ -137,7 +137,7 @@ public class TextureAdjuster
         foreach (var line in lines)
         {
             int offsetX = CalcXOffset(line, totalWallWidth);
-            if(!OffsetAlignsWithColumnStops(line,offsetX))
+            if(!line.TextureInfo.IgnoreColumnStops && !OffsetAlignsWithColumnStops(line,offsetX))
             {
                 line.TextureInfo = line.TextureInfo.Alternate ?? throw new Exception("Texture does not fit to wall and no alternate was provided");
 

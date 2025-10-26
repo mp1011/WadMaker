@@ -11,7 +11,8 @@ public record TextureInfo(
     int? OffsetY = null, //sidedef
     bool? DrawLowerFromBottom = null,
     AutoAlignment? AutoAlign = null,
-    TextureInfo? Alternate = null)
+    TextureInfo? Alternate = null,
+    bool IgnoreColumnStops = false)
 {
 
     public TextureInfo(Texture? Main = Texture.STONE,

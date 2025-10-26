@@ -94,6 +94,7 @@
         "Location": [ 0, 0, 64, 64 ]
       }
     ],
+    "ColumnStops": [ 0, 64 ],
     "Color": "Black"
   },
   {
@@ -105,11 +106,13 @@
         "Location": [ 0, 0, 64, 64 ]
       }
     ],
+    "ColumnStops": [ 0, 64 ],
     "Color": "Black"
   },
   {
     "Name": "BLODRIP1",
     "Themes": [ "Pipe", "Animated", "Blood", "BloodBottom" ],
+    "ColumnStops": [ 0, 32 ],
     "Color": "Brown"
   },
   {
@@ -176,6 +179,7 @@
   {
     "Name": "BRICKLIT",
     "Themes": [ "Brick", "Light" ],
+    "ColumnStops": [ 0, 64 ],
     "Regions": [
       {
         "Label": "LampGlow",
@@ -192,6 +196,7 @@
     "Name": "BRNPOIS",
     "Themes": [ "Base" ],
     "Color": "Green",
+    "ColumnStops": [ 0, 64, 128 ],
     "Regions": [
       {
         "Label": "PoisonSign",
@@ -245,6 +250,7 @@
   {
     "Name": "BRONZE4",
     "Themes": [ "Base", "Lights", "BottomLights" ],
+    "ColumnStops": [ 0, 32, 64 ],
     "Regions": [
       {
         "Label": "HorizontalLights",
@@ -290,9 +296,10 @@
   },
   {
     "Name": "BRWINDOW",
-    "Themes": [ "Brick", "Window"],
+    "Themes": [ "Brick", "Window" ],
     "Color": "Brown",
-    "Comment":  "goes with one of the brick textures"
+    "ColumnStops": [ 0, 64 ],
+    "Comment": "goes with one of the brick textures"
   },
   {
     "Name": "BSTONE1",
@@ -402,6 +409,7 @@
     "Name": "COMPSTA1",
     "Themes": [ "Tech", "Computer" ],
     "Color": "Gray",
+    "ColumnStops": [ 0, 128 ],
     "Regions": [
       {
         "Label": "BigMonitor1",
@@ -426,7 +434,7 @@
     "Name": "COMPSTA2",
     "Themes": [ "Tech", "Computer" ],
     "Color": "Gray",
-    "Color": "Gray",
+    "ColumnStops": [ 0, 128 ],
     "Regions": [
       {
         "Label": "BigMonitor1",
@@ -450,6 +458,7 @@
   {
     "Name": "COMPTALL",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 256 ],
     "Regions": [
       {
         "Label": "Vent",
@@ -482,6 +491,7 @@
     "Name": "COMPWERD",
     "Themes": [ "Tech" ],
     "Color": "Gray",
+    "ColumnStops": [ 0, 64 ],
     "Regions": [
       {
         "Label": "Panel",
@@ -502,11 +512,13 @@
   {
     "Name": "CRATE1",
     "Themes": [ "Crate" ],
+    "ColumnStops": [ 0, 64 ],
     "Color": "Brown"
   },
   {
     "Name": "CRATE2",
     "Themes": [ "Crate" ],
+    "ColumnStops": [ 0, 64 ],
     "Color": "Gray"
   },
   {
@@ -528,18 +540,20 @@
     "Name": "CRATELIT",
     "Themes": [ "Crate" ],
     "Color": "Brown",
+    "ColumnStops": [ 0, 128 ],
     "Regions": [
       {
         "Label": "MediumCrate",
         "Location": [ 0, 0, 32, 32 ]
       }
     ],
-    "Comment" : "has smaller crates"
+    "Comment": "has smaller crates"
   },
   {
     "Name": "CRATINY",
     "Themes": [ "Crate" ],
     "Color": "Gray",
+    "ColumnStops": [ 0, 16, 32, 48, 64 ],
     "Regions": [
       {
         "Label": "MediumCrate",
@@ -551,6 +565,7 @@
   {
     "Name": "CRATWIDE",
     "Themes": [ "Crate" ],
+    "ColumnStops": [ 0, 128 ],
     "Regions": [
       {
         "Label": "BigGrayCrate",
@@ -900,11 +915,13 @@
   {
     "Name": "MARBLE2",
     "Themes": [ "Marble" ],
+    "ColumnStops": [ 0, 16, 32, 48, 64, 80, 96, 112, 128 ],
     "Color": "Green"
   },
   {
     "Name": "MARBLE3",
     "Themes": [ "Marble" ],
+    "ColumnStops": [ 0, 16, 32, 48, 64, 80, 96, 112, 128 ],
     "Color": "Green"
   },
   {
@@ -925,6 +942,7 @@
   {
     "Name": "METAL2",
     "Themes": [ "Metal" ],
+    "ColumnStops": [ 0, 32, 64 ],
     "Regions": [
       {
         "Label": "Panel",
@@ -936,6 +954,7 @@
   {
     "Name": "METAL3",
     "Themes": [ "Metal" ],
+    "ColumnStops": [ 0, 32, 64 ],
     "Regions": [
       {
         "Label": "ElectricSign",
@@ -956,22 +975,25 @@
   {
     "Name": "METAL5",
     "Themes": [ "Metal" ],
+    "ColumnStops": [ 0, 32, 64 ],
     "Regions": [
       {
         "Label": "Vent",
         "Location": [ 32, 32, 32, 32 ]
-      },
+      }
     ],
     "Color": "Gray"
   },
   {
     "Name": "METAL6",
     "Themes": [ "Metal", "TopLights" ],
+    "ColumnStops": [ 0, 64 ],
     "Color": "Gray"
   },
   {
     "Name": "METAL7",
     "Themes": [ "Metal", "BottomLights" ],
+    "ColumnStops": [ 0, 64 ],
     "Regions": [
       {
         "Label": "HorizontalLights",
@@ -1034,6 +1056,7 @@
   {
     "Name": "MODWALL4",
     "Themes": [ "Building" ],
+    "ColumnStops": [ 0, 32, 64 ],
     "Regions": [
       {
         "Label": "Panel",
@@ -1535,6 +1558,7 @@
     "Name": "SPACEW4",
     "Themes": [ "Tech" ],
     "Color": "Brown",
+    "ColumnStops": [ 0, 32, 64 ],
     "Regions": [
       {
         "Label": "Panel1",
@@ -1599,36 +1623,43 @@
   {
     "Name": "STARG1",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 32, 64 ],
     "Color": "Green"
   },
   {
     "Name": "STARG2",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 32, 64, 96, 128 ],
     "Color": "Green"
   },
   {
     "Name": "STARG3",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 32, 64, 96, 128 ],
     "Color": "Green"
   },
   {
     "Name": "STARGR1",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 32, 64 ],
     "Color": "Gray"
   },
   {
     "Name": "STARGR2",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 32, 64, 96, 128 ],
     "Color": "Gray"
   },
   {
     "Name": "STARTAN2",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 32, 64, 96, 128 ],
     "Color": "Brown"
   },
   {
     "Name": "STARTAN3",
     "Themes": [ "Tech" ],
+    "ColumnStops": [ 0, 32, 64, 96, 128 ],
     "Color": "Brown"
   },
   {

@@ -64,9 +64,11 @@ FIX NEXT:
 [x] - light levels
 ----------------10/19/2025
 [x] - texture gallery map
-[ ] - texture region test map + finish adding
-[ ] - optimization, create test which scales number of inner sectors and checks the time
+[x] - texture region test map + finish adding
+[x] - optimization, create test which scales number of inner sectors and checks the time
 [ ] - standardize whether structure generators also add elements to the map
+[ ] - texture endcaps
+[ ] - texture transitions
 
 
 
