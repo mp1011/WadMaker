@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using WadMaker.Services.StructureGenerators;
 
 namespace WadMaker.Services;
 
@@ -35,6 +34,8 @@ public static class ServiceContainer
         services.AddSingleton<IsOverlappingAnotherThingOfSameCategory>();
         services.AddSingleton<TextureQuery>();
         services.AddSingleton<DoorColorBarGenerator>();
+
+        services.AddSingleton<WadMakerMain>();
 
         RegisterAllGenericInterfaceImplementations(services, typeof(IStructureGenerator<>), Assembly.GetExecutingAssembly());
         RegisterAllGenericInterfaceImplementations(services, typeof(ISideStructureGenerator<>), Assembly.GetExecutingAssembly());

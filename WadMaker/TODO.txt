@@ -67,8 +67,11 @@ FIX NEXT:
 [x] - texture region test map + finish adding
 [x] - optimization, create test which scales number of inner sectors and checks the time
 [ ] - standardize whether structure generators also add elements to the map
-[ ] - texture endcaps
+[x] - texture endcaps
 [ ] - texture transitions
+---------------10/26/2025
+[ ] - fix bug with unwanted texture middle
+[ ] - determine proper map size for bunker dorms
 
 
 
@@ -241,3 +244,22 @@ texture improvements
 -- 10/19
 grid placement needs to use size of largest item in each row/column
 optimize so it doesn't take too long
+
+-- 10/26
+texture transitions, some textures need to, or prefer to, be next to eachother
+
+switches
+	bigbrik1 - bigbrik3 = neighbors (any)
+	bricklit - brick1 = neighbors (any)
+	brnpos - browngrn
+	brnsmall -> brnsmalc -> brnsmalr 
+	bstone2,3
+	startan3 transitions from startan2-stargr*
+	starg3 transitions from starg1,2-stargr*
+	blodrip - pipe1 = horizontal neighbors
+	blodrip - pipe2 = neighbor (above)
+
+	
+	sw1blue -> compblue
+
+	pipewal1,2
