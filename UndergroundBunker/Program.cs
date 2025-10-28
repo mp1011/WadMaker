@@ -6,7 +6,10 @@ var wadMaker = services.GetRequiredService<WadMakerMain>();
 //Legacy.Flags = LegacyFlags.DontResolveCrossingLines;
 
 var map = new Map();
-var floor1 = CreateFloor1(map);
+
+var dorm = map.AddRoom(CreateDorm(map)); 
+
+//var floor1 = CreateFloor1(map);
 
 
 const int PillarDistance = 512;
@@ -35,29 +38,35 @@ static Room CreateFloor1(Map map)
     var divider4 = floor.AddPillar(new Size(floor.Size.Width - supportPillars[2].Bounds().Right, 32));
     divider4.Place().ToInsideOf(floor, Side.Left, gap: -supportPillars[2].Bounds().Right, targetAnchor: Anchor.Absolute(PillarDistance + PillarWidth / 2));
 
-    AddDorm(map, floor);
-
+   
     return floor;
 }
 
-static Room AddDorm(Map map, Room floor)
+Room CreateDorm(Map map)
 {
-    var dorms = floor.AddInnerStructure();
+    var dorms = new Room(map, size: new Size(PillarDistance * 2, PillarDistance));
     dorms.Floor = 0;
-    dorms.Ceiling = 0;
+    dorms.Ceiling = 256;
     dorms.UpperLeft = new Point(PillarDistance + PillarWidth, -16);
     dorms.BottomRight = new Point(PillarWidth + 1524, -PillarDistance - 32);
 
 
-    var beds = Enumerable.Range(0, 8).Select(p =>
+    var beds = Enumerable.Range(0, 25).Select(p =>
     {
-        var bed = dorms.AddInnerStructure(size: new Size(75, 32));
+        // 75, 32
+        var bed = dorms.AddInnerStructure(size: new Size(85, 42));      
         bed.Floor = 18;
         bed.Ceiling = 0;
         return bed;
     }).ToArray();
 
-    beds.Place().InGrid(dorms, columns: 4, new Padding(32));
+    beds.Place().InGrid(dorms, columns: 5, new Padding(32));
+
+
+    foreach(var bed in beds)
+    {
+        wadMaker.ThingPlacer.AddThing(ThingType.Dead_player, bed, 0.5, 0.5, ThingFlags.AllSkillsAndModes);
+    }
 
     return dorms;
 }

@@ -151,8 +151,8 @@ public class OverlappingLinedefResolver
     {
         var possibleSectors = line1.Sectors.Union(line2.Sectors).Distinct().OrderBy(p=> originalMapElements.Sectors.IndexOf(p)).ToArray();
         var sourceSidedefs = line1.SideDefs.Union(line2.SideDefs).ToArray();
-        var line1Texture = line1.TextureInfo;
-        var line2Texture = line2.TextureInfo;
+        var line1Texture = line1.TextureInfo.WithoutUnneededMid();
+        var line2Texture = line2.TextureInfo.WithoutUnneededMid();
 
         if (AreLinesFromCollapsedSector(line1, line2))
         {
@@ -227,10 +227,10 @@ public class OverlappingLinedefResolver
             else
             {
                 if (frontSidedef != null)
-                    frontSidedef.TextureInfo = originalFrontSidedef!.TextureInfo ?? originalFrontLine!.TextureInfo;
+                    frontSidedef.TextureInfo = (originalFrontSidedef!.TextureInfo ?? originalFrontLine!.TextureInfo).WithoutUnneededMid();
 
                 if (backSidedef != null)
-                    backSidedef.TextureInfo = originalBackSidedef!.TextureInfo ?? originalBackLine!.TextureInfo;
+                    backSidedef.TextureInfo = (originalBackSidedef!.TextureInfo ?? originalBackLine!.TextureInfo).WithoutUnneededMid();
             }
 
             if (overlapsOriginalLine1 && !overlapsOriginalLine2)

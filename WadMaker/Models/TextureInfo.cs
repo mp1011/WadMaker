@@ -45,15 +45,23 @@ public record TextureInfo(
 
     public override string ToString() => (Main ?? Mid ?? Upper ?? Lower)?.ToString() ?? "";
 
-    public TextureQuery GetQuery(TexturePart part)
+    public TextureQuery? GetQuery(TexturePart part, bool isTwoSided)
     {
         return part switch
         {
             TexturePart.Upper => Upper ?? Main ?? TextureQuery.Missing,
             TexturePart.Lower => Lower ?? Main ?? TextureQuery.Missing,
-            _ => Mid ?? Main ?? TextureQuery.Missing,
+            _ => isTwoSided ? Mid : (Mid ?? Main ?? TextureQuery.Missing),
         };
-    }   
+    }
+
+    public TextureInfo WithoutUnneededMid()
+    {
+        if (Mid != null && Mid == Main)
+            return this with { Mid = null };
+        else
+            return this;
+    }
 }
 
 public record AutoAlignment(string? RegionLabel, PointF TexturePosition, PointF WallPosition, TexturePart Part)

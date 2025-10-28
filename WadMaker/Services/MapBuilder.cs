@@ -78,7 +78,7 @@ public class MapBuilder
         var splitLines = SplitLine(line, elements, textureInfo.Size!.Width);
 
         // todo, not sure about this
-        splitLines.Item1.Front.TextureInfo = line.TextureInfo with { Main = new TextureQuery(line.TextureInfo.LeftCap!.Value), Mid = null };
+        splitLines.Item1.Front.TextureInfo = line.TextureInfo with { Mid = new TextureQuery(line.TextureInfo.LeftCap!.Value) };
         return splitLines;
     }
 
@@ -88,7 +88,7 @@ public class MapBuilder
         var splitLines = SplitLine(line, elements, (int)(line.Length - textureInfo.Size!.Width));
 
         // todo, not sure about this
-        splitLines.Item2.Front.TextureInfo = line.TextureInfo with { Main = new TextureQuery(line.TextureInfo.RightCap!.Value), Mid = null };
+        splitLines.Item2.Front.TextureInfo = line.TextureInfo with { Mid = new TextureQuery(line.TextureInfo.RightCap!.Value) };
         return splitLines;
     }
 

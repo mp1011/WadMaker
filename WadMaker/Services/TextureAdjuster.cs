@@ -89,14 +89,29 @@ public class TextureAdjuster
         var lower = GetTextureFromQuery(lineDef, rule.Query, TexturePart.Lower);
 
         if (rule.Texture == null)
-            return new TextureInfo(Mid: middle, Upper: upper, Lower: lower);
-
-        return rule.Texture with
         {
-            Upper = rule.Texture.Upper ?? new TextureQuery(upper),
-            Mid = rule.Texture.Mid ?? new TextureQuery(middle),
-            Lower = rule.Texture.Lower ?? new TextureQuery(lower)
-        };
+            if(lineDef.SingleSided)
+                return new TextureInfo(Mid: middle);
+            else 
+                return new TextureInfo(Upper: upper, Lower: lower);
+        }
+
+        if (lineDef.SingleSided)
+        {
+            return rule.Texture with
+            {
+                Mid = rule.Texture.Mid ?? new TextureQuery(middle),
+            };
+        }
+        else
+        {
+            return rule.Texture with
+            {
+                Upper = rule.Texture.Upper ?? new TextureQuery(upper),
+                Mid = rule.Texture.Mid,
+                Lower = rule.Texture.Lower ?? new TextureQuery(lower)
+            };
+        }
     }
 
     private Texture GetTextureFromQuery(LineDef lineDef, TextureQuery query, TexturePart texturePart)
@@ -283,7 +298,7 @@ public class TextureAdjuster
         if (textureInfo == null)
             return null;
 
-        return textureInfo.GetQuery(part).Execute(line, part).FirstOrDefault();
+        return textureInfo.GetQuery(part, line.Back != null)?.Execute(line, part)?.FirstOrDefault();
     }
 
     public void ApplyTexture(LineDef line)

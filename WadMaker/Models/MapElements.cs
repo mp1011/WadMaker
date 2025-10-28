@@ -159,7 +159,7 @@ public class LineDef(vertex V1, vertex V2, SideDef Front, SideDef? Back, linedef
         get =>  _texture ?? Front.TextureInfo ?? Back?.TextureInfo ?? new TextureInfo(Texture.STONE);
         set
         {
-            _texture = value;
+            _texture = value.WithoutUnneededMid();
         }
     }
 
